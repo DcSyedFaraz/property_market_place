@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AgentPropertyController;
 use App\Http\Controllers\Admin\AgentsController;
+use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DeveloperController;
 use App\Http\Controllers\Admin\LibraryController;
@@ -60,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('agents', AgentsController::class);
     Route::resource('agentproperty', AgentPropertyController::class);
     Route::resource('developers', DeveloperController::class);
+    Route::resource('amenities', AmenityController::class);
 
 
 

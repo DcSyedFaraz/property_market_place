@@ -68,6 +68,12 @@
                          <span> Agents </span>
                      </a>
                  </li>
+                 <li class="{{ request()->routeIs('amenities.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('amenities.index') }}'>
+                         <i data-feather="book-open"></i>
+                         <span> Amenities </span>
+                     </a>
+                 </li>
                  <li class="{{ request()->routeIs('developers.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('developers.index') }}'>
                          <i data-feather="book-open"></i>
