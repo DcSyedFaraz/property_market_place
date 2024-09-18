@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Amenities;
+use App\Models\Location;
+use App\Models\MasterPlan;
 use App\Models\User;
 use Hash;
 use Illuminate\Database\Seeder;
@@ -48,13 +51,12 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('user');
 
-        // $student = User::create([
-        //     'name' => 'Student',
-        //     'email' => 'student@gmail.com',
-        //     'password' => Hash::make('12345678'),
-        //     'email_verified_at' => date('Y-m-d h:i:s'),
-        // ]);
+        Location::factory(10)->create();
 
-        // $student->assignRole('student');
+        // Create 5 master plans
+        MasterPlan::factory(5)->create();
+
+        // Create 15 amenities
+        Amenities::factory(15)->create();
     }
 }

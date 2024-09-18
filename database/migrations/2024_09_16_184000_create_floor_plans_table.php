@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('floor_plans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('developer_property_id')->constrained()->onDelete('cascade'); // Foreign key to developer_properties
-            $table->string('category'); // e.g., 'Typical Floor Plan'
-            $table->string('unit_type'); // e.g., 'Layout Plan'
-            $table->string('floor_details'); // e.g., '1st, 3rd & 5th Floor to Rooftop Floor'
-            $table->string('sizes'); // e.g., '0.00 Sq Ft to 0.00 Sq Ft'
-            $table->string('type'); // e.g., 'Apartment'
-            $table->string('image'); // e.g., 'Apartment'
+            $table->string('category')->nullable(); // e.g., 'Typical Floor Plan'
+            $table->string('unit_type')->nullable(); // e.g., 'Layout Plan'
+            $table->string('floor_details')->nullable(); // e.g., '1st, 3rd & 5th Floor to Rooftop Floor'
+            $table->string('sizes')->nullable(); // e.g., '0.00 Sq Ft to 0.00 Sq Ft'
+            $table->string('type')->nullable(); // e.g., 'Apartment'
+            $table->string('image')->nullable(); // e.g., 'Apartment'
             $table->timestamps();
         });
     }

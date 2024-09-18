@@ -5,7 +5,10 @@ use App\Http\Controllers\Admin\AgentsController;
 use App\Http\Controllers\Admin\AmenityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DeveloperController;
+use App\Http\Controllers\Admin\DeveloperPropertyController;
 use App\Http\Controllers\Admin\LibraryController;
+use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\MasterPlanController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TeacherDashboardController;
 use App\Http\Controllers\Admin\StudentDashboardController;
@@ -39,6 +42,7 @@ require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/projects', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
     Route::get('/faqs', 'faqs')->name('faqs');
@@ -62,6 +66,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('agentproperty', AgentPropertyController::class);
     Route::resource('developers', DeveloperController::class);
     Route::resource('amenities', AmenityController::class);
+    Route::resource('master-plans', MasterPlanController::class);
+    Route::resource('locations', LocationController::class);
+    Route::resource('developer_properties', DeveloperPropertyController::class);
+
 
 
 

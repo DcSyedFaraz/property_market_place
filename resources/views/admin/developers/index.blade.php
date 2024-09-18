@@ -23,7 +23,7 @@
                         <td>{{ $developer->phone }}</td>
                         <td>
                             @if ($developer->logo)
-                                <img src="{{ $developer->logo }}" alt="{{ $developer->name }} Logo" width="60" class="img-thumbnail">
+                                <img src="{{ asset('storage/' . $developer->logo) }}" alt="{{ $developer->name }} Logo" width="60" class="img-thumbnail">
                             @else
                                 No Logo
                             @endif

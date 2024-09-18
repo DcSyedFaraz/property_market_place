@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeveloperProperty;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,11 @@ class FrontendController extends Controller
     public function index()
     {
         return view('frontend.index');
+    }
+    public function projects()
+    {
+        $developer_property = DeveloperProperty::first();
+        return view('frontend.devPropertyDetails',compact('developer_property'));
     }
     public function about_us()
     {

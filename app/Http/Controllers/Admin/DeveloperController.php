@@ -42,7 +42,7 @@ class DeveloperController extends Controller
 
             if ($request->hasFile('logo')) {
                 $logoPath = $request->file('logo')->store('logos', 'public');
-                $developer->logo = "/storage/$logoPath";
+                $developer->logo = $logoPath;
             }
 
             $developer->save();

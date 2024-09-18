@@ -109,7 +109,7 @@
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
                                 <img src="{{ asset('assets/img/img01.png') }}" alt="" />
-                                <a href="#">
+                                <a href="{{ route('projects') }}">
                                     <h4>Dubai</h4>
                                 </a>
                             </div>

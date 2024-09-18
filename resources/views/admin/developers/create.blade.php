@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label for="logo" class="form-label">Logo</label>
-            <input type="file" class="form-control" id="logo" name="logo">
+            <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
             @if(isset($developer) && $developer->logo)
                 <img src="{{ $developer->logo }}" alt="{{ $developer->name }} Logo" width="100">
             @endif

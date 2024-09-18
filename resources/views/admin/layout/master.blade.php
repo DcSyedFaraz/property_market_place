@@ -27,8 +27,11 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Summernote CSS & JS -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    {{-- Select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 
@@ -139,7 +142,8 @@
                                                     class="text-reset text-truncate">Rewrite text-button</span></small>
                                         </p>
                                         <p class="noti-mentioned p-2 rounded-2 mb-0 mt-2"><span
-                                                class="text-primary">@Patryk</span> Please make sure that you're....</p>
+                                                class="text-primary">@Patryk</span> Please make sure that you're....
+                                        </p>
                                     </div>
                                 </a>
 
@@ -314,6 +318,10 @@
                 toastr.error("{{ $error }}")
             @endforeach
         @endif
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

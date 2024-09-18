@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('developer_id'); // Foreign key to developers table
             $table->string('name');
-            $table->string('location');
+            // $table->string('location');
             $table->string('status')->default('new'); // e.g., New Launch, Under Construction, Ready to Move, etc.
             $table->integer('bedrooms')->nullable(); // Number of bedrooms
             $table->integer('bathrooms')->nullable(); // Number of bathrooms

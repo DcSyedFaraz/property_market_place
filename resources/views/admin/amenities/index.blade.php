@@ -22,7 +22,7 @@
                             <tr>
                                 <td>{{ $amenity->id }}</td>
                                 <td>{{ $amenity->name }}</td>
-                                <td><img src="{{ $amenity->logo }}" width="50" height="50"></td>
+                                <td><img src="{{ asset('storage/' . $amenity->logo) }}" width="50" height="50"></td>
                                 <td>{{ $amenity->description }}</td>
                                 <td>
                                     <a href="{{ route('amenities.edit', $amenity->id) }}"
