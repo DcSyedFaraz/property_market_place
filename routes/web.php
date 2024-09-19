@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AgentPropertyController;
 use App\Http\Controllers\Admin\AgentsController;
 use App\Http\Controllers\Admin\AmenityController;
+use App\Http\Controllers\Admin\CommunityController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DeveloperController;
 use App\Http\Controllers\Admin\DeveloperPropertyController;
@@ -65,10 +66,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('agents', AgentsController::class);
     Route::resource('agentproperty', AgentPropertyController::class);
     Route::resource('developers', DeveloperController::class);
-    Route::resource('amenities', AmenityController::class);
+    Route::resource('Amenity', AmenityController::class);
     Route::resource('master-plans', MasterPlanController::class);
     Route::resource('locations', LocationController::class);
     Route::resource('developer_properties', DeveloperPropertyController::class);
+    Route::resource('communities', CommunityController::class);
+
 
 
 

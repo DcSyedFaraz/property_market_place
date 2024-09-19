@@ -9,9 +9,9 @@ class DeveloperProperty extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function amenities()
+    public function Amenity()
     {
-        return $this->belongsToMany(Amenities::class, 'amenity_developer_property', 'developer_property_id', 'amenity_id');
+        return $this->belongsToMany(Amenity::class, 'amenity_developer_property', 'developer_property_id', 'amenity_id');
     }
     public function locations()
     {
@@ -33,5 +33,13 @@ class DeveloperProperty extends Model
     public function floorPlans()
     {
         return $this->hasMany(FloorPlan::class, );
+    }
+    public function images()
+    {
+        return $this->hasMany(images::class, );
+    }
+    public function community_name()
+    {
+        return $this->belongsTo(Community::class, 'community');
     }
 }

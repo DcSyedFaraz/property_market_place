@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Amenities;
+use App\Models\Amenity;
+use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
 use App\Models\FloorPlan;
+use App\Models\images;
 use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\PropertyType;
@@ -23,12 +25,63 @@ class DeveloperPropertyController extends Controller
     {
         $locations = Location::all();
         $master_plans = MasterPlan::all();
-        $amenities = Amenities::all();
+        $Amenity = Amenity::all();
         $developers = Developer::all();
-        return view('admin.developer_properties.create', compact('locations', 'developers', 'master_plans', 'amenities'));
+        $communities = Community::all();
+        return view('admin.developer_properties.create', compact('locations', 'communities', 'developers', 'master_plans', 'Amenity'));
     }
+    public function edit($id)
+    {
+        $developerProperty = DeveloperProperty::with(['images', 'locations', 'propertyTypes', 'floorPlans', 'masterPlans', 'Amenity'])->findOrFail($id);
+        $developers = Developer::all();
+        $communities = Community::all();
+        $master_plans = MasterPlan::all();
+        $locations = Location::all();
+        $Amenity = Amenity::all();
+
+        return view('admin.developer_properties.create', compact('developerProperty', 'developers', 'communities', 'master_plans', 'locations', 'Amenity'));
+    }
+    private function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'developer_id' => 'required|exists:developers,id',
+            'name' => 'required|string|max:255',
+            'status' => 'required|string|in:new,under_construction,ready_to_move',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+            'payment_plan' => 'nullable|string',
+            'handover_date' => 'nullable|date',
+            'handover_percentage' => 'nullable|numeric',
+            'down_percentage' => 'nullable|numeric',
+            'construction_percentage' => 'nullable|numeric',
+            'community' => 'required|exists:communities,id',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gallery_images.*' => 'nullable|image|max:2048',
+            'master_plan_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'location_map' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'locations.*.location_id' => 'required|exists:locations,id',
+            'locations.*.distance' => 'required|numeric',
+            'property_types.*.property_type' => 'required|string|max:255',
+            'property_types.*.unit_type' => 'nullable|string|max:255',
+            'property_types.*.size' => 'nullable|string|max:255',
+            'floor_plans.*.category' => 'required|string|max:255',
+            'floor_plans.*.unit_type' => 'nullable|string|max:255',
+            'floor_plans.*.floor_details' => 'nullable|string|max:255',
+            'floor_plans.*.sizes' => 'nullable|string|max:255',
+            'floor_plans.*.type' => 'nullable|string|max:255',
+            'floor_plans.*.image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'amenity_ids.*' => 'exists:amenities,id',
+            'master_plan_id.*' => 'exists:master_plans,id',
+        ]);
+    }
+
+
     public function store(Request $request)
     {
+        // Validate the request
+        $this->validateRequest($request);
+
         // Start the database transaction
         \DB::beginTransaction();
 
@@ -52,10 +105,21 @@ class DeveloperPropertyController extends Controller
                 'location_map' => $this->uploadFile($request, 'location_map')
             ]);
 
-            // Store key highlights (as an array, serialized or concatenated)
+            // Store key highlights
             if ($request->key_highlights) {
                 $developerProperty->key_highlights = implode(',', $request->key_highlights);
                 $developerProperty->save();
+            }
+
+            // Store gallery images
+            if ($request->gallery_images) {
+                foreach ($request->gallery_images as $image) {
+                    $imagePath = $this->uploadFile($request, 'gallery_images.' . key($image));
+                    images::create([
+                        'developer_property_id' => $developerProperty->id,
+                        'image' => $imagePath,
+                    ]);
+                }
             }
 
             // Store property types
@@ -85,18 +149,18 @@ class DeveloperPropertyController extends Controller
                 }
             }
 
-            // Store locations with distance using the belongsToMany relation
+            // Store locations with distance
             if ($request->locations) {
                 foreach ($request->locations as $location) {
-                    // Attach the location with distance
                     $developerProperty->locations()->attach($location['location_id'], ['distance' => $location['distance']]);
                 }
             }
 
-            // Store amenities using the belongsToMany relation
+            // Store Amenity
             if ($request->amenity_ids) {
-                $developerProperty->amenities()->sync($request->amenity_ids); // Syncing ensures proper management of many-to-many relationships
+                $developerProperty->Amenity()->sync($request->amenity_ids);
             }
+
             if ($request->master_plan_id) {
                 $developerProperty->masterPlans()->sync($request->master_plan_id);
             }
@@ -105,27 +169,148 @@ class DeveloperPropertyController extends Controller
             \DB::commit();
 
             return redirect()->route('developer_properties.index')->with('success', 'Property created successfully!');
-
         } catch (\Exception $e) {
             // Rollback the transaction on failure
             \DB::rollBack();
-            // throw $e;
             return redirect()->back()->withErrors(['error' => 'Failed to create property: ' . $e->getMessage()]);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate the request
+        $this->validateRequest($request);
+
+        // Start the database transaction
+        \DB::beginTransaction();
+
+        try {
+            $developerProperty = DeveloperProperty::findOrFail($id);
+
+            // Update the developer property
+            $developerProperty->update([
+                'developer_id' => $request->developer_id,
+                'name' => $request->name,
+                'status' => $request->status,
+                'price' => $request->price,
+                'description' => $request->description,
+                'payment_plan' => $request->payment_plan,
+                'handover_date' => $request->handover_date,
+                'handover_percentage' => $request->handover_percentage,
+                'down_percentage' => $request->down_percentage,
+                'construction_percentage' => $request->construction_percentage,
+                'community' => $request->community,
+                // Update images only if they are present
+                'logo' => $this->updateFile($request, 'logo', $developerProperty->logo),
+                'cover_image' => $this->updateFile($request, 'cover_image', $developerProperty->cover_image),
+                'master_plan_image' => $this->updateFile($request, 'master_plan_image', $developerProperty->master_plan_image),
+                'location_map' => $this->updateFile($request, 'location_map', $developerProperty->location_map),
+            ]);
+
+            // Update key highlights
+            if ($request->key_highlights) {
+                $developerProperty->key_highlights = implode(',', $request->key_highlights);
+                $developerProperty->save();
+            }
+
+            // Handle gallery images
+            if ($request->gallery_images) {
+                foreach ($request->gallery_images as $key=> $image) {
+                    $imagePath = $this->uploadFile($request, 'gallery_images.' . $key);
+                    images::create([
+                        'developer_property_id' => $developerProperty->id,
+                        'image' => $imagePath,
+                    ]);
+                }
+
+                // Optionally, delete the old images if they were not included in the new upload
+            }
+
+            // Update property types
+            if ($request->property_types) {
+                // Clear existing types and save new ones
+                $developerProperty->propertyTypes()->delete();
+                foreach ($request->property_types as $propertyType) {
+                    PropertyType::create([
+                        'developer_property_id' => $developerProperty->id,
+                        'property_type' => $propertyType['property_type'],
+                        'unit_type' => $propertyType['unit_type'],
+                        'size' => $propertyType['size'],
+                    ]);
+                }
+            }
+
+            // Update floor plans
+            if ($request->floor_plans) {
+                // Clear existing floor plans and save new ones
+                $developerProperty->floorPlans()->delete();
+                foreach ($request->floor_plans as $floorPlan) {
+                    FloorPlan::create([
+                        'developer_property_id' => $developerProperty->id,
+                        'category' => $floorPlan['category'],
+                        'unit_type' => $floorPlan['unit_type'],
+                        'floor_details' => $floorPlan['floor_details'],
+                        'sizes' => $floorPlan['sizes'],
+                        'type' => $floorPlan['type'],
+                        'image' => $this->uploadFile($request, 'floor_plans.' . key($floorPlan) . '.image')
+                    ]);
+                }
+            }
+
+            // Update locations
+            if ($request->locations) {
+                // Clear existing locations and save new ones
+                $developerProperty->locations()->detach();
+                foreach ($request->locations as $location) {
+                    $developerProperty->locations()->attach($location['location_id'], ['distance' => $location['distance']]);
+                }
+            }
+
+            // Update Amenity
+            if ($request->amenity_ids) {
+                $developerProperty->Amenity()->sync($request->amenity_ids);
+            }
+
+            if ($request->master_plan_id) {
+                $developerProperty->masterPlans()->sync($request->master_plan_id);
+            }
+
+            // Commit the transaction
+            \DB::commit();
+
+            return redirect()->route('developer_properties.index')->with('success', 'Property updated successfully!');
+        } catch (\Exception $e) {
+            // Rollback the transaction on failure
+            \DB::rollBack();
+            return redirect()->back()->withErrors(['error' => 'Failed to update property: ' . $e->getMessage()]);
         }
     }
 
     private function uploadFile(Request $request, $fieldName)
     {
+        // dd($request->all(),$fieldName);
         if ($request->hasFile($fieldName)) {
             return $request->file($fieldName)->store('developer_properties', 'public');
         }
         return null;
     }
+    private function updateFile(Request $request, $fieldName, $oldFilePath)
+    {
+        if ($request->hasFile($fieldName)) {
+            // Delete old file if it exists
+            if ($oldFilePath) {
+                \Storage::disk('public')->delete($oldFilePath);
+            }
+            return $this->uploadFile($request, $fieldName);
+        }
+        return $oldFilePath; // Return old file path if no new file is uploaded
+    }
+
     public function destroy($id)
     {
-        // Delete the Amenities
-        $Amenities = DeveloperProperty::findOrFail($id);
-        $Amenities->delete();
+        // Delete the Amenity
+        $Amenity = DeveloperProperty::findOrFail($id);
+        $Amenity->delete();
 
         return redirect()->route('developer_properties.index')->with('success', 'Property deleted successfully.');
     }

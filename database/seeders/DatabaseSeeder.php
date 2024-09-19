@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Amenities;
+use App\Models\Amenity;
+use App\Models\DeveloperProperty;
 use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\User;
@@ -51,12 +52,17 @@ class DatabaseSeeder extends Seeder
 
         $user->assignRole('user');
 
-        Location::factory(10)->create();
+        // Location::factory(10)->create();
 
-        // Create 5 master plans
-        MasterPlan::factory(5)->create();
+        // // Create 5 master plans
+        // MasterPlan::factory(5)->create();
 
-        // Create 15 amenities
-        Amenities::factory(15)->create();
+        // // Create 15 Amenity
+        // Amenity::factory(15)->create();
+        DeveloperProperty::factory()
+            ->withRelations() // This will create and attach master plans, locations, and Amenity
+            ->count(10)
+            ->create();
+
     }
 }

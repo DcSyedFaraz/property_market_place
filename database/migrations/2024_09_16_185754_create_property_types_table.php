@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('property_types', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('developer_property_id')->constrained('developer_properties')->onDelete('cascade');
             $table->string('property_type'); // e.g., Apartment, Villa, Townhouse, etc.
             $table->string('unit_type'); // e.g., Apartment, Villa, Townhouse, etc.
             $table->string('size'); // Size of the property in square feet

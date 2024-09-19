@@ -14,7 +14,7 @@
                 <div>
                     <strong>Description:</strong> {{ $amenity->description }}
                 </div>
-                <a href="{{ route('amenities.index') }}" class="btn btn-primary mt-3">Back to List</a>
+                <a href="{{ route('Amenity.index') }}" class="btn btn-primary mt-3">Back to List</a>
             </div>
         </div>
     </div>

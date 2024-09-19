@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Add Amenity</h1>
-                <form action="{{ route('amenities.store') }}" method="POST">
+                <form action="{{ route('Amenity.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>

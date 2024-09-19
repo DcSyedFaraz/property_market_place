@@ -10,10 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('amenity_developer_property', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('amenity_id')->constrained()->onDelete('cascade'); // References the id in the Amenity table
-            $table->foreignId('developer_property_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->text('feature_description')->nullable();
+            $table->text('image');
+            $table->timestamps();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('amenity_developer_property');
+        Schema::dropIfExists('communities');
     }
 };

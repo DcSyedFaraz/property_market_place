@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Edit Amenity</h1>
-                <form action="{{ route('amenities.update', $amenity->id) }}" method="POST">
+                <form action="{{ route('Amenity.update', $amenity->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">

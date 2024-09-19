@@ -68,10 +68,10 @@
                          <span> Agents </span>
                      </a>
                  </li>
-                 <li class="{{ request()->routeIs('amenities.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('amenities.index') }}'>
+                 <li class="{{ request()->routeIs('Amenity.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('Amenity.index') }}'>
                          <i data-feather="book-open"></i>
-                         <span> Amenities </span>
+                         <span> Amenity </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('master-plans.*') ? 'menuitem-active' : '' }}">
@@ -102,6 +102,12 @@
                      <a href='{{ route('developer_properties.index') }}'>
                          <i data-feather="book-open"></i>
                          <span> Dev's Properties </span>
+                     </a>
+                 </li>
+                 <li class="{{ request()->routeIs('communities.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('communities.index') }}'>
+                         <i data-feather="book-open"></i>
+                         <span> Communities </span>
                      </a>
                  </li>
                  <li>

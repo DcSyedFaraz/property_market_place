@@ -65,7 +65,7 @@
                                 <a class="nav-link" href="#">Overview</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Amenities</a>
+                                <a class="nav-link" href="#">Amenity</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Payment Plan</a>
@@ -154,8 +154,10 @@
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="ico-text">
-                                            <p><i class="bi bi-house-add"></i> Home / Hadaeq Sheikh Mohammed Bin Rashid
-                                                / Emaar Properties / Address Residences at Dubai Hills Estate / Overview
+                                            <p><i class="bi bi-house-add"></i> Home /
+                                                {{ $developer_property->community_name->name }}
+                                                / {{ $developer_property->developer->name }} /
+                                                {{ $developer_property->name }} / Overview
                                             </p>
                                         </div>
                                     </div>
@@ -165,7 +167,8 @@
                                 </div>
                                 <div class="detail">
                                     <h3>{{ $developer_property->name }}</h3>
-                                    <p>By {{ $developer_property->developer->name }} | Dubai Hills Estate</p>
+                                    <p>By {{ $developer_property->developer->name }} |
+                                        {{ $developer_property->community_name->name }}</p>
                                     @foreach ($developer_property->propertyTypes as $propertyType)
                                         <div class="row cardse1">
                                             <div class="col-md-4">
@@ -213,7 +216,7 @@
                                 <div class="detail serv-icon10">
                                     <h3>Address Residences at {{ $developer_property->name }}</h3>
                                     <div class="row mt-4">
-                                        @forelse ($developer_property->amenities as $amenitiy)
+                                        @forelse ($developer_property->Amenity as $amenitiy)
                                             <div class="col-md-3">
                                                 <div class="icon-with-text">
                                                     <img src="{{ asset('storage/' . $amenitiy->logo) }}"
@@ -348,9 +351,10 @@
                                                 <tbody>
                                                     @forelse ($developer_property->floorPlans as $floorPlan)
                                                         <tr>
-                                                            <th scope="row"><img
-                                                                    src="{{ asset('storage/' . $floorPlan->image) }}"
-                                                                    alt=""></th>
+                                                            {{-- <td><img src="{{ $floorPlan->image}}"
+                                                                    alt=""></td> --}}
+                                                            <td><img src="{{ asset('storage/' . $floorPlan->image) }}"
+                                                                    alt=""></td>
                                                             <td>{{ $floorPlan->category }}</td>
                                                             <td>{{ $floorPlan->unit_type }}</td>
                                                             <td>{{ $floorPlan->floor_details }}
@@ -375,15 +379,23 @@
                                     <div class="gallery-inner">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <img src="{{ asset('assets/img/gallery-01.png') }}" alt="">
+                                                @if ($developer_property->images->count() > 0)
+                                                    <img src="{{ asset('storage/' . $developer_property->images[0]->image) }}"
+                                                        alt="">
+                                                @else
+                                                    <img src="{{ asset('assets/img/default.png') }}" alt="">
+                                                @endif
                                             </div>
                                             <div class="col-md-4 d-flex flex-column gap-3">
-                                                <img src="{{ asset('assets/img/gallery-02.png') }}" alt="">
-                                                <img src="{{ asset('assets/img/gallery-03.png') }}" alt="">
+                                                @foreach ($developer_property->images as $image)
+                                                    <img src="{{ asset('storage/' . $image->image) }}"
+                                                        alt="">
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <!-- Left Side -->
 
