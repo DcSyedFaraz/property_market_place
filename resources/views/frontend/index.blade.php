@@ -107,12 +107,12 @@
                             New off-plan developments
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
-                            <div class="item">
+                            <div class="item" >
+                                <a href="{{ route('offplan') }}">
                                 <img src="{{ asset('assets/img/img01.png') }}" alt="" />
-                                <a href="{{ route('projects') }}">
                                     <h4>Dubai</h4>
                                 </a>
-                            </div>
+                                </div>
                             <div class="item">
                                 <img src="{{ asset('assets/img/img02.png') }}" alt="" />
                                 <a href="#">

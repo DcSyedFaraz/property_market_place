@@ -29,15 +29,24 @@ class FrontendController extends Controller
     {
         return view('frontend.faqs');
     }
-    public function marketplace()
+
+    public function offplan()
     {
-        // $activeProducts = Product::active()->get();
-        // return view('frontend.marketplace.marketplace', ['products' => $activeProducts]);
+        return view('frontend.offplan');
     }
 
-    public function details($id)
+    public function developer_list()
     {
-        // $product = Product::active()->findOrFail($id);
-        // return view('frontend.marketplace.productdetails', ['product' => $product]);
+        return view('frontend.developer_list');
     }
+    public function location()
+    {
+        return view('frontend.location');
+    }
+
+    public function community()
+    {
+        return view('frontend.community');
+    }
+
 }

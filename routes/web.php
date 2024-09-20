@@ -49,6 +49,11 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/faqs', 'faqs')->name('faqs');
     Route::get('/marketplace', 'marketplace')->name('marketplace');
     Route::get('/marketplace/details/{id}', 'details')->name('marketplace.details');
+
+    Route::get('/offplan', 'offplan')->name('offplan');
+    Route::get('/developer-list', 'developer_list')->name('developer_list');
+     Route::get('/location', 'location')->name('location');
+    Route::get('/community', 'community')->name('community');
 });
 
 // Dashboard and Logout routes
