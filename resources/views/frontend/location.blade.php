@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col-md-3 col-6">
-                    <a href="#">
+                    <a href="{{ route('offplan') }}">
                         <div class="tab-item1">
                             <i class="bi bi-building"></i>
                             <h4 class="text-center">Projects</h4>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-3 col-6">
                     <a href="{{ route('location') }}">
-                        <div class="tab-item1">
+                        <div class="tab-item1 active_bar">
                             <i class="bi bi-geo-alt"></i>
                             <h4 class="text-center">Location</h4>
                         </div>

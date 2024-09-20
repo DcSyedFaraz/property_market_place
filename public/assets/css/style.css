@@ -943,6 +943,19 @@ select {
   color: #000;
   border: 1px solid #ccc;
 }
+.active_bar h4 {
+  color: #fff;
+}
+.active_bar {
+  background-color: #30717f;
+  transform: translateY(-10px);
+  transition: all ease 0.5s;
+}
+.active_bar i {
+  background-color: #f6f3f3;
+  color: #000;
+  border: 1px solid #ccc;
+}
 .form-style-101 input {
   border: 1px solid #bebebe;
   padding: 12px;

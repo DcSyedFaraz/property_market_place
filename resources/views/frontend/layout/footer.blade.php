@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row ms-2">
             <div class="col-md-4">
-                <a href="#"><img src="{{ asset('assets/img/logo-footer01.png') }}" alt=""></a>
+                <a href="{{route('home')}}"><img src="{{ asset('assets/img/logo-footer01.png') }}" alt=""></a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
                     consectetur tellus ultricies.</p>
                 <div class="foter-social-logo mt-4 mb-4">

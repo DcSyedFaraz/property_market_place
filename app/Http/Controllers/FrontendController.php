@@ -12,10 +12,10 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
-    public function projects()
+    public function projects($id)
     {
-        $developer_property = DeveloperProperty::first();
-        return view('frontend.devPropertyDetails',compact('developer_property'));
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.devPropertyDetails', compact('developer_property'));
     }
     public function about_us()
     {
@@ -32,7 +32,8 @@ class FrontendController extends Controller
 
     public function offplan()
     {
-        return view('frontend.offplan');
+        $projects = DeveloperProperty::paginate(5);
+        return view('frontend.offplan', compact('projects'));
     }
 
     public function developer_list()

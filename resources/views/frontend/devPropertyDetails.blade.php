@@ -155,8 +155,8 @@
                                     <div class="col-md-9">
                                         <div class="ico-text">
                                             <p><i class="bi bi-house-add"></i> Home /
-                                                {{ $developer_property->community_name->name }}
-                                                / {{ $developer_property->developer->name }} /
+                                                {{ $developer_property->community_name->name ?? '' }}
+                                                / {{ $developer_property->developer->name ?? '' }} /
                                                 {{ $developer_property->name }} / Overview
                                             </p>
                                         </div>
@@ -167,8 +167,8 @@
                                 </div>
                                 <div class="detail">
                                     <h3>{{ $developer_property->name }}</h3>
-                                    <p>By {{ $developer_property->developer->name }} |
-                                        {{ $developer_property->community_name->name }}</p>
+                                    <p>By {{ $developer_property->developer->name ?? ''}} |
+                                        {{ $developer_property->community_name->name ?? ''}}</p>
                                     @foreach ($developer_property->propertyTypes as $propertyType)
                                         <div class="row cardse1">
                                             <div class="col-md-4">

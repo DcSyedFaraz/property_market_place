@@ -43,16 +43,14 @@ require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('/projects', 'projects')->name('projects');
+    Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
-    Route::get('/faqs', 'faqs')->name('faqs');
-    Route::get('/marketplace', 'marketplace')->name('marketplace');
-    Route::get('/marketplace/details/{id}', 'details')->name('marketplace.details');
+
 
     Route::get('/offplan', 'offplan')->name('offplan');
     Route::get('/developer-list', 'developer_list')->name('developer_list');
-     Route::get('/location', 'location')->name('location');
+    Route::get('/location', 'location')->name('location');
     Route::get('/community', 'community')->name('community');
 });
 

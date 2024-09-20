@@ -1,5 +1,107 @@
-@extends('frontend.layout.app')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The H Real Estate</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- Favicons -->
+    <link href="" rel="icon" />
+    <link href="" rel="apple-touch-icon" />
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <!-- Bootstrap Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- Nav-Bar -->
+    <header class="header">
+        <nav class="navbar navbar-light navbar-expand-lg">
+            <div class="container d-block">
+                <div class="row align-items-center">
+                    <div class="col-md-2 col-6">
+                        <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/image 10.png') }}"
+                                alt="logo" class="logo"></a>
+                    </div>
+                    <div class="col-md-8 mob-1">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Seconadry Properties</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Holiday Homes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Off Plan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Property Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">List your Property</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 mob-1">
+                        <a class="nav-link btn10" href="{{ route('login') }}">Contact us</a>
+                    </div>
+                    <div class="col-6 d-md-none">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end bg-secondary secondary-1" id="navbarOffcanvas"
+                            tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <a class="navbar-brand" href="/"><img
+                                        src="{{ asset('assets/images/Bulldog-Stronger-logo.png') }}" alt="logo"
+                                        class="logo"></a>
+                                <button type="button" class="btn-close btn-close-white text-reset"
+                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Bulldog Stronger</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Community</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./marketplace.html">Marketplace</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Vet</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <!-- Hero Section -->
     <section>
         <div class="sec-1 hero">
@@ -38,14 +140,16 @@
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                                    type="button" role="tab" aria-controls="home" aria-selected="true">
+                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">
                                     Buy
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                                    type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">
                                     Lease
                                 </button>
                             </li>
@@ -107,12 +211,12 @@
                             New off-plan developments
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
-                            <div class="item" >
+                            <div class="item">
                                 <a href="{{ route('offplan') }}">
-                                <img src="{{ asset('assets/img/img01.png') }}" alt="" />
+                                    <img src="{{ asset('assets/img/img01.png') }}" alt="" />
                                     <h4>Dubai</h4>
                                 </a>
-                                </div>
+                            </div>
                             <div class="item">
                                 <img src="{{ asset('assets/img/img02.png') }}" alt="" />
                                 <a href="#">
@@ -176,7 +280,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">Alpina house</h5>
                                 <p class="card-text">
-                                    Rapidiously myocardinate cross-platform intellectual capital model. Appropriately create
+                                    Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
+                                    create
                                     interactive.
                                 </p>
                                 <h6 class="price0">$1,960.00</h6>
@@ -197,7 +302,8 @@
                             <img src="{{ asset('assets/img/card01.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Alpina house</h5>
-                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately create
+                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
+                                    create
                                     interactive.
                                 </p>
                                 <h6 class="price0">$1,960.00</h6>
@@ -218,7 +324,8 @@
                             <img src="{{ asset('assets/img/card01.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Alpina house</h5>
-                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately create
+                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
+                                    create
                                     interactive.
                                 </p>
                                 <h6 class="price0">$1,960.00</h6>
@@ -418,4 +525,53 @@
         </div>
 
     </section>
-@endsection
+    @include('frontend.layout.footer')
+
+</body>
+
+<!-- JS Files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $('.service-carol').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 5
+            }
+        }
+    })
+</script>
+
+<script>
+    $('.logo-carol').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 7
+            }
+        }
+    })
+</script>
+
+<!-- Main JS File -->
+<script src="{{ asset('assets/js/main.js') }}"></script>
+
+</html>
