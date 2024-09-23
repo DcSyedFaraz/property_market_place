@@ -20,6 +20,12 @@
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
             </div>
+            <div class="col-12">
+                <div class="">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Description">{{ isset($agent) ? $agent->description : '' }}</textarea>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
@@ -55,6 +61,18 @@
             <div class="mb-3">
                 <label for="bathrooms" class="form-label">Bathrooms</label>
                 <input type="number" class="form-control" id="bathrooms" name="bathrooms">
+            </div>
+            <div class="mb-3">
+                <label for="utility_area" class="form-label">Utility Area</label>
+                <input type="number" class="form-control" id="utility_area" name="utility_area">
+            </div>
+            <div class="mb-3">
+                <label for="balcony_area" class="form-label">Balcony Area</label>
+                <input type="number" class="form-control" id="balcony_area" name="balcony_area">
+            </div>
+            <div class="mb-3">
+                <label for="unit_area" class="form-label">Unit Area</label>
+                <input type="number" class="form-control" id="unit_area" name="unit_area">
             </div>
 
             <div class="mb-3">

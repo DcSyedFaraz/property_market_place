@@ -25,6 +25,12 @@
                 <input type="text" class="form-control" id="title" name="title" value="{{ $property->title }}"
                     required>
             </div>
+            <div class="mb-3">
+                <div class="">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Description">{{ isset($agent) ? $agent->description : '' }}</textarea>
+                </div>
+            </div>
 
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
@@ -48,6 +54,31 @@
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" step=".01" name="price"
                     value="{{ $property->price }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="bedrooms" class="form-label">Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" step=".01" name="bedrooms"
+                    value="{{ $property->bedrooms }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="bathrooms" class="form-label">Bathrooms</label>
+                <input type="number" class="form-control" id="bathrooms" step=".01" name="bathrooms"
+                    value="{{ $property->bathrooms }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="utility_area" class="form-label">Utility Area</label>
+                <input type="number" class="form-control" id="utility_area" value="{{ $property->utility_area }}"
+                    name="utility_area">
+            </div>
+            <div class="mb-3">
+                <label for="balcony_area" class="form-label">Balcony Area</label>
+                <input type="number" class="form-control" id="balcony_area" value="{{ $property->balcony_area }}"
+                    name="balcony_area">
+            </div>
+            <div class="mb-3">
+                <label for="unit_area" class="form-label">Unit Area</label>
+                <input type="number" class="form-control" id="unit_area" value="{{ $property->unit_area }}"
+                    name="unit_area">
             </div>
 
             <div class="mb-3">

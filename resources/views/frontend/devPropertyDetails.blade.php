@@ -29,7 +29,7 @@
                     <div class="col-md-12 col-6">
                         <ul class="navbar-nav top-h1 me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{{route('home')}}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Seconadry Properties</a>
@@ -80,7 +80,7 @@
                                 <a class="nav-link" href="#">Master Plan </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Gallery</a>
+                                <a class="nav-link" href="#gallery">Gallery</a>
                             </li>
                         </ul>
                     </div>
@@ -374,9 +374,9 @@
                                         <a href="#" class="btn10">Read More..</a>
                                     </div>
                                 </div>
-                                <div class="detail">
+                                <div class="detail" id="gallery" >
                                     <h2>Image Gallery</h2>
-                                    <div class="gallery-inner">
+                                    <div class="gallery-inner" >
                                         <div class="row">
                                             <div class="col-md-8">
                                                 @if ($developer_property->images->count() > 0)
