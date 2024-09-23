@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="col-md-3 col-6">
-                    <a href="{{ route('community') }}">
+                    <a href="{{ route('project_community') }}">
                         <div class="tab-item1">
                             <i class="bi bi-hospital"></i>
                             <h4 class="text-center">Community</h4>

@@ -10,25 +10,25 @@
                  <div class="col-md-8 mob-1">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Home</a>
+                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Secondary Properties </a>
+                             <a class="nav-link" href="{{ route('secondary_sale') }}">Secondary Properties </a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="#">Holiday Homes</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Off Plan</a>
+                             <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="#">Location</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Master Plan </a>
+                             <a class="nav-link" href="{{ route('service') }}">Service</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Gallery</a>
+                             <a class="nav-link" href="{{ route('new_articles') }}">News & Articles</a>
                          </li>
                      </ul>
                  </div>

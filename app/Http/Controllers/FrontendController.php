@@ -45,9 +45,30 @@ class FrontendController extends Controller
         return view('frontend.location');
     }
 
-    public function community()
+    public function project_community()
     {
         return view('frontend.community');
     }
+
+    public function service(){
+        return view('frontend.service');
+    }
+
+    public function secondary_sale(){
+        return view('frontend.secondary_properties_sale');
+    }
+
+    public function new_articles(){
+        return view('frontend.new_articles');
+    }
+
+    public function property_details(){
+        return view('frontend.property_details');
+    }
+
+    public function community(){
+
+    }
+
 
 }

@@ -46,12 +46,15 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
-
-
     Route::get('/offplan', 'offplan')->name('offplan');
     Route::get('/developer-list', 'developer_list')->name('developer_list');
     Route::get('/location', 'location')->name('location');
-    Route::get('/community', 'community')->name('community');
+    Route::get('/project-community', 'project_community')->name('project_community');
+    Route::get('/service', 'service')->name('service');
+    Route::get('/secondary-sale', 'secondary_sale')->name('secondary_sale');
+    Route::get('/property-details', 'property_details')->name('property_details');
+    Route::get('/new-articles', 'new_articles')->name('new_articles');
+    Route::get('/community/{id}', 'community')->name('community');
 });
 
 // Dashboard and Logout routes
@@ -74,11 +77,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('locations', LocationController::class);
     Route::resource('developer_properties', DeveloperPropertyController::class);
     Route::resource('communities', CommunityController::class);
-
-
-
-
-
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 
