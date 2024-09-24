@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgentProperty;
 use App\Models\DeveloperProperty;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -50,23 +51,30 @@ class FrontendController extends Controller
         return view('frontend.community');
     }
 
-    public function service(){
+    public function service()
+    {
         return view('frontend.service');
     }
 
-    public function secondary_sale(){
-        return view('frontend.secondary_properties_sale');
+    public function secondary_sale()
+    {
+        $properties = AgentProperty::paginate(5);
+        return view('frontend.secondary_properties_sale', compact('properties'));
     }
 
-    public function new_articles(){
+    public function new_articles()
+    {
         return view('frontend.new_articles');
     }
 
-    public function property_details(){
-        return view('frontend.property_details');
+    public function property_details($id)
+    {
+        $property = AgentProperty::find($id);
+        return view('frontend.property_details',compact('property'));
     }
 
-    public function community(){
+    public function community()
+    {
 
     }
 

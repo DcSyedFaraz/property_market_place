@@ -52,7 +52,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/project-community', 'project_community')->name('project_community');
     Route::get('/service', 'service')->name('service');
     Route::get('/secondary-sale', 'secondary_sale')->name('secondary_sale');
-    Route::get('/property-details', 'property_details')->name('property_details');
+    Route::get('/property-details/{id}', 'property_details')->name('property_details');
     Route::get('/new-articles', 'new_articles')->name('new_articles');
     Route::get('/community/{id}', 'community')->name('community');
 });
