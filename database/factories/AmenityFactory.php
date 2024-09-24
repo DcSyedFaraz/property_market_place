@@ -24,7 +24,7 @@ class AmenityFactory extends Factory
         return [
             'name' => $this->faker->word, // Generates a random word for the name
             'logo' => 'logos/' . $this->faker->image('public/storage/logos', 100, 100, null, false), // Generates a random logo
-            'description' => $this->faker->paragraph, // Generates a random paragraph for the description
+            'description' => $this->faker->sentence(3),
         ];
     }
 }
