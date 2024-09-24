@@ -23,6 +23,11 @@ class DeveloperPropertyFactory extends Factory
      */
     public function definition(): array
     {
+        $directory = 'public/storage/images';
+        if (!is_dir($directory)) {
+            mkdir($directory, 0755, true);
+        }
+
         return [
             'developer_id' => Developer::factory(), // Create a related developer
             'name' => $this->faker->company,

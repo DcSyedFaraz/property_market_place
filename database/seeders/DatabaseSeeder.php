@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         // Amenity::factory(15)->create();
         DeveloperProperty::factory()
             ->withRelations() // This will create and attach master plans, locations, and Amenity
-            ->count(10)
+            ->count(1)
             ->create();
 
     }
