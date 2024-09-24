@@ -73,9 +73,39 @@ class FrontendController extends Controller
         return view('frontend.property_details',compact('property'));
     }
 
-    public function community()
+    public function community($id)
     {
+        
+    }
 
+    public function address_residence($id)
+    {
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.address_residence', compact('developer_property'));
+    }
+
+    public function payment_plan($id)
+    {
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.payment_plan', compact('developer_property'));
+    }
+
+    public function location_map($id)
+    {
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.location_map', compact('developer_property'));
+    }
+
+    public function master_plan($id)
+    {
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.master_plan', compact('developer_property'));
+    }
+
+    public function floor_plan($id)
+    {
+        $developer_property = DeveloperProperty::findOrFail($id);
+        return view('frontend.floor_plan', compact('developer_property'));
     }
 
 

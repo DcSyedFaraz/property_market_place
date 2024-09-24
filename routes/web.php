@@ -55,6 +55,11 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/property-details/{id}', 'property_details')->name('property_details');
     Route::get('/new-articles', 'new_articles')->name('new_articles');
     Route::get('/community/{id}', 'community')->name('community');
+    Route::get('/address-residence/{id}', 'address_residence')->name('address_residence');
+    Route::get('/payment-plan/{id}', 'payment_plan')->name('payment_plan');
+    Route::get('/location-map/{id}', 'location_map')->name('location_map');
+    Route::get('/master-plan/{id}', 'master_plan')->name('master_plan');
+    Route::get('/floor-plan/{id}', 'floor_plan')->name('floor_plan');
 });
 
 // Dashboard and Logout routes
