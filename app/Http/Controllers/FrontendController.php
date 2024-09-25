@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AgentProperty;
+use App\Models\Community;
 use App\Models\DeveloperProperty;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -48,7 +49,9 @@ class FrontendController extends Controller
 
     public function project_community()
     {
-        return view('frontend.community');
+        $comunities = Community::get();
+        $totalcomunities = Community::count();
+        return view('frontend.community', compact('comunities', 'totalcomunities'));
     }
 
     public function service()
@@ -73,10 +76,12 @@ class FrontendController extends Controller
         return view('frontend.property_details',compact('property'));
     }
 
-    public function community($id)
-    {
-        
-    }
+    // public function community($id)
+    // {
+    //       $communities = Community::find($id);
+    //       return view('frontend.community', );
+
+    // }
 
     public function address_residence($id)
     {
@@ -106,6 +111,12 @@ class FrontendController extends Controller
     {
         $developer_property = DeveloperProperty::findOrFail($id);
         return view('frontend.floor_plan', compact('developer_property'));
+    }
+
+    public function community_page($id)
+    {
+        $comunities = Community::findOrFail($id);
+        return view('frontend.community_page', compact('comunities'));
     }
 
 

@@ -127,7 +127,7 @@
                                     <div class="property-item d-flex align-items-center">
                                         <div class="col-md-5">
                                             <div class="property-img">
-                                                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="property"
+                                                <img src="{{ asset('storage/' .$project->cover_image) }}" alt="property"
                                                     class="img-fluid" />
                                             </div>
                                         </div>
