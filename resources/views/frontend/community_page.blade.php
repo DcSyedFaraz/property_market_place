@@ -7,7 +7,7 @@
                 <div class="col-md-12">
 
 
-                    <h1 class="text-center">{{ $comunities->name }}</h1>
+                    <h1 class="text-center">{{ $community->name }}</h1>
                     <p class="text-center"><a href="index.html">Home</a> / <a href="#">Services</a></p>
 
                 </div>
@@ -22,14 +22,14 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-md-7">
                         <div class="about-para">
-                            <h2>{{ $comunities->name }}</h2>
-                            <p>{{ $comunities->description }}</p>
+                            <h2>{{ $community->name }}</h2>
+                            <p>{{ $community->description }}</p>
 
                         </div>
                     </div>
                     <div class="col-md-5 mt-4">
                         <div class="about-img">
-                            <img src="{{ asset('storage/' . $comunities->image) }}" alt="">
+                            <img src="{{ asset('storage/' . $community->image) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -42,20 +42,19 @@
         <div class="sec-our-serv-002 sec-space">
             <div class="container">
                 <div class="row">
-                    @forelse ($comunities->amenities as $amenity)
-                        <div class="col-md-6">
-                            <div class="detail icon-text2">
-                                <h3><i class="bi bi-house-door"></i>{{ $amenity->name }}</h3>
-                                <p>{{ $amenity->description }}</p>
-                            </div>
+                    @forelse ($community->amenities as $amenity)
+                    <div class="col-md-6">
+                        <div class="detail icon-text2">
+                            <h3><i class="bi bi-house-door"></i>{{ $amenity->name }}</h3>
+                            <p>{{ $amenity->description }}</p>
                         </div>
-                    @empty
-                        <div class="col-md-6">
-                            <p class="text-center">
-                                no amanity found.
-                            </p>
-                        </div>
-                    @endforelse
+                    </div>
+                @empty
+                    <div class="col-md-6">
+                        <p class="text-center">no amenity found.</p>
+                    </div>
+                @endforelse
+
 
                 </div>
 

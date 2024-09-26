@@ -12,7 +12,7 @@ class AmenityController extends Controller
     {
         // Retrieve all Amenity
         $Amenity = Amenity::all();
-        return view('admin.Amenity.index', compact('Amenity'));
+        return view('admin.amenities.index', compact('Amenity'));
     }
 
     public function create()
@@ -28,10 +28,14 @@ class AmenityController extends Controller
             'name' => 'required|string|max:255',
             'logo' => 'required|string|max:255',
             'description' => 'required|string',
+            'community_ids' => 'required|array'
         ]);
 
         // Store the Amenity in the database
-        Amenity::create($request->all());
+        $amenity = Amenity::create($request->all());
+
+         // Pivot table mein data insert karein
+         $amenity->communities()->attach($request->input('community_ids'));
 
         return redirect()->route('Amenity.index')->with('success', 'Amenity created successfully.');
     }

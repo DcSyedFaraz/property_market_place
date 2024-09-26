@@ -120,6 +120,7 @@
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" accept="image/*" name="image" class="form-control" required>
                             </div>
+                         
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
 use App\Models\Community;
 use Illuminate\Http\Request;
 use Storage;
@@ -12,7 +13,8 @@ class CommunityController extends Controller
     public function index()
     {
         $communities = Community::all();
-        return view('admin.communities.index', compact('communities'));
+        $amenities = Amenity::all();
+        return view('admin.communities.index', compact('communities', 'amenities'));
     }
 
     public function store(Request $request)
@@ -27,15 +29,20 @@ class CommunityController extends Controller
         // Store the image and save the path
         $imagePath = $request->file('image')->store('images', 'public');
 
-        Community::create([
+        $community = Community::create([
             'name' => $request->name,
             'description' => $request->description,
             'feature_description' => $request->feature_description,
             'image' => $imagePath,
         ]);
 
+       // Pivot table mein data insert karein
+        $community->amenities()->attach($request->input('amenity_ids'));
+
+
         return redirect()->route('communities.index')->with('success', 'Community created successfully.');
     }
+
 
     public function update(Request $request, Community $community)
     {
@@ -44,6 +51,7 @@ class CommunityController extends Controller
             'description' => 'nullable|string',
             'feature_description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
 
         $data = [

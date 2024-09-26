@@ -115,9 +115,10 @@ class FrontendController extends Controller
 
     public function community_page($id)
     {
-        $comunities = Community::findOrFail($id);
-        return view('frontend.community_page', compact('comunities'));
+        $community = Community::with('amenities')->findOrFail($id);
+        return view('frontend.community_page', compact('community'));
     }
+
 
 
 }
