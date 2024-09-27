@@ -24,8 +24,8 @@ class CommunityController extends Controller
             'description' => 'nullable|string',
             'feature_description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'amenities' => 'required|array', // Ensure amenities are selected
-            'amenities.*' => 'exists:amenities,id' // Validate that amenities exist in the amenities table
+            'amenities' => 'required|array',
+            'amenities.*' => 'exists:amenities,id'
         ]);
 
         // Store the image and save the path
@@ -52,6 +52,7 @@ class CommunityController extends Controller
             'description' => 'nullable|string',
             'feature_description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'amenity_id' => 'array',
 
         ]);
 
@@ -70,12 +71,17 @@ class CommunityController extends Controller
         }
 
         $community->update($data);
+
+        if ($request->has('amenity_id')) {
+            $community->amenities()->sync($request->amenities);
+        }
         return redirect()->route('communities.index')->with('success', 'Community updated successfully.');
     }
 
     public function destroy(Community $community)
     {
         Storage::disk('public')->delete($community->image);
+        $community->amenities()->detach();
         $community->delete();
         return redirect()->route('communities.index')->with('success', 'Community deleted successfully.');
     }

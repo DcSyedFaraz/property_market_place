@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Add Amenity</h1>
-                <form action="{{ route('Amenity.store') }}" method="POST">
+                <form action="{{ route('Amenity.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -16,8 +16,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="logo" class="form-label">Logo URL</label>
-                        <input type="text" name="logo" class="form-control" id="logo"
+                        <label for="logo" class="form-label">Logo</label>
+                        <input type="file" name="logo" class="form-control" id="logo"
                             value="{{ old('logo') }}">
                         @error('logo')
                             <div class="text-danger">{{ $message }}</div>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" class="form-control" id="description">{{ old('description') }}</textarea>
+                        <textarea name="description" class="form-control">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

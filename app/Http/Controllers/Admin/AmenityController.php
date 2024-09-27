@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 use App\Models\Community;
 use Illuminate\Http\Request;
+use Storage;
+
 
 class AmenityController extends Controller
 {
@@ -25,15 +27,26 @@ class AmenityController extends Controller
 
     public function store(Request $request)
     {
+        \Log::info($request->all());
+
         // Validate form data
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'required|string|max:255',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
         ]);
 
+
+        // Store the logo and save the path
+        $imagePath = $request->file('logo')->store('logos', 'public');
+
         // Store the Amenity in the database
-        Amenity::create($request->all());
+        Amenity::create([
+            'name' => $request->name,
+            'logo' => $imagePath,
+            'description' => $request->description,
+        ]);
+
 
         return redirect()->route('Amenity.index')->with('success', 'Amenity created successfully.');
     }
@@ -44,24 +57,42 @@ class AmenityController extends Controller
         return view('admin.Amenity.show', compact('amenity'));
     }
 
-    public function edit(Amenity $amenity)
+    public function edit($id)
     {
+        $amenity = Amenity::findOrFail($id);
         // Show the edit form
-        return view('admin.Amenity.edit', compact('amenity'));
+        return view('admin.amenities.edit', compact('amenity'));
     }
 
     public function update(Request $request, $id)
     {
+        \Log::info($request->all());
         // dd($id);
         // Validate form data
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'required|string|max:255',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
+            'community_ids' => 'array',
         ]);
-        $Amenity = Amenity::findOrFail($id);
+        $amenity = Amenity::findOrFail($id);
+
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+        ];
+
+        if ($request->hasFile('logo')) {
+            Storage::disk('public')->delete($amenity->logo);
+            $data['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
         // Update the Amenity in the database
-        $Amenity->update($request->all());
+        $amenity->update($data);
+
+        if ($request->has('community_ids')) {
+            $amenity->communities()->sync($request->community_ids);
+        }
 
         return redirect()->route('Amenity.index')->with('success', 'Amenity updated successfully.');
     }
@@ -70,6 +101,7 @@ class AmenityController extends Controller
     {
         // Delete the Amenity
         $Amenity = Amenity::findOrFail($id);
+        Storage::disk('public')->delete($Amenity->logo);
         $Amenity->delete();
 
         return redirect()->route('Amenity.index')->with('success', 'Amenity deleted successfully.');

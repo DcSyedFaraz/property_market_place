@@ -43,9 +43,14 @@
             <div class="container">
                 <div class="row">
                     @forelse ($community->amenities as $amenity)
+
                         <div class="col-md-6">
                             <div class="detail icon-text2">
-                                <h3><i class="bi bi-house-door"></i>{{ $amenity->name }}</h3>
+                                <h3>
+                                    <img src="{{ asset('storage/' .$amenity->logo) }}" alt="{{ $amenity->name }}">
+                                    <br>
+                                    {{ $amenity->name }}
+                                </h3>
                                 <p>{{ $amenity->description }}</p>
                             </div>
                         </div>
@@ -54,8 +59,6 @@
                             <p class="text-center">No amenity found.</p>
                         </div>
                     @endforelse
-
-
 
                 </div>
 
