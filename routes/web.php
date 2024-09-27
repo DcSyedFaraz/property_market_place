@@ -61,6 +61,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/master-plan/{id}', 'master_plan')->name('master_plan');
     Route::get('/floor-plan/{id}', 'floor_plan')->name('floor_plan');
     Route::get('/community-page/{id}', 'community_page')->name('community_page');
+    Route::get('/developer-page/{id}', 'developer_page')->name('developer_page');
 });
 
 // Dashboard and Logout routes

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AgentProperty;
 use App\Models\Community;
+use App\Models\Developer;
 use App\Models\DeveloperProperty;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -40,7 +41,8 @@ class FrontendController extends Controller
 
     public function developer_list()
     {
-        return view('frontend.developer_list');
+        $developers = Developer::get();
+        return view('frontend.developer_list', compact('developers'));
     }
     public function location()
     {
@@ -75,13 +77,6 @@ class FrontendController extends Controller
         $property = AgentProperty::find($id);
         return view('frontend.property_details',compact('property'));
     }
-
-    // public function community($id)
-    // {
-    //       $communities = Community::find($id);
-    //       return view('frontend.community', );
-
-    // }
 
     public function address_residence($id)
     {
@@ -119,6 +114,11 @@ class FrontendController extends Controller
         return view('frontend.community_page', compact('community'));
     }
 
+    public function developer_page($id){
+        $developers = Developer::with('developers_properties')->findOrFail($id);
+        // $developers->count();
+        return view('frontend.developer_page', compact('developers'));
+    }
 
 
 

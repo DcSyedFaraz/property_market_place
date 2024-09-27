@@ -79,6 +79,13 @@
                                                     class="img-thumbnail" width="150">
                                             </div>
                                         @endif
+
+                                        <label for="amenities">Select Amenities:</label>
+                                        <select name="amenities[]" class="select2 form-control" multiple>
+                                            @foreach($amenities as $amenity)
+                                                <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
