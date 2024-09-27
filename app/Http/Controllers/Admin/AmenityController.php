@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
+use App\Models\Community;
 use Illuminate\Http\Request;
 
 class AmenityController extends Controller
@@ -12,13 +13,14 @@ class AmenityController extends Controller
     {
         // Retrieve all Amenity
         $Amenity = Amenity::all();
-        return view('admin.amenities.index', compact('Amenity'));
+        $communities = Community::all();
+        return view('admin.amenities.index', compact('Amenity', 'communities'));
     }
 
     public function create()
     {
         // Return the create view
-        return view('admin.Amenity.create');
+        return view('admin.amenities.create');
     }
 
     public function store(Request $request)
@@ -28,14 +30,10 @@ class AmenityController extends Controller
             'name' => 'required|string|max:255',
             'logo' => 'required|string|max:255',
             'description' => 'required|string',
-            'community_ids' => 'required|array'
         ]);
 
         // Store the Amenity in the database
-        $amenity = Amenity::create($request->all());
-
-         // Pivot table mein data insert karein
-         $amenity->communities()->attach($request->input('community_ids'));
+        Amenity::create($request->all());
 
         return redirect()->route('Amenity.index')->with('success', 'Amenity created successfully.');
     }

@@ -120,7 +120,13 @@
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" accept="image/*" name="image" class="form-control" required>
                             </div>
-                         
+                            <label for="amenities">Select Amenities:</label>
+                            <select name="amenities[]" multiple>
+                                @foreach($amenities as $amenity)
+                                    <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

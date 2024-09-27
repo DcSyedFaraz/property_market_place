@@ -15,15 +15,6 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    <div>
-                        <label for="community_ids">Select Communities:</label>
-                        <select id="community_ids" name="community_ids[]" multiple required>
-                            @foreach ($communities as $community)
-                                <option value="{{ $community->id }}">{{ $community->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="mb-3">
                         <label for="logo" class="form-label">Logo URL</label>
                         <input type="text" name="logo" class="form-control" id="logo"

@@ -24,6 +24,8 @@ class CommunityController extends Controller
             'description' => 'nullable|string',
             'feature_description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'amenities' => 'required|array', // Ensure amenities are selected
+            'amenities.*' => 'exists:amenities,id' // Validate that amenities exist in the amenities table
         ]);
 
         // Store the image and save the path
@@ -36,13 +38,12 @@ class CommunityController extends Controller
             'image' => $imagePath,
         ]);
 
-       // Pivot table mein data insert karein
-        $community->amenities()->attach($request->input('amenity_ids'));
+        // Attach the selected amenities to the community
+    $community->amenities()->attach( $request['amenities']);
 
 
         return redirect()->route('communities.index')->with('success', 'Community created successfully.');
     }
-
 
     public function update(Request $request, Community $community)
     {
