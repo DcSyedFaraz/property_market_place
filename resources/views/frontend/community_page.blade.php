@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-5 mt-4">
                         <div class="about-img">
-                            <img src="{{ asset('storage/' .$community->image) }}" alt="">
+                            <img src="{{ asset('storage/' . $community->image) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -43,18 +43,17 @@
             <div class="container">
                 <div class="row">
                     @forelse ($community->amenities as $amenity)
-                    {{ dd($community->amenities) }}
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i>{{ $amenity->name }}</h3>
-                            <p>{{ $amenity->description }}</p>
+                        <div class="col-md-6">
+                            <div class="detail icon-text2">
+                                <h3><i class="bi bi-house-door"></i>{{ $amenity->name }}</h3>
+                                <p>{{ $amenity->description }}</p>
+                            </div>
                         </div>
-                    </div>
-                @empty
-                    <div class="col-md-6">
-                        <p class="text-center">No amenity found.</p>
-                    </div>
-                @endforelse
+                    @empty
+                        <div class="col-md-6">
+                            <p class="text-center">No amenity found.</p>
+                        </div>
+                    @endforelse
 
 
 

@@ -13,6 +13,6 @@ class Community extends Model
     protected $table = 'communities';
     public function amenities()
     {
-        return $this->belongsToMany(Amenity::class, 'amenity_community');
+        return $this->belongsToMany(Amenity::class, 'amenity_community','community_id','amenity_id');
     }
 }

@@ -129,58 +129,7 @@
                                 </a>
                             </div>
                         @endforeach
-                        <div class="row list-one">
-                            <a href="#">
-                                <div class="property-item d-flex align-items-center">
-                                    <div class="col-md-5">
-                                        <div class="property-img">
-                                            <img src="./assets/img/list-img-01.png" alt="property" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="property-desc">
-                                            <h5 class="mt-4">Total Projects <span>277</span></h5>
-                                            <h4>Emaar Properties</h4>
-                                            <ul class="mt-4">
-                                                <li>Projects</li>
-                                                <li>133</li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lectus
-                                                lorem,
-                                                eleifend sit amet libero a, placerat auctor magna. Phasellus eu sapien
-                                                euismod
-                                                odio tempus ultrices ac a elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="row list-one">
-                            <a href="#">
-                                <div class="property-item d-flex align-items-center">
-                                    <div class="col-md-5">
-                                        <div class="property-img">
-                                            <img src="./assets/img/list-img-01.png" alt="property" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7">
-                                        <div class="property-desc">
-                                            <h5 class="mt-4">Total Projects <span>277</span></h5>
-                                            <h4>Emaar Properties</h4>
-                                            <ul class="mt-4">
-                                                <li>Projects</li>
-                                                <li>133</li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lectus
-                                                lorem,
-                                                eleifend sit amet libero a, placerat auctor magna. Phasellus eu sapien
-                                                euismod
-                                                odio tempus ultrices ac a elit.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
