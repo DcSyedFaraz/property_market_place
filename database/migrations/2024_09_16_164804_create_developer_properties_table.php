@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->decimal('price', 15, 2)->nullable(); // Price in AED
             $table->text('description')->nullable(); // Description of the property
             $table->text('key_highlights')->nullable(); // Description of the property
-            $table->string('payment_plan')->nullable(); // For storing the payment plan details
+            $table->json('payment_plan')->nullable(); // For storing the payment plan details
             $table->string('handover_date')->nullable(); // Handover date or timeline
             $table->string('handover_percentage')->nullable(); // Handover date or timeline
             $table->string('down_percentage')->nullable(); // Handover date or timeline

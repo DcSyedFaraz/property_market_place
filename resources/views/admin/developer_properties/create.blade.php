@@ -88,14 +88,118 @@
                 </div>
 
 
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="payment_plan" name="payment_plan"
-                            value="{{ isset($developerProperty) ? $developerProperty->payment_plan : '' }}"
-                            placeholder="Payment Plan">
-                        <label for="payment_plan">Payment Plan</label>
+                <div class="col-12">
+                    <label class="form-label">Payment Plans</label>
+                    <div id="paymentPlansContainer">
+                        {{-- @dd($developerProperty->payment_plan) --}}
+                        @if (isset($developerProperty) && $developerProperty->payment_plan)
+                            @foreach ($developerProperty->payment_plan as $planIndex => $paymentPlan)
+                                <div class="payment-plan mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h3>Payment Plan {{ $planIndex + 1 }}</h3>
+                                        <button type="button" class="btn btn-danger btn-sm remove-payment-plan">Remove
+                                            Plan</button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Plan Heading</label>
+                                        <input type="text" class="form-control"
+                                            name="payment_plans[{{ $planIndex }}][heading]"
+                                            value="{{ $paymentPlan['heading'] }}" placeholder="Enter Payment Plan Heading"
+                                            required>
+                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Installment</th>
+                                                <th>Payment (%)</th>
+                                                <th>Milestone</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($paymentPlan['installments'] as $instIndex => $installment)
+                                                <tr>
+                                                    <td>
+                                                        <input type="text"
+                                                            name="payment_plans[{{ $planIndex }}][installments][{{ $instIndex }}][installment]"
+                                                            class="form-control" value="{{ $installment['installment'] }}"
+                                                            placeholder="Installment" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number"
+                                                            name="payment_plans[{{ $planIndex }}][installments][{{ $instIndex }}][payment]"
+                                                            class="form-control" value="{{ $installment['payment'] }}"
+                                                            placeholder="Payment (%)" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text"
+                                                            name="payment_plans[{{ $planIndex }}][installments][{{ $instIndex }}][milestone]"
+                                                            class="form-control" value="{{ $installment['milestone'] }}"
+                                                            placeholder="Milestone" required>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-danger btn-sm remove-installment">Remove</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <button type="button" class="btn btn-success btn-sm add-installment">Add
+                                        Installment</button>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="payment-plan mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h3>Payment Plan 1</h3>
+                                    <button type="button" class="btn btn-danger btn-sm remove-payment-plan">Remove
+                                        Plan</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Plan Heading</label>
+                                    <input type="text" class="form-control" name="payment_plans[0][heading]"
+                                        placeholder="Enter Payment Plan Heading" required>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Installment</th>
+                                            <th>Payment (%)</th>
+                                            <th>Milestone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="text"
+                                                    name="payment_plans[0][installments][0][installment]"
+                                                    class="form-control" placeholder="Installment" required>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="payment_plans[0][installments][0][payment]"
+                                                    class="form-control" placeholder="Payment (%)" required>
+                                            </td>
+                                            <td>
+                                                <input type="text" name="payment_plans[0][installments][0][milestone]"
+                                                    class="form-control" placeholder="Milestone" required>
+                                            </td>
+                                            <td>
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm remove-installment">Remove</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-success btn-sm add-installment">Add
+                                    Installment</button>
+                            </div>
+                        @endif
                     </div>
+                    <button type="button" class="btn btn-primary mt-2" id="addPaymentPlan">Add Payment Plan</button>
                 </div>
+
 
                 <div class="col-md-6">
                     <div class="form-floating">
@@ -374,8 +478,108 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-           
 
+            // Initialize payment plan index based on existing plans
+            var paymentPlanIndex =
+                {{ isset($developerProperty) && $developerProperty->payment_plans ? $developerProperty->payment_plans->count() : 1 }};
+
+            // Add Payment Plan
+            $('#addPaymentPlan').click(function() {
+                var newPaymentPlan = `
+        <div class="payment-plan mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3>Payment Plan ${paymentPlanIndex + 1}</h3>
+                <button type="button" class="btn btn-danger btn-sm remove-payment-plan">Remove Plan</button>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Plan Heading</label>
+                <input type="text" class="form-control" name="payment_plans[${paymentPlanIndex}][heading]" placeholder="Enter Payment Plan Heading" required>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Installment</th>
+                        <th>Payment (%)</th>
+                        <th>Milestone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="text" name="payment_plans[${paymentPlanIndex}][installments][0][installment]" class="form-control" placeholder="Installment" required>
+                        </td>
+                        <td>
+                            <input type="number" name="payment_plans[${paymentPlanIndex}][installments][0][payment]" class="form-control" placeholder="Payment (%)" required>
+                        </td>
+                        <td>
+                            <input type="text" name="payment_plans[${paymentPlanIndex}][installments][0][milestone]" class="form-control" placeholder="Milestone" required>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm remove-installment">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-success btn-sm add-installment">Add Installment</button>
+        </div>
+    `;
+                $('#paymentPlansContainer').append(newPaymentPlan);
+                paymentPlanIndex++;
+            });
+
+            // Remove Payment Plan
+            $(document).on('click', '.remove-payment-plan', function() {
+                $(this).closest('.payment-plan').remove();
+                // Re-index payment plans
+                $('#paymentPlansContainer .payment-plan').each(function(index) {
+                    $(this).find('h3').text('Payment Plan ' + (index + 1));
+                    // Update input names
+                    $(this).find('input[name^="payment_plans"]').each(function() {
+                        var name = $(this).attr('name');
+                        var newName = name.replace(/payment_plans\[\d+\]/,
+                            `payment_plans[${index}]`);
+                        $(this).attr('name', newName);
+                    });
+                    // Update installment names
+                    $(this).find('input[name*="[installments]"]').each(function(instIndex) {
+                        var name = $(this).attr('name');
+                        var newName = name.replace(/installments\[\d+\]/,
+                            `installments[${instIndex}]`);
+                        $(this).attr('name', newName);
+                    });
+                });
+                paymentPlanIndex = $('#paymentPlansContainer .payment-plan').length;
+            });
+
+            // Add Installment within a Payment Plan
+            $(document).on('click', '.add-installment', function() {
+                var paymentPlanDiv = $(this).closest('.payment-plan');
+                var planIdx = paymentPlanDiv.index();
+                var installmentCount = paymentPlanDiv.find('tbody tr').length;
+                var newInstallment = `
+        <tr>
+            <td>
+                <input type="text" name="payment_plans[${planIdx}][installments][${installmentCount}][installment]" class="form-control" placeholder="Installment" required>
+            </td>
+            <td>
+                <input type="number" name="payment_plans[${planIdx}][installments][${installmentCount}][payment]" class="form-control" placeholder="Payment (%)" required>
+            </td>
+            <td>
+                <input type="text" name="payment_plans[${planIdx}][installments][${installmentCount}][milestone]" class="form-control" placeholder="Milestone" required>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm remove-installment">Remove</button>
+            </td>
+        </tr>
+    `;
+                paymentPlanDiv.find('tbody').append(newInstallment);
+            });
+
+            // Remove Installment
+            $(document).on('click', '.remove-installment', function() {
+                $(this).closest('tr').remove();
+            });
             // Location Add Row
             var locationIndex = {{ isset($developerProperty) ? $developerProperty->locations->count() : 1 }};
             $('.add-location').click(function() {

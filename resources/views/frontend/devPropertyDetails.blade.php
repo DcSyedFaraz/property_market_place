@@ -1,13 +1,13 @@
 @extends('frontend.layouts.app')
 @section('content')
-
     <!-- Left Side -->
     <div class="row">
         <div class="col-md-9">
             <div class="ico-text">
-                <p><i class="bi bi-house-add"></i> Home /
-                    {{ $developer_property->community_name->name ?? '' }}
-                    / {{ $developer_property->developer->name ?? '' }} /
+                <p><i class="bi bi-house-add"></i> Home / <a
+                        href="{{ route('community_page', $developer_property->community) }}">{{ $developer_property->community_name->name ?? '' }}</a>
+
+                    / <a href="#">{{ $developer_property->developer->name ?? '' }}</a> /
                     {{ $developer_property->name }} / Overview
                 </p>
             </div>

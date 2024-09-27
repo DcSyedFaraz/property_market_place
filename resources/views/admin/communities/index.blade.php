@@ -1,6 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
+
     <div class="container mt-5">
         <h2 class="mb-4">Communities</h2>
 
@@ -75,8 +76,8 @@
                                         @if ($community->image)
                                             <div class="mb-3">
                                                 <label for="image" class="form-label">Current Image</label>
-                                                <img src="{{ asset('storage/' . $community->image) }}" alt="community Image"
-                                                    class="img-thumbnail" width="150">
+                                                <img src="{{ asset('storage/' . $community->image) }}"
+                                                    alt="community Image" class="img-thumbnail" width="150">
                                             </div>
                                         @endif
                                     </div>
@@ -120,12 +121,15 @@
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" accept="image/*" name="image" class="form-control" required>
                             </div>
-                            <label for="amenities">Select Amenities:</label>
-                            <select name="amenities[]" class="select2 form-control" multiple>
-                                @foreach($amenities as $amenity)
-                                    <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
-                                @endforeach
-                            </select>
+                            <div class="mb-3">
+
+                                <label for="amenities" class="form-label">Select Amenities:</label>
+                                <select name="amenities[]" class="select2 form-control" multiple>
+                                    @foreach ($amenities as $amenity)
+                                        <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                         </div>
                         <div class="modal-footer">

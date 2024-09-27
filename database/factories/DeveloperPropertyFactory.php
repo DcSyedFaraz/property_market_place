@@ -34,7 +34,6 @@ class DeveloperPropertyFactory extends Factory
             'status' => $this->faker->randomElement(['new', 'under_construction', 'ready_to_move']),
             'price' => $this->faker->randomFloat(2, 100000, 5000000),
             'description' => $this->faker->paragraph,
-            'payment_plan' => $this->faker->sentence,
             'handover_date' => $this->faker->date(),
             'handover_percentage' => $this->faker->randomFloat(2, 0, 100),
             'down_percentage' => $this->faker->randomFloat(2, 0, 100),

@@ -49,7 +49,12 @@ class DeveloperPropertyController extends Controller
             'status' => 'required|string|in:new,under_construction,ready_to_move',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'payment_plan' => 'nullable|string',
+            'payment_plans' => 'required|array',
+            'payment_plans.*.heading' => 'required|string',
+            'payment_plans.*.installments' => 'required|array',
+            'payment_plans.*.installments.*.installment' => 'required|string',
+            'payment_plans.*.installments.*.payment' => 'required|numeric',
+            'payment_plans.*.installments.*.milestone' => 'required|string',
             'handover_date' => 'nullable|date',
             'handover_percentage' => 'nullable|numeric',
             'down_percentage' => 'nullable|numeric',
@@ -93,7 +98,7 @@ class DeveloperPropertyController extends Controller
                 'status' => $request->status,
                 'price' => $request->price,
                 'description' => $request->description,
-                'payment_plan' => $request->payment_plan,
+                'payment_plan' => $request->payment_plans,
                 'handover_date' => $request->handover_date,
                 'handover_percentage' => $request->handover_percentage,
                 'down_percentage' => $request->down_percentage,
@@ -194,7 +199,7 @@ class DeveloperPropertyController extends Controller
                 'status' => $request->status,
                 'price' => $request->price,
                 'description' => $request->description,
-                'payment_plan' => $request->payment_plan,
+                'payment_plan' => $request->payment_plans,
                 'handover_date' => $request->handover_date,
                 'handover_percentage' => $request->handover_percentage,
                 'down_percentage' => $request->down_percentage,
@@ -215,7 +220,7 @@ class DeveloperPropertyController extends Controller
 
             // Handle gallery images
             if ($request->gallery_images) {
-                foreach ($request->gallery_images as $key=> $image) {
+                foreach ($request->gallery_images as $key => $image) {
                     $imagePath = $this->uploadFile($request, 'gallery_images.' . $key);
                     images::create([
                         'developer_property_id' => $developerProperty->id,

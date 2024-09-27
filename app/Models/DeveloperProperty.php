@@ -9,6 +9,10 @@ class DeveloperProperty extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'payment_plan' => 'array',
+    ];
+
     public function Amenity()
     {
         return $this->belongsToMany(Amenity::class, 'amenity_developer_property', 'developer_property_id', 'amenity_id');
