@@ -7,7 +7,9 @@
                 <p><i class="bi bi-house-add"></i> Home / <a
                         href="{{ route('community_page', $developer_property->community) }}">{{ $developer_property->community_name->name ?? '' }}</a>
 
-                    / <a href="#">{{ $developer_property->developer->name ?? '' }}</a> /
+                    / <a
+                        href="{{ route('developer_page', $developer_property->developer_id) }}">{{ $developer_property->developer->name ?? '' }}</a>
+                    /
                     {{ $developer_property->name }} / Overview
                 </p>
             </div>
