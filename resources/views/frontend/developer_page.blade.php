@@ -41,16 +41,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="detail icon-text2">
-
                                 <img src="{{ asset('storage/' .$developers->logo) }}" width="100" alt="{{ $developers->name }}">
 
-                            <p>{{$developers->developers_properties->count()}}</p>
+                                @if ($developers->developers_properties && $developers->developers_properties->count() > 0)
+                                <p>{{ $developers->developers_properties->count() }}</p>
+                            @else
+                                <p>No properties found</p>
+                            @endif
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     </section>
@@ -68,14 +68,13 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="{{ asset('assets/images/Logo1.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/Logo2.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/Logo3.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/Logo4.png') }}" alt=""></div>
-                    <div class="item"><img src="{{asset('assets/img/logo01.png') }}" alt=""></div>
-                    <div class="item"><img src="{{asset('assets/img/logo02.png') }}" alt=""></div>
-                    <div class="item"><img src="{{asset('assets/img/logo03.png') }}" alt=""></div>
-
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
                 </div>
             </div>
         </div>

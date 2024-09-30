@@ -39,7 +39,7 @@ class CommunityController extends Controller
         ]);
 
         // Attach the selected amenities to the community
-    $community->amenities()->attach( $request['amenities']);
+        $community->amenities()->attach( $request['amenities']);
 
 
         return redirect()->route('communities.index')->with('success', 'Community created successfully.');

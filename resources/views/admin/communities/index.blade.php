@@ -1,7 +1,6 @@
 @extends('admin.layout.master')
 
 @section('content')
-
     <div class="container mt-5">
         <h2 class="mb-4">Communities</h2>
 
@@ -81,12 +80,15 @@
                                             </div>
                                         @endif
 
-                                        <label for="amenities">Select Amenities:</label>
-                                        <select name="amenities[]" class="select2 form-control" multiple>
-                                            @foreach($amenities as $amenity)
-                                                <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="mb-3">
+                                            <label for="amenities" class="form-label">Select Amenities:</label>
+                                            <select class="form-select select2" id="amenities" name="amenities[]" multiple>
+                                                @foreach ($amenities as $amenity)
+                                                    <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -116,28 +118,30 @@
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" name="name" class="form-control" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" class="form-control"></textarea>
                             </div>
+
                             <div class="mb-3">
                                 <label for="feature_description" class="form-label">Feature Description</label>
                                 <textarea name="feature_description" class="form-control"></textarea>
                             </div>
+
                             <div class="mb-3">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" accept="image/*" name="image" class="form-control" required>
                             </div>
-                            <div class="mb-3">
 
+                            <div class="mb-3">
                                 <label for="amenities" class="form-label">Select Amenities:</label>
-                                <select name="amenities[]" class="select2 form-control" multiple>
+                                <select class="form-select select2" id="amenities" name="amenities[]" multiple>
                                     @foreach ($amenities as $amenity)
                                         <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

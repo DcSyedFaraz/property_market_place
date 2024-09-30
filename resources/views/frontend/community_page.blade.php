@@ -42,24 +42,24 @@
         <div class="sec-our-serv-002 sec-space">
             <div class="container">
                 <div class="row">
-                    @forelse ($community->amenities as $amenity)
-
-                        <div class="col-md-6">
-                            <div class="detail icon-text2">
-                                <h3>
-                                    <img src="{{ asset('storage/' .$amenity->logo) }}" alt="{{ $amenity->name }}">
-                                    <br>
-                                    {{ $amenity->name }}
-                                </h3>
-                                <p>{{ $amenity->description }}</p>
+                    @if (!empty($community->amenities))
+                        @forelse ($community->amenities as $amenity)
+                            <div class="col-md-6">
+                                <div class="detail icon-text2">
+                                    <h3>
+                                        <img src="{{ asset('storage/' . $amenity->logo) }}" alt="{{ $amenity->name }}">
+                                        <br>
+                                        {{ $amenity->name }}
+                                    </h3>
+                                    <p>{{ $amenity->description }}</p>
+                                </div>
                             </div>
-                        </div>
-                    @empty
-                        <div class="col-md-6">
-                            <p class="text-center">No amenity found.</p>
-                        </div>
-                    @endforelse
-
+                        @empty
+                            <div class="col-md-6">
+                                <p class="text-center">No amenity found.</p>
+                            </div>
+                        @endforelse
+                    @endif
                 </div>
 
             </div>
@@ -78,13 +78,13 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="assets/img/logo01.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo04.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo01.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt=""></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
                 </div>
             </div>
         </div>

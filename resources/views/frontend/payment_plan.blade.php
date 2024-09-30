@@ -7,28 +7,29 @@
                     <h3>Payment Plan</h3>
                     <p>Binghatti Dawn presents flexible payment plans by Binghatti Developers tailored to meet the diverse
                         needs of prospective homeowners.</p>
-                    @foreach ($developer_property->payment_plan as $index => $paymentPlan)
-                        <h3>{{ $index + 1 }}- {{ $paymentPlan['heading'] }}</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Installment</th>
-                                    <th>Payment (%)</th>
-                                    <th>Milestone</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($paymentPlan['installments'] as $installment)
+                    @if (!empty($developer_property->payment_plan))
+                        @foreach ($developer_property->payment_plan as $index => $paymentPlan)
+                            <h3>{{ $index + 1 }}- {{ $paymentPlan['heading'] }}</h3>
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>{{ $installment['installment'] }}</td>
-                                        <td>{{ $installment['payment'] }}%</td>
-                                        <td>{{ $installment['milestone'] }}</td>
+                                        <th>Installment</th>
+                                        <th>Payment (%)</th>
+                                        <th>Milestone</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    @endforeach
-
+                                </thead>
+                                <tbody>
+                                    @foreach ($paymentPlan['installments'] as $installment)
+                                        <tr>
+                                            <td>{{ $installment['installment'] }}</td>
+                                            <td>{{ $installment['payment'] }}%</td>
+                                            <td>{{ $installment['milestone'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

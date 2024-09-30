@@ -114,11 +114,13 @@ class FrontendController extends Controller
         return view('frontend.community_page', compact('community'));
     }
 
-    public function developer_page($id){
+    public function developer_page($id)
+    {
         $developers = Developer::with('developers_properties')->findOrFail($id);
-        // $developers->count();
+        // dd($developers->developers_properties);  // Check if this returns the related records
         return view('frontend.developer_page', compact('developers'));
     }
+
 
 
 

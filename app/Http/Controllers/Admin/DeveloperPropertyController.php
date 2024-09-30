@@ -62,7 +62,7 @@ class DeveloperPropertyController extends Controller
             'community' => 'required|exists:communities,id',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gallery_images.*' => 'nullable|image|max:2048',
+            'gallery_images.*' => 'required|image|max:2048',
             'master_plan_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'location_map' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'locations.*.location_id' => 'required|exists:locations,id',
@@ -177,6 +177,7 @@ class DeveloperPropertyController extends Controller
         } catch (\Exception $e) {
             // Rollback the transaction on failure
             \DB::rollBack();
+            throw $e;
             return redirect()->back()->withErrors(['error' => 'Failed to create property: ' . $e->getMessage()]);
         }
     }

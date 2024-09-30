@@ -28,7 +28,7 @@ class DeveloperProperty extends Model
     }
     public function developer()
     {
-        return $this->belongsTo(Developer::class, );
+        return $this->belongsTo(Developer::class, 'developer_id');
     }
     public function propertyTypes()
     {

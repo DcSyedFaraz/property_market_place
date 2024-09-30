@@ -11,6 +11,6 @@ class Developer extends Model
     protected $guarded = [];
 
     public function developers_properties(){
-        return $this->hasMany(DeveloperProperty ::class);
+        return $this->hasMany(DeveloperProperty ::class, 'developer_id');
     }
 }
