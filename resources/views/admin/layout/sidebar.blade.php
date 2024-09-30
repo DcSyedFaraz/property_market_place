@@ -62,54 +62,55 @@
                          </div>
                      </li>
                  @endif
+                 <li class="{{ request()->routeIs('developer_properties.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('developer_properties.index') }}'>
+                         <i data-feather="briefcase"></i>
+                         <span> Dev's Properties </span>
+                     </a>
+                 </li>
+                 <li class="{{ request()->routeIs('agentproperty.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('agentproperty.index') }}'>
+                         <i data-feather="home"></i>
+                         <span> Agent's Properties </span>
+                     </a>
+                 </li>
+                 <li class="{{ request()->routeIs('developers.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('developers.index') }}'>
+                         <i data-feather="briefcase"></i>
+                         <span> Developers </span>
+                     </a>
+                 </li>
                  <li class="{{ request()->routeIs('agents.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('agents.index') }}'>
-                         <i data-feather="book-open"></i>
+                         <i data-feather="users"></i>
                          <span> Agents </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('Amenity.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('Amenity.index') }}'>
-                         <i data-feather="book-open"></i>
+                         <i data-feather="star"></i>
                          <span> Amenity </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('master-plans.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('master-plans.index') }}'>
-                         <i data-feather="book-open"></i>
-                         <span> Master plans </span>
+                         <i data-feather="grid"></i>
+                         <span> Master Plans </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('locations.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('locations.index') }}'>
-                         <i data-feather="book-open"></i>
-                         <span> Locations</span>
-                     </a>
-                 </li>
-                 <li class="{{ request()->routeIs('developers.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('developers.index') }}'>
-                         <i data-feather="book-open"></i>
-                         <span> Developers </span>
-                     </a>
-                 </li>
-                 <li class="{{ request()->routeIs('agentproperty.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('agentproperty.index') }}'>
-                         <i data-feather="book-open"></i>
-                         <span> Agent's Properties </span>
-                     </a>
-                 </li>
-                 <li class="{{ request()->routeIs('developer_properties.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('developer_properties.index') }}'>
-                         <i data-feather="book-open"></i>
-                         <span> Dev's Properties </span>
+                         <i data-feather="map-pin"></i>
+                         <span> Locations </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('communities.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('communities.index') }}'>
-                         <i data-feather="book-open"></i>
+                        <i data-feather="users"></i>
                          <span> Communities </span>
                      </a>
                  </li>
+
                  <li>
                      <a href='{{ route('logout') }}' class="text-danger ">
                          <i data-feather="log-out"></i>

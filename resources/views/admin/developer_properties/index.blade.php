@@ -22,7 +22,7 @@
 
 
                         <td>
-                            <a href="{{ route('developer_properties.show', $developer->id) }}" class="btn btn-info">View</a>
+                            {{-- <a href="{{ route('developer_properties.show', $developer->id) }}" class="btn btn-info">View</a> --}}
                             <a href="{{ route('developer_properties.edit', $developer->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('developer_properties.destroy', $developer->id) }}" method="POST"
                                 style="display:inline;">

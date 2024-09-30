@@ -60,9 +60,9 @@ class DeveloperPropertyController extends Controller
             'down_percentage' => 'nullable|numeric',
             'construction_percentage' => 'nullable|numeric',
             'community' => 'required|exists:communities,id',
-            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gallery_images.*' => 'required|image|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gallery_images.*' => 'nullable|image|max:2048',
             'master_plan_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'location_map' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'locations.*.location_id' => 'required|exists:locations,id',
@@ -118,14 +118,22 @@ class DeveloperPropertyController extends Controller
 
             // Store gallery images
             if ($request->gallery_images) {
-                foreach ($request->gallery_images as $image) {
-                    $imagePath = $this->uploadFile($request, 'gallery_images.' . key($image));
+                $imagePaths = $this->uploadFile($request, 'gallery_images');
+                if (is_array($imagePaths)) {
+                    foreach ($imagePaths as $imagePath) {
+                        images::create([
+                            'developer_property_id' => $developerProperty->id,
+                            'image' => $imagePath,
+                        ]);
+                    }
+                } else {
                     images::create([
                         'developer_property_id' => $developerProperty->id,
-                        'image' => $imagePath,
+                        'image' => $imagePaths,
                     ]);
                 }
             }
+
 
             // Store property types
             if ($request->property_types) {
@@ -142,6 +150,7 @@ class DeveloperPropertyController extends Controller
             // Store floor plans
             if ($request->floor_plans) {
                 foreach ($request->floor_plans as $floorPlan) {
+                    $floorPlanImage = $this->uploadFile($request, 'floor_plans.' . key($floorPlan) . '.image');
                     FloorPlan::create([
                         'developer_property_id' => $developerProperty->id,
                         'category' => $floorPlan['category'],
@@ -149,7 +158,7 @@ class DeveloperPropertyController extends Controller
                         'floor_details' => $floorPlan['floor_details'],
                         'sizes' => $floorPlan['sizes'],
                         'type' => $floorPlan['type'],
-                        'image' => $this->uploadFile($request, 'floor_plans.' . key($floorPlan) . '.image')
+                        'image' => $floorPlanImage, // This can be a single image or null
                     ]);
                 }
             }
@@ -294,12 +303,28 @@ class DeveloperPropertyController extends Controller
 
     private function uploadFile(Request $request, $fieldName)
     {
-        // dd($request->all(),$fieldName);
+        // Check if the field is present in the request
         if ($request->hasFile($fieldName)) {
-            return $request->file($fieldName)->store('developer_properties', 'public');
+            $files = $request->file($fieldName);
+
+            // If it's a single file, wrap it in an array for consistent processing
+            if (!is_array($files)) {
+                $files = [$files];
+            }
+
+            $filePaths = []; // Initialize an array to hold the file paths
+
+            // Loop through each file and store it
+            foreach ($files as $file) {
+                $filePaths[] = $file->store('developer_properties', 'public');
+            }
+
+            return count($filePaths) === 1 ? $filePaths[0] : $filePaths; // Return single path or array
         }
-        return null;
+
+        return null; // Return null if no files are uploaded
     }
+
     private function updateFile(Request $request, $fieldName, $oldFilePath)
     {
         if ($request->hasFile($fieldName)) {
