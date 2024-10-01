@@ -43,11 +43,9 @@
                         <div class="detail icon-text2">
                                 <img src="{{ asset('storage/' .$developers->logo) }}" width="100" alt="{{ $developers->name }}">
 
-                                @if ($developers->developers_properties && $developers->developers_properties->count() > 0)
+
                                 <p>{{ $developers->developers_properties->count() }}</p>
-                            @else
-                                <p>No properties found</p>
-                            @endif
+                          
                         </div>
                     </div>
                 </div>

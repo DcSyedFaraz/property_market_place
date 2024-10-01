@@ -88,7 +88,7 @@
                             <div class="col-md-6">
                                 <div class="property-box1">
                                     <a href="{{ route('property_details', $property->id) }}"><img
-                                            src="{{ asset('storage/' . $property->image) }}" alt=""></a>
+                                            src="{{ asset('storage/' .$property->image) }}" alt=""></a>
                                     <h4 class="mt-4">{{ $property->title }}</h4>
                                     <p>{{ $property->description }}</p>
                                     <h4 class="pro-price1">{{ $property->price }} AED</h4>

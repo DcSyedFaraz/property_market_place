@@ -25,7 +25,8 @@ class CommunityController extends Controller
             'feature_description' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'amenities' => 'required|array',
-            'amenities.*' => 'exists:amenities,id'
+            'amenities.*' => 'exists:amenities,id',
+            'location' => 'required',
         ]);
 
         // Store the image and save the path
@@ -36,6 +37,7 @@ class CommunityController extends Controller
             'description' => $request->description,
             'feature_description' => $request->feature_description,
             'image' => $imagePath,
+            'location' => $request->location,
         ]);
 
         // Attach the selected amenities to the community
@@ -53,6 +55,7 @@ class CommunityController extends Controller
             'feature_description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'amenity_id' => 'array',
+            'location' => 'required',
 
         ]);
 
@@ -60,6 +63,7 @@ class CommunityController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'feature_description' => $request->feature_description,
+            'location' => $request->location,
         ];
 
         // Check if an image was uploaded

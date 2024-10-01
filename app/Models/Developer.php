@@ -10,7 +10,8 @@ class Developer extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function developers_properties(){
-        return $this->hasMany(DeveloperProperty ::class, 'developer_id');
+    public function developers_properties()
+    {
+        return $this->hasMany(DeveloperProperty::class,); 
     }
 }

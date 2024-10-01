@@ -75,7 +75,7 @@ class FrontendController extends Controller
     public function property_details($id)
     {
         $property = AgentProperty::find($id);
-        return view('frontend.property_details',compact('property'));
+        return view('frontend.property_details', compact('property'));
     }
 
     public function address_residence($id)
@@ -117,7 +117,8 @@ class FrontendController extends Controller
     public function developer_page($id)
     {
         $developers = Developer::with('developers_properties')->findOrFail($id);
-        // dd($developers->developers_properties);  // Check if this returns the related records
+        \Log::info($developers->developers_properties()->toSql());
+
         return view('frontend.developer_page', compact('developers'));
     }
 

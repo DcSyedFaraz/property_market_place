@@ -89,6 +89,18 @@
                                             </select>
                                         </div>
 
+                                        <div class="mb-3">
+                                            <label for="location" >Select Location:</label>
+                                            <select id="location" class="form-control" name="location">
+                                                    <option value="{{ $community->id }}" selected>{{ $community->location }}</option>
+                                                    <option value="Abu Dhabi">Abu Dhabi</option>
+                                                    <option value="Sharjah">Sharjah</option>
+                                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                                    <option value="Ajman">Ajman</option>
+
+                                            </select>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -140,6 +152,17 @@
                                     @foreach ($amenities as $amenity)
                                         <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="location" >Select Location:</label>
+                                <select id="location" class="form-control" name="location">
+                                        <option value="Dubai">Dubai</option>
+                                        <option value="Abu Dhabi">Abu Dhabi</option>
+                                        <option value="Sharjah">Sharjah</option>
+                                        <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                                        <option value="Ajman">Ajman</option>
                                 </select>
                             </div>
                         </div>

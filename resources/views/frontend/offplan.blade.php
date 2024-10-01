@@ -59,11 +59,18 @@
                     <div class="col-md-4">
                         <div class="detail">
                             <h5>Filter</h5>
-                            <form id="price-range-form">
-                                <label for="min-price" class="form-label">Starting Price Range </label>
-                                <span id="min-price-txt">$0</span>
-                                <input type="range" class="form-range" min="0" max="99" id="min-price"
-                                    step="1" value="0">
+                            <div class="filter-section">
+                                <h4>Price Range</h4>
+                                <div id="slider-range"></div>
+                                <p>
+                                    <label for="amount">Price range:</label>
+                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                </p>
+                                <form action="" method="GET">
+                                    <input type="hidden" id="min_price" name="min_price">
+                                    <input type="hidden" id="max_price" name="max_price">
+                                    <button type="submit" class="btn btn-primary">Filter</button>
+
                                 <div id="solution_finder">
                                     <div class="city-sec mt-3 ">
                                         <select id="genre" onChange="return selectOption();">
