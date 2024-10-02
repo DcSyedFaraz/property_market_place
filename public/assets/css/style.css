@@ -1273,3 +1273,81 @@ select {
     height: 210px;
   }
 }
+/* Accordion Body Styling */
+.accordion-body {
+    padding: 20px;
+}
+
+.price-input {
+    display: flex;
+    width: 100%;
+    margin: 20px 0 25px;
+}
+
+.field {
+    width: 100%;
+    height: 35px;
+}
+
+.field span {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.input-min, .input-max {
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+}
+
+.separator {
+    width: 130px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    height: 5px;
+    position: relative;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.progress {
+    /* height: 100%;
+    left: 0%;
+    right: 0%; */
+    position: absolute;
+    border-radius: 5px;
+    background: #000;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-min, .range-max {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+
+.range-min::-webkit-slider-thumb, .range-max::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+    position: relative;
+}
+
+.range-max {
+    z-index: 1;
+}

@@ -58,53 +58,238 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="detail">
-                            <h5>Filter</h5>
+                            <h2>Filter</h2>
                             <div class="filter-section">
-                                <h4>Price Range</h4>
-                                <div id="slider-range"></div>
-                                <p>
-                                    <label for="amount">Price range:</label>
-                                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                                </p>
-                                <form action="" method="GET">
-                                    <input type="hidden" id="min_price" name="min_price">
-                                    <input type="hidden" id="max_price" name="max_price">
-                                    <button type="submit" class="btn btn-primary">Filter</button>
 
-                                <div id="solution_finder">
-                                    <div class="city-sec mt-3 ">
-                                        <select id="genre" onChange="return selectOption();">
-                                            <option value="All">City</option>
-                                            <option value="with-retina">With Retina Display</option>
-                                            <option value="without-retina">Without Retina Display</option>
+                                <form action="{{ route('offplan') }}" method="GET">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                    aria-expanded="false" aria-controls="collapseOne">
+                                                    Starting Price Range
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                                aria-labelledby="headingOne">
+                                                <div class="accordion-body Nospace">
+                                                    <div class="price-input">
+                                                        <div class="field">
+                                                            <span>Min</span>
+                                                            <input type="number" id="MinPriceId" class="input-min"
+                                                                name="min_price"
+                                                                value="{{ request()->input('min_price', $minPrice) }}">
+                                                        </div>
+                                                        <div class="separator">-</div>
+                                                        <div class="field">
+                                                            <span>Max</span>
+                                                            <input type="number" id="MaxPriceId" class="input-max"
+                                                                name="max_price"
+                                                                value="{{ request()->input('max_price', $maxPrice) }}">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Filter</button>
+
+
+                                                    </div>
+                                                    <div class="slider">
+                                                        <div class="progress"></div>
+                                                    </div>
+                                                    <div class="range-input">
+                                                        <input type="range" class="range-min" min="61995"
+                                                            max="330000000" value="61995" step="1000">
+                                                        <input type="range" class="range-max" min="61995"
+                                                            max="330000000" value="330000000" step="1000">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                    City
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                                aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            Dubai
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Abu Dubai
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Sharjah
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Ras Al Khaimah
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            Ajman
+                                                        </label>
+                                                    </div>
+                                                    <h3>Communities</h3>
+                                                    @foreach ($communities as $community)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                value="" id="flexCheckDefault" checked>
+                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                {{ $community->name }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingThree">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                    Property Type
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse"
+                                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <label for="Status">Status</label>
+                                        <select class="form-select" id="status" name="status">
+                                            <option value="status" selected>Status</option>
+                                            @foreach ($developer_property as $dev_property)
+                                            <option value="new" {{ $dev_property->status == 'new' ? 'selected' : '' }}>
+                                                New Launch
+                                            </option>
+                                            <option value="under_construction" {{ $dev_property->status == 'under_construction' ? 'selected' : '' }}>
+                                                Under Construction
+                                            </option>
+                                            <option value="ready_to_move" {{ $dev_property->status == 'ready_to_move' ? 'selected' : '' }}>
+                                                Ready to Move
+                                            </option>
+                                            @endforeach
                                         </select>
+
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFive">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                    Accommodation
+                                                </button>
+                                            </h2>
+                                            <div id="collapseFive" class="accordion-collapse collapse"
+                                                aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            1 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            2 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            3 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            4 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked" checked>
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            5 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            6 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            7 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            8 Bedroom
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            Studio
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="type-sec mt-3">
-                                        <select id="genre" onChange="return selectOption();">
-                                            <option value="All">Property type</option>
-                                            <option value="with-retina">With Retina Display</option>
-                                            <option value="without-retina">Without Retina Display</option>
-                                        </select>
-                                    </div>
-                                    <div class="develop-sec mt-3">
-                                        <select id="genre" onChange="return selectOption();">
-                                            <option value="All">Developers</option>
-                                            <option value="with-retina">With Retina Display</option>
-                                            <option value="without-retina">Without Retina Display</option>
-                                        </select>
-                                    </div>
-                                    <div class="posses-sec mt-3">
-                                        <select id="genre" onChange="return selectOption();">
-                                            <option value="All">Possession</option>
-                                            <option value="with-retina">With Retina Display</option>
-                                            <option value="without-retina">Without Retina Display</option>
-                                        </select>
-                                    </div>
-                                    <input class="mt-3 btn-search" type="submit" value="Search" />
-                                </div>
-                            </form>
+
+                                </form>
+                            </div>
+
                         </div>
                     </div>
+
+
+
                     <div class="col-md-8">
                         <div class="container">
                             <div class="row">
@@ -134,7 +319,7 @@
                                     <div class="property-item d-flex align-items-center">
                                         <div class="col-md-5">
                                             <div class="property-img">
-                                                <img src="{{ asset('storage/' .$project->cover_image) }}" alt="property"
+                                                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="property"
                                                     class="img-fluid" />
                                             </div>
                                         </div>
@@ -172,6 +357,10 @@
 
 
                     </div>
+
+
+
+
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
 use App\Models\Product;
+use DB;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -33,11 +34,34 @@ class FrontendController extends Controller
         return view('frontend.faqs');
     }
 
-    public function offplan()
+    public function offplan(Request $request)
     {
+        $communities = Community::all();
+        $developer_property = DeveloperProperty::all();
+        \Log::info('Request Parameters: ', $request->all());
+
         $projects = DeveloperProperty::paginate(5);
-        return view('frontend.offplan', compact('projects'));
+
+        // Default minPrice aur maxPrice agar user input na kare
+        $minPrice = (float) $request->input('min_price', 0);
+        $maxPrice = (float) $request->input('max_price', 1000);
+
+
+        // dd($minPrice, $maxPrice);
+
+        // Properties ko price range ke basis par filter karte hain
+        $properties = DB::table('agent_properties')
+            ->whereBetween('price', [100, 1000])
+            ->get();
+
+
+        // Log the count of filtered properties
+        \Log::info('Count of Filtered Properties: ' . $properties->count());
+
+
+        return view('frontend.offplan', compact('projects', 'properties', 'minPrice', 'maxPrice', 'communities', 'developer_property'));
     }
+
 
     public function developer_list()
     {
