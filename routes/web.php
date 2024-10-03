@@ -62,7 +62,12 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/floor-plan/{id}', 'floor_plan')->name('floor_plan');
     Route::get('/community-page/{id}', 'community_page')->name('community_page');
     Route::get('/developer-page/{id}', 'developer_page')->name('developer_page');
+    // Route::get('/offplan/search',  'filter')->name('offplan_search');
+
 });
+Route::get('/search/offplan', [FrontendController::class, 'filter'])->name('offplan_search');
+
+
 
 // Dashboard and Logout routes
 Route::middleware(['auth'])->group(function () {

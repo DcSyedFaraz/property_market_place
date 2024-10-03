@@ -60,8 +60,8 @@
                         <div class="detail">
                             <h2>Filter</h2>
                             <div class="filter-section">
-
-                                <form action="{{ route('offplan') }}" method="GET">
+                                <form action="{{ route('offplan_search') }}" method="GET">
+                                    @csrf
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingOne">
@@ -71,40 +71,39 @@
                                                     Starting Price Range
                                                 </button>
                                             </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingOne">
-                                                <div class="accordion-body Nospace">
-                                                    <div class="price-input">
-                                                        <div class="field">
-                                                            <span>Min</span>
-                                                            <input type="number" id="MinPriceId" class="input-min"
-                                                                name="min_price"
-                                                                value="{{ request()->input('min_price', $minPrice) }}">
+                                            <div id="collapseOne" class="accordion-collapse collapse"
+                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <div class="accordion-body">
+                                                        <div class="price-input">
+                                                            <div class="field">
+                                                                <span>Min</span>
+                                                                {{-- @dd(request('min_price')) --}}
+                                                                <input type="number" id="MinPriceId" class="input-min"
+                                                                    name="min_price" value="{{ request('min_price') }}">
+                                                            </div>
+                                                            <div class="separator">-</div>
+                                                            <div class="field">
+                                                                <span>Max</span>
+                                                                <input type="number" id="MaxPriceId" class="input-max"
+                                                                    name="max_price" value="{{ request('max_price') }}">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Filter</button>
                                                         </div>
-                                                        <div class="separator">-</div>
-                                                        <div class="field">
-                                                            <span>Max</span>
-                                                            <input type="number" id="MaxPriceId" class="input-max"
-                                                                name="max_price"
-                                                                value="{{ request()->input('max_price', $maxPrice) }}">
+                                                        {{-- <div class="slider">
+                                                            <div class="progress"></div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary">Filter</button>
 
-
-                                                    </div>
-                                                    <div class="slider">
-                                                        <div class="progress"></div>
-                                                    </div>
-                                                    <div class="range-input">
-                                                        <input type="range" class="range-min" min="61995"
-                                                            max="330000000" value="61995" step="1000">
-                                                        <input type="range" class="range-max" min="61995"
-                                                            max="330000000" value="330000000" step="1000">
+                                                        <div class="range-input">
+                                                            <input type="range" class="range-min" min="61995"
+                                                                max="330000000" value="61995" step="1000">
+                                                            <input type="range" class="range-max" min="61995"
+                                                                max="330000000" value="330000000" step="1000">
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingTwo">
@@ -118,37 +117,38 @@
                                                 aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault1">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                        <input class="form-check-input" type="radio" name="city"
+                                                            id="cityDubai" value="Dubai">
+                                                        <label class="form-check-label" for="cityDubai">
                                                             Dubai
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="city"
+                                                            id="cityAbuDhabi" value="Abu Dhabi"
+                                                            {{ request('city') == 'Abu Dhabi' ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="cityAbuDhabi">
                                                             Abu Dubai
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="city"
+                                                            id="citySharjah" value="Sharjah">
+                                                        <label class="form-check-label" for="citySharjah">
                                                             Sharjah
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="city"
+                                                            id="cityRas Al Khaimah" value="Ras Al Khaimah">
+                                                        <label class="form-check-label" for="cityRas Al Khaimah">
                                                             Ras Al Khaimah
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="city"
+                                                            id="city Ajman" value="Ajman">
+                                                        <label class="form-check-label" for="city Ajman">
                                                             Ajman
                                                         </label>
                                                     </div>
@@ -156,17 +156,19 @@
                                                     @foreach ($communities as $community)
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox"
-                                                                value="" id="flexCheckDefault" checked>
-                                                            <label class="form-check-label" for="flexCheckDefault">
+                                                                {{ is_array(request('communities')) && in_array($community->id, request('communities')) ? 'checked' : '' }}
+                                                                name="communities[]" value="{{ $community->id }}"
+                                                                id="community{{ $community->id }}">
+                                                            <label class="form-check-label"
+                                                                for="community{{ $community->id }}">
                                                                 {{ $community->name }}
                                                             </label>
                                                         </div>
                                                     @endforeach
-
-
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingThree">
                                                 <button class="accordion-button collapsed" type="button"
@@ -183,21 +185,48 @@
                                             </div>
                                         </div>
 
-
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFour">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                    Developer
+                                                </button>
+                                            </h2>
+                                            <div id="collapseFour" class="accordion-collapse collapse"
+                                                aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    @foreach ($developers as $developer)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="developers[]" value="{{ $developer->id }}"
+                                                                id="developer{{ $developer->id }}"
+                                                                {{ in_array($developer->id, request()->input('developers', [])) ? 'checked' : '' }}>
+                                                            <label class="form-check-label"
+                                                                for="developer{{ $developer->id }}">
+                                                                {{ $developer->name }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <label for="Status">Status</label>
                                         <select class="form-select" id="status" name="status">
-                                            <option value="status" selected>Status</option>
                                             @foreach ($developer_property as $dev_property)
-                                            <option value="new" {{ $dev_property->status == 'new' ? 'selected' : '' }}>
-                                                New Launch
-                                            </option>
-                                            <option value="under_construction" {{ $dev_property->status == 'under_construction' ? 'selected' : '' }}>
-                                                Under Construction
-                                            </option>
-                                            <option value="ready_to_move" {{ $dev_property->status == 'ready_to_move' ? 'selected' : '' }}>
-                                                Ready to Move
-                                            </option>
+                                                <option value="new"
+                                                    {{ $dev_property->status == 'new' ? 'selected' : '' }}>
+                                                    New Launch
+                                                </option>
+                                                <option value="under_construction"
+                                                    {{ $dev_property->status == 'under_construction' ? 'selected' : '' }}>
+                                                    Under Construction
+                                                </option>
+                                                <option value="ready_to_move"
+                                                    {{ $dev_property->status == 'ready_to_move' ? 'selected' : '' }}>
+                                                    Ready to Move
+                                                </option>
                                             @endforeach
                                         </select>
 
@@ -206,7 +235,7 @@
                                             <h2 class="accordion-header" id="headingFive">
                                                 <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                    aria-expanded="false" aria-controls="collapseFive">
                                                     Accommodation
                                                 </button>
                                             </h2>
@@ -214,65 +243,65 @@
                                                 aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckDefault">
-                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="1" id="accommodation1">
+                                                        <label class="form-check-label" for="accommodation1">
                                                             1 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="2" id="accommodation2">
+                                                        <label class="form-check-label" for="accommodation2">
                                                             2 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="3" id="accommodation3">
+                                                        <label class="form-check-label" for="accommodation3">
                                                             3 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="4" id="accommodation4">
+                                                        <label class="form-check-label" for="accommodation4">
                                                             4 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked" checked>
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="5" id="accommodation5">
+                                                        <label class="form-check-label" for="accommodation5">
                                                             5 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="6" id="accommodation6">
+                                                        <label class="form-check-label" for="accommodation6">
                                                             6 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="7" id="accommodation7">
+                                                        <label class="form-check-label" for="accommodation7">
                                                             7 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="8" id="accommodation8">
+                                                        <label class="form-check-label" for="accommodation8">
                                                             8 Bedroom
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value=""
-                                                            id="flexCheckChecked">
-                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            name="accommodations[]" value="9" id="accommodation9">
+                                                        <label class="form-check-label" for="accommodation9">
                                                             Studio
                                                         </label>
                                                     </div>
@@ -281,10 +310,9 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <button type="submit" class="btn btn-primary mt-3">Search</button>
                                 </form>
                             </div>
-
                         </div>
                     </div>
 
@@ -314,7 +342,7 @@
                                     </form>
                                 </div>
                             </div>
-                            @forelse ($projects as $project)
+                            @forelse ($properties as $project)
                                 <div class="row list-one my-2">
                                     <div class="property-item d-flex align-items-center">
                                         <div class="col-md-5">
@@ -353,7 +381,7 @@
                                 </div>
                             @endforelse
                         </div>
-                        {{ $projects->links() }}
+                        {{ $properties->links() }}
 
 
                     </div>

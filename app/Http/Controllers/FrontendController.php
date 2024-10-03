@@ -6,6 +6,7 @@ use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
+use App\Models\MasterPlan;
 use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
@@ -36,31 +37,23 @@ class FrontendController extends Controller
 
     public function offplan(Request $request)
     {
+        // Fetch communities, developer properties, and developers
         $communities = Community::all();
         $developer_property = DeveloperProperty::all();
+        $developers = Developer::all();
+
         \Log::info('Request Parameters: ', $request->all());
 
-        $projects = DeveloperProperty::paginate(5);
+        // Paginate developer properties
+        $properties = DeveloperProperty::paginate(5);
 
-        // Default minPrice aur maxPrice agar user input na kare
-        $minPrice = (float) $request->input('min_price', 0);
-        $maxPrice = (float) $request->input('max_price', 1000);
-
-
-        // dd($minPrice, $maxPrice);
-
-        // Properties ko price range ke basis par filter karte hain
-        $properties = DB::table('agent_properties')
-            ->whereBetween('price', [100, 1000])
-            ->get();
+        // dd($minPrice, $maxPrice);  // For debugging
 
 
-        // Log the count of filtered properties
-        \Log::info('Count of Filtered Properties: ' . $properties->count());
-
-
-        return view('frontend.offplan', compact('projects', 'properties', 'minPrice', 'maxPrice', 'communities', 'developer_property'));
+        // Return filtered data to the view
+        return view('frontend.offplan', compact('properties',  'communities', 'developer_property', 'developers'));
     }
+
 
 
     public function developer_list()
@@ -123,7 +116,8 @@ class FrontendController extends Controller
     public function master_plan($id)
     {
         $developer_property = DeveloperProperty::findOrFail($id);
-        return view('frontend.master_plan', compact('developer_property'));
+        $master_plans = MasterPlan::all();
+        return view('frontend.master_plan', compact('master_plans', 'developer_property'));
     }
 
     public function floor_plan($id)
@@ -146,7 +140,86 @@ class FrontendController extends Controller
         return view('frontend.developer_page', compact('developers'));
     }
 
+    public function filter(Request $request)
+    {
 
+        // dd($request->all());
+        $validated = $request->validate([
+            'min_price' => 'nullable|numeric|min:0',
+            'max_price' => 'nullable|numeric|min:0|gte:min_price',
+            // 'city' => 'nullable|string|exists:cities,name',
+            'communities' => 'nullable|array',
+            'communities.*' => 'exists:communities,id',
+            'developers' => 'nullable|array',
+            'developers.*' => 'exists:developers,id',
+            'status' => 'nullable|string|in:new,under_construction,ready_to_move',
+            'accommodations' => 'nullable|array',
+            'accommodations.*' => 'integer|min:1|max:8', // Assuming 1-8 bedrooms
+        ]);
+        // Start building the query
+        $query = DeveloperProperty::query();
+
+        // Filter by price range
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->input('max_price'));
+        }
+
+        // Alternatively, if using sliders
+        if ($request->filled('min_price_slider')) {
+            $query->where('price', '>=', $request->input('min_price_slider'));
+        }
+
+        if ($request->filled('max_price_slider')) {
+            $query->where('price', '<=', $request->input('max_price_slider'));
+        }
+
+        // Filter by city
+        // if ($request->filled('city')) {
+        //     $query->where('city', $request->input('city'));
+        // }
+
+        // Filter by communities (assuming a many-to-many relationship)
+        if ($request->filled('communities')) {
+            $query->whereHas('community_name', function ($q) use ($request) {
+                $q->whereIn('communities.id', $request->input('communities'));
+            });
+        }
+
+        // Filter by developers
+        if ($request->filled('developers')) {
+            $query->whereIn('developer_id', $request->input('developers'));
+        }
+
+        // Filter by status
+        if ($request->filled('status')) {
+            $query->where('status', $request->input('status'));
+        }
+
+        // Filter by accommodation (assuming 'accommodation' is a field or related model)
+        if ($request->filled('accommodations')) {
+            $query->whereIn('accommodation', $request->input('accommodations'));
+        }
+
+        // Additional filters can be added here...
+
+        // Execute the query and paginate results
+        $properties = $query->paginate(20)->appends($request->except('page'));
+        // dd($properties);
+
+        $communities = Community::all();
+        $developer_property = DeveloperProperty::all();
+        $developers = Developer::all();
+
+
+
+        // Log the count of filtered properties
+        // Return the view with filtered properties
+        return view('frontend.offplan', compact('properties',  'communities', 'developer_property', 'developers'));
+    }
 
 
 }

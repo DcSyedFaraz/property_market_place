@@ -52,6 +52,10 @@
                             <input type="file" class="form-control" id="createImage" name="image" required
                                 accept="image/*">
                         </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="createDescription" name="description" required>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

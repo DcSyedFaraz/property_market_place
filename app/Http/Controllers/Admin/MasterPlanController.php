@@ -22,6 +22,7 @@ class MasterPlanController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:255',
         ]);
 
         $imagePath = $request->file('image')->store('images', 'public');
@@ -29,6 +30,7 @@ class MasterPlanController extends Controller
         $masterPlan = MasterPlan::create([
             'name' => $request->name,
             'image' => $imagePath,
+            'description' => $request->description,
         ]);
 
         return response()->json(['success' => true, 'masterPlan' => $masterPlan]);
@@ -38,6 +40,7 @@ class MasterPlanController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:',
         ]);
 
         $masterPlan->name = $request->name;
