@@ -300,6 +300,21 @@
                     @endif
                 </div>
 
+                <div class="col-md-6">
+                    <label for="master_plan_description">Master Plan Descripion</label>
+                    @if (isset($developerProperty) && $developerProperty->master_plan_description)
+                    <input type="text" name="master_plan_description" class="form-control" value="{{ $developerProperty->master_plan_description }}" required>
+                    @endif
+                </div>
+
+                <div class="col-md-6">
+                    <label for="location_map_description">Location Map Descripion</label>
+                    @if (isset($developerProperty) && $developerProperty->location_map_description)
+                    <input type="text" name="location_map_description" class="form-control" value="{{ $developerProperty->location_map_description }}" required>
+                    @endif
+                </div>
+
+
                 <div class="col-12">
                     <label for="locations" class="form-label">Locations</label>
                     <table class="table" id="locationsTable">
@@ -442,7 +457,15 @@
                             @endif
                         </tbody>
                     </table>
+
                     <button type="button" class="btn btn-success add-floor-plan">+</button>
+                </div>
+
+                <div class="col-12">
+                    <label for="floor_plan_description">Floor Plan Description</label>
+                    @if (isset($developerProperty) && $developerProperty->floor_plan_description)
+                    <input type="text" name="floor_plan_description" class="form-control" value="{{ $developerProperty->floor_plan_description }}" required>
+                    @endif
                 </div>
 
 

@@ -3,19 +3,17 @@
 <div class="detail">
     <div class="row">
         <div class="col-md-12">
-                @foreach ($master_plans as $masplan)
                 <div class="payment-detail">
-                    <h3>{{ $masplan->name }}</h3>
+                    <h3>{{ $developer_property->name }}</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/' . $masplan->image) }}" alt="">
+                        <img src="{{ asset('storage/' . $developer_property->cover_image) }}" alt="">
                     </div>
                     <div class="col-md-6">
-                        <p>{{ $masplan->description }}</p>
+                        <p>{{ $developer_property->master_plan_description }}</p>
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
     </div>

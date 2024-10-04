@@ -22,6 +22,7 @@ class LocationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:225',
         ]);
 
         $imagePath = $request->file('image')->store('images', 'public');
@@ -29,6 +30,7 @@ class LocationController extends Controller
         $Location = Location::create([
             'name' => $request->name,
             'image' => $imagePath,
+            'description' => $request->description,
         ]);
 
         return response()->json(['success' => true, 'location' => $Location]);
@@ -38,6 +40,7 @@ class LocationController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string|max:225',
         ]);
 
         $Location->name = $request->name;

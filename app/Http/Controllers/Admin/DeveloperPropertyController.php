@@ -107,7 +107,10 @@ class DeveloperPropertyController extends Controller
                 'logo' => $this->uploadFile($request, 'logo'),
                 'cover_image' => $this->uploadFile($request, 'cover_image'),
                 'master_plan_image' => $this->uploadFile($request, 'master_plan_image'),
-                'location_map' => $this->uploadFile($request, 'location_map')
+                'location_map' => $this->uploadFile($request, 'location_map'),
+                'master_plan_description' => $request->master_plan_descripion,
+                'floor_plan_description' => $request->floor_plan_description,
+                'location_map_description' => $request->location_map_description,
             ]);
 
             // Store key highlights
@@ -220,6 +223,9 @@ class DeveloperPropertyController extends Controller
                 'cover_image' => $this->updateFile($request, 'cover_image', $developerProperty->cover_image),
                 'master_plan_image' => $this->updateFile($request, 'master_plan_image', $developerProperty->master_plan_image),
                 'location_map' => $this->updateFile($request, 'location_map', $developerProperty->location_map),
+                'master_plan_description' => $request->master_plan_descripion,
+                'floor_plan_description' => $request->floor_plan_description,
+                'location_map_description' => $request->location_map_description,
             ]);
 
             // Update key highlights

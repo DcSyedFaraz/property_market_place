@@ -125,13 +125,13 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="assets/img/logo01.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo04.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo01.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
                 </div>
             </div>
         </div>

@@ -4,9 +4,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="payment-detail">
-                    <h3>Floor Plan</h3>
-                    <p>Featuring meticulously designed floor plans, Binghatti Dawn offers a diverse range of layouts to suit
-                        every lifestyle. </p>
+                    <h3>{{ $developer_property->name }}</h3>
+                    <p>{{ $developer_property->floor_plan_description }} </p>
                 </div>
             </div>
         </div>

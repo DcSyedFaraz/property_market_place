@@ -88,7 +88,7 @@
                                                                 <input type="number" id="MaxPriceId" class="input-max"
                                                                     name="max_price" value="{{ request('max_price') }}">
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Filter</button>
+
                                                         </div>
                                                         {{-- <div class="slider">
                                                             <div class="progress"></div>
@@ -180,6 +180,97 @@
                                             <div id="collapseThree" class="accordion-collapse collapse"
                                                 aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyVilla" value="Villa">
+                                                        <label class="form-check-label" for="propertyVilla">
+                                                            Villa
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyApartment" value="Apartment">
+                                                        <label class="form-check-label" for="propertyApartment">
+                                                            Apartment
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Townhouse
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Mansion
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Sky Palaces
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Residential Plot
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Water Bungalows
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Hotel Rooms
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Duplex Apartments
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Penthouse
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Stand Alone Villa
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Semi Detached
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="property_type" id="propertyTownhouse" value="Townhouse">
+                                                        <label class="form-check-label" for="propertyTownhouse">
+                                                            Villa Plots
+                                                        </label>
+                                                    </div>
+
 
                                                 </div>
                                             </div>
@@ -408,13 +499,13 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="assets/img/logo01.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo04.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo01.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo02.png" alt="" /></div>
-                    <div class="item"><img src="assets/img/logo03.png" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
+                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
                 </div>
             </div>
         </div>

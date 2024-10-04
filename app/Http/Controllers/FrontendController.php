@@ -6,6 +6,8 @@ use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
+use App\Models\FloorPlan;
+use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\Product;
 use DB;
@@ -116,8 +118,7 @@ class FrontendController extends Controller
     public function master_plan($id)
     {
         $developer_property = DeveloperProperty::findOrFail($id);
-        $master_plans = MasterPlan::all();
-        return view('frontend.master_plan', compact('master_plans', 'developer_property'));
+        return view('frontend.master_plan', compact( 'developer_property'));
     }
 
     public function floor_plan($id)
