@@ -305,21 +305,18 @@
 
                                         <label for="Status">Status</label>
                                         <select class="form-select" id="status" name="status">
-                                            @foreach ($developer_property as $dev_property)
-                                                <option value="new"
-                                                    {{ $dev_property->status == 'new' ? 'selected' : '' }}>
-                                                    New Launch
-                                                </option>
-                                                <option value="under_construction"
-                                                    {{ $dev_property->status == 'under_construction' ? 'selected' : '' }}>
-                                                    Under Construction
-                                                </option>
-                                                <option value="ready_to_move"
-                                                    {{ $dev_property->status == 'ready_to_move' ? 'selected' : '' }}>
-                                                    Ready to Move
-                                                </option>
-                                            @endforeach
+                                            <option value="">Select Status</option>
+                                            <option value="new" {{ request('status') == 'new' ? 'selected' : '' }}>
+                                                New Launch
+                                            </option>
+                                            <option value="under_construction" {{ request('status') == 'under_construction' ? 'selected' : '' }}>
+                                                Under Construction
+                                            </option>
+                                            <option value="ready_to_move" {{ request('status') == 'ready_to_move' ? 'selected' : '' }}>
+                                                Ready to Move
+                                            </option>
                                         </select>
+
 
 
                                         <div class="accordion-item">
@@ -472,7 +469,7 @@
                                 </div>
                             @endforelse
                         </div>
-                        {{ $properties->links() }}
+                        {{-- {{ $properties->links() }} --}}
 
 
                     </div>

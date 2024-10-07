@@ -212,15 +212,25 @@ class FrontendController extends Controller
         // dd($properties);
 
         $communities = Community::all();
-        $developer_property = DeveloperProperty::all();
+        $developers = Developer::all();
+        
+        return view('frontend.offplan', compact('properties',  'communities', 'developers'));
+    }
+
+        public function showPropertiesByLocation($location)
+    {
+        $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
+            $query->where('location', $location);
+        })->get();
+        //  dd($properties, $location);
+        $communities = Community::all();
+
         $developers = Developer::all();
 
-
-
-        // Log the count of filtered properties
-        // Return the view with filtered properties
-        return view('frontend.offplan', compact('properties',  'communities', 'developer_property', 'developers'));
+        // Return view with filtered developer properties
+        return view('frontend.offplan', compact('properties','communities', 'developers'));
     }
+
 
 
 }

@@ -13,6 +13,10 @@ class DeveloperProperty extends Model
         'payment_plan' => 'array',
     ];
 
+    public function community()
+    {
+        return $this->belongsTo(Community::class, 'community');
+    }
     public function Amenity()
     {
         return $this->belongsToMany(Amenity::class, 'amenity_developer_property', 'developer_property_id', 'amenity_id');
@@ -42,8 +46,7 @@ class DeveloperProperty extends Model
     {
         return $this->hasMany(images::class, );
     }
-    public function community_name()
-    {
-        return $this->belongsTo(Community::class, 'community');
-    }
+
+
+
 }

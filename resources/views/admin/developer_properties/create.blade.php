@@ -302,7 +302,7 @@
 
                 <div class="col-md-6">
                     <label for="master_plan_description">Master Plan Descripion</label>
-                    @if (isset($developerProperty) && $developerProperty->master_plan_description)
+                    @if (isset($developerProperty) && !empty($developerProperty->master_plan_description))
                     <input type="text" name="master_plan_description" class="form-control" value="{{ $developerProperty->master_plan_description }}" required>
                     @endif
                 </div>

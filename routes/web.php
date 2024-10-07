@@ -43,6 +43,7 @@ require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/properties/{location}',  'showPropertiesByLocation')->name('properties.byLocation');
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
