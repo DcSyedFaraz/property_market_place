@@ -301,18 +301,17 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="master_plan_description">Master Plan Descripion</label>
-                    @if (isset($developerProperty) && !empty($developerProperty->master_plan_description))
-                    <input type="text" name="master_plan_description" class="form-control" value="{{ $developerProperty->master_plan_description }}" required>
-                    @endif
+                    <label for="master_plan_description">Master Plan Description</label>
+                    <textarea name="master_plan_description" id="master_plan_description" cols="30" rows="10"
+                        class="form-control" required>{{ isset($developerProperty) ? $developerProperty->master_plan_description : '' }}</textarea>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="location_map_description">Location Map Descripion</label>
-                    @if (isset($developerProperty) && $developerProperty->location_map_description)
-                    <input type="text" name="location_map_description" class="form-control" value="{{ $developerProperty->location_map_description }}" required>
-                    @endif
+                    <label for="location_map_description">Location Map Description</label>
+                    <textarea name="location_map_description" id="location_map_description" cols="30" rows="10"
+                        class="form-control" required>{{ isset($developerProperty) ? $developerProperty->location_map_description : '' }}</textarea>
                 </div>
+
 
 
                 <div class="col-12">
@@ -463,9 +462,9 @@
 
                 <div class="col-12">
                     <label for="floor_plan_description">Floor Plan Description</label>
-                    @if (isset($developerProperty) && $developerProperty->floor_plan_description)
-                    <input type="text" name="floor_plan_description" class="form-control" value="{{ $developerProperty->floor_plan_description }}" required>
-                    @endif
+                    <textarea name="floor_plan_description" id="floor_plan_description" cols="30" rows="10"
+                        class="form-control" required>{{ isset($developerProperty) ? $developerProperty->floor_plan_description : '' }}</textarea>
+
                 </div>
 
 

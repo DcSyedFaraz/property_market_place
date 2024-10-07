@@ -237,11 +237,11 @@
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Ajman') }}">
-                                <img src="{{ asset('assets/img/img01.png') }}" alt="Ajman" />
+                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Ajman" />
                                     <h4>Ajman</h4>
                                 </a>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -263,79 +263,44 @@
                     </div>
                     <div class="col-md-6">
                         <div class="le2 align-items-center justify-content-end d-flex">
-                            <a href="">All Properties</a>
+                            <a href="{{ route('offplan') }}">All Properties</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{{ asset('assets/img/card01.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Alpina house</h5>
-                                <p class="card-text">
-                                    Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
-                                    create
-                                    interactive.
-                                </p>
-                                <h6 class="price0">$1,960.00</h6>
-                                <div class="serv-icon mt-4">
-                                    <i class="fa fa-bed"><span>Bed 4</span></i>
-                                    <i class="fa fa-bath"><span>Bath 2</span></i>
-                                    <i class="fa fa-vector-square"><span>1500 sqft</span></i>
-                                </div>
-                                <div class="det d-flex align-items-center mt-4">
-                                    <p>Juniatur Rahman</p>
-                                    <a href="">Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{{ asset('assets/img/card01.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Alpina house</h5>
-                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
-                                    create
-                                    interactive.
-                                </p>
-                                <h6 class="price0">$1,960.00</h6>
-                                <div class="serv-icon mt-4">
-                                    <i class="fa fa-bed"><span>Bed 4</span></i>
-                                    <i class="fa fa-bath"><span>Bath 2</span></i>
-                                    <i class="fa fa-vector-square"><span>1500 sqft</span></i>
-                                </div>
-                                <div class="det d-flex align-items-center mt-4">
-                                    <p>Juniatur Rahman</p>
-                                    <a href="">Details</a>
+                    @forelse ($developer_properties as $property)
+                        <div class="col-md-4">
+                            {{-- @dd($developer_properties) --}}
+                            <div class="card">
+                                <img src="{{ asset('storage/' . $property->cover_image) }}" class="card-img-top"
+                                    alt="{{ $property->name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $property->name }}</h5>
+                                    <p class="card-text">
+                                        {{ $property->description }}
+                                    </p>
+                                    <h6 class="price0">{{ $property->price }} AED</h6>
+                                    <div class="serv-icon mt-4">
+                                        <i class="fa fa-bed"><span>Bed
+                                                {{ $property->propertyTypes->first()->unit_type }}</span></i>
+                                        {{-- <i class="fa fa-bath"><span>Bath 2</span></i> --}}
+                                        <i class="fa fa-vector-square"><span>{{ $property->propertyTypes->first()->size }}
+                                                sqft</span></i>
+                                    </div>
+                                    <div class="det d-flex align-items-center mt-4">
+                                        <p>{{ $property->community_name->name ?? '' }} </p>
+                                        <a href="{{ route('projects', $property->id) }}">Details</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{{ asset('assets/img/card01.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Alpina house</h5>
-                                <p>Rapidiously myocardinate cross-platform intellectual capital model. Appropriately
-                                    create
-                                    interactive.
-                                </p>
-                                <h6 class="price0">$1,960.00</h6>
-                                <div class="serv-icon mt-4">
-                                    <i class="fa fa-bed"><span>Bed 4</span></i>
-                                    <i class="fa fa-bath"><span>Bath 2</span></i>
-                                    <i class="fa fa-vector-square"><span>1500 sqft</span></i>
-                                </div>
-                                <div class="det d-flex align-items-center mt-4">
-                                    <p>Juniatur Rahman</p>
-                                    <a href="">Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
+                        <p class="text-center">
+                            no property available
+                        </p>
+                    @endforelse
+
                 </div>
             </div>
         </div>

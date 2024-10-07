@@ -41,7 +41,7 @@ class DeveloperPropertyController extends Controller
 
         return view('admin.developer_properties.create', compact('developerProperty', 'developers', 'communities', 'master_plans', 'locations', 'Amenity'));
     }
-    private function validateRequest(Request $request)
+    private function validateRequest(Request $request, $isUpdate = false)
     {
         return $request->validate([
             'developer_id' => 'required|exists:developers,id',
@@ -60,8 +60,11 @@ class DeveloperPropertyController extends Controller
             'down_percentage' => 'nullable|numeric',
             'construction_percentage' => 'nullable|numeric',
             'community' => 'required|exists:communities,id',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            // Make 'logo' and 'cover_image' required only on create (i.e., not in update)
+            'logo' => $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'cover_image' => $isUpdate ? 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' : 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
             'gallery_images.*' => 'nullable|image|max:2048',
             'master_plan_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'location_map' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -80,6 +83,7 @@ class DeveloperPropertyController extends Controller
             'master_plan_id.*' => 'exists:master_plans,id',
         ]);
     }
+
 
 
     public function store(Request $request)
@@ -197,8 +201,8 @@ class DeveloperPropertyController extends Controller
     public function update(Request $request, $id)
     {
         // Validate the request
-        $this->validateRequest($request);
-
+        $this->validateRequest($request, true);
+        // dd($request->all());
         // Start the database transaction
         \DB::beginTransaction();
 
@@ -223,7 +227,7 @@ class DeveloperPropertyController extends Controller
                 'cover_image' => $this->updateFile($request, 'cover_image', $developerProperty->cover_image),
                 'master_plan_image' => $this->updateFile($request, 'master_plan_image', $developerProperty->master_plan_image),
                 'location_map' => $this->updateFile($request, 'location_map', $developerProperty->location_map),
-                'master_plan_description' => $request->master_plan_descripion,
+                'master_plan_description' => $request->master_plan_description,
                 'floor_plan_description' => $request->floor_plan_description,
                 'location_map_description' => $request->location_map_description,
             ]);

@@ -17,8 +17,11 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $developer_properties = DeveloperProperty::latest()->take(3)->get();
+
+        return view('frontend.index', compact('developer_properties'));
     }
+
     public function projects($id)
     {
         $developer_property = DeveloperProperty::findOrFail($id);
@@ -53,7 +56,7 @@ class FrontendController extends Controller
 
 
         // Return filtered data to the view
-        return view('frontend.offplan', compact('properties',  'communities', 'developer_property', 'developers'));
+        return view('frontend.offplan', compact('properties', 'communities', 'developer_property', 'developers'));
     }
 
 
@@ -118,7 +121,7 @@ class FrontendController extends Controller
     public function master_plan($id)
     {
         $developer_property = DeveloperProperty::findOrFail($id);
-        return view('frontend.master_plan', compact( 'developer_property'));
+        return view('frontend.master_plan', compact('developer_property'));
     }
 
     public function floor_plan($id)
@@ -213,11 +216,11 @@ class FrontendController extends Controller
 
         $communities = Community::all();
         $developers = Developer::all();
-        
-        return view('frontend.offplan', compact('properties',  'communities', 'developers'));
+
+        return view('frontend.offplan', compact('properties', 'communities', 'developers'));
     }
 
-        public function showPropertiesByLocation($location)
+    public function showPropertiesByLocation($location)
     {
         $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
             $query->where('location', $location);
@@ -228,7 +231,7 @@ class FrontendController extends Controller
         $developers = Developer::all();
 
         // Return view with filtered developer properties
-        return view('frontend.offplan', compact('properties','communities', 'developers'));
+        return view('frontend.offplan', compact('properties', 'communities', 'developers'));
     }
 
 

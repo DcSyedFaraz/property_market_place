@@ -8,7 +8,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/' . $developer_property->cover_image ) }}" alt="">
+                        <img src="{{ asset('storage/' . $developer_property->location_map) }}" class="img-fluid"
+                            alt="{{ $developer_property->name }}">
                     </div>
                     <div class="col-md-6">
                         <p>{{ $developer_property->location_map_description }}</p>

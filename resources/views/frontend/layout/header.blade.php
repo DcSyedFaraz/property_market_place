@@ -15,9 +15,7 @@
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('secondary_sale') }}">Secondary Properties </a>
                          </li>
-                         <li class="nav-item">
-                             <a class="nav-link" href="#">Holiday Homes</a>
-                         </li>
+                         
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
                          </li>

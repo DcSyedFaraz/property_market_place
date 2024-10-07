@@ -32,16 +32,16 @@
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Seconadry Properties</a>
+                                <a class="nav-link" href="{{ route('secondary_sale') }}">Seconadry Properties</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Holiday Homes</a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Off Plan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Services</a>
+                                <a class="nav-link" href="{{ route('service') }}">Services</a>
                             </li>
                         </ul>
                     </div>
@@ -62,25 +62,31 @@
                     <div class="col-md-8 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Overview</a>
-                            </li> 
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Amenity</a>
+                                <a class="nav-link" href="{{ route('projects', $developer_property->id) }}">Overview</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Payment Plan</a>
+                                <a class="nav-link"
+                                    href="{{ route('address_residence', $developer_property->id) }}">Amenity</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Floor Plans</a>
+                                <a class="nav-link" href="{{ route('payment_plan', $developer_property->id) }}">Payment
+                                    Plan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Location</a>
+                                <a class="nav-link" href="{{ route('floor_plan', $developer_property->id) }}">Floor
+                                    Plans</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Master Plan </a>
+                                <a class="nav-link"
+                                    href="{{ route('location_map', $developer_property->id) }}">Location</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#gallery">Gallery</a>
+                                <a class="nav-link" href="{{ route('master_plan', $developer_property->id) }}">Master
+                                    Plan </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                    href="{{ route('projects', $developer_property->id) }}#gallery">Gallery</a>
                             </li>
                         </ul>
                     </div>
@@ -192,54 +198,36 @@
             </div>
         </div>
     </section>
-
+    @php
+        $footerItems = app\Models\DeveloperProperty::where('developer_id', $developer_property->developer_id)
+            ->latest()
+            ->take(3)
+            ->get();
+    @endphp
     <section class="view-sec-02 sec-space">
         <div class="similer-vail mt-4">
             <div class="container">
                 <h2>Similar Availabilities in Resale Property</h2>
                 <div class="row mt-4">
-                    <div class="col-md-4">
-                        <div class="card1">
-                            <img src="{{ asset('assets/img/avial-img.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">1980000 Dhs</h5>
-                                <ul class="card-detail">
-                                    <li>1 Bedroom Apartment</li>
-                                    <li>Al Ruwayyah, Dubai</li>
-                                    <li>958 Sq. Ft.</li>
-                                </ul>
-                                <a class="btn-detail1" href="#">View Deatils</a>
+                    @foreach ($footerItems as $footerItem)
+                        <div class="col-md-4">
+                            <div class="card1">
+                                <img src="{{ asset('storage/' . $footerItem->cover_image) }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $footerItem->price }} AED</h5>
+                                    <ul class="card-detail">
+                                        <li>Bed
+                                            {{ $footerItem->propertyTypes->first()->unit_type }}</li>
+                                        <li>{{ $footerItem->community_name->name ?? '' }}</li>
+                                        <li>{{ $footerItem->propertyTypes->first()->size }} Sq. Ft.</li>
+                                    </ul>
+                                    <a class="btn-detail1" href="{{ route('projects', $footerItem->id) }}">View
+                                        Deatils</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card1">
-                            <img src="{{ asset('assets/img/avial-img.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">1980000 Dhs</h5>
-                                <ul class="card-detail">
-                                    <li>1 Bedroom Apartment</li>
-                                    <li>Al Ruwayyah, Dubai</li>
-                                    <li>958 Sq. Ft.</li>
-                                </ul>
-                                <a class="btn-detail1" href="#">View Deatils</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card1">
-                            <img src="{{ asset('assets/img/avial-img.png') }}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">1980000 Dhs</h5>
-                                <ul class="card-detail">
-                                    <li>1 Bedroom Apartment</li>
-                                    <li>Al Ruwayyah, Dubai</li>
-                                    <li>958 Sq. Ft.</li>
-                                </ul>
-                                <a class="btn-detail1" href="#">View Deatils</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
