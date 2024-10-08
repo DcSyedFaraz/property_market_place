@@ -217,7 +217,15 @@ class FrontendController extends Controller
         $communities = Community::all();
         $developers = Developer::all();
 
-        return view('frontend.offplan', compact('properties', 'communities', 'developers'));
+        $search = $request->input('field3');
+
+        if($search){
+            $properties = DeveloperProperty::where('name', 'LIKE', '%' . $search . '%')->get();
+        }else{
+            $properties = DeveloperProperty::all();
+        }
+
+            return view('frontend.offplan', compact('properties',  'search', 'communities', 'developers'));
     }
 
     public function showPropertiesByLocation($location)

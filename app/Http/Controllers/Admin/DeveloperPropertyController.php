@@ -223,7 +223,7 @@ class DeveloperPropertyController extends Controller
                 'construction_percentage' => $request->construction_percentage,
                 'community' => $request->community,
                 // Update images only if they are present
-                'logo' => $this->updateFile($request, 'logo', $developerProperty->logo),
+                'logo' => $this->updateFile($request, 'logo', $developerProperty->logo),  
                 'cover_image' => $this->updateFile($request, 'cover_image', $developerProperty->cover_image),
                 'master_plan_image' => $this->updateFile($request, 'master_plan_image', $developerProperty->master_plan_image),
                 'location_map' => $this->updateFile($request, 'location_map', $developerProperty->location_map),
