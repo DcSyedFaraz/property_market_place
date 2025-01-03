@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">{{ $property->title }}</h1>
-                    <p class="text-center"><a href="index.html">Home</a> / <a href="#">{{ $property->title }}</a></p>
+                    <p class="text-center"><a href="/">Home</a> / <a href="#">{{ $property->title }}</a></p>
                 </div>
             </div>
     </section>

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Community List</h1>
-                    <p class="text-center"><a href="index.html">Home</a> / <a href="#">Offplan Projects</a></p>
+                    <p class="text-center"><a href="/">Home</a> / <a href="#">Offplan Projects</a></p>
                 </div>
             </div>
     </section>
@@ -129,7 +129,7 @@
                                 </a>
                             </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>

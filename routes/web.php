@@ -43,8 +43,8 @@ require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
-    Route::get('/properties',  'filter')->name('properties.index');
-    Route::get('/properties/{location}',  'showPropertiesByLocation')->name('properties.byLocation');
+    Route::get('/properties', 'filter')->name('properties.index');
+    Route::get('/properties/{location}', 'showPropertiesByLocation')->name('properties.byLocation');
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
@@ -67,6 +67,8 @@ Route::controller(FrontendController::class)->group(function () {
     // Route::get('/offplan/search',  'filter')->name('offplan_search');
 
 });
+Route::get('/complain', [FrontendController::class, 'showForm'])->name('complaint.form');
+Route::post('/complaint-submit', [FrontendController::class, 'submitForm'])->name('complaint.submit');
 Route::get('/search/offplan', [FrontendController::class, 'filter'])->name('offplan_search');
 
 

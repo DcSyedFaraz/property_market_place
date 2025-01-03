@@ -76,7 +76,7 @@
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="index.html">Home</a>
+                                        <a class="nav-link active" href="/">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Bulldog Stronger</a>

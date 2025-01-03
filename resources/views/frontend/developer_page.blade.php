@@ -8,7 +8,7 @@
 
 
                     <h1 class="text-center">{{ $developers->name }}</h1>
-                    <p class="text-center"><a href="index.html">Home</a> / <a href="#">Developer</a></p>
+                    <p class="text-center"><a href="/">Home</a> / <a href="#">Developer</a></p>
 
                 </div>
             </div>

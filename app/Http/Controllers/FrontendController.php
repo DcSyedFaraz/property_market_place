@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ComplaintMail;
 use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
@@ -12,9 +13,53 @@ use App\Models\MasterPlan;
 use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class FrontendController extends Controller
 {
+    public function showForm()
+    {
+        return view('frontend.complaint');
+    }
+
+    /**
+     * Handle form submission and send email.
+     */
+    public function submitForm(Request $request)
+    {
+        // Validate the form data
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'email' => 'required|email',
+            'building_villa' => 'required|string|max:255',
+            'flat_no' => 'required|string|max:50',
+            'complaint' => 'required|string',
+            'complaint_details' => 'required|string',
+            'suggestion' => 'nullable|string',
+            // 'email_flat_tenant' => 'sometimes|boolean',
+        ]);
+
+        // Prepare data for the email
+        $data = [
+            'full_name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'phone_number' => $validated['phone_number'],
+            'email' => $validated['email'],
+            'building_villa' => $validated['building_villa'],
+            'flat_no' => $validated['flat_no'],
+            'complaint' => $validated['complaint'],
+            // 'email_flat_tenant' => isset($validated['email_flat_tenant']) ? 'Yes' : 'No',
+            'complaint_details' => $validated['complaint_details'],
+            'suggestion' => $validated['suggestion'] ?? 'N/A',
+        ];
+
+        // Send the email
+        // Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Your complaint has been submitted successfully.');
+    }
     public function index()
     {
         $developer_properties = DeveloperProperty::latest()->take(3)->get();
@@ -219,13 +264,13 @@ class FrontendController extends Controller
 
         $search = $request->input('field3');
 
-        if($search){
+        if ($search) {
             $properties = DeveloperProperty::where('name', 'LIKE', '%' . $search . '%')->get();
-        }else{
+        } else {
             $properties = DeveloperProperty::all();
         }
 
-            return view('frontend.offplan', compact('properties',  'search', 'communities', 'developers'));
+        return view('frontend.offplan', compact('properties', 'search', 'communities', 'developers'));
     }
 
     public function showPropertiesByLocation($location)
