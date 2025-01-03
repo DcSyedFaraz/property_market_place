@@ -270,6 +270,32 @@ class FrontendController extends Controller
             $properties = DeveloperProperty::all();
         }
 
+        $query = DeveloperProperty::query();
+
+        // Check if sort option is set
+        if ($request->has('sort')) {
+            switch ($request->input('sort')) {
+                case 'newest':
+                    $query->orderBy('created_at', 'DESC'); // Sort by newest first
+                    break;
+                case 'oldest':
+                    $query->orderBy('created_at', 'ASC'); // Sort by oldest first
+                    break;
+                case 'price_high_to_low':
+                    $query->orderBy('price', 'DESC'); // Sort by price high to low
+                    break;
+                case 'price_low_to_high':
+                    $query->orderBy('price', 'ASC'); // Sort by price low to high
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Get the properties with applied sorting
+        $properties = $query->get();
+        // dd($properties);
+
         return view('frontend.offplan', compact('properties', 'search', 'communities', 'developers'));
     }
 

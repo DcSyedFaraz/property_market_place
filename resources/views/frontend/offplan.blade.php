@@ -414,12 +414,12 @@
                                     <form method="GET" action="{{ route('properties.index') }}">
                                         <ul class="form-style-101">
                                             <li>
-                                                <select name="field4" class="field-select" onchange="this.form.submit()">
+                                                <select name="sort" class="field-select" onchange="this.form.submit()">
                                                     <option value="">Sort By</option>
-                                                    <option value="Newest" {{ request('field4') == 'Newest' ? 'selected' : '' }}>Newest</option>
-                                                    <option value="Oldest" {{ request('field4') == 'Oldest' ? 'selected' : '' }}>Oldest</option>
-                                                    <option value="Price High To Low" {{ request('field4') == 'Price High To Low' ? 'selected' : '' }}>Price High To Low</option>
-                                                    <option value="Price Low To High" {{ request('field4') == 'Price Low To High' ? 'selected' : '' }}>Price Low To High</option>
+                                                    <option value="newest">Newest</option>
+                                                    <option value="oldest">Oldest</option>
+                                                    <option value="price_high_to_low">Price High To Low</option>
+                                                    <option value="price_low_to_high">Price Low To High</option>
                                                 </select>
                                             </li>
                                             <li>
