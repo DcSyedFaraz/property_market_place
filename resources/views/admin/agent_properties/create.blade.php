@@ -36,8 +36,8 @@
                 <label for="type" class="form-label">Property Type</label>
                 <select class="form-control" id="type" name="type" required>
                     <option value="">Select Property Type</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Retail Space">Retail Space</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Off-Plan">Off-Plan</option>
                     <option value="Villa">Villa</option>
                 </select>
             </div>

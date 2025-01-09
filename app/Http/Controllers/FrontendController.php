@@ -35,7 +35,7 @@ class FrontendController extends Controller
             'email' => 'required|email',
             'building_villa' => 'required|string|max:255',
             'flat_no' => 'required|string|max:50',
-            'complaint' => 'required|string',
+            'complaints' => 'required|array',
             'complaint_details' => 'required|string',
             'suggestion' => 'nullable|string',
             // 'email_flat_tenant' => 'sometimes|boolean',
@@ -48,7 +48,7 @@ class FrontendController extends Controller
             'email' => $validated['email'],
             'building_villa' => $validated['building_villa'],
             'flat_no' => $validated['flat_no'],
-            'complaint' => $validated['complaint'],
+            'complaints' => $validated['complaints'],
             // 'email_flat_tenant' => isset($validated['email_flat_tenant']) ? 'Yes' : 'No',
             'complaint_details' => $validated['complaint_details'],
             'suggestion' => $validated['suggestion'] ?? 'N/A',
@@ -301,16 +301,53 @@ class FrontendController extends Controller
 
     public function showPropertiesByLocation($location)
     {
-        $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
-            $query->where('location', $location);
-        })->get();
-        //  dd($properties, $location);
+        $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Ras Al Khaimah', 'Ajman'];
+        $allowedTypes = [
+            'Residential',
+            'Commercial',
+            'Off-Plan',
+            'Mall',
+            'Villa',
+        ];
         $communities = Community::all();
 
         $developers = Developer::all();
 
+        if (in_array($location, $allowedLocations)) {
+            // Search by location
+            $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
+                $query->where('location', $location);
+            })->get();
+
+
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+        }
+
+        // Check if the search term is a valid property type
+        elseif (in_array($location, $allowedTypes)) {
+            // Search by property type
+            $properties = DeveloperProperty::whereHas('propertyTypes', function ($query) use ($location) {
+                $query->where('property_type', $location);
+            })
+                ->with([
+                    'propertyTypes' => function ($query) use ($location) {
+                        $query->where('property_type', $location);
+                    }
+                ])
+                ->get();
+
+
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+        }
+
+        // If the search term is invalid, abort with a 404 error
+        else {
+            abort(404, 'Invalid search term');
+        }
+        //  dd($properties, $location);
+
+
         // Return view with filtered developer properties
-        return view('frontend.offplan', compact('properties', 'communities', 'developers'));
     }
 
 

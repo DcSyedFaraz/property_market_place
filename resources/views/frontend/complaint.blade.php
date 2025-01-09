@@ -31,7 +31,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-sm">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header text-white" style="background-color:#007681">
                             <h4 class="mb-0">Submit a Complaint</h4>
                         </div>
                         <div class="card-body">
@@ -117,42 +117,63 @@
                                     <h5>Complaint Details</h5>
                                     <hr>
                                     <div class="mb-3">
-                                        <label class="form-label">Complaint Category <span
-                                                class="text-danger">*</span></label>
-                                        <div class="row">
-                                            @php
-                                                $complaints = [
-                                                    'Air Conditioner',
-                                                    'Electricity Issue',
-                                                    'Water Issue',
-                                                    'Gas Issue',
-                                                    'Cleaning Issue',
-                                                    'Parking',
-                                                    'Security',
-                                                    'Civil Defence',
-                                                    'General Maintenance',
-                                                    'Swimming Pool Issue',
-                                                    'Other Complains',
-                                                ];
-                                            @endphp
-                                            @foreach ($complaints as $complaint)
-                                                <div class="col-md-6 mb-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="complaint"
-                                                            value="{{ $complaint }}"
-                                                            id="{{ strtolower(str_replace(' ', '_', $complaint)) }}"
-                                                            {{ old('complaint') == $complaint ? 'checked' : '' }} required>
-                                                        <label class="form-check-label"
-                                                            for="{{ strtolower(str_replace(' ', '_', $complaint)) }}">
-                                                            {{ $complaint }}
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            @endforeach
+                                        <label class="form-label">I've Complaint about:</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Air Conditioner" id="ac">
+                                            <label class="form-check-label" for="ac">Air Conditioner</label>
                                         </div>
-                                        @error('complaint')
-                                            <div class="text-danger mt-1">{{ $message }}</div>
-                                        @enderror
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Electricity Issue" id="electricity">
+                                            <label class="form-check-label" for="electricity">Electricity Issue</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Water Issue" id="water">
+                                            <label class="form-check-label" for="water">Water Issue</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Gas Issue" id="gas">
+                                            <label class="form-check-label" for="gas">Gas Issue</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Cleaning Issue" id="cleaning">
+                                            <label class="form-check-label" for="cleaning">Cleaning Issue</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Parking" id="parking">
+                                            <label class="form-check-label" for="parking">Parking</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Security" id="security">
+                                            <label class="form-check-label" for="security">Security</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Civil Defence" id="civil_defence">
+                                            <label class="form-check-label" for="civil_defence">Civil Defence</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="General Maintenance" id="maintenance">
+                                            <label class="form-check-label" for="maintenance">General Maintenance</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Swimming Pool Issue" id="swimming_pool">
+                                            <label class="form-check-label" for="swimming_pool">Swimming Pool
+                                                Issue</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="complaints[]"
+                                                value="Other Complains" id="other_complains">
+                                            <label class="form-check-label" for="other_complains">Other Complains</label>
+                                        </div>
                                     </div>
 
                                     {{-- <div class="mb-3 form-check">
@@ -183,7 +204,8 @@
 
                                 <!-- Submit Button -->
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg">Submit Complaint</button>
+                                    <button type="submit" style="background-color:#007681; border: #007681"
+                                        class="btn btn-dark btn-lg">Submit Complaint</button>
                                 </div>
                             </form>
                         </div>

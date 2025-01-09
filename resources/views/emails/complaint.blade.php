@@ -13,7 +13,13 @@
     <p><strong>Email:</strong> {{ $data['email'] }}</p>
     <p><strong>Building / Villa:</strong> {{ $data['building_villa'] }}</p>
     <p><strong>Flat No.:</strong> {{ $data['flat_no'] }}</p>
-    <p><strong>Complaint About:</strong> {{ $data['complaint'] }}</p>
+    <p><strong>Complaint About:</strong>
+    <ul>
+        @foreach ($data['complaints'] as $complaint)
+            <li>{{ $complaint }}</li>
+        @endforeach
+    </ul>
+    </p>
     {{-- <p><strong>Email Flat Tenant:</strong> {{ $data['email_flat_tenant'] }}</p> --}}
     <p><strong>Complaint Details:</strong></p>
     <p>{{ $data['complaint_details'] }}</p>
