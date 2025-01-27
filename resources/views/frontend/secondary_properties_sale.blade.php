@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">Properties For Sale</h1>
-                    <p class="text-center"><a href="index.html">Home</a> / <a href="#">Properties For Sale</a></p>
+                    <p class="text-center"><a href="/">Home</a> / <a href="#">Properties For Sale</a></p>
                 </div>
             </div>
     </section>

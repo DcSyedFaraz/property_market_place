@@ -14,6 +14,7 @@ class CommunityController extends Controller
     {
         $communities = Community::all();
         $amenities = Amenity::all();
+        // dd($amenities) ;
         return view('admin.communities.index', compact('communities', 'amenities'));
     }
 
@@ -41,7 +42,7 @@ class CommunityController extends Controller
         ]);
 
         // Attach the selected amenities to the community
-        $community->amenities()->attach( $request['amenities']);
+        $community->amenities()->attach($request['amenities']);
 
 
         return redirect()->route('communities.index')->with('success', 'Community created successfully.');
@@ -76,8 +77,8 @@ class CommunityController extends Controller
 
         $community->update($data);
 
-        if ($request->has('amenity_id')) {
-            $community->amenities()->sync($request->amenities);
+        if ($request->filled('amenities')) {
+            $community->amenities()->sync($request->input('amenities', []));
         }
         return redirect()->route('communities.index')->with('success', 'Community updated successfully.');
     }

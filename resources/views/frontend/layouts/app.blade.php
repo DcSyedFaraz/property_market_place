@@ -8,8 +8,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <!-- Favicons -->
-    <link href="" rel="icon" />
-    <link href="" rel="apple-touch-icon" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <!-- Bootstrap Files -->
@@ -111,7 +110,7 @@
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="index.html">Home</a>
+                                        <a class="nav-link active" href="/">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">Bulldog Stronger</a>
@@ -263,8 +262,8 @@
             <div class="row ms-2">
                 <div class="col-md-4">
                     <a href="#"><img src="{{ asset('assets/img/logo-footer01.png') }}" alt=""></a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
-                        consectetur tellus ultricies.</p>
+                    {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
+                        consectetur tellus ultricies.</p> --}}
                     <div class="foter-social-logo mt-4 mb-4">
                         <a href="#"><i class="fab fa-facebook-square"></i></a>
                         <a href="#"><i class="fab fa-twitter-square"></i></a>
@@ -276,31 +275,28 @@
                     <h3>Get In Touch</h3>
                     <ul class="icon-text1">
                         <li><a href="#"><i class="bi bi-geo-alt-fill"></i>
-                                <p>789 Inner Lane, Holy park,
-                                    California, USA</p>
+                                <p>Khalifa Park Area - Zone 1 - Ministries Complex - Abu Dhabi</p>
                             </a></li>
-                        <li><a href="#"><i class="bi bi-telephone-outbound-fill"></i> +00 123 456 7890</a></li>
-                        <li><a href="#"><i class="bi bi-envelope"></i> Thehrealestate,@support.com</a></li>
+                        <li><a href="tel:022222040"><i class="bi bi-telephone-outbound-fill"></i> 022222040</a></li>
+                        <li><a href="mailto:info@thehr.ae"><i class="bi bi-envelope"></i> info@thehr.ae</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2">
-                    <h3>Useful Link</h3>
+                    <h3>Quick links</h3>
                     <ul>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> All Properties</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> All Authors</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Team</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Pricing</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Products</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Rentals</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Sales</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Apartments</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Industrial</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Offices</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Villas</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h3>Explore</h3>
+                    <h3>Contact Us</h3>
                     <ul>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> All Properties</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> All Authors</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Team</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Pricing</a></li>
-                        <li><a href="#"><i class="bi bi-arrow-right-short"></i> Our Products</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Contact us</a></li>
+                        <li><a href="#"><i class="bi bi-arrow-right-short"></i>Survey</a></li>
                     </ul>
                 </div>
             </div>

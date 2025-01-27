@@ -82,24 +82,38 @@
 
                                         <div class="mb-3">
                                             <label for="amenities" class="form-label">Select Amenities:</label>
-                                            <select class="form-select select2" id="amenities" name="amenities[]" multiple>
+                                            <select class="form-select amenities" id="amenitiess" name="amenities[]"
+                                                multiple>
                                                 @foreach ($amenities as $amenity)
-                                                    <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                                    <option value="{{ $amenity->id }}"
+                                                        {{ in_array($amenity->id, $community->amenities->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                        {{ $amenity->name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="location" >Select Location:</label>
-                                            <select id="location" class="form-control" name="location">
-                                                    <option value="{{ $community->id }}" selected>{{ $community->location }}</option>
-                                                    <option value="Abu Dhabi">Abu Dhabi</option>
-                                                    <option value="Sharjah">Sharjah</option>
-                                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-                                                    <option value="Ajman">Ajman</option>
-
+                                            <label for="location" class="form-label">Select Location:</label>
+                                            <select id="location" class="form-select" name="location">
+                                                @php
+                                                    $locations = [
+                                                        'Dubai',
+                                                        'Abu Dhabi',
+                                                        'Sharjah',
+                                                        'Al Ain',
+                                                        'Fujairah',
+                                                    ];
+                                                @endphp
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location }}"
+                                                        {{ $community->location == $location ? 'selected' : '' }}>
+                                                        {{ $location }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
+
 
                                     </div>
                                     <div class="modal-footer">
@@ -148,21 +162,21 @@
 
                             <div class="mb-3">
                                 <label for="amenities" class="form-label">Select Amenities:</label>
-                                <select class="form-select select2" id="amenities" name="amenities[]" multiple>
-                                    @foreach ($amenities as $amenity)
-                                        <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                <select class="form-control amenities" id="amenities" name="amenities[]" multiple>
+                                    @foreach ($amenities as $amenit)
+                                        <option value="{{ $amenit->id }}">{{ $amenit->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label for="location" >Select Location:</label>
+                                <label for="location">Select Location:</label>
                                 <select id="location" class="form-control" name="location">
-                                        <option value="Dubai">Dubai</option>
-                                        <option value="Abu Dhabi">Abu Dhabi</option>
-                                        <option value="Sharjah">Sharjah</option>
-                                        <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-                                        <option value="Ajman">Ajman</option>
+                                    <option value="Dubai">Dubai</option>
+                                    <option value="Abu Dhabi">Abu Dhabi</option>
+                                    <option value="Sharjah">Sharjah</option>
+                                    <option value="Al Ain">Al Ain</option>
+                                    <option value="Fujairah">Fujairah</option>
                                 </select>
                             </div>
                         </div>
@@ -175,4 +189,19 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('#communityModal').on('shown.bs.modal', function() {
+            $('.amenities').select2({
+                dropdownParent: $('#communityModal') // Attach dropdown to modal
+            });
+        });
+        $('div[id^="editModal"]').on('shown.bs.modal', function() {
+            const modalId = $(this).attr('id'); // Get the modal ID dynamically
+            $('.amenities').select2({
+                dropdownParent: $('#' + modalId) // Attach dropdown to the modal dynamically
+            });
+        });
+    </script>
 @endsection

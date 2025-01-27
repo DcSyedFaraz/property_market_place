@@ -376,12 +376,34 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $propertyTypes = [
+                                    ['label' => 'Residential'],
+                                    ['label' => 'Commercial'],
+                                    ['label' => 'Off-Plan'],
+                                    ['label' => 'Mall'],
+                                    ['label' => 'Villa'],
+                                ];
+                            @endphp
                             @if (isset($developerProperty) && $developerProperty->propertyTypes)
                                 @foreach ($developerProperty->propertyTypes as $index => $propertyType)
                                     <tr>
-                                        <td><input type="text"
-                                                name="property_types[{{ $index }}][property_type]"
-                                                class="form-control" value="{{ $propertyType->property_type }}" required>
+                                        <td>
+
+                                            <select name="property_types[{{ $index }}][property_type]"
+                                                class="form-select form-control" required>
+                                                <option value="" disabled selected
+                                                    {{ old('property_types.' . $index . '.property_type', $propertyType->property_type) ? '' : 'selected' }}>
+                                                    Property Type
+                                                </option>
+                                                @foreach ($propertyTypes as $type)
+                                                    <option value="{{ $type['label'] }}"
+                                                        {{ old('property_types.' . $index . '.property_type', $propertyType->property_type) == $type['label'] ? 'selected' : '' }}>
+                                                        {{ $type['label'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
                                         </td>
                                         <td><input type="text" name="property_types[{{ $index }}][unit_type]"
                                                 class="form-control" value="{{ $propertyType->unit_type }}"></td>
@@ -393,8 +415,20 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td><input type="text" name="property_types[0][property_type]"
-                                            class="form-control" required></td>
+                                    <td>
+                                        <select name="property_types[0][property_type]" class="form-select form-control"
+                                            required>
+                                            <option value="" disabled>Property Type
+                                            </option>
+                                            @foreach ($propertyTypes as $type)
+                                                <option value="{{ $type['label'] }}">
+                                                    {{ $type['label'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <input type="text" name="property_types[0][property_type]"
+                                            class="form-control" required> --}}
+                                    </td>
                                     <td><input type="text" name="property_types[0][unit_type]" class="form-control">
                                     </td>
                                     <td><input type="text" name="property_types[0][size]" class="form-control"></td>
@@ -632,7 +666,16 @@
             $('.add-property-type').click(function() {
                 $('#propertyTypesTable tbody').append(`
                     <tr>
-                        <td><input type="text" name="property_types[${propertyTypeIndex}][property_type]" class="form-control" required></td>
+                        <td>
+                            <select name="property_types[${propertyTypeIndex}][property_type]" class="form-select form-control" required>
+                                <option value="" disabled selected>Property Type</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Off-Plan"">Off-Plan</option>
+                                <option value="Mall">Mall</option>
+                                <option value="Villa">Villa</option>
+                         </select>
+                     </td>
                         <td><input type="text" name="property_types[${propertyTypeIndex}][unit_type]" class="form-control"></td>
                         <td><input type="text" name="property_types[${propertyTypeIndex}][size]" class="form-control"></td>
                         <td><button type="button" class="btn btn-danger remove-property-type">-</button></td>

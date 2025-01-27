@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ComplaintMail;
 use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
@@ -12,9 +13,53 @@ use App\Models\MasterPlan;
 use App\Models\Product;
 use DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class FrontendController extends Controller
 {
+    public function showForm()
+    {
+        return view('frontend.complaint');
+    }
+
+    /**
+     * Handle form submission and send email.
+     */
+    public function submitForm(Request $request)
+    {
+        // Validate the form data
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'email' => 'required|email',
+            'building_villa' => 'required|string|max:255',
+            'flat_no' => 'required|string|max:50',
+            'complaints' => 'required|array',
+            'complaint_details' => 'required|string',
+            'suggestion' => 'nullable|string',
+            // 'email_flat_tenant' => 'sometimes|boolean',
+        ]);
+
+        // Prepare data for the email
+        $data = [
+            'full_name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'phone_number' => $validated['phone_number'],
+            'email' => $validated['email'],
+            'building_villa' => $validated['building_villa'],
+            'flat_no' => $validated['flat_no'],
+            'complaints' => $validated['complaints'],
+            // 'email_flat_tenant' => isset($validated['email_flat_tenant']) ? 'Yes' : 'No',
+            'complaint_details' => $validated['complaint_details'],
+            'suggestion' => $validated['suggestion'] ?? 'N/A',
+        ];
+
+        // Send the email
+        // Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Your complaint has been submitted successfully.');
+    }
     public function index()
     {
         $developer_properties = DeveloperProperty::latest()->take(3)->get();
@@ -256,16 +301,53 @@ class FrontendController extends Controller
 
     public function showPropertiesByLocation($location)
     {
-        $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
-            $query->where('location', $location);
-        })->get();
-        //  dd($properties, $location);
+        $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
+        $allowedTypes = [
+            'Residential',
+            'Commercial',
+            'Off-Plan',
+            'Mall',
+            'Villa',
+        ];
         $communities = Community::all();
 
         $developers = Developer::all();
 
+        if (in_array($location, $allowedLocations)) {
+            // Search by location
+            $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
+                $query->where('location', $location);
+            })->get();
+
+
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+        }
+
+        // Check if the search term is a valid property type
+        elseif (in_array($location, $allowedTypes)) {
+            // Search by property type
+            $properties = DeveloperProperty::whereHas('propertyTypes', function ($query) use ($location) {
+                $query->where('property_type', $location);
+            })
+                ->with([
+                    'propertyTypes' => function ($query) use ($location) {
+                        $query->where('property_type', $location);
+                    }
+                ])
+                ->get();
+
+
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+        }
+
+        // If the search term is invalid, abort with a 404 error
+        else {
+            abort(404, 'Invalid search term');
+        }
+        //  dd($properties, $location);
+
+
         // Return view with filtered developer properties
-        return view('frontend.offplan', compact('properties', 'communities', 'developers'));
     }
 
 
