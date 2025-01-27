@@ -8,8 +8,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <!-- Favicons -->
-    <link href="" rel="icon" />
-    <link href="" rel="apple-touch-icon" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <!-- Bootstrap Files -->
