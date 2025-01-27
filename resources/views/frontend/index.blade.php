@@ -8,8 +8,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <!-- Favicons -->
-    <link href="" rel="icon" />
-    <link href="" rel="apple-touch-icon" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <!-- Bootstrap Files -->
@@ -36,10 +35,7 @@
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('secondary_sale') }}">Seconadry Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Holiday Homes</a>
+                                <a class="nav-link" href="{{ route('secondary_sale') }}">Properties</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
@@ -48,7 +44,10 @@
                                 <a class="nav-link" href="{{ route('service') }}">Services</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('new_articles') }}">News & Articles</a>
+                                <a class="nav-link" href="#">Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">List your Property</a>
@@ -56,7 +55,7 @@
                         </ul>
                     </div>
                     <div class="col-md-2 mob-1">
-                        <a class="nav-link btn10" href="{{ route('login') }}">Contact us</a>
+                        <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
                     </div>
                     <div class="col-6 d-md-none">
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -212,15 +211,21 @@
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
+                                <a href="{{ route('properties.byLocation', 'Abu Dhabi') }}">
+                                    <img src="{{ asset('assets/img/img02.png') }}" alt="Abu Dhabi" />
+                                    <h4>Abu Dhabi</h4>
+                                </a>
+                            </div>
+                            <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Dubai') }}">
                                     <img src="{{ asset('assets/img/img01.png') }}" alt="Dubai" />
                                     <h4>Dubai</h4>
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="{{ route('properties.byLocation', 'Abu Dhabi') }}">
-                                    <img src="{{ asset('assets/img/img02.png') }}" alt="Abu Dhabi" />
-                                    <h4>Abu Dhabi</h4>
+                                <a href="{{ route('properties.byLocation', 'Al Ain') }}">
+                                    <img src="{{ asset('assets/img/img04.png') }}" alt="Al Ain" />
+                                    <h4>Al Ain</h4>
                                 </a>
                             </div>
                             <div class="item">
@@ -230,15 +235,15 @@
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="{{ route('properties.byLocation', 'Ras Al Khaimah') }}">
-                                    <img src="{{ asset('assets/img/img04.png') }}" alt="Ras Al Khaimah" />
-                                    <h4>Ras Al Khaimah</h4>
+                                <a href="{{ route('properties.byLocation', 'Fujairah') }}">
+                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Fujairah" />
+                                    <h4>Fujairah</h4>
                                 </a>
                             </div>
                             <div class="item">
-                                <a href="{{ route('properties.byLocation', 'Ajman') }}">
-                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Ajman" />
-                                    <h4>Ajman</h4>
+                                <a href="{{ route('properties.byLocation', 'Ras Al Khaimah') }}">
+                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Ras Al Khaimah" />
+                                    <h4>Ras Al Khaimah</h4>
                                 </a>
                             </div>
 
@@ -249,7 +254,7 @@
         </div>
     </section>
 
-    <section>
+    {{-- <section>
         <div class="sec-4">
             <div class="container">
                 <div class="row">
@@ -271,7 +276,6 @@
                 <div class="row mt-4">
                     @forelse ($developer_properties as $property)
                         <div class="col-md-4">
-                            {{-- @dd($developer_properties) --}}
                             <div class="card">
                                 <img src="{{ asset('storage/' . $property->cover_image) }}" class="card-img-top"
                                     alt="{{ $property->name }}">
@@ -284,7 +288,6 @@
                                     <div class="serv-icon mt-4">
                                         <i class="fa fa-bed"><span>Bed
                                                 {{ $property->propertyTypes->first()->unit_type }}</span></i>
-                                        {{-- <i class="fa fa-bath"><span>Bath 2</span></i> --}}
                                         <i class="fa fa-vector-square"><span>{{ $property->propertyTypes->first()->size }}
                                                 sqft</span></i>
                                     </div>
@@ -304,7 +307,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Sec 5 -->
     <section>
@@ -324,33 +327,33 @@
                             <a href="">All Properties</a>
                         </div>
                     </div>
-                    <div class="owl-carousel service-carol owl-theme mt-4">
+                    <div class="owl-carousel type-carol owl-theme mt-4">
                         <div class="item">
-                            <img src="{{ asset('assets/img/img01.png') }}" alt="" />
+                            <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Residential') }}">
                                 <h4>Residential</h4>
                             </a>
                         </div>
                         <div class="item">
-                            <img src="{{ asset('assets/img/img02.png') }}" alt="" />
+                            <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Commercial') }}">
                                 <h4>Commercial</h4>
                             </a>
                         </div>
                         <div class="item">
-                            <img src="{{ asset('assets/img/img03.png') }}" alt="" />
+                            <img src="{{ asset('assets/img/Off-Plan.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Off-Plan') }}">
                                 <h4>Off-Plan</h4>
                             </a>
                         </div>
                         <div class="item">
-                            <img src="{{ asset('assets/img/img04.png') }}" alt="" />
+                            <img src="{{ asset('assets/img/mall.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Mall') }}">
                                 <h4>Mall</h4>
                             </a>
                         </div>
                         <div class="item">
-                            <img src="{{ asset('assets/img/img01.png') }}" alt="" />
+                            <img src="{{ asset('assets/img/villa.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Villa') }}">
                                 <h4>Villa</h4>
                             </a>
@@ -377,9 +380,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        <span>Find, Buy & Own Your Dream Home</span>
-                                        <h2>Buy a home</h2>
-                                        <p>Explore Apartments, Villas, Penthouses, Mansions and more at service.</p>
+                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
+                                        <h2>Buy your own</h2>
+                                        <p>Apartments and villas.</p>
                                         <a href="">Read More</a>
                                     </div>
                                 </div>
@@ -396,9 +399,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        <span>Find, Buy & Own Your Dream Home</span>
-                                        <h2>Buy a home</h2>
-                                        <p>Explore Apartments, Villas, Penthouses, Mansions and more at service.</p>
+                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
+                                        <h2>Buy your own</h2>
+                                        <p>Shops and warehouse.</p>
                                         <a href="">Read More</a>
                                     </div>
                                 </div>
@@ -418,16 +421,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        <span>Find, Buy & Own Your Dream Home</span>
-                                        <h2>Buy a home</h2>
-                                        <p>Explore Apartments, Villas, Penthouses, Mansions and more at service.</p>
+                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
+                                        <h2>Renting made easy</h2>
+                                        <p>Rental Properties - in Al Fujairah, Al Raha Gradens, Baniyas, Al Garhoud.</p>
                                         <a href="">Read More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -445,7 +448,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -462,13 +465,17 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/Aldar Logo.webp') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}" alt="">
+                    </div>
+                    <div class="item"><img src="{{ asset('assets/img/Dubai properties Logo.webp') }}"
+                            alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/Ellington Logo.webp') }}" alt="">
+                    </div>
+                    <div class="item"><img src="{{ asset('assets/img/Emaar Properties Logo.webp') }}"
+                            alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/Meraas Logo.webp') }}" alt=""></div>
+                    {{-- <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt=""></div> --}}
                 </div>
             </div>
         </div>
@@ -487,6 +494,24 @@
         loop: true,
         margin: 10,
         nav: true,
+        items: 3,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
+    $('.type-carol').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        items: 3,
         responsive: {
             0: {
                 items: 2
@@ -506,6 +531,7 @@
         loop: true,
         margin: 10,
         nav: true,
+        items: 3,
         responsive: {
             0: {
                 items: 2
@@ -514,7 +540,7 @@
                 items: 2
             },
             1000: {
-                items: 7
+                items: 6
             }
         }
     })

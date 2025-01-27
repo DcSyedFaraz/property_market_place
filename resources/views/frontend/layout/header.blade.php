@@ -13,20 +13,22 @@
                              <a class="nav-link" href="{{ route('home') }}">Home</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="{{ route('secondary_sale') }}">Secondary Properties </a>
+                             <a class="nav-link" href="{{ route('secondary_sale') }}">Properties</a>
                          </li>
-
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="#">Location</a>
+                             <a class="nav-link" href="{{ route('service') }}">Services</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="{{ route('service') }}">Service</a>
+                             <a class="nav-link" href="#">Management</a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link" href="{{ route('new_articles') }}">News & Articles</a>
+                             <a class="nav-link" href="#">Contact Us</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="#">List your Property</a>
                          </li>
                      </ul>
                  </div>

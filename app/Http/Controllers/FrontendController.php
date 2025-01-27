@@ -301,7 +301,7 @@ class FrontendController extends Controller
 
     public function showPropertiesByLocation($location)
     {
-        $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Ras Al Khaimah', 'Ajman'];
+        $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
         $allowedTypes = [
             'Residential',
             'Commercial',

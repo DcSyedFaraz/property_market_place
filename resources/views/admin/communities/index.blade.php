@@ -101,8 +101,8 @@
                                                         'Dubai',
                                                         'Abu Dhabi',
                                                         'Sharjah',
-                                                        'Ras Al Khaimah',
-                                                        'Ajman',
+                                                        'Al Ain',
+                                                        'Fujairah',
                                                     ];
                                                 @endphp
                                                 @foreach ($locations as $location)
@@ -175,8 +175,8 @@
                                     <option value="Dubai">Dubai</option>
                                     <option value="Abu Dhabi">Abu Dhabi</option>
                                     <option value="Sharjah">Sharjah</option>
-                                    <option value="Ras Al Khaimah">Ras Al Khaimah</option>
-                                    <option value="Ajman">Ajman</option>
+                                    <option value="Al Ain">Al Ain</option>
+                                    <option value="Fujairah">Fujairah</option>
                                 </select>
                             </div>
                         </div>

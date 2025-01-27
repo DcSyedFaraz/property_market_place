@@ -141,16 +141,16 @@
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="city"
-                                                            id="cityRas Al Khaimah" value="Ras Al Khaimah">
+                                                            id="cityRas Al Khaimah" value="Al Ain">
                                                         <label class="form-check-label" for="cityRas Al Khaimah">
-                                                            Ras Al Khaimah
+                                                            Al Ain
                                                         </label>
                                                     </div>
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="city"
-                                                            id="city Ajman" value="Ajman">
-                                                        <label class="form-check-label" for="city Ajman">
-                                                            Ajman
+                                                            id="city Fujairah" value="Fujairah">
+                                                        <label class="form-check-label" for="city Fujairah">
+                                                            Fujairah
                                                         </label>
                                                     </div>
                                                     <h3>Communities</h3>
