@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone_number');
-            $table->string('email')->unique();
-            $table->enum('property_type', ['house', 'apartment', 'plot', 'commercial'])->default('house');
-            $table->text('specifications');
+            $table->string('name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('property_type')->nullable();
+            $table->text('specifications')->nullable();
             $table->string('preferred_location')->nullable();
             $table->integer('budget_range')->nullable();
             $table->timestamps();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ComplaintMail;
+use App\Mail\VisitorMail;
 use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
@@ -54,12 +55,47 @@ class FrontendController extends Controller
             'suggestion' => $validated['suggestion'] ?? 'N/A',
         ];
 
-        // Send the email
+        // // Send the email
         // Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
 
         // Redirect back with success message
         return redirect()->back()->with('success', 'Your complaint has been submitted successfully.');
     }
+
+    public function visitForm()
+    {
+        return view('frontend.visitor');
+    }
+
+    public function submitVisit(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'email' => 'required|email|unique:visitors',
+            'property_type' => 'required',
+            'specifications' => 'required|string',
+            'preferred_location' => 'nullable|string',
+            'budget_range' => 'nullable|integer',
+        ]);
+
+        $data = [
+            'name' => $validated['name'],
+            'phone_number' => $validated['phone_number'],
+            'email' => $validated['email'],
+            'property_type' => $validated['property_type'],
+            'specifications' => $validated['specifications'],
+            'preferred_location' => $validated['preferred_location'],
+            'budget_range' => $validated['budget_range'],
+        ];
+
+         // // Send the email
+         Mail::to('info@thehr.ae')->send(new VisitorMail($data));
+
+        return redirect()->back()->with('success', 'Your request has been submitted successfully!');
+    }
+
+
     public function index()
     {
         $developer_properties = DeveloperProperty::latest()->take(3)->get();

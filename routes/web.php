@@ -71,6 +71,9 @@ Route::get('/complain', [FrontendController::class, 'showForm'])->name('complain
 Route::post('/complaint-submit', [FrontendController::class, 'submitForm'])->name('complaint.submit');
 Route::get('/search/offplan', [FrontendController::class, 'filter'])->name('offplan_search');
 
+Route::get('/visitor', [FrontendController::class, 'visitForm'])->name('visitor.form');
+Route::post('/visitor-submit', [FrontendController::class, 'submitVisit'])->name('visitor.submit');
+
 
 
 // Dashboard and Logout routes
