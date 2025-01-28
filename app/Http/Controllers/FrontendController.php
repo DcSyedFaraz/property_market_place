@@ -72,7 +72,7 @@ class FrontendController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
-            'email' => 'required|email|unique:visitors',
+            'email' => 'required|email',
             'property_type' => 'required',
             'specifications' => 'required|string',
             'preferred_location' => 'nullable|string',
