@@ -13,8 +13,8 @@
     <p><strong>Email:</strong> {{ $data['email'] }}</p>
     <p><strong>Property Type:</strong> {{ $data['property_type'] }}</p>
     <p><strong>Specifications:</strong> {{ $data['specifications'] }}</p>
-    <p><strong>Preferred Location:</strong> {{ $data['location'] ?? 'Not specified' }}</p>
-    <p><strong>Budget Range:</strong> {{ $data['budget'] ?? 'Not specified' }}</p>
+    <p><strong>Preferred Location:</strong> {{ $data['preferred_location'] ?? 'Not specified' }}</p>
+    <p><strong>Budget Range:</strong> {{ $data['budget_range'] ?? 'Not specified' }}</p>
 </body>
 
 </html>
