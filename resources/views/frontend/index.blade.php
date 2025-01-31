@@ -335,7 +335,7 @@
                             </a>
                         </div>
                         <div class="item">
-                            <img src="{{ asset('assets/img/commerical.webp') }}" alt="" />
+                            <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Commercial') }}">
                                 <h4>Commercial</h4>
                             </a>
@@ -416,7 +416,7 @@
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
                                     <div class="le-img">
-                                        <img src="{{ asset('assets/img/prod01.png') }}" alt="">
+                                        <img src="{{ asset('assets/img/prod-1.png') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

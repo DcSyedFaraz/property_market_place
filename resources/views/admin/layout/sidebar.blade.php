@@ -94,7 +94,7 @@
                  </li>
                  <li class="{{ request()->routeIs('master-plans.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('master-plans.index') }}'>
-                         <i data-feather="grid"></i>
+                         <i data-feather="grid"></i>  
                          <span> Master Plans </span>
                      </a>
                  </li>
