@@ -218,7 +218,7 @@
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Dubai') }}">
-                                    <img src="{{ asset('assets/img/Dubai.webp') }}" alt="Dubai" />
+                                    <img src="{{ asset('assets/img/dubai.webp') }}" alt="Dubai" />
                                     <h4>Dubai</h4>
                                 </a>
                             </div>
