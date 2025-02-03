@@ -86,6 +86,12 @@
                          <span> Agents </span>
                      </a>
                  </li>
+                 <li class="{{ request()->routeIs('blogs.*') ? 'menuitem-active' : '' }}">
+                    <a href='{{ route('blogs.index') }}'>
+                        <i data-feather="file-text"></i>
+                        <span> Blog </span>
+                    </a>
+                </li>
                  <li class="{{ request()->routeIs('Amenity.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('Amenity.index') }}'>
                          <i data-feather="star"></i>
@@ -94,7 +100,7 @@
                  </li>
                  <li class="{{ request()->routeIs('master-plans.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('master-plans.index') }}'>
-                         <i data-feather="grid"></i>  
+                         <i data-feather="grid"></i>
                          <span> Master Plans </span>
                      </a>
                  </li>
