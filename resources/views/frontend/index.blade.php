@@ -212,37 +212,37 @@
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Abu Dhabi') }}">
-                                    <img src="{{ asset('assets/img/img02.png') }}" alt="Abu Dhabi" />
+                                    <img src="{{ asset('assets/img/Abu Dhabi.webp') }}" alt="Abu Dhabi" />
                                     <h4>Abu Dhabi</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Dubai') }}">
-                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Dubai" />
+                                    <img src="{{ asset('assets/img/Dubai.webp') }}" alt="Dubai" />
                                     <h4>Dubai</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Al Ain') }}">
-                                    <img src="{{ asset('assets/img/img04.png') }}" alt="Al Ain" />
+                                    <img src="{{ asset('assets/img/Al Ain.webp') }}" alt="Al Ain" />
                                     <h4>Al Ain</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Sharjah') }}">
-                                    <img src="{{ asset('assets/img/img03.png') }}" alt="Sharjah" />
+                                    <img src="{{ asset('assets/img/Sharjah.webp') }}" alt="Sharjah" />
                                     <h4>Sharjah</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Fujairah') }}">
-                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Fujairah" />
+                                    <img src="{{ asset('assets/img/Fujairah.webp') }}" alt="Fujairah" />
                                     <h4>Fujairah</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Ras Al Khaimah') }}">
-                                    <img src="{{ asset('assets/img/img01.png') }}" alt="Ras Al Khaimah" />
+                                    <img src="{{ asset('assets/img/Ras Al Khaimah.webp') }}" alt="Ras Al Khaimah" />
                                     <h4>Ras Al Khaimah</h4>
                                 </a>
                             </div>
