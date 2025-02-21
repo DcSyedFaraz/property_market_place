@@ -1,114 +1,119 @@
 @extends('frontend.layout.app')
 @section('content')
-    <section class="aboutbg1">
-        <div class="about-item-bg">
-            <div class="container">
-                <h3 class="bg1-a">About Us</h3>
-                <h4 class="bg1-b">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et gravida neque.
-                    Donec vestibulum urna vel neque condimentum sagittis. Cras auctor sit amet lacus eget pretium.
-                    Praesent id sapien nec nulla posuere vehicula ac a quam.</h4>
-            </div>
+
+<style>
+ul {
+    color: white;
+    list-style: none;
+}
+</style>
+	<!-- Bread Crumb End -->
+   <section class="banner">
+        <div class="container">
+            <h2 class="bannerh2">About Us</h2>
         </div>
     </section>
-
-    <section class="bg2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <!-- <h4 class="bg2-a">About us</h4> -->
-                    <h4 class="bg2-b">What is bartering?</h4>
-                    <p class="bg2-c">Bartering is the exchange of goods or services without using money. It's a simple
-                        yet powerful concept that has been around for centuries. Our platform makes it easy, secure, and
-                        convenient to barter online.</p>
-                    <h4 class="bg2-b">How does it work?</h4>
-                    <p class="bg2-c">Browse our marketplace to find what you need. Offer what you have to give.
-                        Negotiate a trade that works for both parties. Our platform provides the tools and support to
-                        make it happen.</p>
-                    <a href="#" class="get-btn">Get Started</a>
-                </div>
-                <div class="col-md-5">
-                    <img src="{{ asset('assets/images/about/bg2.png') }}" class="about2-img" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg3">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/bg3.png') }}" class="about3-img" />
-                </div>
-                <div class="col-md-6">
-                    <h4 class="bg2-a">Welcome to the Barter Nation, the Alternative Business Solutions Center</h4>
-                    <h4 class="bg3-a">Our Story</h4>
-                    <p class="bg3-b">wwww.tradersexchange.org was founded on the belief that bartering does not take
-                        cash to resolve business solutions and, is a powerful way to connect people and businesses,
-                        fostering a community built on trust, reciprocity, and mutual benefit. Our platform aims to make
-                        bartering easy, secure, and convenient.</p>
-                    <div class="tick-div">
-                        <img src="{{ asset('assets/images/tick.png') }}" class="tick-img" />
-                        <div>
-                            <h3 class="bg3-c">Business management</h3>
-                            <h3 class="bg3-d">Exercitationem ullam corporis suscipit laboriosam, nisi ut aliuico
-                                sequatur auis autem vel eum iure.</h3>
-                        </div>
+    <section class="about-main">
+        <div class="container-fluid">
+            <div class="about1">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
                     </div>
-                    <div class="tick-div">
-                        <img src="{{ asset('assets/images/tick.png') }}" class="tick-img" />
-                        <div>
-                            <h3 class="bg3-c">Start Ups & IT Wonders</h3>
-                            <h3 class="bg3-d">Velit esse quam nihil molestiae consequatur, vel illum aui doloru fugiat
-                                quo voluptas nulla.</h3>
-                        </div>
-                    </div>
-                    <div class="tick-div">
-                        <img src="{{ asset('assets/images/tick.png') }}" class="tick-img" />
-                        <div>
-                            <h3 class="bg3-c">Organizations & Planning</h3>
-                            <h3 class="bg3-d">Earue ipsa quae ab illo inventore veritatis et quasi architector ea ae
-                                vitae dicta aliae sunt.</h3>
-                        </div>
+                    <div class="col-md-6">
+                        <p class="about1c">The H Real Estate Company is one of the most reputable and trusted companies established in the 												United Arab Emirates.  With years of experience in project management throughout the country. We 											offer professional and reliable services that focus on finding the most suitable property for our 											clients. With our expertise, you can trust that you will be in the best place to find the perfect 											property.  We strive to exceed your expectations, innovate creative solutions, and meet all your 											requirements, whether you are looking for a luxurious and comfortable space or an affordable option, 										we will provide exactly what you need.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="bg4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h4 class="bg4-b">Our Mission</h4>
-                    <p class="bg4-c">Our mission is to empower individuals and businesses to exchange goods and services
-                        without the need for cash, promoting a more sustainable and collaborative economy.</p>
-                    <!-- <h4 class="bg4-a">Our vision</h4> -->
-                    <h4 class="bg4-b">Our Values</h4>
-                    <ul class="bg4-ul">
-                        <li><b>Community:</b> We believe in building strong relationships and connections.</li>
-                        <li><b>Trust: </b> We prioritize transparency, security, and reliability. </li>
-                        <li><b>Innovation:</b> We strive to make bartering easy and accessible.</li>
-                        <li><b>Sustainability:</b> We aim to reduce waste and promote a sharing economy.</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <img src="{{ asset('assets/images/bg3.png') }}" class="bg4-img" />
+            <div class="about2">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="about1b">Who We Are</h3>
+                        <p class="about1c">The H Real Estate Company is one of the most reputable and trusted companies established in the United Arab Emirates, with years of experience in project management through out the country . In addition , We offer professional and reliable services that focus on finding the most suitable property for our clients. With our expertise, you can trust that you will be in the best place to find the perfect property. We strive to exceed your expectations, innovate creative solutions, and meet all your requirements, whether you are looking for a luxurious and comfortable space or an affordable option, we will provide exactly what you need.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="bg6">
-        <div class="container">
-            <h4 class="bg6-a">Get in touch</h4>
-            <h4 class="bg6-b">SUBSCRIBE TO OUR NEWSLETTER</h4>
-            <p class="bg6-c">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et gravida neque. Donec
-                vestibulum urna vel neque condimentum sagittis. Cras auctor sit amet lacus eget pretium. Praesent id
-                sapien nec nulla.</p>
-            <form>
-                <input class="bg6-input" type="email" placeholder="Enter your email address:" required />
-                <input type="submit" class="bg6-submit" value="Subscribe" />
-            </form>
+			<div class="about1">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    </div>
+                    <div class="col-md-6">
+						<h3 class="about1b">Our services include</h3>
+							<ul>
+								<li>Commercial and residential property management</li>
+								<li>Property owner services</li>
+								<li>Sales and leasing services</li>
+								<li>Facilities management</li>
+								<li>Real estate brokerage</li>
+							</ul>
+                    </div>
+                </div>
+            </div>
+			<div class="about2">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="about1b">Our Goal</h3>
+                        <p class="about1c">To provide our  clients  with an  exceptional  and  distinctive  experience when buying or selling properties. We strive diligently to achieve our clients’ visions and aspirations by offering high-quality properties, superior services, and innovative designs.
+We  prioritize  providing  expert   consultations  and  comprehensive supports to our clients throughout the buying or selling process, ensuring a comfortable and successful experience for them.
+We always aim to build long-term relationships with our clients, based on transparency and integrity in our dealings, while striving to achieve their utmost satisfaction.
+We are committed to excellence and innovation, continuously seeking improvements in the real estate sector and contributing to enhancing the quality of life for our clients and the community as a whole.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    </div>
+                </div>
+            </div>
+		<div class="about1">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    </div>
+                    <div class="col-md-6">
+						<h3 class="about1b">Vision</h3>
+                        <p class="about1c">Delighting our customers by providing boundless real estate quality is our ultimate goal. Real estate quality stands as one of the most critical criteria sought after by customers and investors when choosing a property for purchase or investment. Our dedication to real estate quality reflects our commitment to delivering properties with high standards, unique designs, and exceptional services.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about2">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="about1b">Mission</h3>
+                        <p class="about1c">We strive diligently to fulfil the visions and aspirations of our clients by providing high-quality properties, superior services, and innovative designs. We are committed to offering expert consultations and comprehensive support to our clients throughout the buying or selling process, building long-term relationships based on transparency, integrity in our transactions, and the pursuit of complete satisfaction.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    </div>
+                </div>
+            </div>
+				<div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    </div>
+                    <div class="col-md-6">
+						<h3 class="about1b">Why Choose Us</h3>
+							<ul>
+								<li>Wide range of properties in Prime locations to choose from.</li>
+								<li>Partnership to various well-known developers across the UAE and others parts of the world.</li>
+								<li>Maximum customer satisfaction guaranteed.</li>
+								<li>Full exposure specially in digital media to reach the target market.</li>
+							</ul>
+                    </div>
+                </div>
+            <div class="about-3">
+                <div class="container">
+                    <h3 class="about3a">Be the first to know.</h3>
+                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
+                        announcements about pre-leasing opportunities.</p>
+                    <form>
+                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

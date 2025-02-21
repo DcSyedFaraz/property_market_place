@@ -31,31 +31,53 @@
                     </div>
                     <div class="col-md-8 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('about') }}">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('secondary_sale') }}">Properties</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('service') }}">Services</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Management</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">List your Property</a>
-                            </li>
-                        </ul>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ route('home') }}">Home</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									About
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+									<li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+									<li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+								</ul>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Properties
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+									<li><a class="dropdown-item" href="#">Residential</a></li>
+									<li><a class="dropdown-item" href="#">Commercial</a></li>
+									<li><a class="dropdown-item" href="#">Off-Plan</a></li>
+									<li><a class="dropdown-item" href="#">Mall</a></li>
+									<li><a class="dropdown-item" href="#">Villa</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Services</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ url('blog') }}">Blogs</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Contact Us
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+									<li><a class="dropdown-item" href="#">Contact Us</a></li>
+									<li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
+									<li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+								</ul>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ url('complain') }}">Complaint</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
+							</li>
+						</ul>
                     </div>
                     <div class="col-md-2 mob-1">
                         <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
@@ -116,8 +138,10 @@
                             price you can get
                         </p>
                         <div class="img-text">
-                            <img src="{{ asset('assets/img/testi-img.png') }}" alt="" />
-                            <p>50+ Agents. See all listings.</p>
+                            <a href="{{ route('leadership') }}">
+    							<img src="{{ asset('assets/img/testi-img.png') }}" alt="Your Image Description" />
+							</a>
+                            <p>Meet our Leaders.</p>
                         </div>
                     </div>
                     <div class="social-link mob-1">
@@ -145,14 +169,14 @@
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="home"
                                     aria-selected="true">
-                                    Buy
+                                    Rent
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
                                     aria-selected="false">
-                                    Lease
+                                    Buy
                                 </button>
                             </li>
                         </ul>
@@ -208,9 +232,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 me-auto text-center content1">
-                        <h2>Off plan Projects</h2>
+                        <h2>Our Properties</h2>
                         <p>
-                            New off-plan developments
+                            New Properties
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
@@ -548,8 +572,93 @@
         }
     })
 </script>
+<!-- Floating Buttons Container -->
+<div class="floating-buttons">
+    <!-- Visitor Button -->
+    <div class="floating-button-container">
+        <a href="https://thehrealestate.cstmpanel.com/visitor" class="floating-button visitor-button" target="_blank">
+            <i class="fas fa-user"></i>
+        </a>
+        <span class="tooltip-text">Visitor Form</span>
+    </div>
 
-<!-- Main JS File -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Complaint Button -->
+    <div class="floating-button-container">
+        <a href="https://thehrealestate.cstmpanel.com/complain" class="floating-button complaint-button" target="_blank">
+            <i class="fas fa-exclamation-circle"></i>
+        </a>
+        <span class="tooltip-text">Complaint Form</span>
+    </div>
+</div>
 
+<!-- Styles for Buttons & Hover Effect -->
+<style>
+    /* Container for floating buttons */
+    .floating-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Space between buttons */
+    }
+
+    /* Individual button container */
+    .floating-button-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Floating button design */
+    .floating-button {
+        background-color: #1c2d37;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 24px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .floating-button:hover {
+        background-color: #15232d;
+    }
+
+    .floating-button i {
+        font-size: 24px;
+        color: white; /* Icon remains white */
+    }
+
+    /* Tooltip text */
+    .tooltip-text {
+        position: absolute;
+        right: 60px;
+        background-color: white;
+        color: #15232d; /* Text color set to #15232d */
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Show tooltip on hover */
+    .floating-button-container:hover .tooltip-text {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+
+<!-- Font Awesome for Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </html>

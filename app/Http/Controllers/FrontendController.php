@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\ComplaintMail;
 use App\Mail\VisitorMail;
 use App\Models\AgentProperty;
-use App\Models\Blog;
 use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
@@ -13,6 +12,8 @@ use App\Models\FloorPlan;
 use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\Product;
+use App\Models\Blog;
+use App\Models\TeamMember;
 use DB;
 use Illuminate\Http\Request;
 use Mail;
@@ -68,24 +69,6 @@ class FrontendController extends Controller
         return view('frontend.visitor');
     }
 
-    public function blog()
-    {
-        $data['blogs'] = Blog::get();
-        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
-        $data['developer_property'] = DeveloperProperty::first();
-
-        return view('frontend.blog',$data);
-    }
-
-    public function blogdetail($id)
-    {
-        $data['blog'] = Blog::find($id);
-        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
-        $data['developer_property'] = DeveloperProperty::first();
-
-        return view('frontend.blog-detail',$data);
-    }
-
     public function submitVisit(Request $request)
     {
         $validated = $request->validate([
@@ -130,6 +113,41 @@ class FrontendController extends Controller
     public function about_us()
     {
         return view('frontend.about-us');
+    }
+    public function leadership()
+    {
+		$teammembers = TeamMember::all();
+        return view('frontend.leadership',compact("teammembers"));
+    }
+ 	public function leadership_detail(string $id)
+    {
+		$teammember = TeamMember::findorfail($id);
+        return view('frontend.leadership_detail',compact("teammember"));
+    }
+	public function blog()
+	{
+		$data['blogs'] = Blog::get();
+        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
+        $data['developer_property'] = DeveloperProperty::first();
+
+        return view('frontend.blog',$data);
+	}
+	
+	 public function blogdetail($id)
+    {
+        $data['blog'] = Blog::find($id);
+		$data['blogs'] = Blog::get();
+        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
+        $data['developer_property'] = DeveloperProperty::first();
+        return view('frontend.blog-detail',$data);
+    }
+	public function inner_blog()
+    {
+		$data['blog'] = Blog::find($id);
+		$data['blogs'] = Blog::get();
+        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
+        $data['developer_property'] = DeveloperProperty::first();
+        return view('frontend.blog-detail',$data);
     }
     public function contact_us()
     {
@@ -271,7 +289,6 @@ class FrontendController extends Controller
         if ($request->filled('max_price')) {
             $query->where('price', '<=', $request->input('max_price'));
         }
-
         // Alternatively, if using sliders
         if ($request->filled('min_price_slider')) {
             $query->where('price', '>=', $request->input('min_price_slider'));

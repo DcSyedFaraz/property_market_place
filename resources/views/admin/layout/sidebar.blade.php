@@ -116,7 +116,12 @@
                          <span> Communities </span>
                      </a>
                  </li>
-
+  				<li class="{{ request()->routeIs('team.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('team.index') }}'>
+                        <i data-feather="users"></i>
+                         <span> Team </span>
+                     </a>
+                 </li>
                  <li>
                      <a href='{{ route('logout') }}' class="text-danger ">
                          <i data-feather="log-out"></i>

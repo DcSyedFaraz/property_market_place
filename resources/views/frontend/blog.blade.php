@@ -1,39 +1,41 @@
 @extends('frontend.layout.app')
 @section('content')
-<section class="blogs-one">
-
-
-    <section class="sec-001 bread-crumb">
+    <section class="banner">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">NEWS AND BLOG</h1>
-            <p>lorem ipsum dolor sit amet consectetur adipiscing elit aenean luctus urna ut lorem</p>
+            <h2 class="bannerh2">Blogs</h2>
         </div>
-            </div>
     </section>
-    <section>
-        <div class="sec-serv-002 sec-space">
-            <div class="container">
-            <div class="row align-items-center">
+    <section class="about-main">
+        <div class="container">
+            <div class="blog1">
+                <h4 class="blog1-a">Blogs</h4>
+                <p class="blog1-b">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod tellus vitae
+                    posuere congue. Donec lacinia quam enim, sit amet varius tellus bibendum a. Duis varius lobortis
+                    tortor, at semper.</p>
+            </div>
+            <div class="blog2">
                 @foreach ($blogs as $blog)
-                <div class="col-md-4 px-4">
-                    <div class="blogss">
-                        <a href="{{ route('blog.show', $blog->id) }}">
-                            <img src="{{ asset('storage/' . $blog->image) }}" width="400" alt="">
-                            <div class="author">
-                                <p class="redtxt">{{ $blog->title }}</p>
-                                <p>20 Dec 2024</p>
-                                <p><i class="fa-light fa-messages"></i> 280</p>
-                                <p><i class="fa-light fa-heart"></i> 89</p>
-                            </div>
-                            <p>{!! substr($blog->description, 100,10) !!}</p>
-                        </a>
+                    <div class="blogs-inner">
+                        <img src="{{ asset('storage/' . $blog->image) }}" class="blog-img" />
+                        <div class="content">
+                            <h4 class="publish-date">{{ $blog->created_at }} {{ $blog->image}}</h4>
+                            <h3 class="blog-title">{{$blog->title}}</h3>
+                            <a href="{{ route('blog.show', $blog->id) }}" class="blog-read">Read More</a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
+            <div class="about-3">
+                <div class="container">
+                    <h3 class="about3a">Be the first to know.</h3>
+                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
+                        announcements about pre-leasing opportunities.</p>
+                    <form>
+                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
-</section>
 @endsection

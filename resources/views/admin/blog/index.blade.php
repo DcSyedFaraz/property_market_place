@@ -15,7 +15,6 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Blog Image</th>
                 <th>Actions</th>
             </tr>
@@ -25,7 +24,6 @@
                 <tr>
                     <td>{{ $blog->id }}</td>
                     <td>{{ $blog->title }}</td>
-                    <td>{{ $blog->description }}</td>
                     <td>
                         <img src="{{ asset('storage/' . $blog->image) }}"
                         alt="{{ $blog->image }}" width="100">

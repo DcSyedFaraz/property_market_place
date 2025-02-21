@@ -25,19 +25,21 @@
             <div class="col-md-2">
                 <h3>Quick links</h3>
                 <ul>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Rentals</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Sales</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Apartments</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Industrial</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Offices</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Villas</a></li>
+					<li><a href="#"><i class="bi bi-arrow-right-short"></i>Services</a></li>
+					<li><a href="#"><i class="bi bi-arrow-right-short"></i>Blogs</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Residential</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Commercial</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Off-Plan</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Mall</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Villa</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h3>Contact Us</h3>
                 <ul>
                     <li><a href="#"><i class="bi bi-arrow-right-short"></i>Contact us</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Survey</a></li>
+                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Complaint</a></li>
+					<li><a href="#"><i class="bi bi-arrow-right-short"></i>Visitor</a></li>
                 </ul>
             </div>
         </div>

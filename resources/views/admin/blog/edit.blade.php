@@ -29,7 +29,7 @@
         <!-- Description -->
         <div class="mb-3">
             <label for="description">Description:</label>
-            <textarea  name="description" id="description" class="form-control">{{ old('description', $blog->description) }}</textarea>
+            <textarea  name="description" class="form-control" id="description">{{ old('description', $blog->description) }}</textarea>
         </div>
 
         <!-- Current Contract File -->

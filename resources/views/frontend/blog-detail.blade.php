@@ -1,31 +1,48 @@
 @extends('frontend.layout.app')
 @section('content')
-    <section class="sec-001 bread-crumb">
+<section class="blog-banner">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">BLOG Detail</h1>
-                    <p>lorem ipsum dolor sit amet consectetur adipiscing elit aenean luctus urna ut lorem</p>
-                </div>
-            </div>
+            <h2 class="bannerh2"></h2>
+        </div>
     </section>
-    <section>
-        <div class="sec-serv-002 sec-space">
-            <div class="container">
-                <div class="row align-items-start">
-                    <div class="col-md-8">
-                        <div class="hello">
-                            <div class="imgdiv">
-                                <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image" class="img-fluid">
+<section class="about-main">
+        <div class="container">
+            <div class="blog-inner">
+                <div class="row">
+                    <div class="col-md-9 p-5">
+                        <div class="blog-text">
+                            <img src="/assets/images/blog/blog1.png" class="blog-image" />
+                            <h4 class="blog-a1">March 21,2025</h4>
+                            <h3 class="blog-a2">{{$blog->title}}</h3>
+							<div class="container">{!! $blog->description !!}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border-left">
+							@foreach ($blogs as $blog)
+                            <div class="blog-sidebar">
+                                <img src="{{asset('/storage/'.$blog->image)}}" class="blogside-img" />
+                                <h4 class="sidebar-a1">{!! substr($blog->title, 50, 10) !!}</h4>
+                                <a href="{{ route('blog.show', $blog->id) }}" class="sidebar-btn">Read More</a>
                             </div>
-                            <div class="content">
-                                <h2>{{ $blog->title }}</h2>
-                                <p>{!! $blog->description !!}</p>
-                            </div>
+							@endforeach
 
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="about-3">
+                <div class="container">
+                    <h3 class="about3a">Be the first to know.</h3>
+                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
+                        announcements about pre-leasing opportunities.</p>
+                    <form>
+                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+
 @endsection

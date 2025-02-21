@@ -17,6 +17,10 @@ use App\Http\Controllers\Admin\StudentDashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TeamController;
+
+
+
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
@@ -45,11 +49,15 @@ require __DIR__ . '/auth.php';
 Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/properties', 'filter')->name('properties.index');
-    Route::get('/blog', 'blog')->name('blog');
-    Route::get('/blog/{id}', 'blogdetail')->name('blog.show');
     Route::get('/properties/{location}', 'showPropertiesByLocation')->name('properties.byLocation');
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
+	Route::get('/leadership', 'leadership')->name('leadership');
+	Route::get('/leadership/{id}', 'leadership_detail')->name('leadership.detail');
+	
+	Route::get('/blog', 'blog')->name('blog');
+    Route::get('/blog/{id}', 'blogdetail')->name('blog.show');
+    Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
     Route::get('/offplan', 'offplan')->name('offplan');
     Route::get('/developer-list', 'developer_list')->name('developer_list');
@@ -100,6 +108,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('developer_properties', DeveloperPropertyController::class);
     Route::resource('communities', CommunityController::class);
     Route::resource('blogs', BlogController::class);
+	Route::resource('team', TeamController::class);
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 
