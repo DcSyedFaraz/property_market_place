@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Edit Property</h1>
 
-        <form action="{{ route('agentproperty.update', $property->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('property.update', $property->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>Properties</h1>
-        <a href="{{ route('agentproperty.create') }}" class="btn btn-primary mb-3">Add New Property</a>
+        <a href="{{ route('property.create') }}" class="btn btn-primary mb-3">Add New Property</a>
 
         <table class="table table-bordered">
             <thead>
@@ -27,9 +27,9 @@
                         <td>{{ $property->area }}</td>
                         <td>{{ ucfirst($property->status) }}</td>
                         <td>
-                            <a href="{{ route('agentproperty.show', $property->id) }}" class="btn btn-info btn-sm">View</a>
-                            <a href="{{ route('agentproperty.edit', $property->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <form action="{{ route('agentproperty.destroy', $property->id) }}" method="POST" class="d-inline">
+                            <a href="{{ route('property.show', $property->id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('property.edit', $property->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('property.destroy', $property->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>

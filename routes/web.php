@@ -54,7 +54,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/about-us', 'about_us')->name('about_us');
 	Route::get('/leadership', 'leadership')->name('leadership');
 	Route::get('/leadership/{id}', 'leadership_detail')->name('leadership.detail');
-	
+
 	Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{id}', 'blogdetail')->name('blog.show');
     Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('permission', PermissionController::class);
     Route::resource('users', UserController::class);
     Route::resource('agents', AgentsController::class);
-    Route::resource('agentproperty', AgentPropertyController::class);
+    Route::resource('property', AgentPropertyController::class);
     Route::resource('developers', DeveloperController::class);
     Route::resource('Amenity', AmenityController::class);
     Route::resource('master-plans', MasterPlanController::class);

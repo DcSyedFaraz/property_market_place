@@ -12,7 +12,7 @@ use Validator;
 class AgentPropertyController extends Controller
 {
     /**
-     * Display a listing of the agentproperty.
+     * Display a listing of the property.
      */
     public function index()
     {
@@ -83,7 +83,7 @@ class AgentPropertyController extends Controller
             $property->save();
             DB::commit();
 
-            return redirect()->route('agentproperty.index')->with('success', 'Property created successfully.');
+            return redirect()->route('property.index')->with('success', 'Property created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
@@ -167,7 +167,7 @@ class AgentPropertyController extends Controller
             $property->save();
             DB::commit();
 
-            return redirect()->route('agentproperty.index')->with('success', 'Property updated successfully.');
+            return redirect()->route('property.index')->with('success', 'Property updated successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
@@ -191,7 +191,7 @@ class AgentPropertyController extends Controller
             $property->delete();
             DB::commit();
 
-            return redirect()->route('agentproperty.index')->with('success', 'Property deleted successfully.');
+            return redirect()->route('property.index')->with('success', 'Property deleted successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());

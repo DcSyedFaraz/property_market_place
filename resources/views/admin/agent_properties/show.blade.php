@@ -46,6 +46,6 @@
             <p>{{ ucfirst($property->status) }}</p>
         </div>
 
-        <a href="{{ route('agentproperty.index') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ route('property.index') }}" class="btn btn-secondary">Back</a>
     </div>
 @endsection

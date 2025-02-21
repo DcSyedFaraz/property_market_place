@@ -62,16 +62,16 @@
                          </div>
                      </li>
                  @endif
-                 <li class="{{ request()->routeIs('developer_properties.*') ? 'menuitem-active' : '' }}">
+                 <li class="{{ request()->routeIs('property.*') ? 'menuitem-active' : '' }}">
+                     <a href='{{ route('property.index') }}'>
+                         <i data-feather="home"></i>
+                         <span> Properties </span>
+                     </a>
+                 </li>
+                 {{-- <li class="{{ request()->routeIs('developer_properties.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('developer_properties.index') }}'>
                          <i data-feather="briefcase"></i>
                          <span> Dev's Properties </span>
-                     </a>
-                 </li>
-                 <li class="{{ request()->routeIs('agentproperty.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('agentproperty.index') }}'>
-                         <i data-feather="home"></i>
-                         <span> Agent's Properties </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('developers.*') ? 'menuitem-active' : '' }}">
@@ -85,13 +85,13 @@
                          <i data-feather="users"></i>
                          <span> Agents </span>
                      </a>
-                 </li>
+                 </li> --}}
                  <li class="{{ request()->routeIs('blogs.*') ? 'menuitem-active' : '' }}">
-                    <a href='{{ route('blogs.index') }}'>
-                        <i data-feather="file-text"></i>
-                        <span> Blog </span>
-                    </a>
-                </li>
+                     <a href='{{ route('blogs.index') }}'>
+                         <i data-feather="file-text"></i>
+                         <span> Blog </span>
+                     </a>
+                 </li>
                  <li class="{{ request()->routeIs('Amenity.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('Amenity.index') }}'>
                          <i data-feather="star"></i>
@@ -112,13 +112,13 @@
                  </li>
                  <li class="{{ request()->routeIs('communities.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('communities.index') }}'>
-                        <i data-feather="users"></i>
+                         <i data-feather="users"></i>
                          <span> Communities </span>
                      </a>
                  </li>
-  				<li class="{{ request()->routeIs('team.*') ? 'menuitem-active' : '' }}">
+                 <li class="{{ request()->routeIs('team.*') ? 'menuitem-active' : '' }}">
                      <a href='{{ route('team.index') }}'>
-                        <i data-feather="users"></i>
+                         <i data-feather="users"></i>
                          <span> Team </span>
                      </a>
                  </li>

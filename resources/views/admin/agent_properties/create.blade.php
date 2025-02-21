@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Create Property</h1>
 
-        <form action="{{ route('agentproperty.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="agent_id" class="form-label">Agent</label>
