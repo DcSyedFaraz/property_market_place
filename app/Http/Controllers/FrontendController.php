@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ComplaintMail;
 use App\Mail\VisitorMail;
 use App\Models\AgentProperty;
+use App\Models\Blog;
 use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
@@ -65,6 +66,24 @@ class FrontendController extends Controller
     public function visitForm()
     {
         return view('frontend.visitor');
+    }
+
+    public function blog()
+    {
+        $data['blogs'] = Blog::get();
+        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
+        $data['developer_property'] = DeveloperProperty::first();
+
+        return view('frontend.blog',$data);
+    }
+
+    public function blogdetail($id)
+    {
+        $data['blog'] = Blog::find($id);
+        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
+        $data['developer_property'] = DeveloperProperty::first();
+
+        return view('frontend.blog-detail',$data);
     }
 
     public function submitVisit(Request $request)

@@ -13,6 +13,9 @@
                              <a class="nav-link" href="{{ route('home') }}">Home</a>
                          </li>
                          <li class="nav-item">
+                             <a class="nav-link" href="{{ route('about_us') }}">About</a>
+                         </li>
+                         <li class="nav-item">
                              <a class="nav-link" href="{{ route('secondary_sale') }}">Properties</a>
                          </li>
                          <li class="nav-item">
@@ -20,6 +23,9 @@
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('service') }}">Services</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ url('blog') }}">Blog</a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="#">Management</a>
