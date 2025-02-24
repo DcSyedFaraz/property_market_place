@@ -5,14 +5,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center">{{ $location ?? '' }} Offplan Projects</h1>
-                    <p class="text-center"><a href="/">Home</a> / <a href="#">{{ $location ?? '' }} Offplan
-                            Projects</a></p>
+                    <h1 class="text-center">{{ $location ?? '' }} Projects</h1>
+                    <!-- <p class="text-center"><a href="/">Home</a> / <a href="#">{{ $location ?? '' }} Offplan
+                            Projects</a></p> -->
                 </div>
             </div>
     </section>
     <!-- Bread Crumb End -->
-    <section>
+    <!-- <section>
         <div class="sec-community-003">
             <div class="container">
                 <div class="row d-flex align-items-center list-mob1">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section>
         <div class="sec-community-004 sec-space">

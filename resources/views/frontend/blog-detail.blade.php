@@ -14,7 +14,7 @@
                             <img src="/assets/images/blog/blog1.png" class="blog-image" />
                             <h4 class="blog-a1">March 21,2025</h4>
                             <h3 class="blog-a2">{{$blog->title}}</h3>
-							<div class="container">{!! $blog->description !!}</div>
+							{!! $blog->description !!}
                         </div>
                     </div>
                     <div class="col-md-3">

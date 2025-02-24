@@ -18,7 +18,7 @@
                     <div class="blogs-inner">
                         <img src="{{ asset('storage/' . $blog->image) }}" class="blog-img" />
                         <div class="content">
-                            <h4 class="publish-date">{{ $blog->created_at }} {{ $blog->image}}</h4>
+                            <h4 class="publish-date">{{ $blog->created_at }}</h4>
                             <h3 class="blog-title">{{$blog->title}}</h3>
                             <a href="{{ route('blog.show', $blog->id) }}" class="blog-read">Read More</a>
                         </div>

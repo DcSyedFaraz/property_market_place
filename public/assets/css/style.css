@@ -388,6 +388,14 @@ h2 {
 
 .le-img img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#team h2,
+#team h3 {
+    color: #fff;
 }
 
 .le-conte h2 {
@@ -1549,6 +1557,7 @@ select {
 .range-max {
     z-index: 1;
 }
+
 /*----additional css*/
 .banner {
     background: url(../images/about/bg.png) no-repeat;
@@ -1688,11 +1697,12 @@ p {
     font-weight: 400;
     color: #fff;
     margin-bottom: 20px;
+    text-transform: capitalize;
 }
 
 .blog-read {
     font-size: 14px;
-    color: #fff;
+    color: #fff !important;
     text-decoration: none;
     border: 1px solid #fff;
     border-radius: 30px;
@@ -1722,14 +1732,22 @@ p {
 }
 
 .blog-banner {
-	background: url(../images/blog/blog-inner.png) no-repeat;
+    background: url(../images/blog/blog-inner.png) no-repeat;
     background-position: center center;
     background-size: cover;
     height: 70vh;
     display: flex;
     align-items: center;
     text-align: left;
-    margin-top: -105px;
+    /* margin-top: -105px; */
+}
+
+.first-col {
+    text-align: center;
+}
+
+.footer-logo {
+    width: 150px;
 }
 
 .blog-image {
@@ -1740,16 +1758,24 @@ p {
 }
 
 .blog-a1 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: #fff;
     margin-top: 10px;
+}
+
+.blog-text p img {
+    width: 100% !important;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .blog-a2 {
     font-size: 36px;
     color: #fff;
     font-weight: 500;
+    text-transform: capitalize;
 }
 
 .blog-a3 {
@@ -1793,8 +1819,13 @@ p {
     top: 0px;
 }
 
-.sidebar-btn:hover, .blog-read:hover {
+.sidebar-btn:hover,
+.blog-read:hover {
     background: #fff;
-    color: #000;
+    color: #000 !important;
     transition: 0.3s;
+}
+
+.blog-text p {
+    color: #fff;
 }

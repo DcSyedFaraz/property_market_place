@@ -397,7 +397,7 @@
         <div class="sec-6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -416,7 +416,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -435,10 +435,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -457,7 +454,10 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-md-6">
+                </div>
+
+                <!-- <div class="row mt-4">
+                    <div class="col-md-6">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -475,8 +475,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
-                </div>
+                    </div>
+                </div> -->
             </div>
         </div>
         </div>
