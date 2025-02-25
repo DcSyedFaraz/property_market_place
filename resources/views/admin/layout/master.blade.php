@@ -323,17 +323,17 @@
             $('.select2').select2();
             $('#description').summernote({
                 height: 200, // Set the height of the editor
-                // toolbar: [
-                //     ['style', ['style']],
-                //     ['font', ['bold', 'italic', 'underline', 'clear']],
-                //     ['fontname', ['fontname']],
-                //     ['fontsize', ['fontsize']],
-                //     ['color', ['color']],
-                //     ['para', ['ul', 'ol', 'paragraph']],
-                //     ['table', ['table']],
-                //     ['insert', ['link', 'picture', 'video']],
-                //     ['view', ['fullscreen', 'codeview', 'help']]
-                // ]
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
             });
         });
     </script>
