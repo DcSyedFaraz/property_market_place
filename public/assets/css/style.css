@@ -1829,3 +1829,7 @@ p {
 .blog-text p {
     color: #fff;
 }
+
+.about-main span {
+    font-family: "Quicksand" !important;
+}
