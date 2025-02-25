@@ -11,13 +11,13 @@
                 <div class="row">
                     <div class="col-md-9 p-5">
                         <div class="blog-text">
-                            <img src="/assets/images/blog/blog1.png" class="blog-image" />
+                            <img src="{{asset('/storage/'.$blog->image)}}" class="blog-image" />
                             <h4 class="blog-a1">March 21,2025</h4>
                             <h3 class="blog-a2">{{$blog->title}}</h3>
 							{!! $blog->description !!}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div class="border-left">
 							@foreach ($blogs as $blog)
                             <div class="blog-sidebar">
@@ -28,7 +28,7 @@
 							@endforeach
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="about-3">
