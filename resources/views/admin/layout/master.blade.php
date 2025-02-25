@@ -55,7 +55,7 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                {{-- <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
 
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
@@ -250,7 +250,7 @@
                         </div>
                     </li>
 
-                </ul>
+                </ul> --}}
             </div>
 
         </div>
