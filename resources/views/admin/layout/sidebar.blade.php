@@ -93,13 +93,13 @@
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('Amenity.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('Amenity.index') }}'>
+                     <a href="{{ route('Amenity.index') }}">
                          <i data-feather="star"></i>
                          <span> Amenity </span>
                      </a>
                  </li>
                  <li class="{{ request()->routeIs('master-plans.*') ? 'menuitem-active' : '' }}">
-                     <a href='{{ route('master-plans.index') }}'>
+                     <a href="{{ route('master-plans.index') }}">
                          <i data-feather="grid"></i>
                          <span> Master Plans </span>
                      </a>

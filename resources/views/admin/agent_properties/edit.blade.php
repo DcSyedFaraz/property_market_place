@@ -8,102 +8,128 @@
             @csrf
             @method('PUT')
 
+            <!-- Property Title -->
             <div class="mb-3">
-                <label for="agent_id" class="form-label">Agent</label>
-                <select class="form-control" id="agent_id" name="agent_id" required>
-                    <option value="">Select Agent</option>
-                    @foreach ($agents as $agent)
-                        <option value="{{ $agent->id }}" {{ $agent->id == $property->agent_id ? 'selected' : '' }}>
-                            {{ $agent->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label">Property Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $property->title }}"
                     required>
             </div>
+
+            <!-- Description -->
             <div class="mb-3">
-                <div class="">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Description">{{ isset($agent) ? $agent->description : '' }}</textarea>
-                </div>
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Description">{{ $property->description }}</textarea>
             </div>
 
+            <!-- Location -->
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location" value="{{ $property->location }}"
                     required>
             </div>
 
+            <!-- Property Type (Dropdown) -->
             <div class="mb-3">
-                <label for="type" class="form-label">Property Type</label>
-                <select class="form-control" id="type" name="type" required>
+                <label for="property_type" class="form-label">Property Type</label>
+                <select class="form-control" id="property_type" name="property_type" required>
                     <option value="">Select Property Type</option>
-                    <option value="Apartment" {{ $property->type == 'Apartment' ? 'selected' : '' }}>Apartment</option>
-                    <option value="Retail Space" {{ $property->type == 'Retail Space' ? 'selected' : '' }}>Retail Space
+                    <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
+                        Residential</option>
+                    <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>Commercial
                     </option>
-                    <option value="Villa" {{ $property->type == 'Villa' ? 'selected' : '' }}>Villa</option>
+                    <option value="Off-Plan" {{ $property->property_type == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
+                    </option>
+                    <option value="Mall" {{ $property->property_type == 'Mall' ? 'selected' : '' }}>Mall</option>
+                    <option value="Villa" {{ $property->property_type == 'Villa' ? 'selected' : '' }}>Villa</option>
                 </select>
             </div>
 
+            <!-- Transaction Type (Checklist) -->
+            <div class="mb-3">
+                <label for="transaction_type" class="form-label">Transaction Type</label>
+                <select class="form-control" id="transaction_type" name="transaction_type" required>
+                    <option value="">Select Transaction Type</option>
+                    <option value="Residential" {{ $property->transaction_type == 'Residential' ? 'selected' : '' }}>
+                        Residential</option>
+                    <option value="For Sale" {{ $property->transaction_type == 'For Sale' ? 'selected' : '' }}>For Sale
+                    </option>
+                </select>
+            </div>
 
+            <!-- Price -->
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" step=".01" name="price"
                     value="{{ $property->price }}" required>
             </div>
-            <div class="mb-3">
-                <label for="bedrooms" class="form-label">Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" step=".01" name="bedrooms"
-                    value="{{ $property->bedrooms }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="bathrooms" class="form-label">Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" step=".01" name="bathrooms"
-                    value="{{ $property->bathrooms }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="utility_area" class="form-label">Utility Area</label>
-                <input type="number" class="form-control" id="utility_area" value="{{ $property->utility_area }}"
-                    name="utility_area">
-            </div>
-            <div class="mb-3">
-                <label for="balcony_area" class="form-label">Balcony Area</label>
-                <input type="number" class="form-control" id="balcony_area" value="{{ $property->balcony_area }}"
-                    name="balcony_area">
-            </div>
-            <div class="mb-3">
-                <label for="unit_area" class="form-label">Unit Area</label>
-                <input type="number" class="form-control" id="unit_area" value="{{ $property->unit_area }}"
-                    name="unit_area">
-            </div>
 
+            <!-- Area (sq ft) -->
             <div class="mb-3">
                 <label for="area" class="form-label">Area (sq ft)</label>
                 <input type="number" class="form-control" id="area" name="area" value="{{ $property->area }}"
                     required>
             </div>
 
-            <!-- Display current property image -->
-            @if ($property->image)
+            <!-- Bedrooms -->
+            <div class="mb-3">
+                <label for="bedrooms" class="form-label">No. Bedrooms</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ $property->bedrooms }}"
+                    required>
+            </div>
+
+            <!-- Bathrooms -->
+            <div class="mb-3">
+                <label for="bathrooms" class="form-label">No. Bathrooms</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms"
+                    value="{{ $property->bathrooms }}" required>
+            </div>
+
+            <!-- Utility Area -->
+            <div class="mb-3">
+                <label for="utility_area" class="form-label">Utility Area</label>
+                <input type="number" class="form-control" id="utility_area" value="{{ $property->utility_area }}"
+                    name="utility_area">
+            </div>
+
+            <!-- Balcony Area -->
+            <div class="mb-3">
+                <label for="balcony_area" class="form-label">Balcony Area</label>
+                <input type="number" class="form-control" id="balcony_area" value="{{ $property->balcony_area }}"
+                    name="balcony_area">
+            </div>
+
+            <!-- Unit Area -->
+            <div class="mb-3">
+                <label for="unit_area" class="form-label">Unit Area</label>
+                <input type="number" class="form-control" id="unit_area" value="{{ $property->unit_area }}"
+                    name="unit_area">
+            </div>
+
+            <!-- Property Main Image -->
+            @if ($property->main_image)
                 <div class="mb-3">
-                    <label for="image" class="form-label">Current Image</label>
-                    <img src="{{ asset('storage/' . $property->image) }}" alt="Property Image" class="img-thumbnail"
-                        width="150">
+                    <label for="main_image" class="form-label">Current Property Image</label>
+                    <img src="{{ asset('storage/' . $property->main_image) }}" alt="Property Main Image"
+                        class="img-thumbnail" width="150">
                 </div>
             @endif
 
             <div class="mb-3">
-                <label for="image" class="form-label">Upload New Property Image</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                <label for="main_image" class="form-label">Upload New Property Image</label>
+                <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
             </div>
 
+            <!-- Property Gallery Images -->
+            <div class="mb-3">
+                <label for="gallery_images" class="form-label">Upload Property Gallery Images</label>
+                <input type="file" class="form-control" id="gallery_images" name="gallery_images[]" multiple
+                    accept="image/*">
+            </div>
+
+            <!-- Property Status (Dropdown) -->
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
-                <select class="form-control" id="status" name="status">
+                <select class="form-control" id="status" name="status" required>
                     <option value="available" {{ $property->status == 'available' ? 'selected' : '' }}>Available</option>
                     <option value="sold" {{ $property->status == 'sold' ? 'selected' : '' }}>Sold</option>
                 </select>

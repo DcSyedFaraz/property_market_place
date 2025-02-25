@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AgentProperty;
 use App\Models\Agents;
+use App\Models\PropertyGalleryImages;
 use DB;
 use Illuminate\Http\Request;
 use Validator;
@@ -34,61 +35,63 @@ class AgentPropertyController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
-        $validator = Validator::make($request->all(), [
-            'agent_id' => 'required|exists:agents,id',
+        // Validate incoming request
+        $request->validate([
             'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'location' => 'required|string|max:255',
-            'type' => 'required|string|max:100',
+            'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
+            'transaction_type' => 'required|in:Residential,For Sale',
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
-            'unit_area' => 'nullable|numeric',
-            'balcony_area' => 'nullable|numeric',
             'utility_area' => 'nullable|numeric',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'balcony_area' => 'nullable|numeric',
+            'unit_area' => 'nullable|numeric',
+            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        // Create the new property
+        $property = new AgentProperty();
+        $property->title = $request->input('title');
+        $property->description = $request->input('description');
+        $property->location = $request->input('location');
+        $property->property_type = $request->input('property_type');
+        $property->transaction_type = $request->input('transaction_type');
+        $property->price = $request->input('price');
+        $property->area = $request->input('area');
+        $property->bedrooms = $request->input('bedrooms');
+        $property->bathrooms = $request->input('bathrooms');
+        $property->utility_area = $request->input('utility_area');
+        $property->balcony_area = $request->input('balcony_area');
+        $property->unit_area = $request->input('unit_area');
+        $property->status = $request->input('status');
+
+        // Handle Main Image Upload
+        if ($request->hasFile('main_image')) {
+            $property->main_image = $request->file('main_image')->store('properties', 'public');
         }
 
-        try {
-            DB::beginTransaction();
+        // Save the property
+        $property->save();
 
-            $property = new AgentProperty();
-            $property->agent_id = $request->agent_id;
-            $property->title = $request->title;
-            $property->location = $request->location;
-            $property->type = $request->type;
-            $property->price = $request->price;
-            $property->area = $request->area;
-            $property->bedrooms = $request->bedrooms;
-            $property->bathrooms = $request->bathrooms;
-            $property->unit_area = $request->unit_area;
-            $property->balcony_area = $request->balcony_area;
-            $property->utility_area = $request->utility_area;
-            $property->description = $request->description;
-            $property->status = $request->status;
-
-            // Handle image upload
-            if ($request->hasFile('image')) {
-                $imagePath = $request->file('image')->store('property_images', 'public');
-                $property->image = $imagePath;
+        // Handle Gallery Images
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $image) {
+                PropertyGalleryImages::create([
+                    'property_id' => $property->id,
+                    'image' => $image->store('gallery', 'public'),
+                ]);
             }
-
-            $property->save();
-            DB::commit();
-
-            return redirect()->route('property.index')->with('success', 'Property created successfully.');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
+
+        return redirect()->route('property.show', $property->id)->with('success', 'Property added successfully');
     }
+
 
     /**
      * Display the specified property.
@@ -106,7 +109,7 @@ class AgentPropertyController extends Controller
     {
         $property = AgentProperty::findOrFail($id);
         $agents = Agents::get();
-        return view('admin.agent_properties.edit', compact('property','agents'));
+        return view('admin.agent_properties.edit', compact('property', 'agents'));
     }
 
     /**
@@ -114,65 +117,63 @@ class AgentPropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validation
-        $validator = Validator::make($request->all(), [
-            'agent_id' => 'required|exists:agents,id',
+        $property = AgentProperty::findOrFail($id);
+
+        // Validate incoming request
+        $request->validate([
             'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'location' => 'required|string|max:255',
-            'type' => 'required|string|max:100',
+            'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
+            'transaction_type' => 'required|in:Residential,For Sale',
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
-            'unit_area' => 'nullable|numeric',
-            'balcony_area' => 'nullable|numeric',
             'utility_area' => 'nullable|numeric',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'balcony_area' => 'nullable|numeric',
+            'unit_area' => 'nullable|numeric',
+            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        // Update property details
+        $property->title = $request->input('title');
+        $property->description = $request->input('description');
+        $property->location = $request->input('location');
+        $property->property_type = $request->input('property_type');
+        $property->transaction_type = $request->input('transaction_type');
+        $property->price = $request->input('price');
+        $property->area = $request->input('area');
+        $property->bedrooms = $request->input('bedrooms');
+        $property->bathrooms = $request->input('bathrooms');
+        $property->utility_area = $request->input('utility_area');
+        $property->balcony_area = $request->input('balcony_area');
+        $property->unit_area = $request->input('unit_area');
+        $property->status = $request->input('status');
+
+        // Handle Main Image Upload
+        if ($request->hasFile('main_image')) {
+            $property->main_image = $request->file('main_image')->store('properties', 'public');
         }
 
-        try {
-            DB::beginTransaction();
+        $property->save();
 
-            $property = AgentProperty::findOrFail($id);
-            $property->agent_id = $request->agent_id;
-            $property->title = $request->title;
-            $property->location = $request->location;
-            $property->type = $request->type;
-            $property->price = $request->price;
-            $property->area = $request->area;
-            $property->bedrooms = $request->bedrooms;
-            $property->bathrooms = $request->bathrooms;
-            $property->unit_area = $request->unit_area;
-            $property->balcony_area = $request->balcony_area;
-            $property->utility_area = $request->utility_area;
-            $property->description = $request->description;
-            $property->status = $request->status;
-
-            // Handle image update
-            if ($request->hasFile('image')) {
-                if ($property->image && \Storage::exists('public/' . $property->image)) {
-                    \Storage::delete('public/' . $property->image);
-                }
-
-                $imagePath = $request->file('image')->store('property_images', 'public');
-                $property->image = $imagePath;
+        // Handle Gallery Images
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $image) {
+                PropertyGalleryImages::create([
+                    'property_id' => $property->id,
+                    'image' => $image->store('gallery', 'public'),
+                ]);
             }
-
-            $property->save();
-            DB::commit();
-
-            return redirect()->route('property.index')->with('success', 'Property updated successfully.');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
+
+        return redirect()->route('property.show', $property->id)->with('success', 'Property updated successfully');
     }
+
 
     /**
      * Remove the specified property from the database.
