@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <title>Services</title>
-</head>
-
-<body>
+@extends('frontend.layout.app')
+@section('content')
     <section class="service">
         <div class="container">
             <h2 class="serviceh2">Services</h2>
@@ -23,7 +12,7 @@
             <div class="service1">
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="./assets/images/service/s1.png" />
+                        <img src="{{ asset('assets/images/service/s1.png') }}" />
                         <h3>Commercial and residential real estate management</h3>
                         <p>Experienced real estate professionals on our team can help you manage your properties
                             efficiently.</p>
@@ -31,28 +20,28 @@
                 </div>
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="./assets/images/service/s2.png" />
+                        <img src="{{ asset('assets/images/service/s2.png') }}" />
                         <h3>Real estate brokerage</h3>
                         <p>We connect buyers and sellers to help them achieve their real estate goals.</p>
                     </a>
                 </div>
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="./assets/images/service/s3.png" />
+                        <img src="{{ asset('assets/images/service/s3.png') }}" />
                         <h3>Sales and rental services</h3>
                         <p>Our goal is to generate leads, close deals, and grow your business.</p>
                     </a>
                 </div>
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="./assets/images/service/s4.png" />
+                        <img src="{{ asset('assets/images/service/s4.png') }}" />
                         <h3>Facilities management</h3>
                         <p>What makes Property Angel the best NRI Property Management.</p>
                     </a>
                 </div>
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="./assets/images/service/s5.png" />
+                        <img src="{{ asset('assets/images/service/s5.png' )}}" />
                         <h3>Angel Services</h3>
                         <p>provide more significant financial support.</p>
                     </a>
@@ -71,7 +60,4 @@
             </div>
         </div>
     </section>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-</html>
+@endsection

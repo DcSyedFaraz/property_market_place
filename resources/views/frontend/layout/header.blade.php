@@ -44,7 +44,7 @@
 									Contact Us
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-									<li><a class="dropdown-item" href="#">Contact Us</a></li>
+									<li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
 									<li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
 									<li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
 								</ul>

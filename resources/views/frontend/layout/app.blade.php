@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
    <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Include Summernote CSS -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
@@ -48,7 +48,7 @@
 <!-- Include Summernote JS -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-	
+
 <script>
     $('.service-carol').owlCarousel({
         loop: true,
@@ -85,14 +85,14 @@
             }
         }
     })
-	 $(document).ready(function() {
-      $('textarea').summernote({
-          height: 300, // Set editor height
-          minHeight: 200, // Set minimum height
-          maxHeight: 500, // Set maximum height
-          focus: true // Set focus to editable area after initializing
-      });
-  });
+// 	 $(document).ready(function() {
+//       $('textarea').summernote({
+//           height: 300, // Set editor height
+//           minHeight: 200, // Set minimum height
+//           maxHeight: 500, // Set maximum height
+//           focus: true // Set focus to editable area after initializing
+//       });
+//   });
 
 </script>
 

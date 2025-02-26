@@ -198,7 +198,8 @@ class FrontendController extends Controller
 
     public function service()
     {
-        return view('frontend.service');
+        $developer_property = DeveloperProperty::get();
+        return view('frontend.service', compact('developer_property'));
     }
 
     public function secondary_sale()
