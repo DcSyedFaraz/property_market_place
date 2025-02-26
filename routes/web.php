@@ -75,6 +75,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/floor-plan/{id}', 'floor_plan')->name('floor_plan');
     Route::get('/community-page/{id}', 'community_page')->name('community_page');
     Route::get('/developer-page/{id}', 'developer_page')->name('developer_page');
+	Route::get('/term-condition', 'TermCondition')->name('term-condition');
+	Route::get('/privacy-policy', 'PrivacyPolicy')->name(name: 'privacy-policy');
     // Route::get('/offplan/search',  'filter')->name('offplan_search');
 
 });

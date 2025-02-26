@@ -56,7 +56,7 @@
 								</ul>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Services</a>
+								<a class="nav-link" href="{{ route('service') }}">Services</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{ url('blog') }}">Blogs</a>
@@ -66,7 +66,7 @@
 									Contact Us
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-									<li><a class="dropdown-item" href="#">Contact Us</a></li>
+									<li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
 									<li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
 									<li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
 								</ul>

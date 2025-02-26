@@ -132,7 +132,7 @@ class FrontendController extends Controller
 
         return view('frontend.blog',$data);
 	}
-	
+
 	 public function blogdetail($id)
     {
         $data['blog'] = Blog::find($id);
@@ -143,7 +143,7 @@ class FrontendController extends Controller
     }
 	public function inner_blog()
     {
-		$data['blog'] = Blog::find($id);
+		// $data['blog'] = Blog::find($id);
 		$data['blogs'] = Blog::get();
         // $developer_properties = DeveloperProperty::latest()->take(3)->get();
         $data['developer_property'] = DeveloperProperty::first();
@@ -261,6 +261,15 @@ class FrontendController extends Controller
 
         return view('frontend.developer_page', compact('developers'));
     }
+
+    public function TermCondition(){
+        return view('frontend.term_condition');
+    }
+
+    public function privacyPolicy(){
+        return view('frontend.privacy');
+    }
+
 
     public function filter(Request $request)
     {

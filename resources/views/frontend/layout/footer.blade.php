@@ -61,8 +61,8 @@
             </div>
             <div class="col-md-6">
                 <ul class="footer-privacy">
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="{{ route('term-condition') }}">Terms of service</a></li>
+                    <li><a href="{{ route('privacy-policy') }}">Privacy policy</a></li>
                     <li><a href="#">Cookies</a></li>
                 </ul>
             </div>

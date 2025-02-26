@@ -1833,3 +1833,177 @@ p {
 .about-main span {
     font-family: "Quicksand" !important;
 }
+
+
+/*Service*/
+.service-imgbox h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.service-imgbox p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.service-imgbox {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.service1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 32%);
+    padding: 50px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.service-imgbox img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.service-imgbox a {
+    text-decoration: none;
+}
+
+.serviceh2 {
+    font-size: 80px;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    width: 55%;
+    margin: 0 auto;
+}
+
+.service {
+    background: url(../images/service/bg.png) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.privacy-main {
+    padding: 50px;
+}
+
+.priv1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.priv2 {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.contact1a {
+    font-size: 46px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.contact1b {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.call>a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    font-family: var(--default-font);
+}
+
+.call i {
+    background: #00737F;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.call {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact1c {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    width: 80%;
+}
+
+.contact-form input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: 0;
+    padding-left: 10px;
+    font-size: 16px;
+    color: #000;
+    font-family: var(--default-font);
+}
+
+.contact-form textarea {
+    width: 100%;
+    border-radius: 30px;
+    border: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+    color: #000;
+    font-family: var(--default-font);
+}
+
+.contact-form button {
+    font-family: var(--default-font);
+    font-size: 16px;
+    border-radius: 30px;
+    width: 125px;
+    height: 50px;
+    border: 0;
+    background: #00737F;
+    color: #fff;
+}
+
+.contact-main {
+    padding: 80px 0;
+}
+
+.contact-banner {
+    background: url(../images/contacts/bg.png) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}

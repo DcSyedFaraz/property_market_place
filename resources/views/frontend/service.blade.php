@@ -1,106 +1,77 @@
-@extends('frontend.layout.app')
-@section('content')
-    <!-- Bread Crumb -->
-    <section class="sec-001 bread-crumb">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <title>Services</title>
+</head>
+
+<body>
+    <section class="service">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">Our Services</h1>
-                    <p class="text-center"><a href="/">Home</a> / <a href="#">Services</a></p>
+            <h2 class="serviceh2">Services</h2>
+            <p class="banner-p">We are a full-service real estate company in UAE that is able to assist you with all
+                your real estate needs.</p>
+        </div>
+    </section>
+    <section class="about-main">
+        <div class="container">
+            <div class="service1">
+                <div class="service-imgbox">
+                    <a href="#">
+                        <img src="./assets/images/service/s1.png" />
+                        <h3>Commercial and residential real estate management</h3>
+                        <p>Experienced real estate professionals on our team can help you manage your properties
+                            efficiently.</p>
+                    </a>
+                </div>
+                <div class="service-imgbox">
+                    <a href="#">
+                        <img src="./assets/images/service/s2.png" />
+                        <h3>Real estate brokerage</h3>
+                        <p>We connect buyers and sellers to help them achieve their real estate goals.</p>
+                    </a>
+                </div>
+                <div class="service-imgbox">
+                    <a href="#">
+                        <img src="./assets/images/service/s3.png" />
+                        <h3>Sales and rental services</h3>
+                        <p>Our goal is to generate leads, close deals, and grow your business.</p>
+                    </a>
+                </div>
+                <div class="service-imgbox">
+                    <a href="#">
+                        <img src="./assets/images/service/s4.png" />
+                        <h3>Facilities management</h3>
+                        <p>What makes Property Angel the best NRI Property Management.</p>
+                    </a>
+                </div>
+                <div class="service-imgbox">
+                    <a href="#">
+                        <img src="./assets/images/service/s5.png" />
+                        <h3>Angel Services</h3>
+                        <p>provide more significant financial support.</p>
+                    </a>
                 </div>
             </div>
-    </section>
-    <!-- Bread Crumb End -->
-
-    <section>
-        <div class="sec-serv-002 sec-space">
-            <div class="container">
-                <div class="row d-flex align-items-center">
-                    <div class="col-md-12">
-                        <div class="about-para">
-                            <h2>Our Services</h2>
-                            <p>We are a full-service real estate company in UAE that is able to assist you with all your
-                                real estate needs.
-                                " Providing our clients with the highest level of service is our top priority "
-                            </p>
-                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus nisl arcu, et
-                            feugiat
-                            ante aliquam id. Donec tincidunt eu est sit amet tempor. Sed ut accumsan magna, sed
-                            facilisis elit. Proin dapibus et elit ac commodo. Duis non euismod enim. Sed imperdiet
-                            venenatis neque nec tempus. Nulla facilisi. Donec quis nunc ligula. Suspendisse pretium
-                            risus a efficitur eleifend. In vel nisl orci. Praesent aliquam erat facilisis,</p> --}}
-                        </div>
-                    </div>
-
+            <div class="about-3">
+                <div class="container">
+                    <h3 class="about3a">Be the first to know.</h3>
+                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
+                        announcements about pre-leasing opportunities.</p>
+                    <form>
+                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <section>
-        <div class="sec-our-serv-002 sec-space">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i> Commercial and residential real estate management</h3>
-                            <p>Experienced real estate professionals on our team can help you manage your properties
-                                efficiently.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i> Real estate brokerage</h3>
-                            <p>We connect buyers and sellers to help them achieve their real estate goals.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i> Sales and rental services</h3>
-                            <p>Our goal is to generate leads, close deals, and grow your business.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i> Facilities management</h3>
-                            <p>What makes Property Angel the best NRI Property Management.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="detail icon-text2">
-                            <h3><i class="bi bi-house-door"></i> Angel Services</h3>
-                            <p>provide more significant financial support.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Logo Carousel Start -->
-    <section>
-        <div class="sec-7">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 me-auto text-center content2">
-                        <h2>Discover Modern New developments.</h2>
-                        <p>Select your property type from our list of featured developers</p>
-                    </div>
-                </div>
-                <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo04.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo01.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo02.png') }}" alt="" /></div>
-                    <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="" /></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Logo Carousel End -->
-@endsection
+</html>
