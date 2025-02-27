@@ -20,7 +20,9 @@
                         <div class="content">
                             <h4 class="publish-date">{{ $blog->created_at }}</h4>
                             <h3 class="blog-title">{{$blog->title}}</h3>
-                            <a href="{{ route('blog.show', $blog->id) }}" class="blog-read">Read More</a>
+                            <a href="{{ route('blog.show', $blog->slug) }}" class="blog-read">Read More</a>
+                        
+
                         </div>
                     </div>
                 @endforeach

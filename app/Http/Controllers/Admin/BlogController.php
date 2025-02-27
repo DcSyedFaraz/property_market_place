@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Str;
 
 class BlogController extends Controller
 {
@@ -26,6 +27,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'slug' => 'nullable|string|max:255|unique:blogs,slug',
         ]);
 
 
@@ -36,6 +38,7 @@ class BlogController extends Controller
             $blog->image = $imagePath;
         }
         $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
         $blog->description = $request->description;
         $blog->save();
 
@@ -52,9 +55,10 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required',
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
+            'slug' => 'nullable|string|max:255|unique:blogs,slug',
         ]);
 
         if ($request->hasFile('image')) {
@@ -63,6 +67,7 @@ class BlogController extends Controller
             $blog->image = $imagePath;
         }
         $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
         $blog->description = $request->description;
         $blog->save();
 

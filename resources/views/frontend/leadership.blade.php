@@ -6,7 +6,7 @@ ul {
     color: white;
     list-style: none;
 }
-	
+
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
 @import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
 @import "https://fonts.googleapis.com/css?family=Raleway:100,600";
@@ -92,9 +92,9 @@ ul {
       <div class="container">
         <div class="row">
 
-		@foreach($teammembers as $team)	
+		@foreach($teammembers as $team)
           <div class="col-md-4">
-		   <a href="{{route('leadership.detail',$team->id)}}">
+		   <a href="{{route('leadership.detail',$team->slug)}}">
             <div class="team-member">
               <figure>
                 <img src="{{ asset('/uploads/'.$team->image ) }}" alt="" class="img-fluid h-100">
@@ -113,8 +113,8 @@ ul {
 			</a>
 		   </div><!-- /.col-md-4 -->
 		  @endforeach
-          
-         
+
+
 
         </div><!-- /.row -->
       </div><!-- /.container -->

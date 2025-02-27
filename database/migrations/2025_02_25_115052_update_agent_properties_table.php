@@ -33,7 +33,7 @@ return new class extends Migration {
             $table->decimal('balcony_area', 10, 2)->nullable()->change();
             $table->decimal('unit_area', 10, 2)->nullable()->change();
             $table->string('main_image')->nullable(); // Property Main Image
-            $table->string('status')->nullable(); // Property Status
+            $table->string('status')->nullable()->change(); // Property Status
         });
     }
 

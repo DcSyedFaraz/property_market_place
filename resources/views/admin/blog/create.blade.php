@@ -20,8 +20,8 @@
         <!-- Title -->
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="title" placeholder="Title" class="form-control">
-
+            <input type="text" id="title" name="title" placeholder="Title" class="form-control"> <br>
+            <input type="text" id="slug" name="slug" class="form-control" placeholder="Slug" readonly>
         </div>
 
         <!-- Description -->
@@ -40,7 +40,6 @@
             <input type="file" class="form-control" id="image" name="image"
                 accept=".pdf,.docx,.jpg,.jpeg,.png">
         </div>
-
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

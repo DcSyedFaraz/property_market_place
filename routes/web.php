@@ -53,10 +53,12 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
 	Route::get('/leadership', 'leadership')->name('leadership');
-	Route::get('/leadership/{id}', 'leadership_detail')->name('leadership.detail');
+	Route::get('/leadership/{slug}', 'leadership_detail')->name('leadership.detail');
 
 	Route::get('/blog', 'blog')->name('blog');
-    Route::get('/blog/{id}', 'blogdetail')->name('blog.show');
+    Route::get('/blog/{slug}', 'blogdetail')->name('blog.show');
+
+
     Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
     Route::get('/offplan', 'offplan')->name('offplan');

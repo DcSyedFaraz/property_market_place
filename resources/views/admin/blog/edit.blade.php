@@ -24,6 +24,7 @@
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title"
                 value="{{ old('title', $blog->title) }}" required>
+                <input type="text" id="slug" name="slug" class="form-control" placeholder="Slug" readonly>
         </div>
 
         <!-- Description -->

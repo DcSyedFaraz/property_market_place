@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TeamMember;
+use Str;
 class TeamController extends Controller
 {
    public function index()
@@ -23,6 +24,7 @@ class TeamController extends Controller
     $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:team_members,email',
+        'slug' => 'nullable|string|max:255|unique:team_members,slug',
         'position' => 'required',
         'description' => 'required',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -33,12 +35,13 @@ class TeamController extends Controller
     ]);
 
     $data = $request->all();
-    
+
     if ($request->hasFile('image')) {
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('uploads'), $imageName);
         $data['image'] = $imageName;
     }
+    $data['slug'] = Str::slug($request->name);
 
     TeamMember::create($data);
     return redirect()->route('team.index')->with('success', 'Team member added!');
@@ -55,6 +58,7 @@ class TeamController extends Controller
     $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:team_members,email,' . $team->id,
+        'slug' => 'nullable|string|max:255|unique:team_members,slug',
         'position' => 'required',
         'description' => 'required',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -76,6 +80,8 @@ class TeamController extends Controller
         $request->image->move(public_path('uploads'), $imageName);
         $data['image'] = $imageName;
     }
+
+    $data['slug'] = Str::slug($request->name);
 
     $team->update($data);
     return redirect()->route('team.index')->with('success', 'Team member updated!');

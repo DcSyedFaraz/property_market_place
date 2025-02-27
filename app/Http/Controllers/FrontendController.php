@@ -119,9 +119,9 @@ class FrontendController extends Controller
 		$teammembers = TeamMember::all();
         return view('frontend.leadership',compact("teammembers"));
     }
- 	public function leadership_detail(string $id)
+ 	public function leadership_detail(string $slug)
     {
-		$teammember = TeamMember::findorfail($id);
+		$teammember = TeamMember::where('slug', $slug)->firstorfail();
         return view('frontend.leadership_detail',compact("teammember"));
     }
 	public function blog()
@@ -133,14 +133,16 @@ class FrontendController extends Controller
         return view('frontend.blog',$data);
 	}
 
-	 public function blogdetail($id)
-    {
-        $data['blog'] = Blog::find($id);
-		$data['blogs'] = Blog::get();
-        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
-        $data['developer_property'] = DeveloperProperty::first();
-        return view('frontend.blog-detail',$data);
-    }
+	public function blogdetail($slug)
+{
+    $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+    $data['blogs'] = Blog::get();
+    $data['developer_property'] = DeveloperProperty::first();
+
+    return view('frontend.blog-detail', $data);
+}
+
+
 	public function inner_blog()
     {
 		// $data['blog'] = Blog::find($id);
