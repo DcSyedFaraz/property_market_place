@@ -1928,7 +1928,7 @@ p {
 }
 
 .call>a {
-    color: #fff;
+    color: #fff !important;!i;!;
     font-size: 16px;
     text-decoration: none;
     font-family: var(--default-font);
@@ -1970,6 +1970,7 @@ p {
     font-size: 16px;
     color: #000;
     font-family: var(--default-font);
+    background: #fff;
 }
 
 .contact-form textarea {
