@@ -58,7 +58,7 @@ class BlogController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
-            'slug' => 'nullable|string|max:255|unique:blogs,slug',
+            'slug' => 'nullable|string|max:255|unique:blogs,slug,' . $blog->id,
         ]);
 
         if ($request->hasFile('image')) {
