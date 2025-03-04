@@ -1904,7 +1904,7 @@ p {
 }
 
 .priv1 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     color: #fff;
 }
@@ -1928,7 +1928,9 @@ p {
 }
 
 .call>a {
-    color: #fff !important;!i;!;
+    color: #fff !important;
+    !i;
+    !;
     font-size: 16px;
     text-decoration: none;
     font-family: var(--default-font);
@@ -2007,4 +2009,15 @@ p {
     display: flex;
     align-items: center;
     text-align: left;
+}
+
+.priv3 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar-nav {
+    justify-content: center;
+    gap: 10px;
 }
