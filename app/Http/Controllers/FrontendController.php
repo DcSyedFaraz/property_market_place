@@ -108,7 +108,11 @@ class FrontendController extends Controller
     public function projects($id)
     {
         $developer_property = DeveloperProperty::findOrFail($id);
-        return view('frontend.devPropertyDetails', compact('developer_property'));
+        $property = AgentProperty::with('propertygallery')->where('id', $id)->firstOrFail();
+
+        // dd($property->propertygallery);
+
+        return view('frontend.devPropertyDetails', compact( 'property', 'developer_property'));
     }
     public function about_us()
     {

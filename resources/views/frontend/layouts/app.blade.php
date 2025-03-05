@@ -136,7 +136,7 @@
         </nav>
     </header>
 
-    <section class="sec-01 bread-crumb"
+    {{-- <section class="sec-01 bread-crumb"
         style="background-image: url('{{ asset('storage/' . $developer_property->cover_image) }}');">
 
         <div class="container">
@@ -145,7 +145,7 @@
                     <h1 class="text-center">{{ $developer_property->name }}</h1>
                 </div>
             </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="sec-02">
@@ -290,7 +290,7 @@
                         <li><a href="#"><i class="bi bi-arrow-right-short"></i>Industrial</a></li>
                         <li><a href="#"><i class="bi bi-arrow-right-short"></i>Offices</a></li>
                         <li><a href="#"><i class="bi bi-arrow-right-short"></i>Villas</a></li>
-                    </ul>
+                        </ul0>
                 </div>
                 <div class="col-md-3">
                     <h3>Contact Us</h3>
@@ -318,8 +318,8 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="footer-privacy">
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="{{ route('term-condition') }}">Terms of service</a></li>
+                        <li><a href="{{ route('privacy-policy') }}">Privacy policy</a></li>
                         <li><a href="#">Cookies</a></li>
                     </ul>
                 </div>

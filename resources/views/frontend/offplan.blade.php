@@ -391,9 +391,6 @@
                                                 <div class="btn-04 mt-2">
                                                     <a href="{{ route('projects', $project->id) }}"><button
                                                             class="btn-05">View Details</button></a>
-                                                    <a href="#"><button class="btn-05">Payment Plan</button></a>
-                                                    <a href="#"><button class="btn-05">Handover</button></a>
-                                                    <a href="#"><button class="btn-05">Brochure</button></a>
                                                 </div>
                                             </div>
                                         </div>

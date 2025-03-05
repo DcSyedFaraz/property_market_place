@@ -1928,7 +1928,7 @@ p {
 }
 
 .call>a {
-    color: #fff !important;!i;!;
+    color: #fff !important;
     font-size: 16px;
     text-decoration: none;
     font-family: var(--default-font);
@@ -2008,3 +2008,72 @@ p {
     align-items: center;
     text-align: left;
 }
+/*Property Details*/
+.prop-1a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin: 25px 0 5px;
+}
+
+.prop-1b {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.property-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 33%);
+}
+
+.main-image img {
+    width: 100%;
+    height: 330px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.second-image img {
+    width: 100%;
+    height: 330px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.second-image {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 47% 47%;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 18%);
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.propdetails-banner {
+    background: url(/assets/images/property-details/bg.png) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+/*Property Details*/

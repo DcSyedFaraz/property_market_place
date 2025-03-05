@@ -50,7 +50,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/properties', 'filter')->name('properties.index');
     Route::get('/properties/{location}', 'showPropertiesByLocation')->name('properties.byLocation');
-    Route::get('/offplan/{id}', 'projects')->name('projects');
+        Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
 	Route::get('/leadership', 'leadership')->name('leadership');
 	Route::get('/leadership/{slug}', 'leadership_detail')->name('leadership.detail');
