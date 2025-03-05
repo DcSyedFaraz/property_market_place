@@ -8,7 +8,7 @@ use App\Models\TeamMember;
 use Str;
 class TeamController extends Controller
 {
-   public function index()
+    public function index()
     {
         $members = TeamMember::all();
         return view('admin.team.index', compact('members'));
@@ -20,32 +20,32 @@ class TeamController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'email' => 'required|email|unique:team_members,email',
-        'slug' => 'nullable|string|max:255|unique:team_members,slug',
-        'position' => 'required',
-        'description' => 'required',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'facebook' => 'nullable|url',
-        'twitter' => 'nullable|url',
-        'linkedin' => 'nullable|url',
-        'instagram' => 'nullable|url',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:team_members,email',
+            'slug' => 'nullable|string|max:255|unique:team_members,slug',
+            'position' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'linkedin' => 'nullable|url',
+            'instagram' => 'nullable|url',
+        ]);
 
-    $data = $request->all();
+        $data = $request->all();
 
-    if ($request->hasFile('image')) {
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('uploads'), $imageName);
-        $data['image'] = $imageName;
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads'), $imageName);
+            $data['image'] = $imageName;
+        }
+        $data['slug'] = Str::slug($request->name);
+
+        TeamMember::create($data);
+        return redirect()->route('team.index')->with('success', 'Team member added!');
     }
-    $data['slug'] = Str::slug($request->name);
-
-    TeamMember::create($data);
-    return redirect()->route('team.index')->with('success', 'Team member added!');
-}
 
 
     public function edit(TeamMember $team)
@@ -53,39 +53,39 @@ class TeamController extends Controller
         return view('admin.team.edit', compact('team'));
     }
 
-   public function update(Request $request, TeamMember $team)
-{
-    $request->validate([
-        'name' => 'required',
-        'email' => 'required|email|unique:team_members,email,' . $team->id,
-        'slug' => 'nullable|string|max:255|unique:team_members,slug',
-        'position' => 'required',
-        'description' => 'required',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'facebook' => 'nullable|url',
-        'twitter' => 'nullable|url',
-        'linkedin' => 'nullable|url',
-        'instagram' => 'nullable|url',
-    ]);
+    public function update(Request $request, TeamMember $team)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:team_members,email,' . $team->id,
+            'slug' => 'nullable|string|max:255|unique:team_members,slug,' . $team->id,
+            'position' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'linkedin' => 'nullable|url',
+            'instagram' => 'nullable|url',
+        ]);
 
-    $data = $request->all();
+        $data = $request->all();
 
-    if ($request->hasFile('image')) {
-        // Delete old image
-        if ($team->image && file_exists(public_path('uploads/' . $team->image))) {
-            unlink(public_path('uploads/' . $team->image));
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($team->image && file_exists(public_path('uploads/' . $team->image))) {
+                unlink(public_path('uploads/' . $team->image));
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('uploads'), $imageName);
+            $data['image'] = $imageName;
         }
 
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('uploads'), $imageName);
-        $data['image'] = $imageName;
+        $data['slug'] = Str::slug($request->name);
+
+        $team->update($data);
+        return redirect()->route('team.index')->with('success', 'Team member updated!');
     }
-
-    $data['slug'] = Str::slug($request->name);
-
-    $team->update($data);
-    return redirect()->route('team.index')->with('success', 'Team member updated!');
-}
 
 
     public function destroy(TeamMember $team)

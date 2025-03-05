@@ -91,8 +91,8 @@ class FrontendController extends Controller
             'budget_range' => $validated['budget_range'],
         ];
 
-         // // Send the email
-         Mail::to('info@thehr.ae')->send(new VisitorMail($data));
+        // // Send the email
+        Mail::to('info@thehr.ae')->send(new VisitorMail($data));
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully!');
     }
@@ -120,40 +120,40 @@ class FrontendController extends Controller
     }
     public function leadership()
     {
-		$teammembers = TeamMember::all();
-        return view('frontend.leadership',compact("teammembers"));
+        $teammembers = TeamMember::all();
+        return view('frontend.leadership', compact("teammembers"));
     }
- 	public function leadership_detail(string $slug)
+    public function leadership_detail(string $slug)
     {
-		$teammember = TeamMember::where('slug', $slug)->firstorfail();
-        return view('frontend.leadership_detail',compact("teammember"));
+        $teammember = TeamMember::where('slug', $slug)->firstorfail();
+        return view('frontend.leadership_detail', compact("teammember"));
     }
-	public function blog()
-	{
-		$data['blogs'] = Blog::get();
+    public function blog()
+    {
+        $data['blogs'] = Blog::get();
         // $developer_properties = DeveloperProperty::latest()->take(3)->get();
         $data['developer_property'] = DeveloperProperty::first();
 
-        return view('frontend.blog',$data);
-	}
+        return view('frontend.blog', $data);
+    }
 
-	public function blogdetail($slug)
-{
-    $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
-    $data['blogs'] = Blog::get();
-    $data['developer_property'] = DeveloperProperty::first();
-
-    return view('frontend.blog-detail', $data);
-}
-
-
-	public function inner_blog()
+    public function blogdetail($slug)
     {
-		// $data['blog'] = Blog::find($id);
-		$data['blogs'] = Blog::get();
+        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+        $data['blogs'] = Blog::get();
+        $data['developer_property'] = DeveloperProperty::first();
+
+        return view('frontend.blog-detail', $data);
+    }
+
+
+    public function inner_blog()
+    {
+        // $data['blog'] = Blog::find($id);
+        $data['blogs'] = Blog::get();
         // $developer_properties = DeveloperProperty::latest()->take(3)->get();
         $data['developer_property'] = DeveloperProperty::first();
-        return view('frontend.blog-detail',$data);
+        return view('frontend.blog-detail', $data);
     }
     public function contact_us()
     {
@@ -269,11 +269,13 @@ class FrontendController extends Controller
         return view('frontend.developer_page', compact('developers'));
     }
 
-    public function TermCondition(){
+    public function TermCondition()
+    {
         return view('frontend.term_condition');
     }
 
-    public function privacyPolicy(){
+    public function privacyPolicy()
+    {
         return view('frontend.privacy');
     }
 
@@ -403,27 +405,15 @@ class FrontendController extends Controller
 
         if (in_array($location, $allowedLocations)) {
             // Search by location
-            $properties = DeveloperProperty::whereHas('community', function ($query) use ($location) {
-                $query->where('location', $location);
-            })->get();
-
-
+            $properties = AgentProperty::where('property_type', $location)->get();
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }
 
         // Check if the search term is a valid property type
         elseif (in_array($location, $allowedTypes)) {
             // Search by property type
-            $properties = DeveloperProperty::whereHas('propertyTypes', function ($query) use ($location) {
-                $query->where('property_type', $location);
-            })
-                ->with([
-                    'propertyTypes' => function ($query) use ($location) {
-                        $query->where('property_type', $location);
-                    }
-                ])
-                ->get();
 
+            $properties = AgentProperty::where('transaction_type', $location)->get();
 
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }

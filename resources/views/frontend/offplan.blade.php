@@ -7,51 +7,10 @@
                 <div class="col-md-12">
                     <h1 class="text-center">{{ $location ?? '' }} Projects</h1>
                     <!-- <p class="text-center"><a href="/">Home</a> / <a href="#">{{ $location ?? '' }} Offplan
-                            Projects</a></p> -->
+                                Projects</a></p> -->
                 </div>
             </div>
     </section>
-    <!-- Bread Crumb End -->
-    <!-- <section>
-        <div class="sec-community-003">
-            <div class="container">
-                <div class="row d-flex align-items-center list-mob1">
-                    <div class="col-md-3 col-6">
-                        <a href="{{ route('offplan') }}">
-                            <div class="tab-item1 active_bar">
-                                <i class="bi bi-building"></i>
-                                <h4 class="text-center">Projects</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <a href="{{ route('developer_list') }}">
-                            <div class="tab-item1">
-                                <i class="bi bi-house"></i>
-                                <h4 class="text-center">Developer</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <a href="{{ route('location') }}">
-                            <div class="tab-item1">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4 class="text-center">Location</h4>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <a href="{{ route('project_community') }}">
-                            <div class="tab-item1">
-                                <i class="bi bi-hospital"></i>
-                                <h4 class="text-center">Community</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section>
         <div class="sec-community-004 sec-space">
@@ -373,20 +332,20 @@
                                     <div class="property-item d-flex align-items-center">
                                         <div class="col-md-5">
                                             <div class="property-img">
-                                                <img src="{{ asset('storage/' . $project->cover_image) }}" alt="property"
+                                                <img src="{{ asset('storage/' . $project->main_image) }}" alt="property"
                                                     class="img-fluid" />
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="property-desc">
                                                 <h5 class="mt-4">AED {{ $project->price }} /</h5>
-                                                <h4>{{ $project->name }} </h4>
-                                                <h6>{{ $project->community_name->name ?? '' }} </h6>
+                                                <h4>{{ $project->title }} </h4>
+                                                {{-- <h6>{{ $project->community_name->name ?? '' }} </h6> --}}
                                                 <div class="dt10">
                                                     <i class="fa fa-bed"><span>
-                                                            {{ $project->propertyTypes->first()->unit_type }}</span></i>
+                                                            {{ $project->bedrooms }}</span></i>
                                                     <i class="fa fa-vector-square"><span>
-                                                            {{ $project->propertyTypes->first()->size }} </span></i>
+                                                            {{ $project->bathrooms }} </span></i>
                                                 </div>
                                                 <div class="btn-04 mt-2">
                                                     <a href="{{ route('projects', $project->id) }}"><button
