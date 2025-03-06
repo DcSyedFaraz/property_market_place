@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="property_type" class="form-label">Property Type</label>
-                                    <select class="form-control" id="property_type" name="property_type">
+                                    <select class="form-select" id="property_type" name="property_type">
                                         <option value="residential">Residential</option>
                                         <option value="commercial">Commercial</option>
                                         <option value="off-plan">OFF-Plan</option>

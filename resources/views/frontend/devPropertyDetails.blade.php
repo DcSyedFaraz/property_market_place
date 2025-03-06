@@ -66,9 +66,9 @@
                             <img src="{{ asset('storage/' . $property->main_image) }}" alt="main-1" />
                         </div>
                         <!-- <div class="second-image">
-                                        <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                        <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                    </div> -->
+                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                        </div> -->
 
 
                         <div class="image-gallery">

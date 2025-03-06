@@ -21,7 +21,7 @@
 
 <body class="view-properties-page page-id-101">
     <!-- Nav-Bar -->
-    <header class="top-header mob-1">
+    {{-- <header class="top-header mob-1">
         <nav class="navbar navbar-top">
             <div class="container">
                 <div class="row d-flex align-items-center">
@@ -33,9 +33,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('secondary_sale') }}">Seconadry Properties</a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="#">Holiday Homes</a>
-                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('offplan') }}">Off Plan</a>
                             </li>
@@ -47,152 +44,19 @@
                 </div>
             </div>
         </nav>
-    </header>
-    {{-- @dd($developer_property) --}}
-    <header class="header header-view">
-        <nav class="navbar navbar-light navbar-expand-lg">
-            <div class="container d-block">
-                <div class="row align-items-center">
-                    <div class="col-md-2 col-6">
-                        <a class="navbar-brand" href="/"><img
-                                src="{{ asset('storage/' . $developer_property->logo) }}" alt="logo"
-                                class="logo" /></a>
-                    </div>
-                    <div class="col-md-8 mob-1">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('projects', $developer_property->id) }}">Overview</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                    href="{{ route('address_residence', $developer_property->id) }}">Amenity</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('payment_plan', $developer_property->id) }}">Payment
-                                    Plan</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('floor_plan', $developer_property->id) }}">Floor
-                                    Plans</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                    href="{{ route('location_map', $developer_property->id) }}">Location</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('master_plan', $developer_property->id) }}">Master
-                                    Plan </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                    href="{{ route('projects', $developer_property->id) }}#gallery">Gallery</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-2 mob-1">
-                        <a class="nav-link btn10" href="#">Get A Qoute</a>
-                    </div>
-                    <div class="col-6 d-md-none">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="offcanvas offcanvas-end bg-secondary secondary-1" id="navbarOffcanvas"
-                            tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header">
-                                <a class="navbar-brand" href="/"><img
-                                        src="./assets/images/Bulldog-Stronger-logo.png" alt="logo"
-                                        class="logo" /></a>
-                                <button type="button" class="btn-close btn-close-white text-reset"
-                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="/">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Bulldog Stronger</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Community</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./marketplace.html">Marketplace</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Vet</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact Us</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    {{-- <section class="sec-01 bread-crumb"
-        style="background-image: url('{{ asset('storage/' . $developer_property->cover_image) }}');">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="text-center">{{ $developer_property->name }}</h1>
-                </div>
-            </div>
-    </section> --}}
+    </header> --}}
+    @include('frontend.layout.header')
 
     <section>
         <div class="sec-02">
+            @yield('content')
             <div class="container">
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-8">
 
-                                @yield('content')
-                            </div>
-                            <!-- Right Side -->
-                            <div class="col-md-4">
-                                <div class="detail form-view-page">
-                                    <h3>Get in Touch</h4>
-                                        <form>
-                                            <ul class="form-style-1">
-                                                <li><label>Full Name <span class="required">*</span></label><input
-                                                        type="text" name="field1" class="field-divided"
-                                                        placeholder="First" /> <input type="text" name="field2"
-                                                        class="field-divided" placeholder="Last" /></li>
-                                                <li>
-                                                    <label>Email <span class="required">*</span></label>
-                                                    <input type="email" name="field3" class="field-long" />
-                                                </li>
-                                                <li>
-                                                    <label>Subject</label>
-                                                    <select name="field4" class="field-select">
-                                                        <option value="Advertise">Advertise</option>
-                                                        <option value="Partnership">Partnership</option>
-                                                        <option value="General Question">General</option>
-                                                    </select>
-                                                </li>
-                                                <li>
-                                                    <label>Your Message <span class="required">*</span></label>
-                                                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
-                                                </li>
-                                                <li>
-                                                    <input type="submit" value="Submit" />
-                                                </li>
-                                            </ul>
-                                        </form>
-                                </div>
-                            </div>
-                            <!-- End Right Side -->
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

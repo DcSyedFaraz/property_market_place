@@ -31,53 +31,63 @@
                     </div>
                     <div class="col-md-8 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('home') }}">Home</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									About
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-									<li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
-									<li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
-								</ul>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Properties
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
-									<li><a class="dropdown-item" href="#">Residential</a></li>
-									<li><a class="dropdown-item" href="#">Commercial</a></li>
-									<li><a class="dropdown-item" href="#">Off-Plan</a></li>
-									<li><a class="dropdown-item" href="#">Mall</a></li>
-									<li><a class="dropdown-item" href="#">Villa</a></li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('service') }}">Services</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ url('blog') }}">Blogs</a>
-							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Contact Us
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-									<li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
-									<li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
-									<li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ url('complain') }}">Complaint</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
-							</li>
-						</ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    About
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Properties
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('service') }}">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Contact Us
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                    <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="col-md-2 mob-1">
                         <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
@@ -139,8 +149,8 @@
                         </p>
                         <div class="img-text">
                             <a href="{{ route('leadership') }}">
-    							<img src="{{ asset('assets/img/testi-img.png') }}" alt="Your Image Description" />
-							</a>
+                                <img src="{{ asset('assets/img/testi-img.png') }}" alt="Your Image Description" />
+                            </a>
                             <p>Meet our Leaders.</p>
                         </div>
                     </div>
@@ -576,7 +586,7 @@
 <div class="floating-buttons">
     <!-- Visitor Button -->
     <div class="floating-button-container">
-        <a href="https://thehrealestate.cstmpanel.com/visitor" class="floating-button visitor-button" target="_blank">
+        <a href="{{ route('visitor.form') }}" class="floating-button visitor-button" target="_blank">
             <i class="fas fa-user"></i>
         </a>
         <span class="tooltip-text">Visitor Form</span>
@@ -584,7 +594,7 @@
 
     <!-- Complaint Button -->
     <div class="floating-button-container">
-        <a href="https://thehrealestate.cstmpanel.com/complain" class="floating-button complaint-button" target="_blank">
+        <a href="{{ route('complaint.form') }}" class="floating-button complaint-button" target="_blank">
             <i class="fas fa-exclamation-circle"></i>
         </a>
         <span class="tooltip-text">Complaint Form</span>
@@ -600,7 +610,8 @@
         right: 20px;
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Space between buttons */
+        gap: 10px;
+        /* Space between buttons */
     }
 
     /* Individual button container */
@@ -632,7 +643,8 @@
 
     .floating-button i {
         font-size: 24px;
-        color: white; /* Icon remains white */
+        color: white;
+        /* Icon remains white */
     }
 
     /* Tooltip text */
@@ -640,7 +652,8 @@
         position: absolute;
         right: 60px;
         background-color: white;
-        color: #15232d; /* Text color set to #15232d */
+        color: #15232d;
+        /* Text color set to #15232d */
         padding: 5px 10px;
         border-radius: 8px;
         font-size: 14px;
@@ -661,4 +674,5 @@
 
 <!-- Font Awesome for Icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </html>
