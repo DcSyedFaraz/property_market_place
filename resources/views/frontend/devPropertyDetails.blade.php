@@ -17,7 +17,7 @@
                         <p class="prop-1b">Test</p>
 
                         <h5 class="prop-1a">Description</h5>
-                        <p class="prop-1b">{{ $property->description }} </p>
+                        <p class="prop-1b">{!! $property->description !!} </p>
 
                         <h5 class="prop-1a">Location</h5>
                         <p class="prop-1b">{{ $property->location }} </p>
