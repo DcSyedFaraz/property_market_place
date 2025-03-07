@@ -112,7 +112,7 @@ class FrontendController extends Controller
 
         // dd($property->propertygallery);
 
-        return view('frontend.devPropertyDetails', compact( 'property', 'developer_property'));
+        return view('frontend.devPropertyDetails', compact('property'));
     }
     public function about_us()
     {
