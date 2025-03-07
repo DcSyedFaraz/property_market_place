@@ -61,8 +61,8 @@
             </div>
         </div>
     </section>
-    @php
-        $footerItems = app\Models\DeveloperProperty::where('developer_id', $developer_property->developer_id)
+    {{-- @php
+        $footerItems = app\Models\AgentProperty::where('developer_id', $developer_property->developer_id)
             ->latest()
             ->take(3)
             ->get();
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
 
