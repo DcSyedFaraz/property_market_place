@@ -52,10 +52,10 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/properties/{location}', 'showPropertiesByLocation')->name('properties.byLocation');
     Route::get('/offplan/{id}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
-	Route::get('/leadership', 'leadership')->name('leadership');
-	Route::get('/leadership/{slug}', 'leadership_detail')->name('leadership.detail');
+    Route::get('/leadership', 'leadership')->name('leadership');
+    Route::get('/leadership/{slug}', 'leadership_detail')->name('leadership.detail');
 
-	Route::get('/blog', 'blog')->name('blog');
+    Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{slug}', 'blogdetail')->name('blog.show');
 
 
@@ -77,8 +77,8 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/floor-plan/{id}', 'floor_plan')->name('floor_plan');
     Route::get('/community-page/{id}', 'community_page')->name('community_page');
     Route::get('/developer-page/{id}', 'developer_page')->name('developer_page');
-	Route::get('/term-condition', 'TermCondition')->name('term-condition');
-	Route::get('/privacy-policy', 'PrivacyPolicy')->name(name: 'privacy-policy');
+    Route::get('/term-condition', 'TermCondition')->name('term-condition');
+    Route::get('/privacy-policy', 'PrivacyPolicy')->name(name: 'privacy-policy');
     // Route::get('/offplan/search',  'filter')->name('offplan_search');
 
 });
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('developer_properties', DeveloperPropertyController::class);
     Route::resource('communities', CommunityController::class);
     Route::resource('blogs', BlogController::class);
-	Route::resource('team', TeamController::class);
+    Route::resource('team', TeamController::class);
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 

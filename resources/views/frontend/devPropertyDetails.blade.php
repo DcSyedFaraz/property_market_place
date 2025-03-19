@@ -17,7 +17,7 @@
                         <p class="prop-1b">Test</p>
 
                         <h5 class="prop-1a">Description</h5>
-                        <p class="prop-1b">{{ $property->description }} </p>
+                        <p class="prop-1b">{!! $property->description !!} </p>
 
                         <h5 class="prop-1a">Location</h5>
                         <p class="prop-1b">{{ $property->location }} </p>
@@ -66,9 +66,9 @@
                             <img src="{{ asset('storage/' . $property->main_image) }}" alt="main-1" />
                         </div>
                         <!-- <div class="second-image">
-                                        <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                        <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                    </div> -->
+                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                        </div> -->
 
 
                         <div class="image-gallery">
