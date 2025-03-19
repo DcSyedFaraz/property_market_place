@@ -2008,6 +2008,7 @@ p {
     align-items: center;
     text-align: left;
 }
+
 /*Property Details*/
 .prop-1a {
     font-size: 18px;
@@ -2220,7 +2221,10 @@ p {
     border-right: 1px solid #fff;
 }
 
-select, input, button {
-    font-family: var(--default-font);
+select,
+input,
+button {
+    font-family: var(--default-font) !important;
 }
+
 /*Projects Css*/
