@@ -87,8 +87,8 @@
 
                                 </div>
                             </div>
-                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn">View Details</a>
-
+                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">View Details</a>
+                            <hr>
                         @empty
                             <p>
                                 no project available
