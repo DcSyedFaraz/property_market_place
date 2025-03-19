@@ -2226,5 +2226,8 @@ input,
 button {
     font-family: var(--default-font) !important;
 }
+.blog-text ul {
+    color: #fff !important;
+}
 
 /*Projects Css*/
