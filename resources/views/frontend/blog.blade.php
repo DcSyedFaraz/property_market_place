@@ -7,12 +7,12 @@
     </section>
     <section class="about-main">
         <div class="container">
-            <div class="blog1">
+            {{-- <div class="blog1">
                 <h4 class="blog1-a">Blogs</h4>
                 <p class="blog1-b">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod tellus vitae
                     posuere congue. Donec lacinia quam enim, sit amet varius tellus bibendum a. Duis varius lobortis
                     tortor, at semper.</p>
-            </div>
+            </div> --}}
             <div class="blog2">
                 @foreach ($blogs as $blog)
                     <div class="blogs-inner">
@@ -21,7 +21,7 @@
                             <h4 class="publish-date">{{ $blog->created_at }}</h4>
                             <h3 class="blog-title">{{$blog->title}}</h3>
                             <a href="{{ route('blog.show', $blog->slug) }}" class="blog-read">Read More</a>
-                        
+
 
                         </div>
                     </div>

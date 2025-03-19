@@ -99,7 +99,7 @@
 
 
     <!-- Logo Carousel Start -->
-    <section>
+    {{-- <section>
         <div class="sec-7">
             <div class="container">
                 <div class="row">
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Footer Start -->
     <footer id="footer">
         <div class="container">

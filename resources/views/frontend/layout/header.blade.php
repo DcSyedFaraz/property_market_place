@@ -28,11 +28,18 @@
                                  Properties
                              </a>
                              <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
-                                 <li><a class="dropdown-item" href="#">Residential</a></li>
-                                 <li><a class="dropdown-item" href="#">Commercial</a></li>
-                                 <li><a class="dropdown-item" href="#">Off-Plan</a></li>
-                                 <li><a class="dropdown-item" href="#">Mall</a></li>
-                                 <li><a class="dropdown-item" href="#">Villa</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                 </li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                 </li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
                              </ul>
                          </li>
                          <li class="nav-item">
@@ -51,6 +58,12 @@
                                  <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
                                  <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                              </ul>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
                          </li>
                      </ul>
                  </div>
