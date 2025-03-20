@@ -69,6 +69,7 @@
                  </div>
                  <div class="col-md-2 mob-1">
                      <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
+                     <div id="google_translate_element"></div>
                  </div>
                  <div class="col-6 d-md-none">
                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"

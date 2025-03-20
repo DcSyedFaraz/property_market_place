@@ -2226,8 +2226,16 @@ input,
 button {
     font-family: var(--default-font) !important;
 }
+
 .blog-text ul {
     color: #fff !important;
 }
 
 /*Projects Css*/
+
+.mob-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: end;
+}
