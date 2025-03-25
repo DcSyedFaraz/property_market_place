@@ -130,9 +130,7 @@ class FrontendController extends Controller
     }
     public function blog()
     {
-        $data['blogs'] = Blog::get();
-        // $developer_properties = DeveloperProperty::latest()->take(3)->get();
-        $data['developer_property'] = DeveloperProperty::first();
+        $data['blogs'] = Blog::orderBy('created_at', 'desc')->paginate(10);
 
         return view('frontend.blog', $data);
     }
@@ -405,7 +403,7 @@ class FrontendController extends Controller
 
         if (in_array($location, $allowedLocations)) {
             // Search by location
-            $properties = AgentProperty::where('property_type', $location)->get();
+            $properties = AgentProperty::where('location', $location)->get();
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }
 
@@ -413,7 +411,7 @@ class FrontendController extends Controller
         elseif (in_array($location, $allowedTypes)) {
             // Search by property type
 
-            $properties = AgentProperty::where('transaction_type', $location)->get();
+            $properties = AgentProperty::where('property_type', $location)->get();
 
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }

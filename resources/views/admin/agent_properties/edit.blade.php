@@ -24,15 +24,23 @@
             <!-- Location -->
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ $property->location }}"
-                    required>
+                <select class="form-control" id="location" name="location" required>
+                    <option value="" hidden>Select a location</option>
+                    @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
+                        <option value="{{ $locationOption }}"
+                            {{ $property->location == $locationOption ? 'selected' : '' }}>
+                            {{ $locationOption }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
+
 
             <!-- Property Type (Dropdown) -->
             <div class="mb-3">
                 <label for="property_type" class="form-label">Property Type</label>
                 <select class="form-control" id="property_type" name="property_type" required>
-                    <option value="">Select Property Type</option>
+                    <option value="" hidden>Select Property Type</option>
                     <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
                         Residential</option>
                     <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>Commercial

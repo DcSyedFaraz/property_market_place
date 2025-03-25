@@ -7,12 +7,11 @@
         <form action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            
+
             <!-- Property Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Property Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}"
-                    required>
+                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
             </div>
 
             <!-- Description -->
@@ -24,15 +23,21 @@
             <!-- Location -->
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ old('location') }}"
-                    required>
+                <select class="form-control" id="location" name="location" required>
+                    <option value="" hidden>Select a location</option>
+                    @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
+                        <option value="{{ $locationOption }}" {{ old('location') == $locationOption ? 'selected' : '' }}>
+                            {{ $locationOption }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <!-- Property Type (Dropdown) -->
             <div class="mb-3">
                 <label for="property_type" class="form-label">Property Type</label>
                 <select class="form-control" id="property_type" name="property_type" required>
-                    <option value="">Select Property Type</option>
+                    <option value="" hidden>Select Property Type</option>
                     <option value="Residential" {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
                     </option>
                     <option value="Commercial" {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
