@@ -31,10 +31,12 @@
                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
                     consectetur tellus ultricies.</p> --}}
                 <div class="foter-social-logo mt-4 mb-4">
-                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#"><i class="fab fa-twitter-square"></i></a>
-                    <a href="#"><i class="fab fa-instagram-square"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/thehr.ae/"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://x.com/TheHrealestate2"><i class="fab fa-twitter-square"></i></a>
+                    <a href="https://www.instagram.com/thehr.ae/"><i class="fab fa-instagram-square"></i></a>
+                    <a href="https://www.linkedin.com/company/the-h-real-estate/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.snapchat.com/add/thehr.ae"><i class="fa-brands fa-square-snapchat"></i></a>
+                    <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i class="fa-brands fa-square-youtube"></i></a>
                 </div>
             </div>
             <div class="col-md-3">

@@ -4,7 +4,6 @@
 <style>
 ul {
     color: white;
-    list-style: none;
 }
 </style>
 	<!-- Bread Crumb End -->

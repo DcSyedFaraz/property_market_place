@@ -148,7 +148,7 @@ h2 {
 
 .social-link a {
     display: flex;
-    color: #fff;
+    color: #fff !important;
     padding-top: 30px;
 }
 
@@ -156,6 +156,7 @@ h2 {
     position: absolute;
     left: 4rem;
     top: 15rem;
+    flex-direction: column;
 }
 
 .img-text {
@@ -1717,6 +1718,8 @@ p {
 
 .blog-img {
     width: 230px;
+    height: 230px;
+    object-fit: cover;
 }
 
 .blog2 {

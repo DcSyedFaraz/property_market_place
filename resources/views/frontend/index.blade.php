@@ -156,10 +156,12 @@
                         </div>
                     </div>
                     <div class="social-link mob-1">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.facebook.com/thehr.ae/"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/TheHrealestate2"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.instagram.com/thehr.ae/"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/the-h-real-estate/"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.snapchat.com/add/thehr.ae"><i class="bi bi-snapchat"></i></a>
+                        <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i class="bi bi-youtube"></i></a>
                     </div>
                 </div>
             </div>
