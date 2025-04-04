@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container mt-5">
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow-sm">
@@ -9,8 +16,10 @@
                         <h4>{{ __('Submit Your Information') }}</h4>
                     </div>
 
+
+
                     <div class="card-body">
-                        <form method="POST" action="#" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('registration.submit') }}" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Name -->
@@ -62,14 +71,14 @@
 
                             <!-- Trade License (File Upload) -->
                             <div class="form-group row mb-3">
-                                <label for="trade_license"
+                                <label for="trade_lincense"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Trade License') }}</label>
                                 <div class="col-md-6">
-                                    <input id="trade_license" type="file"
-                                        class="form-control-file @error('trade_license') is-invalid @enderror"
-                                        name="trade_license" required>
+                                    <input id="trade_lincense" type="file"
+                                        class="form-control-file @error('trade_lincense') is-invalid @enderror"
+                                        name="trade_lincense" required>
                                     <small class="form-text text-muted">Upload 1 supported file. Max 100 MB.</small>
-                                    @error('trade_license')
+                                    @error('trade_lincense')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -116,7 +125,7 @@
                                 <label for="bank_account_no"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Bank Account No.') }}</label>
                                 <div class="col-md-6">
-                                    <input id="bank_account_no" type="text"
+                                    <input id="bank_account_no" type="number"
                                         class="form-control @error('bank_account_no') is-invalid @enderror"
                                         name="bank_account_no" required>
                                     @error('bank_account_no')
@@ -129,13 +138,13 @@
 
                             <!-- Letter for IBAN -->
                             <div class="form-group row mb-3">
-                                <label for="letter_for_iban"
+                                <label for="iban_letter"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Letter for IBAN') }}</label>
                                 <div class="col-md-6">
-                                    <input id="letter_for_iban" type="text"
-                                        class="form-control @error('letter_for_iban') is-invalid @enderror"
-                                        name="letter_for_iban" required>
-                                    @error('letter_for_iban')
+                                    <input id="iban_letter" type="text"
+                                        class="form-control @error('iban_letter') is-invalid @enderror" name="iban_letter"
+                                        required>
+                                    @error('iban_letter')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -145,12 +154,13 @@
 
                             <!-- VAT Registration No. (TRN) -->
                             <div class="form-group row mb-3">
-                                <label for="vat_trn"
+                                <label for="vat_registration_no"
                                     class="col-md-4 col-form-label text-md-right">{{ __('VAT Registration No. (TRN)') }}</label>
                                 <div class="col-md-6">
-                                    <input id="vat_trn" type="text"
-                                        class="form-control @error('vat_trn') is-invalid @enderror" name="vat_trn" required>
-                                    @error('vat_trn')
+                                    <input id="vat_registration_no" type="text"
+                                        class="form-control @error('vat_registration_no') is-invalid @enderror"
+                                        name="vat_registration_no" required>
+                                    @error('vat_registration_no')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

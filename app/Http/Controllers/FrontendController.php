@@ -9,6 +9,7 @@ use App\Models\Community;
 use App\Models\Developer;
 use App\Models\DeveloperProperty;
 use App\Models\FloorPlan;
+use App\Models\Information;
 use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\Product;
@@ -67,6 +68,59 @@ class FrontendController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Your complaint has been submitted successfully.');
     }
+
+    public function submitRegistration(Request $request)
+    {
+        // dd($request->all());
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone_number' => 'required|string|max:20',
+            'trade_lincense' => 'required|file|mimes:pdf,jpg,png|max:10240',
+            'emirates_id' => 'required|file|mimes:pdf,jpg,png|max:10240',
+            'passport' => 'required|file|mimes:pdf,jpg,png|max:10240',
+            'bank_account_no' => 'required|numeric',
+            'iban_letter' => 'required|string|max:255',
+            'vat_registration_no' => 'required|string|max:255',
+            'contact_person_name' => 'required|string|max:255',
+            'office_address' => 'required|string|max:500',
+        ]);
+        // dd($validated);
+
+        // File uploads
+        $tradeLicensePath = $request->file('trade_lincense')->storeAs(
+            'uploads/trade_lincenses', 'trade_license_' . time() . '.' . $request->file('trade_lincense')->extension()
+        );
+
+        $emiratesIdPath = $request->file('emirates_id')->storeAs(
+            'uploads/emirates_ids', 'emirates_id_' . time() . '.' . $request->file('emirates_id')->extension() 
+        );
+
+        $passportPath = $request->file('passport')->storeAs(
+            'uploads/passports', 'passport_' . time() . '.' . $request->file('passport')->extension()
+        );
+
+        // Database Insertion
+        $registration = new Information();
+        $registration->name = $validated['name'];
+        $registration->email = $validated['email'];
+        $registration->phone_number = $validated['phone_number'];
+        $registration->trade_lincense = $tradeLicensePath;
+        $registration->emirates_id = $emiratesIdPath;
+        $registration->passport = $passportPath;
+        $registration->bank_account_no = $validated['bank_account_no'];
+        $registration->iban_letter = $validated['iban_letter'];
+        $registration->vat_registration_no = $validated['vat_registration_no'];
+        $registration->contact_person_name = $validated['contact_person_name'];
+        $registration->office_address = $validated['office_address'];
+        $registration->save();
+
+        // dd($registration);
+
+        return redirect()->back()->with('success', 'Registration submitted successfully.');
+    }
+
+
 
     public function visitForm()
     {

@@ -58,7 +58,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{slug}', 'blogdetail')->name('blog.show');
 
-    Route::get('/vendors/registration', 'registration')->name('registration');
+    // Route::get('/vendors/registration', 'registration')->name('registration');
 
     Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
@@ -90,7 +90,8 @@ Route::get('/search/offplan', [FrontendController::class, 'filter'])->name('offp
 Route::get('/visitor', [FrontendController::class, 'visitForm'])->name('visitor.form');
 Route::post('/visitor-submit', [FrontendController::class, 'submitVisit'])->name('visitor.submit');
 
-
+Route::get('/vendors/registration', [FrontendController::class, 'registration'])->name('registration.form');
+Route::post('/vendors/registration-submit', [FrontendController::class, 'submitRegistration'])->name('registration.submit');
 
 // Dashboard and Logout routes
 Route::middleware(['auth'])->group(function () {
