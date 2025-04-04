@@ -24,6 +24,10 @@ class FrontendController extends Controller
     {
         return view('frontend.complaint');
     }
+    public function registration()
+    {
+        return view('frontend.registration');
+    }
 
     /**
      * Handle form submission and send email.

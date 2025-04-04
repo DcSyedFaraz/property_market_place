@@ -58,6 +58,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/blog', 'blog')->name('blog');
     Route::get('/blog/{slug}', 'blogdetail')->name('blog.show');
 
+    Route::get('/vendors/registration', 'registration')->name('registration');
 
     Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
