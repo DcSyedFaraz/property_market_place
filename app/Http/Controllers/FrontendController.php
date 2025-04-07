@@ -73,12 +73,12 @@ class FrontendController extends Controller
     {
         // dd($request->all());
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:information,email',
             'phone_number' => 'required|string|max:20',
-            'trade_lincense' => 'required|file|mimes:pdf,jpg,png|max:10240',
-            'emirates_id' => 'required|file|mimes:pdf,jpg,png|max:10240',
-            'passport' => 'required|file|mimes:pdf,jpg,png|max:10240',
+            'trade_lincense' => 'required|image|mimes:jpg,png|max:10240',
+            'emirates_id' => 'required|image|mimes:jpg,png|max:10240',
+            'passport' => 'required|image|mimes:jpg,png|max:10240',
             'bank_account_no' => 'required|numeric',
             'iban_letter' => 'required|string|max:255',
             'vat_registration_no' => 'required|string|max:255',
@@ -89,15 +89,18 @@ class FrontendController extends Controller
 
         // File uploads
         $tradeLicensePath = $request->file('trade_lincense')->storeAs(
-            'uploads/trade_lincenses', 'trade_license_' . time() . '.' . $request->file('trade_lincense')->extension()
+            'uploads/trade_lincenses',
+            'trade_lincense_' . time() . '.' . $request->file('trade_lincense')->extension(), 'public'
         );
 
         $emiratesIdPath = $request->file('emirates_id')->storeAs(
-            'uploads/emirates_ids', 'emirates_id_' . time() . '.' . $request->file('emirates_id')->extension() 
+            'uploads/emirates_ids',
+            'emirates_id_' . time() . '.' . $request->file('emirates_id')->extension(), 'public'
         );
 
         $passportPath = $request->file('passport')->storeAs(
-            'uploads/passports', 'passport_' . time() . '.' . $request->file('passport')->extension()
+            'uploads/passports',
+            'passport_' . time() . '.' . $request->file('passport')->extension(), 'public'
         );
 
         // Database Insertion
