@@ -71,14 +71,14 @@
 
                             <!-- Trade License (File Upload) -->
                             <div class="form-group row mb-3">
-                                <label for="trade_lincense"
+                                <label for="trade_license"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Trade License') }}</label>
                                 <div class="col-md-6">
-                                    <input id="trade_lincense" type="file"
-                                        class="form-control-file @error('trade_lincense') is-invalid @enderror"
-                                        name="trade_lincense" required>
+                                    <input id="trade_license" type="file"
+                                        class="form-control-file @error('trade_license') is-invalid @enderror"
+                                        name="trade_license" required>
                                     <small class="form-text text-muted">Upload 1 supported file. Max 100 MB.</small>
-                                    @error('trade_lincense')
+                                    @error('trade_license')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

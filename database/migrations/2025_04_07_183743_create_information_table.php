@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('trade_lincense')->nullable();
+            $table->string('trade_license')->nullable();
             $table->string('emirates_id')->nullable();
             $table->string('passport')->nullable();
             $table->string('bank_account_no')->nullable();

@@ -76,7 +76,7 @@ class FrontendController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:information,email',
             'phone_number' => 'required|string|max:20',
-            'trade_lincense' => 'required|image|mimes:jpg,png|max:10240',
+            'trade_license' => 'required|image|mimes:jpg,png|max:10240',
             'emirates_id' => 'required|image|mimes:jpg,png|max:10240',
             'passport' => 'required|image|mimes:jpg,png|max:10240',
             'bank_account_no' => 'required|numeric',
@@ -88,9 +88,9 @@ class FrontendController extends Controller
         // dd($validated);
 
         // File uploads
-        $tradeLicensePath = $request->file('trade_lincense')->storeAs(
-            'uploads/trade_lincenses',
-            'trade_lincense_' . time() . '.' . $request->file('trade_lincense')->extension(), 'public'
+        $tradeLicensePath = $request->file('trade_license')->storeAs(
+            'uploads/trade_licenses',
+            'trade_license_' . time() . '.' . $request->file('trade_license')->extension(), 'public'
         );
 
         $emiratesIdPath = $request->file('emirates_id')->storeAs(
@@ -108,7 +108,7 @@ class FrontendController extends Controller
         $registration->name = $validated['name'];
         $registration->email = $validated['email'];
         $registration->phone_number = $validated['phone_number'];
-        $registration->trade_lincense = $tradeLicensePath;
+        $registration->trade_license = $tradeLicensePath;
         $registration->emirates_id = $emiratesIdPath;
         $registration->passport = $passportPath;
         $registration->bank_account_no = $validated['bank_account_no'];
