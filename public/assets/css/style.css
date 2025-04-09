@@ -1928,6 +1928,10 @@ p {
     border: 1px solid #00737F;
 }
 
+.priv3 {
+    color: #fff;
+}
+
 .filter-btn:hover {
     background: #000;
     color: #fff;
@@ -2075,6 +2079,18 @@ button {
 @media only screen and (max-width: 600px) {
     .about3a {
         font-size: 30px;
+    }
+
+    .priv1 {
+        font-size: 18px;
+    }
+
+    .priv2 {
+        font-size: 14px;
+    }
+
+    .privacy-main {
+        padding: 50px 0;
     }
 
     .team h2 {
@@ -2243,7 +2259,8 @@ button {
         width: 100%;
     }
 
-    .banner, .service {
+    .banner,
+    .service {
         height: 300px;
     }
 
