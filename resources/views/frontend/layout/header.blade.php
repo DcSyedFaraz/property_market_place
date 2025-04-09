@@ -89,22 +89,59 @@
                          <div class="offcanvas-body">
                              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                  <li class="nav-item">
-                                     <a class="nav-link active" href="/">Home</a>
+                                     <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                 </li>
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                         About
+                                     </a>
+                                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                         <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+                                         <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                                     </ul>
+                                 </li>
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button"
+                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                         Properties
+                                     </a>
+                                     <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                                         <li><a class="dropdown-item"
+                                                 href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                         </li>
+                                         <li><a class="dropdown-item"
+                                                 href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                         </li>
+                                         <li><a class="dropdown-item"
+                                                 href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                         <li><a class="dropdown-item"
+                                                 href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
+                                         <li><a class="dropdown-item"
+                                                 href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                     </ul>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="#">Bulldog Stronger</a>
+                                     <a class="nav-link" href="{{ route('service') }}">Services</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="#">Community</a>
+                                     <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
+                                 </li>
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                         Contact Us
+                                     </a>
+                                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                         <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
+                                         <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
+                                         <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+                                     </ul>
                                  </li>
                                  <li class="nav-item">
-                                     <a class="nav-link" href="./marketplace.html">Marketplace</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a class="nav-link" href="#">Vet</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a class="nav-link" href="#">Contact Us</a>
+                                     <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
+                                     <div id="google_translate_element">
+                                     </div>
                                  </li>
                              </ul>
                          </div>

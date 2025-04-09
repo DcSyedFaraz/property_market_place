@@ -22,7 +22,7 @@
 
     <!-- Nav-Bar -->
     <header class="header">
-        <nav class="navbar navbar-light navbar-expand-lg">
+        <nav class="navbar navbar-dark navbar-expand-lg">
             <div class="container d-block">
                 <div class="row align-items-center">
                     <div class="col-md-2 col-6">
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-md-3 mob-1">
                         <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
-                         <div id="google_translate_element"></div>
+                        <div id="google_translate_element"></div>
                     </div>
                     <div class="col-6 d-md-none">
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -103,7 +103,7 @@
                             tabindex="-1" aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header">
                                 <a class="navbar-brand" href="/"><img
-                                        src="{{ asset('assets/images/Bulldog-Stronger-logo.png') }}" alt="logo"
+                                        src="{{ asset('assets/img/image 10.png') }}" alt="logo"
                                         class="logo"></a>
                                 <button type="button" class="btn-close btn-close-white text-reset"
                                     data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -111,22 +111,57 @@
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="/">Home</a>
+                                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            About
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                            <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Properties
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                        </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Bulldog Stronger</a>
+                                        <a class="nav-link" href="{{ route('service') }}">Services</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Community</a>
+                                        <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="./marketplace.html">Marketplace</a>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Contact Us
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                            <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+                                        </ul>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Vet</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact Us</a>
+                                    <li><a class="nav-link btn10" href="{{ route('login') }}">Login</a>
+                                        <div id="google_translate_element"></div>
                                     </li>
                                 </ul>
                             </div>
@@ -309,52 +344,52 @@
                     <div class="col-md-6">
                         <div class="le2 align-items-center justify-content-end d-flex">
                             <a href="{{ route('offplan') }}">All Properties</a>
-                        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="row mt-4">
+        @forelse ($developer_properties as $property)
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ asset('storage/' . $property->cover_image) }}" class="card-img-top"
+                    alt="{{ $property->name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $property->name }}</h5>
+                    <p class="card-text">
+                        {{ $property->description }}
+                    </p>
+                    <h6 class="price0">{{ $property->price }} AED</h6>
+                    <div class="serv-icon mt-4">
+                        <i class="fa fa-bed"><span>Bed
+                                {{ $property->propertyTypes->first()->unit_type }}</span></i>
+                        <i class="fa fa-vector-square"><span>{{ $property->propertyTypes->first()->size }}
+                                sqft</span></i>
                     </div>
-                </div>
-
-                <div class="row mt-4">
-                    @forelse ($developer_properties as $property)
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img src="{{ asset('storage/' . $property->cover_image) }}" class="card-img-top"
-                                    alt="{{ $property->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $property->name }}</h5>
-                                    <p class="card-text">
-                                        {{ $property->description }}
-                                    </p>
-                                    <h6 class="price0">{{ $property->price }} AED</h6>
-                                    <div class="serv-icon mt-4">
-                                        <i class="fa fa-bed"><span>Bed
-                                                {{ $property->propertyTypes->first()->unit_type }}</span></i>
-                                        <i class="fa fa-vector-square"><span>{{ $property->propertyTypes->first()->size }}
-                                                sqft</span></i>
-                                    </div>
-                                    <div class="det d-flex align-items-center mt-4">
-                                        <p>{{ $property->community_name->name ?? '' }} </p>
-                                        <a href="{{ route('projects', $property->id) }}">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center">
-                            no property available
-                        </p>
-                    @endforelse
-
+                    <div class="det d-flex align-items-center mt-4">
+                        <p>{{ $property->community_name->name ?? '' }} </p>
+                        <a href="{{ route('projects', $property->id) }}">Details</a>
+                    </div>
                 </div>
             </div>
         </div>
+        @empty
+        <p class="text-center">
+            no property available
+        </p>
+        @endforelse
+
+    </div>
+    </div>
+    </div>
     </section> --}}
 
     <!-- Sec 5 -->
     <section>
         <div class="sec-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row align-items-center">
+                    <div class="col-md-6 col-7">
                         <div class="le5">
                             <h2 class="le-title">Browse by property type</h2>
                             <p class="card-text">
@@ -362,7 +397,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-5">
                         <div class="le5 align-items-center justify-content-end d-flex">
                             <a href="">All Properties</a>
                         </div>
@@ -515,9 +550,10 @@
                     <div class="item"><img src="{{ asset('assets/img/Emaar Properties Logo.webp') }}"
                             alt=""></div>
                     <div class="item"><img src="{{ asset('assets/img/Meraas Logo.webp') }}" alt=""></div>
-                    {{-- <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt=""></div> --}}
-                </div>
+                    {{-- <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="">
+                </div> --}}
             </div>
+        </div>
         </div>
 
     </section>
@@ -533,11 +569,12 @@
     $('.service-carol').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
+        nav: false,
+        dots: false,
         items: 3,
         responsive: {
             0: {
-                items: 2
+                items: 1
             },
             600: {
                 items: 2
@@ -550,11 +587,12 @@
     $('.type-carol').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
+        nav: false,
+        dots: false,
         items: 3,
         responsive: {
             0: {
-                items: 2
+                items: 1
             },
             600: {
                 items: 2
@@ -570,14 +608,15 @@
     $('.logo-carol').owlCarousel({
         loop: true,
         margin: 10,
-        nav: true,
+        nav: false,
+        dots: false,
         items: 3,
         responsive: {
             0: {
-                items: 2
+                items: 3
             },
             600: {
-                items: 2
+                items: 3
             },
             1000: {
                 items: 6

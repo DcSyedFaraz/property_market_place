@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                     <input type="text" placeholder="Your Name" required />
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mob-input">
                                     <input type="email" placeholder="Your Email" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
