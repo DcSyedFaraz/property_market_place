@@ -7,7 +7,7 @@
                      <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/logo-footer01.png') }}"
                              alt="logo" class="logo" /></a>
                  </div>
-                 <div class="col-md-8 mob-1">
+                 <div class="col-md-9 col-lg-8 mob-1">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -71,7 +71,7 @@
                      <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
                      <div id="google_translate_element"></div>
                  </div>
-                 <div class="col-6 d-md-none">
+                 <div class="col-6 col-md-10 d-lg-none d-md-block">
                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                          data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
                          aria-label="Toggle navigation">

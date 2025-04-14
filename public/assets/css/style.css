@@ -2541,3 +2541,191 @@ button {
         height: 210px;
     }
 }
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+
+    .header-view1 .nav-item .nav-link {
+        color: #fff !important;
+    }
+
+    .blog-a2 {
+        font-size: 30px;
+    }
+
+    .navbar-toggler {
+        float: right;
+    }
+
+    .blog-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .publish-date {
+        font-size: 14px;
+    }
+
+    .blog-title {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .service-imgbox p {
+        font-size: 14px;
+    }
+
+    .service-imgbox h3 {
+        font-size: 20px;
+    }
+
+    .service-imgbox img {
+        height: 260px;
+    }
+
+    .about3a {
+        font-size: 36px;
+    }
+
+    .service1 {
+        grid-template-columns: repeat(auto-fill, 47%);
+    }
+
+    .banner-p {
+        width: 85%;
+    }
+
+    .serviceh2 {
+        font-size: 50px;
+    }
+
+    .contact1a {
+        font-size: 32px;
+    }
+
+    .bannerh2 {
+        font-size: 56px;
+    }
+
+    .about1b {
+        font-size: 38px;
+    }
+
+    .about1c {
+        font-size: 14px;
+    }
+
+    .mob-1 {
+        display: none;
+    }
+
+    #google_translate_element {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 14px !important;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .img-text img {
+        width: 150px;
+    }
+
+    .social-link {
+        left: 3rem;
+    }
+
+    .form10 h3 {
+        font-size: 16px;
+    }
+
+    .form10 p {
+        font-size: 12px;
+    }
+
+    .tab-pane select {
+        font-size: 14px;
+    }
+
+    #state-form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .le-title {
+        font-size: 22px;
+    }
+
+    .le5 a {
+        font-size: 14px;
+    }
+
+    .le-conte h2 {
+        font-size: 20px;
+    }
+
+    .le-conte p {
+        font-size: 14px;
+    }
+
+    .le-conte a {
+        font-size: 14px;
+    }
+
+    .sec-6 {
+        margin: 0 0 50px;
+    }
+
+    .content2 h2 {
+        font-size: 22px;
+    }
+
+    .le6 {
+        margin-top: 20px;
+    }
+
+    #footer h3 {
+        font-size: 15px;
+    }
+
+    #footer li a {
+        font-size: 13px;
+    }
+
+    .copyright p {
+        font-size: 12px;
+    }
+
+    .news__form input {
+        font-size: 14px;
+        width: 80%;
+        padding: 10px;
+    }
+
+    .ms-2 h2 {
+        font-size: 20px;
+    }
+
+    .news__btn {
+        font-size: 12px;
+    }
+
+    .footer-logo {
+        width: 115px;
+    }
+
+    .foter-social-logo {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        gap: 10px 0;
+    }
+}

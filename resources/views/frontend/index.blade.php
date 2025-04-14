@@ -29,7 +29,7 @@
                         <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/image 10.png') }}"
                                 alt="logo" class="logo"></a>
                     </div>
-                    <div class="col-md-7 mob-1">
+                    <div class="col-md-8 col-lg-7 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -89,11 +89,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-3 mob-1">
+                    <div class="col-md-2 col-lg-3 mob-1">
                         <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
                         <div id="google_translate_element"></div>
                     </div>
-                    <div class="col-6 d-md-none">
+                    <div class="col-6 col-md-10 d-lg-none d-md-block">
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -445,7 +445,7 @@
         <div class="sec-6">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -464,7 +464,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">
@@ -483,7 +483,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 col-lg-4">
                         <div class="le6">
                             <div class="row d-flex align-items-center">
                                 <div class="col-md-6">

@@ -9,7 +9,7 @@
         <div class="container">
             <div class="blog-inner">
                 <div class="row">
-                    <div class="col-md-9 p-5">
+                    <div class="col-md-12 col-lg-9 p-5">
                         <div class="blog-text">
                             <img src="{{asset('/storage/'.$blog->image)}}" class="blog-image" />
                             <h4 class="blog-a1">March 21,2025</h4>
