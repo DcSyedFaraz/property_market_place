@@ -633,6 +633,12 @@
         </a>
         <span class="tooltip-text">Visitor Form</span>
     </div>
+    <div class="floating-button-container">
+        <a href="{{ route('registration.form') }}" class="floating-button vendor-button" target="_blank">
+            <i class="fas fa-store"></i>
+        </a>
+        <span class="tooltip-text">Register as a Vendor</span>
+    </div>
 
     <!-- Complaint Button -->
     <div class="floating-button-container">
