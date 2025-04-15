@@ -153,22 +153,28 @@
  </header>
  <!-- Floating Buttons Container -->
  <div class="floating-buttons">
-     <!-- Visitor Button -->
-     <div class="floating-button-container">
-         <a href="{{ route('visitor.form') }}" class="floating-button visitor-button" target="_blank">
-             <i class="fas fa-user"></i>
-         </a>
-         <span class="tooltip-text">Visitor Form</span>
-     </div>
+    <!-- Visitor Button -->
+    <div class="floating-button-container">
+        <a href="{{ route('visitor.form') }}" class="floating-button visitor-button" target="_blank">
+            <i class="fas fa-user"></i>
+        </a>
+        <span class="tooltip-text">Visitor Form</span>
+    </div>
+    <div class="floating-button-container">
+        <a href="{{ route('registration.form') }}" class="floating-button vendor-button" target="_blank">
+            <i class="fas fa-store"></i>
+        </a>
+        <span class="tooltip-text">Register as a Vendor</span>
+    </div>
 
-     <!-- Complaint Button -->
-     <div class="floating-button-container">
-         <a href="{{ route('complaint.form') }}" class="floating-button complaint-button" target="_blank">
-             <i class="fas fa-exclamation-circle"></i>
-         </a>
-         <span class="tooltip-text">Complaint Form</span>
-     </div>
- </div>
+    <!-- Complaint Button -->
+    <div class="floating-button-container">
+        <a href="{{ route('complaint.form') }}" class="floating-button complaint-button" target="_blank">
+            <i class="fas fa-exclamation-circle"></i>
+        </a>
+        <span class="tooltip-text">Complaint Form</span>
+    </div>
+</div>
 
  <!-- Styles for Buttons & Hover Effect -->
  <style>
@@ -180,6 +186,7 @@
          display: flex;
          flex-direction: column;
          gap: 10px;
+         z-index: 9;
          /* Space between buttons */
      }
 

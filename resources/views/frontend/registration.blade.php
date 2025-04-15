@@ -44,7 +44,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email" required>
+                                        class="w-100 form-control @error('email') is-invalid @enderror" name="email" required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -203,7 +203,7 @@
                             <!-- Submit Button -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn  btn-block" style="background-color: #007681;">
+                                    <button type="submit" class="btn btn-block" style="background-color: #007681;color:#fff;">
                                         {{ __('Submit') }}
                                     </button>
                                 </div>

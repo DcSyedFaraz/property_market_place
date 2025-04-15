@@ -659,6 +659,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        z-index: 9;
         /* Space between buttons */
     }
 
