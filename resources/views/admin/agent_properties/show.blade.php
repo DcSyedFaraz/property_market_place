@@ -15,7 +15,7 @@
         </div>
 
         <div class="mb-3">
-            <label>Area (sq ft):</label>
+            <label>Area (sq meter):</label>
             <p>{{ $property->area }}</p>
         </div>
 

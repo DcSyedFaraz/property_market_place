@@ -12,7 +12,7 @@
                     <th>Title</th>
                     <th>Location</th>
                     <th>Price</th>
-                    <th>Area (sq ft)</th>
+                    <th>Area (sq meter)</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>

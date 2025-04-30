@@ -71,11 +71,11 @@
                     value="{{ $property->price }}" required>
             </div>
 
-            <!-- Area (sq ft) -->
+            <!-- Area (sq meter) -->
             <div class="mb-3">
-                <label for="area" class="form-label">Area (sq ft)</label>
+                <label for="area" class="form-label">Area (sq meter)</label>
                 <input type="number" class="form-control" id="area" name="area" value="{{ $property->area }}"
-                    required>
+                    required step="0.01">
             </div>
 
             <!-- Bedrooms -->

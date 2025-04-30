@@ -67,11 +67,11 @@
                     value="{{ old('price') }}" required>
             </div>
 
-            <!-- Area (sq ft) -->
+            <!-- Area (sq meter) -->
             <div class="mb-3">
-                <label for="area" class="form-label">Area (sq ft)</label>
-                <input type="number" class="form-control" id="area" name="area" value="{{ old('area') }}"
-                    required>
+                <label for="area" class="form-label">Area (sq meter)</label>
+                <input type="number" class="form-control" id="area" name="area" step="0.01"
+                    value="{{ old('area') }}" required>
             </div>
 
             <!-- Bedrooms -->
