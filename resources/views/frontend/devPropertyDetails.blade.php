@@ -14,10 +14,10 @@
                     <div class="col-md-6">
                         <h4 class="contact1a">New Property</h4>
                         <h5 class="prop-1a">{{ $property->title }} </h5>
-                        <p class="prop-1b">Test</p>
+                        {{-- <p class="prop-1b">Test</p> --}}
 
                         <h5 class="prop-1a">Description</h5>
-                        <p class="prop-1b">{!! $property->description !!} </p>
+                        <p class="prop-1b text-white">{!! $property->description !!} </p>
 
                         <h5 class="prop-1a">Location</h5>
                         <p class="prop-1b">{{ $property->location }} </p>
@@ -31,34 +31,45 @@
                                 <p class="prop-1b">{{ $property->area }}</p>
                             </div>
 
-                            <div>
-                                <h5 class="prop-1a">No. Bedrooms</h5>
-                                <p class="prop-1b">{{ $property->bedrooms }}</p>
-                            </div>
+                            @if ($property->bedrooms > 0)
+                                <div>
+                                    <h5 class="prop-1a">No. Bedrooms</h5>
+                                    <p class="prop-1b">{{ $property->bedrooms }}</p>
+                                </div>
+                            @endif
 
-                            <div>
-                                <h5 class="prop-1a">No. Bathrooms</h5>
-                                <p class="prop-1b">{{ $property->bathrooms }}</p>
-                            </div>
+                            @if ($property->bathrooms > 0)
+                                <div>
+                                    <h5 class="prop-1a">No. Bathrooms</h5>
+                                    <p class="prop-1b">{{ $property->bathrooms }}</p>
+                                </div>
+                            @endif
 
-                            <div>
-                                <h5 class="prop-1a">Utility Area</h5>
-                                <p class="prop-1b">{{ $property->utility_area }}</p>
-                            </div>
+                            @if ($property->utility_area > 0)
+                                <div>
+                                    <h5 class="prop-1a">Utility Area</h5>
+                                    <p class="prop-1b">{{ $property->utility_area }}</p>
+                                </div>
+                            @endif
 
-                            <div>
-                                <h5 class="prop-1a">Balcony Area</h5>
-                                <p class="prop-1b">{{ $property->balcony_area }}</p>
-                            </div>
+                            @if ($property->balcony_area > 0)
+                                <div>
+                                    <h5 class="prop-1a">Balcony Area</h5>
+                                    <p class="prop-1b">{{ $property->balcony_area }}</p>
+                                </div>
+                            @endif
 
-                            <div>
-                                <h5 class="prop-1a">Unit Area</h5>
-                                <p class="prop-1b">{{ $property->unit_area }} </p>
-                            </div>
+                            @if ($property->unit_area > 0)
+                                <div>
+                                    <h5 class="prop-1a">Unit Area</h5>
+                                    <p class="prop-1b">{{ $property->unit_area }}</p>
+                                </div>
+                            @endif
+
                         </div>
 
                         <h5 class="prop-1a">Status</h5>
-                        <p class="prop-1b">{{ $property->status }}</p>
+                        <p class="prop-1b text-capitalize">{{ $property->status }}</p>
 
                     </div>
                     <div class="col-md-6">
@@ -66,9 +77,9 @@
                             <img src="{{ asset('storage/' . $property->main_image) }}" alt="main-1" />
                         </div>
                         <!-- <div class="second-image">
-                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                            <img src="./assets/images/property-details/main-2.png" alt="main-2" />
-                                        </div> -->
+                                                <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                                <img src="./assets/images/property-details/main-2.png" alt="main-2" />
+                                            </div> -->
 
 
                         <div class="image-gallery">

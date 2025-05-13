@@ -41,7 +41,7 @@ class AgentPropertyController extends Controller
             'description' => 'nullable|string',
             'location' => 'required|string|max:255',
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
-            'transaction_type' => 'required|in:Residential,For Sale',
+            'transaction_type' => 'required',
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
@@ -49,9 +49,9 @@ class AgentPropertyController extends Controller
             'utility_area' => 'nullable|numeric',
             'balcony_area' => 'nullable|numeric',
             'unit_area' => 'nullable|numeric',
-            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'gallery_images' => 'nullable|array',
-            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
+            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'required|array',
+            'gallery_images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
         ]);
 
@@ -125,7 +125,7 @@ class AgentPropertyController extends Controller
             'description' => 'nullable|string',
             'location' => 'required|string|max:255',
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
-            'transaction_type' => 'required|in:Residential,For Sale',
+            'transaction_type' => 'nullable',
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
@@ -134,8 +134,8 @@ class AgentPropertyController extends Controller
             'balcony_area' => 'nullable|numeric',
             'unit_area' => 'nullable|numeric',
             'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'gallery_images' => 'nullable|array',
-            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'required|array',
+            'gallery_images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
         ]);
 

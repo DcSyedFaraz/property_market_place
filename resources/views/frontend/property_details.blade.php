@@ -23,23 +23,37 @@
                             <h4 class="mt-4">{{ $property->title }}</h4>
                             <p class="location-name"><i class="bi bi-pin-map"></i> {{ $property->location }}</p>
                             <div class="dt1">
-                                <i class="fa fa-bed"><span> Bed {{ $property->bedrooms }}</span></i>
-                                <i class="fa fa-bath"><span> Bath {{ $property->bathrooms }}</span></i>
+                                @if ($property->bedrooms > 0)
+                                    <i class="fa fa-bed"><span> Bed {{ $property->bedrooms }}</span></i>
+                                @endif
+
+                                @if ($property->bathrooms > 0)
+                                    <i class="fa fa-bath"><span> Bath {{ $property->bathrooms }}</span></i>
+                                @endif
+
                                 <i class="fa fa-vector-square"><span> {{ $property->area }} sqft</span></i>
                             </div>
-                            <p>{{ $property->description }}</p>
+                            <p class="text-white">{!! $property->description !!}</p>
                             <h4 class="mt-4">Shop Details:</h4>
                             <ul class="property-details">
-                                <li>
-                                    <strong>Unit Area:</strong> {{ $property->unit_area }} Sq Ft
-                                </li>
-                                <li>
-                                    <strong>Balcony Area:</strong> {{ $property->balcony_area }} Sq Ft
-                                </li>
+                                @if ($property->unit_area > 0)
+                                    <li>
+                                        <strong>Unit Area:</strong> {{ $property->unit_area }} Sq Ft
+                                    </li>
+                                @endif
 
-                                <li>
-                                    <strong>Utility Area:</strong> {{ $property->utility_area }} Sq Ft
-                                </li>
+                                @if ($property->balcony_area > 0)
+                                    <li>
+                                        <strong>Balcony Area:</strong> {{ $property->balcony_area }} Sq Ft
+                                    </li>
+                                @endif
+
+                                @if ($property->utility_area > 0)
+                                    <li>
+                                        <strong>Utility Area:</strong> {{ $property->utility_area }} Sq Ft
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>

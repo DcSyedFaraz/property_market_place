@@ -57,10 +57,10 @@
                 <label for="transaction_type" class="form-label">Transaction Type</label>
                 <select class="form-control" id="transaction_type" name="transaction_type" required>
                     <option value="">Select Transaction Type</option>
-                    <option value="Residential" {{ $property->transaction_type == 'Residential' ? 'selected' : '' }}>
-                        Residential</option>
-                    <option value="For Sale" {{ $property->transaction_type == 'For Sale' ? 'selected' : '' }}>For Sale
-                    </option>
+                    <option value="Rent" {{ $property->transaction_type == 'Rent' ? 'selected' : '' }}>
+                        Rent</option>
+                    {{-- <option value="For Sale" {{ $property->transaction_type == 'For Sale' ? 'selected' : '' }}>For Sale
+                    </option> --}}
                 </select>
             </div>
 
@@ -95,22 +95,22 @@
             <!-- Utility Area -->
             <div class="mb-3">
                 <label for="utility_area" class="form-label">Utility Area</label>
-                <input type="number" class="form-control" step="0.01" id="utility_area" value="{{ $property->utility_area }}"
-                    name="utility_area">
+                <input type="number" class="form-control" step="0.01" id="utility_area"
+                    value="{{ $property->utility_area }}" name="utility_area">
             </div>
 
             <!-- Balcony Area -->
             <div class="mb-3">
                 <label for="balcony_area" class="form-label">Balcony Area</label>
-                <input type="number" class="form-control" step="0.01" id="balcony_area" value="{{ $property->balcony_area }}"
-                    name="balcony_area">
+                <input type="number" class="form-control" step="0.01" id="balcony_area"
+                    value="{{ $property->balcony_area }}" name="balcony_area">
             </div>
 
             <!-- Unit Area -->
             <div class="mb-3">
                 <label for="unit_area" class="form-label">Unit Area</label>
-                <input type="number" class="form-control" step="0.01" id="unit_area" value="{{ $property->unit_area }}"
-                    name="unit_area">
+                <input type="number" class="form-control" step="0.01" id="unit_area"
+                    value="{{ $property->unit_area }}" name="unit_area">
             </div>
 
             <!-- Property Main Image -->

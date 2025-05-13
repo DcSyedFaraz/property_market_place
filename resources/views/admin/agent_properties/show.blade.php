@@ -31,7 +31,7 @@
 
         <div class="mb-3">
             <label>Description:</label>
-            <p>{{ $property->description }}</p>
+            <p>{!! $property->description !!}</p>
         </div>
 
         @if ($property->image)

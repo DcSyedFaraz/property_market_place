@@ -53,10 +53,10 @@
                 <label for="transaction_type" class="form-label">Transaction Type</label>
                 <select class="form-control" id="transaction_type" name="transaction_type" required>
                     <option value="">Select Transaction Type</option>
-                    <option value="Residential" {{ old('transaction_type') == 'Residential' ? 'selected' : '' }}>
-                        Residential</option>
-                    <option value="For Sale" {{ old('transaction_type') == 'For Sale' ? 'selected' : '' }}>For Sale
-                    </option>
+                    <option value="Rent" {{ old('transaction_type') == 'Rent' ? 'selected' : '' }}>
+                        Rent</option>
+                    {{-- <option value="For Sale" {{ old('transaction_type') == 'For Sale' ? 'selected' : '' }}>For Sale
+                    </option> --}}
                 </select>
             </div>
 

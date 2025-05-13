@@ -74,18 +74,25 @@
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
                             <h4 class="property-price">AED {{ $project->price }}</h4>
-                            <p class="property-det">{{ $project->description }}</p>
+                            {{-- <p class="property-det" style="color: white;">
+                                {!! \Illuminate\Support\Str::limit($project->description, 10) !!}
+                            </p> --}}
+
                             <div class="details">
-                                <div class="icons">
-                                    <img src="{{ asset('/assets/images/projects/icon.png') }}" />
-                                    {{ $project->bedrooms }}
+                                @if ($project->bedrooms > 0)
+                                    <div class="icons">
+                                        <img src="{{ asset('/assets/images/projects/icon.png') }}" />
+                                        {{ $project->bedrooms }}
+                                    </div>
+                                @endif
 
-                                </div>
-                                <div class="icons">
-                                    <img src="{{ asset('/assets/images/projects/icon.png') }}" />
-                                    {{ $project->bathrooms }}
+                                @if ($project->bathrooms > 0)
+                                    <div class="icons">
+                                        <img src="{{ asset('/assets/images/projects/icon.png') }}" />
+                                        {{ $project->bathrooms }}
+                                    </div>
+                                @endif
 
-                                </div>
                             </div>
                             <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">View Details</a>
                             <hr>
