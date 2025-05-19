@@ -34,7 +34,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('about_us') }}">About Us</a>
+                            </li>
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     About
@@ -43,7 +46,7 @@
                                     <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
                                     <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,12 +84,12 @@
                                     <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="col-md-2 col-lg-3 mob-1">
@@ -114,13 +117,15 @@
                                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             About
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                            <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -136,11 +141,13 @@
                                                     href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                             </li>
                                             <li><a class="dropdown-item"
-                                                    href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                                    href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a>
+                                            </li>
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                             <li><a class="dropdown-item"
-                                                    href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                                    href="{{ route('properties.byLocation', 'Villa') }}">Villa</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -150,13 +157,15 @@
                                         <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Contact Us
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                            <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
-                                            <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact
+                                                    Us</a></li>
+                                            <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a>
+                                            </li>
                                             <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                         </ul>
                                     </li>
@@ -187,16 +196,18 @@
                             <a href="{{ route('leadership') }}">
                                 <img src="{{ asset('assets/img/testi-img.png') }}" alt="Your Image Description" />
                             </a>
-                            <p>Meet our Leaders.</p>
+                            {{-- <p>Meet our Leaders.</p> --}}
                         </div>
                     </div>
                     <div class="social-link mob-1">
                         <a href="https://www.facebook.com/thehr.ae/"><i class="bi bi-facebook"></i></a>
                         <a href="https://x.com/TheHrealestate2"><i class="bi bi-twitter"></i></a>
                         <a href="https://www.instagram.com/thehr.ae/"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/the-h-real-estate/"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://www.snapchat.com/add/thehr.ae"><i class="bi bi-snapchat"></i></a>
-                        <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i class="bi bi-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/the-h-real-estate/"><i
+                                class="bi bi-linkedin"></i></a>
+                        {{-- <a href="https://www.snapchat.com/add/thehr.ae"><i class="bi bi-snapchat"></i></a> --}}
+                        <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i
+                                class="bi bi-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -233,8 +244,20 @@
                             <div class="tab-pane active" id="home">
                                 <form action="" id="state-form">
                                     <select class="f1">
-                                        <option value="">Property Type</option>
-                                        <option value="">Property Type 1</option>
+                                        <option value="" hidden>Select Property Type</option>
+                                        <option value="Residential"
+                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
+                                        </option>
+                                        <option value="Commercial"
+                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
+                                        </option>
+                                        <option value="Off-Plan"
+                                            {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
+                                        </option>
+                                        <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
+                                            Mall</option>
+                                        <option value="Villa"
+                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>Villa</option>
                                     </select>
 
                                     <select class="f2">
@@ -252,8 +275,19 @@
                             <div class="tab-pane" id="profile">
                                 <form action="" id="state-form"></form>
                                 <select class="f1">
-                                    <option value="">Property Type</option>
-                                    <option value="">Property Type 1</option>
+                                    <option value="" hidden>Select Property Type</option>
+                                    <option value="Residential"
+                                        {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
+                                    </option>
+                                    <option value="Commercial"
+                                        {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
+                                    </option>
+                                    <option value="Off-Plan"
+                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option>
+                                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>Mall
+                                    </option>
+                                    <option value="Villa" {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
+                                        Villa</option>
                                 </select>
 
                                 <select class="f2">
@@ -552,8 +586,8 @@
                     <div class="item"><img src="{{ asset('assets/img/Meraas Logo.webp') }}" alt=""></div>
                     {{-- <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="">
                 </div> --}}
+                </div>
             </div>
-        </div>
         </div>
 
     </section>

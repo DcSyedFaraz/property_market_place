@@ -12,7 +12,10 @@
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('home') }}">Home</a>
                          </li>
-                         <li class="nav-item dropdown">
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ route('about_us') }}">About Us</a>
+                         </li>
+                         {{-- <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
                                  data-bs-toggle="dropdown" aria-expanded="false">
                                  About
@@ -21,7 +24,7 @@
                                  <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
                                  <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
                              </ul>
-                         </li>
+                         </li> --}}
                          <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button"
                                  data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,12 +62,12 @@
                                  <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                              </ul>
                          </li>
-                         <li class="nav-item">
+                         {{-- <li class="nav-item">
                              <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
                          </li>
                          <li class="nav-item">
                              <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
-                         </li>
+                         </li> --}}
                      </ul>
                  </div>
                  <div class="col-md-2 mob-1">
@@ -92,18 +95,19 @@
                                      <a class="nav-link" href="{{ route('home') }}">Home</a>
                                  </li>
                                  <li class="nav-item dropdown">
-                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                          About
                                      </a>
                                      <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                                          <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
-                                         <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                                         <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a>
+                                         </li>
                                      </ul>
                                  </li>
                                  <li class="nav-item dropdown">
-                                     <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button"
-                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                     <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
+                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                          Properties
                                      </a>
                                      <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
@@ -114,7 +118,8 @@
                                                  href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                          </li>
                                          <li><a class="dropdown-item"
-                                                 href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                                 href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a>
+                                         </li>
                                          <li><a class="dropdown-item"
                                                  href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                          <li><a class="dropdown-item"
@@ -128,12 +133,13 @@
                                      <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
                                  </li>
                                  <li class="nav-item dropdown">
-                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                         data-bs-toggle="dropdown" aria-expanded="false">
+                                     <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                          Contact Us
                                      </a>
                                      <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                         <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
+                                         <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a>
+                                         </li>
                                          <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
                                          <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                      </ul>
@@ -153,28 +159,28 @@
  </header>
  <!-- Floating Buttons Container -->
  <div class="floating-buttons">
-    <!-- Visitor Button -->
-    <div class="floating-button-container">
-        <a href="{{ route('visitor.form') }}" class="floating-button visitor-button" target="_blank">
-            <i class="fas fa-user"></i>
-        </a>
-        <span class="tooltip-text">Visitor Form</span>
-    </div>
-    <div class="floating-button-container">
-        <a href="{{ route('registration.form') }}" class="floating-button vendor-button" target="_blank">
-            <i class="fas fa-store"></i>
-        </a>
-        <span class="tooltip-text">Register as a Vendor</span>
-    </div>
+     <!-- Visitor Button -->
+     <div class="floating-button-container">
+         <a href="{{ route('visitor.form') }}" class="floating-button visitor-button" target="_blank">
+             <i class="fas fa-user"></i>
+         </a>
+         <span class="tooltip-text">Visitor Form</span>
+     </div>
+     <div class="floating-button-container">
+         <a href="{{ route('registration.form') }}" class="floating-button vendor-button" target="_blank">
+             <i class="fas fa-store"></i>
+         </a>
+         <span class="tooltip-text">Register as a Vendor</span>
+     </div>
 
-    <!-- Complaint Button -->
-    <div class="floating-button-container">
-        <a href="{{ route('complaint.form') }}" class="floating-button complaint-button" target="_blank">
-            <i class="fas fa-exclamation-circle"></i>
-        </a>
-        <span class="tooltip-text">Complaint Form</span>
-    </div>
-</div>
+     <!-- Complaint Button -->
+     <div class="floating-button-container">
+         <a href="{{ route('complaint.form') }}" class="floating-button complaint-button" target="_blank">
+             <i class="fas fa-exclamation-circle"></i>
+         </a>
+         <span class="tooltip-text">Complaint Form</span>
+     </div>
+ </div>
 
  <!-- Styles for Buttons & Hover Effect -->
  <style>
