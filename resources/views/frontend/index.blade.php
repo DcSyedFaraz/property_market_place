@@ -192,12 +192,12 @@
                             Get the features you in all the property we offer with the best
                             price you can get
                         </p>
-                        <div class="img-text">
+                        {{-- <div class="img-text">
                             <a href="{{ route('leadership') }}">
                                 <img src="{{ asset('assets/img/testi-img.png') }}" alt="Your Image Description" />
                             </a>
-                            {{-- <p>Meet our Leaders.</p> --}}
-                        </div>
+                            <p>Meet our Leaders.</p>
+                        </div> --}}
                     </div>
                     <div class="social-link mob-1">
                         <a href="https://www.facebook.com/thehr.ae/"><i class="bi bi-facebook"></i></a>
