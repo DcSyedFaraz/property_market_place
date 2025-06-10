@@ -36,7 +36,8 @@
                     <a href="https://www.instagram.com/thehr.ae/"><i class="fab fa-instagram-square"></i></a>
                     <a href="https://www.linkedin.com/company/the-h-real-estate/"><i class="fab fa-linkedin"></i></a>
                     {{-- <a href="https://www.snapchat.com/add/thehr.ae"><i class="fa-brands fa-square-snapchat"></i></a> --}}
-                    <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i class="fa-brands fa-square-youtube"></i></a>
+                    <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i
+                            class="fa-brands fa-square-youtube"></i></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -52,21 +53,25 @@
             <div class="col-md-2">
                 <h3>Quick links</h3>
                 <ul>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Services</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Blogs</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Residential</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Commercial</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Off-Plan</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Mall</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Villa</a></li>
+                    <li><a href="{{ route('service') }}"><i class="bi bi-arrow-right-short"></i>Services</a></li>
+                    <li><a href="{{ route('blog') }}"><i class="bi bi-arrow-right-short"></i>Blogs</a></li>
+                    <li><a href="{{ route('properties.byLocation', 'Residential') }}"><i
+                                class="bi bi-arrow-right-short"></i>Residential</a></li>
+                    <li><a href="{{ route('properties.byLocation', 'Commercial') }}"><i
+                                class="bi bi-arrow-right-short"></i>Commercial</a></li>
+                    <li><a href="{{ route('properties.byLocation', 'Mall') }}"><i
+                                class="bi bi-arrow-right-short"></i>Mall</a></li>
+                    <li><a href="{{ route('properties.byLocation', 'Villa') }}"><i
+                                class="bi bi-arrow-right-short"></i>Villa</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h3>Contact Us</h3>
                 <ul>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Contact us</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Complaint</a></li>
-                    <li><a href="#"><i class="bi bi-arrow-right-short"></i>Visitor</a></li>
+                    <li><a href="{{ route('contact_us') }}"><i class="bi bi-arrow-right-short"></i>Contact us</a></li>
+                    <li><a href="{{ route('complaint.form') }}"><i class="bi bi-arrow-right-short"></i>Complaint</a>
+                    </li>
+                    <li><a href="{{ route('visitor.form') }}"><i class="bi bi-arrow-right-short"></i>Visitor</a></li>
                 </ul>
             </div>
         </div>

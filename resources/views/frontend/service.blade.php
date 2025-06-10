@@ -13,12 +13,12 @@
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s1.png') }}" />
-                        <h3>Commercial and residential real estate management</h3>
+                        <h3> Property management</h3>
                         <p>Experienced real estate professionals on our team can help you manage your properties
                             efficiently.</p>
                     </a>
                 </div>
-                <div class="service-imgbox">
+                {{-- <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s2.png') }}" />
                         <h3>Real estate brokerage</h3>
@@ -31,21 +31,21 @@
                         <h3>Sales and rental services</h3>
                         <p>Our goal is to generate leads, close deals, and grow your business.</p>
                     </a>
-                </div>
+                </div> --}}
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s4.png') }}" />
-                        <h3>Facilities management</h3>
+                        <h3>Facility Management</h3>
                         <p>What makes Property Angel the best NRI Property Management.</p>
                     </a>
                 </div>
-                <div class="service-imgbox">
+                {{-- <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s5.png' )}}" />
                         <h3>Angel Services</h3>
                         <p>provide more significant financial support.</p>
                     </a>
-                </div>
+                </div> --}}
             </div>
             <div class="about-3">
                 <div class="container">

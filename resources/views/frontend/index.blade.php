@@ -82,6 +82,8 @@
                                     <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
                                     <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
                                     <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('registration.form') }}">Register as a
+                                            Vendor</a></li>
                                 </ul>
                             </li>
                             {{-- <li class="nav-item">
@@ -475,7 +477,7 @@
     </section>
 
 
-    <section>
+    {{-- <section>
         <div class="sec-6">
             <div class="container">
                 <div class="row">
@@ -489,7 +491,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
                                         <h2>Buy your own</h2>
                                         <p>Apartments and villas.</p>
                                         <a href="">Read More</a>
@@ -508,7 +509,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
                                         <h2>Buy your own</h2>
                                         <p>Shops and warehouse.</p>
                                         <a href="">Read More</a>
@@ -527,7 +527,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="le-conte">
-                                        {{-- <span>Find, Buy & Own Your Dream Home</span> --}}
                                         <h2>Renting made easy</h2>
                                         <p>Rental Properties - in Al Fujairah, Al Raha Gradens, Baniyas, Al Garhoud.</p>
                                         <a href="">Read More</a>
@@ -538,31 +537,10 @@
                     </div>
                 </div>
 
-                <!-- <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="le6">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-md-6">
-                                    <div class="le-img">
-                                        <img src="{{ asset('assets/img/prod02.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="le-conte">
-                                        <span>Find, Buy & Own Your Dream Home</span>
-                                        <h2>Buy a home</h2>
-                                        <p>Explore Apartments, Villas, Penthouses, Mansions and more at service.</p>
-                                        <a href="">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
         </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="sec-7">
