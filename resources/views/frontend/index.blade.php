@@ -78,8 +78,8 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
                                     <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('complaint.form') }}">Complaint</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('visitor.form') }}">Visitor</a></li>
                                     <li><a class="dropdown-item" href="{{ route('registration.form') }}">Register as a
                                             Vendor</a></li>
                                 </ul>
