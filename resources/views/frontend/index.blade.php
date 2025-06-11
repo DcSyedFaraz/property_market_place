@@ -80,7 +80,7 @@
                                     <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
                                     <li><a class="dropdown-item" href="{{ url('complain') }}">Complaint</a></li>
                                     <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('registration.form') }}">Register as a
+                                    <li><a class="dropdown-item" href="{{ route('registration.form') }}">Register as a
                                             Vendor</a></li>
                                 </ul>
                             </li>
