@@ -17,7 +17,7 @@
         <div class="about1">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    <img src="{{ asset('assets/images/about/about (7).jpg') }}" alt="about1" class="about1-img" />
                 </div>
                 <div class="col-md-6">
                     <p class="about1c">The H Real Estate Company is one of the most reputable and trusted companies established in the United Arab Emirates. With years of experience in project management throughout the country. We offer professional and reliable services that focus on finding the most suitable property for our clients. With our expertise, you can trust that you will be in the best place to find the perfect property. We strive to exceed your expectations, innovate creative solutions, and meet all your requirements, whether you are looking for a luxurious and comfortable space or an affordable option, we will provide exactly what you need.</p>
@@ -31,14 +31,14 @@
                     <p class="about1c">The H Real Estate Company is one of the most reputable and trusted companies established in the United Arab Emirates, with years of experience in project management through out the country . In addition , We offer professional and reliable services that focus on finding the most suitable property for our clients. With our expertise, you can trust that you will be in the best place to find the perfect property. We strive to exceed your expectations, innovate creative solutions, and meet all your requirements, whether you are looking for a luxurious and comfortable space or an affordable option, we will provide exactly what you need.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    <img src="{{ asset('assets/images/about/about (1).jpg') }}" alt="about1" class="about2-img" />
                 </div>
             </div>
         </div>
         <div class="about1">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    <img src="{{ asset('assets/images/about/about (2).jpg') }}" alt="about1" class="about1-img" />
                 </div>
                 <div class="col-md-6">
                     <h3 class="about1b">Our services include</h3>
@@ -62,14 +62,14 @@
                         We are committed to excellence and innovation, continuously seeking improvements in the real estate sector and contributing to enhancing the quality of life for our clients and the community as a whole.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    <img src="{{ asset('assets/images/about/about (3).jpg') }}" alt="about1" class="about2-img" />
                 </div>
             </div>
         </div>
         <div class="about1">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    <img src="{{ asset('assets/images/about/about (4).jpg') }}" alt="about1" class="about1-img" />
                 </div>
                 <div class="col-md-6">
                     <h3 class="about1b">Vision</h3>
@@ -84,14 +84,14 @@
                     <p class="about1c">We strive diligently to fulfil the visions and aspirations of our clients by providing high-quality properties, superior services, and innovative designs. We are committed to offering expert consultations and comprehensive support to our clients throughout the buying or selling process, building long-term relationships based on transparency, integrity in our transactions, and the pursuit of complete satisfaction.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about2-img" />
+                    <img src="{{ asset('assets/images/about/about (5).jpg') }}" alt="about1" class="about2-img" />
                 </div>
             </div>
         </div>
         <div class="about1">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/about/about1.png') }}" alt="about1" class="about1-img" />
+                    <img src="{{ asset('assets/images/about/about (6).jpg') }}" alt="about1" class="about1-img" />
                 </div>
                 <div class="col-md-6">
                     <h3 class="about1b">Why Choose Us</h3>

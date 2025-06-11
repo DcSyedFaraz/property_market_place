@@ -60,8 +60,6 @@
                                             href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                     </li>
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
-                                    <li><a class="dropdown-item"
                                             href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                     <li><a class="dropdown-item"
                                             href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
@@ -142,10 +140,7 @@
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                             </li>
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a>
-                                            </li>
-                                            <li><a class="dropdown-item"
+                                           <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Villa') }}">Villa</a>
@@ -449,12 +444,6 @@
                             <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Commercial') }}">
                                 <h4>Commercial</h4>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('assets/img/Off-Plan.webp') }}" alt="" />
-                            <a href="{{ route('properties.byLocation', 'Off-Plan') }}">
-                                <h4>Off-Plan</h4>
                             </a>
                         </div>
                         <div class="item">
