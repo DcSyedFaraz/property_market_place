@@ -31,21 +31,40 @@
                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
                     consectetur tellus ultricies.</p> --}}
                 <div class="foter-social-logo mt-4 mb-4">
-                    <a href="https://www.facebook.com/thehr.ae/"><i class="fab fa-facebook-square"></i></a>
-                    <a href="https://x.com/TheHrealestate2"><i class="fab fa-twitter-square"></i></a>
-                    <a href="https://www.instagram.com/thehr.ae/"><i class="fab fa-instagram-square"></i></a>
-                    <a href="https://www.linkedin.com/company/the-h-real-estate/"><i class="fab fa-linkedin"></i></a>
-                    {{-- <a href="https://www.snapchat.com/add/thehr.ae"><i class="fa-brands fa-square-snapchat"></i></a> --}}
-                    <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw"><i
-                            class="fa-brands fa-square-youtube"></i></a>
+                    <a href="https://www.facebook.com/thehr.ae/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="https://x.com/TheHrealestate2" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thehr.ae/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram-square"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/the-h-real-estate/" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    {{-- <a href="https://www.snapchat.com/add/thehr.ae" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-square-snapchat"></i>
+                    </a> --}}
+                    <a href="https://www.youtube.com/channel/UC5LC_NCFImIkl0onSY65vXw" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-square-youtube"></i>
+                    </a>
+
                 </div>
             </div>
             <div class="col-md-3">
                 <h3>Get In Touch</h3>
                 <ul class="icon-text1">
-                    <li><a href="#"><i class="bi bi-geo-alt-fill"></i>
+                    <li>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Khalifa+Park+Area+-+Zone+1+-+Ministries+Complex+-+Abu+Dhabi"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-geo-alt-fill"></i>
                             <p>Khalifa Park Area - Zone 1 - Ministries Complex - Abu Dhabi</p>
-                        </a></li>
+                        </a>
+                    </li>
+
                     <li><a href="tel:022222040"><i class="bi bi-telephone-outbound-fill"></i> 022222040</a></li>
                     <li><a href="mailto:info@thehr.ae"><i class="bi bi-envelope"></i> info@thehr.ae</a></li>
                 </ul>

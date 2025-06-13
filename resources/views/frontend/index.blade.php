@@ -248,9 +248,9 @@
                                         <option value="Commercial"
                                             {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
                                         </option>
-                                        <option value="Off-Plan"
+                                        {{-- <option value="Off-Plan"
                                             {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
-                                        </option>
+                                        </option> --}}
                                         <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
                                             Mall</option>
                                         <option value="Villa"
@@ -279,8 +279,8 @@
                                     <option value="Commercial"
                                         {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
                                     </option>
-                                    <option value="Off-Plan"
-                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option>
+                                    {{-- <option value="Off-Plan"
+                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option> --}}
                                     <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>Mall
                                     </option>
                                     <option value="Villa" {{ old('property_type') == 'Villa' ? 'selected' : '' }}>

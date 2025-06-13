@@ -37,8 +37,8 @@
                                  <li><a class="dropdown-item"
                                          href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                  </li>
-                                 <li><a class="dropdown-item"
-                                         href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li>
+                                 {{-- <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li> --}}
                                  <li><a class="dropdown-item"
                                          href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                  <li><a class="dropdown-item"
@@ -119,9 +119,9 @@
                                          <li><a class="dropdown-item"
                                                  href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                          </li>
-                                         <li><a class="dropdown-item"
+                                         {{-- <li><a class="dropdown-item"
                                                  href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a>
-                                         </li>
+                                         </li> --}}
                                          <li><a class="dropdown-item"
                                                  href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                          <li><a class="dropdown-item"
