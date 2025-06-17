@@ -90,17 +90,20 @@ class FrontendController extends Controller
         // File uploads
         $tradeLicensePath = $request->file('trade_license')->storeAs(
             'uploads/trade_licenses',
-            'trade_license_' . time() . '.' . $request->file('trade_license')->extension(), 'public'
+            'trade_license_' . time() . '.' . $request->file('trade_license')->extension(),
+            'public'
         );
 
         $emiratesIdPath = $request->file('emirates_id')->storeAs(
             'uploads/emirates_ids',
-            'emirates_id_' . time() . '.' . $request->file('emirates_id')->extension(), 'public'
+            'emirates_id_' . time() . '.' . $request->file('emirates_id')->extension(),
+            'public'
         );
 
         $passportPath = $request->file('passport')->storeAs(
             'uploads/passports',
-            'passport_' . time() . '.' . $request->file('passport')->extension(), 'public'
+            'passport_' . time() . '.' . $request->file('passport')->extension(),
+            'public'
         );
 
         // Database Insertion
@@ -448,8 +451,9 @@ class FrontendController extends Controller
         return view('frontend.offplan', compact('properties', 'search', 'communities', 'developers'));
     }
 
-    public function showPropertiesByLocation($location)
+    public function showPropertiesByLocation(Request $request, $location)
     {
+
         $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
         $allowedTypes = [
             'Residential',
@@ -464,7 +468,28 @@ class FrontendController extends Controller
 
         if (in_array($location, $allowedLocations)) {
             // Search by location
-            $properties = AgentProperty::where('location', $location)->get();
+            $query = AgentProperty::query();
+            $query->where('location', $location);
+
+            if ($request->has('sort')) {
+                switch ($request->input('sort')) {
+                    case 'newest':
+                        $query->orderBy('created_at', 'desc');
+                        break;
+                    case 'oldest':
+                        $query->orderBy('created_at', 'asc');
+                        break;
+                    case 'price_high_to_low':
+                        $query->orderBy('price', 'desc');
+                        break;
+                    case 'price_low_to_high':
+                        $query->orderBy('price', 'asc');
+                        break;
+                }
+            }
+
+            $properties = $query->get();
+
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }
 
@@ -472,7 +497,30 @@ class FrontendController extends Controller
         elseif (in_array($location, $allowedTypes)) {
             // Search by property type
 
-            $properties = AgentProperty::where('property_type', $location)->get();
+            // $properties = AgentProperty::where('property_type', $location)->get();
+            $query = AgentProperty::query();
+            $query->where('property_type', $location);
+
+            if ($request->has('sort')) {
+                switch ($request->input('sort')) {
+                    case 'newest':
+                        $query->orderBy('created_at', 'desc');
+                        break;
+                    case 'oldest':
+                        $query->orderBy('created_at', 'asc');
+                        break;
+                    case 'price_high_to_low':
+                        $query->orderBy('price', 'desc');
+                        break;
+                    case 'price_low_to_high':
+                        $query->orderBy('price', 'asc');
+                        break;
+                }
+            }
+
+            $properties = $query->get();
+            // dd($properties->main_image);
+
 
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
         }

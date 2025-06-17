@@ -37,13 +37,12 @@
                                 <option>Mall</option>
                                 <option>Villa</option>
                             </select>
-                            <select>
+                               {{-- <select>
                                 <option disabled selected>Developer</option>
                                 <option>Lorem Ipsum</option>
                                 <option>Lorem Ipsum</option>
                                 <option>Lorem Ipsum</option>
-                            </select>
-
+                            </select> --}}
                             <h4 class="contact1a">Status</h4>
                             <select>
                                 <option disabled selected>Select Status</option>
@@ -61,15 +60,26 @@
                         </form>
                     </div>
                     <div class="col-md-6">
-                        <form class="search-form">
-                            <select>
-                                <option disabled selected>Sort By</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                            </select>
-                            <input type="text" placeholder="Search by Property" />
-                        </form>
+                        @if (isset($location))
+                            <form method="GET" action="{{ route('properties.byLocation', $location) }}"
+                                class="search-form">
+                                <select name="sort" onchange="this.form.submit()">
+                                    <option value="">Sort By</option>
+                                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest
+                                    </option>
+                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest
+                                    </option>
+                                    <option value="price_high_to_low"
+                                        {{ request('sort') == 'price_high_to_low' ? 'selected' : '' }}>Price High to Low
+                                    </option>
+                                    <option value="price_low_to_high"
+                                        {{ request('sort') == 'price_low_to_high' ? 'selected' : '' }}>Price Low to High
+                                    </option>
+                                </select>
+                                <input type="text" placeholder="Search by Property" />
+                            </form>
+                        @endif
+
 
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
