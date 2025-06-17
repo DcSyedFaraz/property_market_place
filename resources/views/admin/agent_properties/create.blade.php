@@ -77,18 +77,16 @@
             <!-- Bedrooms -->
             <div class="mb-3">
                 <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ old('bedrooms') }}"
-                    required>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ old('bedrooms') }}">  
             </div>
 
             <!-- Bathrooms -->
             <div class="mb-3">
                 <label for="bathrooms" class="form-label">No. Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms" value="{{ old('bathrooms') }}"
-                    required>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" value="{{ old('bathrooms') }}">
             </div>
 
-            <!-- Utility Area -->
+            {{-- <!-- Utility Area -->
             <div class="mb-3">
                 <label for="utility_area" class="form-label">Utility Area</label>
                 <input type="number" class="form-control" step="0.01" id="utility_area" value="{{ old('utility_area') }}"
@@ -107,7 +105,7 @@
                 <label for="unit_area" class="form-label">Unit Area</label>
                 <input type="number" class="form-control" step="0.01" id="unit_area" value="{{ old('unit_area') }}"
                     name="unit_area">
-            </div>
+            </div> --}}
 
             <!-- Property Main Image -->
             <div class="mb-3">
