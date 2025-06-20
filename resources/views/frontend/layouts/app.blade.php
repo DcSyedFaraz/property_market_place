@@ -166,13 +166,12 @@
             </div>
             <div class="row mt-4 d-flex align-items-center ms-2">
                 <div class="col-md-6">
-                    <h2>Newsletter To Get Updated<br>
-                        The Latest News</h2>
+                    <h2>{{ __('Newsletter To Get Updated the Latest News') }}</h2>
                 </div>
                 <div class="col-md-6">
                     <div class="news__form">
-                        <input type="email" placeholder="Enter your email address" />
-                        <button class="news__btn">Subscribe Now</button>
+                        <input type="email" placeholder="{{ __('Enter your email address') }}" />
+                        <button class="news__btn">{{ __('Subscribe Now') }}</button>
                     </div>
                 </div>
             </div>
