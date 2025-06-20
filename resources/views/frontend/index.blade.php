@@ -32,64 +32,72 @@
                     <div class="col-md-8 col-lg-7 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('about_us') }}">About Us</a>
+                                <a class="nav-link" href="{{ route('about_us') }}">{{ __('About us') }}</a>
                             </li>
                             {{-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    About
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
-                                </ul>
-                            </li> --}}
+                             <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                 About
+                             </a>
+                             <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                 <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+                                 <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                             </ul>
+                         </li> --}}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Properties
+                                    {{ __('Properties') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                            href="{{ route('properties.byLocation', 'Residential') }}">{{ __('Residential') }}</a>
                                     </li>
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                            href="{{ route('properties.byLocation', 'Commercial') }}">{{ __('Commercial') }}</a>
+                                    </li>
+                                    {{-- <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li> --}}
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Mall') }}">{{ __('Mall') }}</a>
                                     </li>
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                            href="{{ route('properties.byLocation', 'Villa') }}">{{ __('Villa') }}</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('service') }}">Services</a>
+                                <a class="nav-link" href="{{ route('service') }}">{{ __('Services') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
+                                <a class="nav-link" href="{{ url('blog') }}">{{ __('Blogs') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Contact Us
+                                    {{ __('Contact us') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('complaint.form') }}">Complaint</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('visitor.form') }}">Visitor</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('registration.form') }}">Register as a
-                                            Vendor</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('contact_us') }}">{{ __('Contact us') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('complaint.form') }}">{{ __('Complaint Form') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('visitor.form') }}">{{ __('Visitor Form') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('registration.form') }}">{{ __('Register as vendor') }}
+                                        </a></li>
                                 </ul>
                             </li>
                             {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
-                            </li> --}}
+                             <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
+                         </li> --}}
                         </ul>
                     </div>
                     <div class="col-md-2 col-lg-3 mob-1">
@@ -143,7 +151,7 @@
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                             </li>
-                                           <li><a class="dropdown-item"
+                                            <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Villa') }}">Villa</a>
@@ -169,7 +177,8 @@
                                             <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <li><a class="nav-link btn10"
+                                            href="{{ route('login') }}">{{ __('Login') }}</a>
                                         <div class="d-inline ms-2">
                                             <a href="{{ route('lang.switch', 'en') }}">EN</a> |
                                             <a href="{{ route('lang.switch', 'ar') }}">ع</a>
@@ -248,10 +257,12 @@
                                     <select class="f1">
                                         <option value="" hidden>{{ __('Select Property Type') }}</option>
                                         <option value="Residential"
-                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>{{ __('Residential') }}
+                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>
+                                            {{ __('Residential') }}
                                         </option>
                                         <option value="Commercial"
-                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>{{ __('Commercial') }}
+                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
+                                            {{ __('Commercial') }}
                                         </option>
                                         {{-- <option value="Off-Plan"
                                             {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
@@ -259,7 +270,8 @@
                                         <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
                                             {{ __('Mall') }}</option>
                                         <option value="Villa"
-                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>{{ __('Villa') }}</option>
+                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
+                                            {{ __('Villa') }}</option>
                                     </select>
 
                                     <select class="f2">
@@ -547,7 +559,8 @@
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
                     <div class="item"><img src="{{ asset('assets/img/Aldar Logo.webp') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}" alt="">
+                    <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}"
+                            alt="">
                     </div>
                     <div class="item"><img src="{{ asset('assets/img/Dubai properties Logo.webp') }}"
                             alt=""></div>
