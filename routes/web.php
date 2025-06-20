@@ -44,6 +44,14 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
+Route::get('/lang/{lang}', function ($lang) {
+    if (!in_array($lang, ['en', 'ar'])) {
+        abort(400);
+    }
+    session(['locale' => $lang]);
+    return back();
+})->name('lang.switch');
+
 require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
