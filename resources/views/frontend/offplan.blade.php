@@ -2,40 +2,47 @@
 @section('content')
     <section class="propdetails-banner">
         <div class="container">
-            <h2 class="serviceh2">{{ $location ?? '' }} Projects</h2>
-            <p class="banner-p">We are a full-service real estate company in UAE that is able to assist you with all
-                your real estate needs.</p>
+            <h2 class="serviceh2">
+                {{ __('propdetails.banner.title', ['location' => $locationName ?? $location ?? '']) }}
+            </h2>
+            <p class="banner-p">
+                {{ __('propdetails.banner.description') }}
+            </p>
         </div>
     </section>
+
     <section class="about-main">
         <div class="container">
             <div class="contact-main project-main">
                 <div class="row">
                     <div class="col-md-6">
                         <form action="#" class="filter-form">
-                            <h4 class="contact1a">Filter</h4>
+                            <h4 class="contact1a">{{ __('filter.heading') }}</h4>
+
                             <select>
-                                <option disabled selected>Starting Price Range</option>
-                                <option>100$</option>
-                                <option>200$</option>
-                                <option>300$</option>
+                                <option disabled selected>{{ __('filter.starting_price') }}</option>
+                                <option>{{ __('filter.price.100') }}</option>
+                                <option>{{ __('filter.price.200') }}</option>
+                                <option>{{ __('filter.price.300') }}</option>
                             </select>
+
                             <select>
-                                <option disabled selected>City</option>
-                                <option>Dubai</option>
-                                <option>Abu Dubai</option>
-                                <option>Sharjah</option>
-                                <option>Al Ain</option>
-                                <option>Fujairah</option>
-                                <option>Ras Al Khaimah</option>
+                                <option disabled selected>{{ __('filter.city') }}</option>
+                                <option>{{ __('filter.city.Dubai') }}</option>
+                                <option>{{ __('filter.city.AbuDhabi') }}</option>
+                                <option>{{ __('filter.city.Sharjah') }}</option>
+                                <option>{{ __('filter.city.AlAin') }}</option>
+                                <option>{{ __('filter.city.Fujairah') }}</option>
+                                <option>{{ __('filter.city.RAK') }}</option>
                             </select>
+
                             <select>
-                                <option disabled selected>Property Type</option>
-                                <option>Residential</option>
-                                <option>Commercial</option>
-                                <option>Off-Plan</option>
-                                <option>Mall</option>
-                                <option>Villa</option>
+                                <option disabled selected>{{ __('filter.property_type') }}</option>
+                                <option>{{ __('filter.property_type.Residential') }}</option>
+                                <option>{{ __('filter.property_type.Commercial') }}</option>
+                                <option>{{ __('filter.property_type.OffPlan') }}</option>
+                                <option>{{ __('filter.property_type.Mall') }}</option>
+                                <option>{{ __('filter.property_type.Villa') }}</option>
                             </select>
                             {{-- <select>
                                 <option disabled selected>Developer</option>
@@ -45,41 +52,43 @@
                             </select> --}}
                             <h4 class="contact1a">Status</h4>
                             <select>
-                                <option disabled selected>Select Status</option>
-                                <option>sold</option>
-                                <option>available</option>
+                                <option disabled selected>{{ __('filter.status.select') }}</option>
+                                <option>{{ __('filter.status.sold') }}</option>
+                                <option>{{ __('filter.status.available') }}</option>
                             </select>
-                            {{-- <select>
-                                <option disabled selected>Accommodation</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                            </select> --}}
 
-                            <button type="submit" class="filter-btn">Search</button>
+                            <button type="submit" class="filter-btn">
+                                {{ __('filter.button.search') }}
+                            </button>
                         </form>
                     </div>
+
                     <div class="col-md-6">
                         @if (isset($location))
                             <form method="GET" action="{{ route('properties.byLocation', $location) }}"
                                 class="search-form">
+
                                 <select name="sort" onchange="this.form.submit()">
-                                    <option value="">Sort By</option>
-                                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest
+                                    <option value="">{{ __('sort.heading') }}</option>
+                                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>
+                                        {{ __('sort.newest') }}
                                     </option>
-                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest
+                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>
+                                        {{ __('sort.oldest') }}
                                     </option>
                                     <option value="price_high_to_low"
-                                        {{ request('sort') == 'price_high_to_low' ? 'selected' : '' }}>Price High to Low
+                                        {{ request('sort') == 'price_high_to_low' ? 'selected' : '' }}>
+                                        {{ __('sort.price_high_to_low') }}
                                     </option>
                                     <option value="price_low_to_high"
-                                        {{ request('sort') == 'price_low_to_high' ? 'selected' : '' }}>Price Low to High
+                                        {{ request('sort') == 'price_low_to_high' ? 'selected' : '' }}>
+                                        {{ __('sort.price_low_to_high') }}
                                     </option>
                                 </select>
-                                <input type="text" placeholder="Search by Property" />
+
+                                <input type="text" placeholder="{{ __('sort.search_placeholder') }}" />
                             </form>
                         @endif
-
 
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
@@ -109,25 +118,25 @@
                                         {{ $project->bathrooms }}
                                     </div>
                                 @endif
-
                             </div>
-                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">View Details</a>
+
+                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">
+                                {{ __('filter.button.search') }}
+                            </a>
                             <hr>
                         @empty
-                            <p>
-                                no project available
-                            </p>
+                            <p>{{ __('projects.none') }}</p>
                         @endforelse
                     </div>
                 </div>
             </div>
+
             <div class="about-3">
                 <div class="container">
-                    <h3 class="about3a">Be the first to know.</h3>
-                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
-                        announcements about pre-leasing opportunities.</p>
+                    <h3 class="about3a">{{ __('notify.heading') }}</h3>
+                    <p class="about3b">{{ __('notify.description') }}</p>
                     <form>
-                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <input type="email" placeholder="{{ __('notify.email_placeholder') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>

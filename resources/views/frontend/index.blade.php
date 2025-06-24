@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" @if (app()->getLocale() == 'ar') dir="rtl" @endif>
 
 <head>
     <meta charset="UTF-8" />
@@ -7,6 +7,9 @@
     <title>The H Real Estate</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    @if (app()->getLocale() == 'ar')
+        <meta name="direction" content="rtl">
+    @endif
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Main CSS File -->
@@ -32,69 +35,80 @@
                     <div class="col-md-8 col-lg-7 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('about_us') }}">About Us</a>
+                                <a class="nav-link" href="{{ route('about_us') }}">{{ __('About us') }}</a>
                             </li>
                             {{-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    About
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
-                                </ul>
-                            </li> --}}
+                             <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
+                                 data-bs-toggle="dropdown" aria-expanded="false">
+                                 About
+                             </a>
+                             <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                 <li><a class="dropdown-item" href="{{ route('about_us') }}">About</a></li>
+                                 <li><a class="dropdown-item" href="{{ route('leadership') }}">Leaders</a></li>
+                             </ul>
+                         </li> --}}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown"
                                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Properties
+                                    {{ __('Properties') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Residential') }}">Residential</a>
+                                            href="{{ route('properties.byLocation', 'Residential') }}">{{ __('Residential') }}</a>
                                     </li>
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
+                                            href="{{ route('properties.byLocation', 'Commercial') }}">{{ __('Commercial') }}</a>
+                                    </li>
+                                    {{-- <li><a class="dropdown-item"
+                                         href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li> --}}
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('properties.byLocation', 'Mall') }}">{{ __('Mall') }}</a>
                                     </li>
                                     <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('properties.byLocation', 'Villa') }}">Villa</a></li>
+                                            href="{{ route('properties.byLocation', 'Villa') }}">{{ __('Villa') }}</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('service') }}">Services</a>
+                                <a class="nav-link" href="{{ route('service') }}">{{ __('Services') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('blog') }}">Blogs</a>
+                                <a class="nav-link" href="{{ url('blog') }}">{{ __('Blogs') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Contact Us
+                                    {{ __('Contact us') }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('contact_us') }}">Contact Us</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('complaint.form') }}">Complaint</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('visitor.form') }}">Visitor</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('registration.form') }}">Register as a
-                                            Vendor</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('contact_us') }}">{{ __('Contact us') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('complaint.form') }}">{{ __('Complaint Form') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('visitor.form') }}">{{ __('Visitor Form') }}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('registration.form') }}">{{ __('Register as vendor') }}
+                                        </a></li>
                                 </ul>
                             </li>
                             {{-- <li class="nav-item">
-                                <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
-                            </li> --}}
+                             <a class="nav-link" href="{{ url('complain') }}">Complaint</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ url('visitor') }}">Visitor</a>
+                         </li> --}}
                         </ul>
                     </div>
                     <div class="col-md-2 col-lg-3 mob-1">
-                        <a class="nav-link btn10" href="{{ route('login') }}">Login</a>
-                        <div id="google_translate_element"></div>
+                        <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <div class="d-inline ms-2">
+                            <a href="{{ route('lang.switch', 'en') }}">EN</a> |
+                            <a href="{{ route('lang.switch', 'ar') }}">ع</a>
+                        </div>
                     </div>
                     <div class="col-6 col-md-10 d-lg-none d-md-block">
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -140,7 +154,7 @@
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Commercial') }}">Commercial</a>
                                             </li>
-                                           <li><a class="dropdown-item"
+                                            <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Mall') }}">Mall</a></li>
                                             <li><a class="dropdown-item"
                                                     href="{{ route('properties.byLocation', 'Villa') }}">Villa</a>
@@ -166,8 +180,12 @@
                                             <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="nav-link btn10" href="{{ route('login') }}">Login</a>
-                                        <div id="google_translate_element"></div>
+                                    <li><a class="nav-link btn10"
+                                            href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <div class="d-inline ms-2">
+                                            <a href="{{ route('lang.switch', 'en') }}">EN</a> |
+                                            <a href="{{ route('lang.switch', 'ar') }}">ع</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -184,10 +202,9 @@
             <div class="row">
                 <div class="container">
                     <div class="col-lg-8">
-                        <h1>Modern Apartments Exclusive Listing</h1>
+                        <h1>{{ __('Modern Apartments Exclusive Listing') }}</h1>
                         <p>
-                            Get the features you in all the property we offer with the best
-                            price you can get
+                            {{ __('Get the features you in all the property we offer at the best price you can get') }}
                         </p>
                         {{-- <div class="img-text">
                             <a href="{{ route('leadership') }}">
@@ -217,22 +234,22 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form10">
-                            <h3>WHAT ARE YOU LOOKING FOR?</h3>
-                            <p>(Easily find the house of your choice)</p>
+                            <h3>{{ __('WHAT ARE YOU LOOKING FOR?') }}</h3>
+                            <p>{{ __('(Easily find the house of your choice)') }}</p>
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="home"
                                     aria-selected="true">
-                                    Rent
+                                    {{ __('Rent') }}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
                                     aria-selected="false">
-                                    Buy
+                                    {{ __('Buy') }}
                                 </button>
                             </li>
                         </ul>
@@ -241,27 +258,30 @@
                             <div class="tab-pane active" id="home">
                                 <form action="" id="state-form">
                                     <select class="f1">
-                                        <option value="" hidden>Select Property Type</option>
+                                        <option value="" hidden>{{ __('Select Property Type') }}</option>
                                         <option value="Residential"
-                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
+                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>
+                                            {{ __('Residential') }}
                                         </option>
                                         <option value="Commercial"
-                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
+                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
+                                            {{ __('Commercial') }}
                                         </option>
                                         {{-- <option value="Off-Plan"
                                             {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
                                         </option> --}}
                                         <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
-                                            Mall</option>
+                                            {{ __('Mall') }}</option>
                                         <option value="Villa"
-                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>Villa</option>
+                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
+                                            {{ __('Villa') }}</option>
                                     </select>
 
                                     <select class="f2">
                                         <option value="">
-                                            City Neighbourhood, Community
+                                            {{ __('City Neighborhood, Community') }}
                                         </option>
-                                        <option value="">City Neighbourhood</option>
+                                        <option value="">{{ __('City Neighborhood') }}</option>
                                     </select>
 
                                     <button class="button has-icon icon-send">
@@ -272,26 +292,30 @@
                             <div class="tab-pane" id="profile">
                                 <form action="" id="state-form"></form>
                                 <select class="f1">
-                                    <option value="" hidden>Select Property Type</option>
+                                    <option value="" hidden>{{ __('Select Property Type') }}</option>
                                     <option value="Residential"
-                                        {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
+                                        {{ old('property_type') == 'Residential' ? 'selected' : '' }}>
+                                        {{ __('Residential') }}
                                     </option>
                                     <option value="Commercial"
-                                        {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
+                                        {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
+                                        {{ __('Commercial') }}
                                     </option>
                                     {{-- <option value="Off-Plan"
-                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option> --}}
-                                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>Mall
+                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>{{__('Off')}}-Plan</option> --}}
+                                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
+                                        {{ __('Mall') }}
                                     </option>
                                     <option value="Villa" {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
-                                        Villa</option>
+                                        {{ __('Villa') }}
+                                    </option>
                                 </select>
 
                                 <select class="f2">
                                     <option value="">
-                                        City Neighbourhood, Community
+                                        {{ __('City Neighborhood, Community') }}
                                     </option>
-                                    <option value="">City Neighbourhood</option>
+                                    <option value="">{{ __('City Neighborhood') }}</option>
                                 </select>
 
                                 <button class="button has-icon icon-send">
@@ -311,45 +335,45 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 me-auto text-center content1">
-                        <h2>Our Properties</h2>
+                        <h2>{{ __('Our properties') }}</h2>
                         <p>
-                            New Properties
+                            {{ __('New Properties') }}
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Abu Dhabi') }}">
                                     <img src="{{ asset('assets/img/Abu Dhabi.webp') }}" alt="Abu Dhabi" />
-                                    <h4>Abu Dhabi</h4>
+                                    <h4>{{ __('Abu Dhabi') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Dubai') }}">
                                     <img src="{{ asset('assets/img/dubai.webp') }}" alt="Dubai" />
-                                    <h4>Dubai</h4>
+                                    <h4>{{ __('Dubai') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Al Ain') }}">
                                     <img src="{{ asset('assets/img/Al Ain.webp') }}" alt="Al Ain" />
-                                    <h4>Al Ain</h4>
+                                    <h4>{{ __('Al Ain') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Sharjah') }}">
                                     <img src="{{ asset('assets/img/Sharjah.webp') }}" alt="Sharjah" />
-                                    <h4>Sharjah</h4>
+                                    <h4>{{ __('Sharjah') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Fujairah') }}">
                                     <img src="{{ asset('assets/img/Fujairah.webp') }}" alt="Fujairah" />
-                                    <h4>Fujairah</h4>
+                                    <h4>{{ __('Fujairah') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Ras Al Khaimah') }}">
                                     <img src="{{ asset('assets/img/Ras Al Khaimah.webp') }}" alt="Ras Al Khaimah" />
-                                    <h4>Ras Al Khaimah</h4>
+                                    <h4>{{ __('Ras Al Khaimah') }}</h4>
                                 </a>
                             </div>
 
@@ -422,9 +446,9 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 col-7">
                         <div class="le5">
-                            <h2 class="le-title">Browse by property type</h2>
+                            <h2 class="le-title">{{ __('Browse by property type') }}</h2>
                             <p class="card-text">
-                                Handpicked projects for you
+                                {{ __('Handpicked projects for you') }}
                             </p>
                         </div>
                     </div>
@@ -437,25 +461,25 @@
                         <div class="item">
                             <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Residential') }}">
-                                <h4>Residential</h4>
+                                <h4>{{ __('Residential') }}</h4>
                             </a>
                         </div>
                         <div class="item">
                             <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Commercial') }}">
-                                <h4>Commercial</h4>
+                                <h4>{{ __('Commercial') }}</h4>
                             </a>
                         </div>
                         <div class="item">
                             <img src="{{ asset('assets/img/mall.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Mall') }}">
-                                <h4>Mall</h4>
+                                <h4>{{ __('Mall') }}</h4>
                             </a>
                         </div>
                         <div class="item">
                             <img src="{{ asset('assets/img/villa.webp') }}" alt="" />
                             <a href="{{ route('properties.byLocation', 'Villa') }}">
-                                <h4>Villa</h4>
+                                <h4>{{ __('Villa') }}</h4>
                             </a>
                         </div>
 
@@ -536,13 +560,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 me-auto text-center content2">
-                        <h2>Discover Modern New developments.</h2>
-                        <p>Select your property type from our list of featured developers</p>
+                        <h2>{{ __('Discover Modern New developments.') }}</h2>
+                        <p>{{ __('Select your property type from our list of featured developers') }}</p>
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
                     <div class="item"><img src="{{ asset('assets/img/Aldar Logo.webp') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}" alt="">
+                    <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}"
+                            alt="">
                     </div>
                     <div class="item"><img src="{{ asset('assets/img/Dubai properties Logo.webp') }}"
                             alt=""></div>
@@ -586,7 +611,7 @@
         }
     })
     $('.type-carol').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: false,
         dots: false,

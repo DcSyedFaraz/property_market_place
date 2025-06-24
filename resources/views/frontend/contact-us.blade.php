@@ -2,9 +2,8 @@
 @section('content')
     <section class="contact-banner">
         <div class="container">
-            <h2 class="serviceh2">Contact Us</h2>
-            <p class="banner-p">We are a full-service real estate company in UAE that is able to assist you with all
-                your real estate needs.</p>
+            <h2 class="serviceh2">{{ __('Contact us') }}</h2>
+            <p class="banner-p">{{ __('We are a full-service real estate company in UAE that is able to assist you with all your real estate needs.') }}</p>
         </div>
     </section>
     <section class="about-main">
@@ -22,26 +21,25 @@
                             <i class="fa-solid fa-envelope"></i>
                             <a href="#">info@thehr.ae</a>
                         </div>
-                        <p class="contact1c">If you have any queries or you would like us to meet and discuss, just fill
-                            up the form and we will get back to you.</p>
+                        <p class="contact1c">{{ __('If you have any queries or you would like us to meet and discuss them, just fill in the form and we will get back to you.') }}</p>
                     </div>
                     <div class="col-md-6">
                         <form class="contact-form">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Your Name" required />
+                                    <input type="text" placeholder="{{ __('Your Name') }}" required />
                                 </div>
                                 <div class="col-md-6 mob-input">
-                                    <input type="email" placeholder="Your Email" required />
+                                    <input type="email" placeholder="{{ __('Your Email') }}" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <input type="number" placeholder="Your Phone" required />
+                                    <input type="number" placeholder="{{ __('Your Phone') }}" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <textarea rows="6" placeholder="Message"></textarea>
+                                    <textarea rows="6" placeholder="{{ __('Message') }}"></textarea>
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <button type="submit">Submit</button>
+                                    <button type="submit">{{ __('Submit') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -50,11 +48,10 @@
             </div>
             <div class="about-3">
                 <div class="container">
-                    <h3 class="about3a">Be the first to know.</h3>
-                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
-                        announcements about pre-leasing opportunities.</p>
+                    <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
+                    <p class="about3b">{{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}</p>
                     <form>
-                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <input type="email" placeholder="{{ __('Enter Your Email Address') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>

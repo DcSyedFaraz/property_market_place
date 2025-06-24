@@ -55,13 +55,13 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h3>Get In Touch</h3>
+                <h3>{{ __('Get In Touch') }}</h3>
                 <ul class="icon-text1">
                     <li>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=Khalifa+Park+Area+-+Zone+1+-+Ministries+Complex+-+Abu+Dhabi"
                             target="_blank" rel="noopener noreferrer">
                             <i class="bi bi-geo-alt-fill"></i>
-                            <p>Khalifa Park Area - Zone 1 - Ministries Complex - Abu Dhabi</p>
+                            <p>{{ __('Khalifa Park Area - Zone 1 - Ministries Complex - Abu Dhabi') }}</p>
                         </a>
                     </li>
 
@@ -70,76 +70,52 @@
                 </ul>
             </div>
             <div class="col-md-2">
-                <h3>Quick links</h3>
+                <h3>{{ __('Quick links') }}</h3>
                 <ul>
-                    <li><a href="{{ route('service') }}"><i class="bi bi-arrow-right-short"></i>Services</a></li>
-                    <li><a href="{{ route('blog') }}"><i class="bi bi-arrow-right-short"></i>Blogs</a></li>
+                    <li><a href="{{ route('service') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Services') }}</a></li>
+                    <li><a href="{{ route('blog') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Blogs') }}</a></li>
                     <li><a href="{{ route('properties.byLocation', 'Residential') }}"><i
-                                class="bi bi-arrow-right-short"></i>Residential</a></li>
+                                class="bi bi-arrow-right-short"></i>{{ __('Residential') }}</a></li>
                     <li><a href="{{ route('properties.byLocation', 'Commercial') }}"><i
-                                class="bi bi-arrow-right-short"></i>Commercial</a></li>
+                                class="bi bi-arrow-right-short"></i>{{ __('Commercial') }}</a></li>
                     <li><a href="{{ route('properties.byLocation', 'Mall') }}"><i
-                                class="bi bi-arrow-right-short"></i>Mall</a></li>
+                                class="bi bi-arrow-right-short"></i>{{ __('Mall') }}</a></li>
                     <li><a href="{{ route('properties.byLocation', 'Villa') }}"><i
-                                class="bi bi-arrow-right-short"></i>Villa</a></li>
+                                class="bi bi-arrow-right-short"></i>{{ __('Villa') }}</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
-                <h3>Contact Us</h3>
+                <h3>{{ __('Contact us') }}</h3>
                 <ul>
-                    <li><a href="{{ route('contact_us') }}"><i class="bi bi-arrow-right-short"></i>Contact us</a></li>
-                    <li><a href="{{ route('complaint.form') }}"><i class="bi bi-arrow-right-short"></i>Complaint</a>
+                    <li><a href="{{ route('contact_us') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Contact us') }}</a></li>
+                    <li><a href="{{ route('complaint.form') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Complaint Form') }}</a>
                     </li>
-                    <li><a href="{{ route('visitor.form') }}"><i class="bi bi-arrow-right-short"></i>Visitor</a></li>
+                    <li><a href="{{ route('visitor.form') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Visitor Form') }}</a></li>
                 </ul>
             </div>
         </div>
         <div class="row mt-4 d-flex align-items-center ms-2">
             <div class="col-md-6">
-                <h2>Newsletter To Get Updated<br>
-                    The Latest News</h2>
+                <h2>{{ __('Newsletter To Get Updated the Latest News') }}</h2>
             </div>
             <div class="col-md-6">
                 <div class="news__form">
-                    <input type="email" placeholder="Enter your email address" />
-                    <button class="news__btn">Subscribe Now</button>
+                    <input type="email" placeholder="{{ __('Enter your email address') }}" />
+                    <button class="news__btn">{{ __('Subscribe Now') }}</button>
                 </div>
             </div>
         </div>
         <div class="row copyright d-flex align-items-center mt-4">
             <div class="col-md-6">
-                <p>Copyright © {{ now()->year }}, All rights reserved.</p>
+                <p>{{ __('Copyright © 2025, All rights reserved.') }}</p>
             </div>
             <div class="col-md-6">
                 <ul class="footer-privacy">
-                    <li><a href="{{ route('term-condition') }}">Terms of service</a></li>
-                    <li><a href="{{ route('privacy-policy') }}">Privacy policy</a></li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="{{ route('term-condition') }}">{{ __('Terms of Service') }}</a></li>
+                    <li><a href="{{ route('privacy-policy') }}">{{ __('Privacy Policy') }}</a></li>
+                    <li><a href="#">{{ __('Cookies') }}</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
-
-
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'en,ar',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-
-        }, 'google_translate_element');
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize Google Translate
-        googleTranslateElementInit();
-
-        // Show page and hide loading indicator
-        document.getElementById('page').style.display = 'block';
-        document.getElementById('loading').style.display = 'none';
-    });
-</script>

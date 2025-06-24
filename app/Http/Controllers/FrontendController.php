@@ -489,8 +489,9 @@ class FrontendController extends Controller
             }
 
             $properties = $query->get();
+            $locationName = __($location);
 
-            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
         }
 
         // Check if the search term is a valid property type
@@ -519,10 +520,11 @@ class FrontendController extends Controller
             }
 
             $properties = $query->get();
+            $locationName = __($location);
             // dd($properties->main_image);
 
 
-            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location'));
+            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
         }
 
         // If the search term is invalid, abort with a 404 error
