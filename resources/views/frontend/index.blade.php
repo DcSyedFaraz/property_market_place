@@ -291,17 +291,21 @@
                                 <select class="f1">
                                     <option value="" hidden>{{ __('Select Property Type') }}</option>
                                     <option value="Residential"
-                                        {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
+                                        {{ old('property_type') == 'Residential' ? 'selected' : '' }}>
+                                        {{ __('Residential') }}
                                     </option>
                                     <option value="Commercial"
-                                        {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
+                                        {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
+                                        {{ __('Commercial') }}
                                     </option>
                                     {{-- <option value="Off-Plan"
-                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option> --}}
-                                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>Mall
+                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>{{__('Off')}}-Plan</option> --}}
+                                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
+                                        {{ __('Mall') }}
                                     </option>
                                     <option value="Villa" {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
-                                        Villa</option>
+                                        {{ __('Villa') }}
+                                    </option>
                                 </select>
 
                                 <select class="f2">
@@ -604,7 +608,7 @@
         }
     })
     $('.type-carol').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: false,
         dots: false,
