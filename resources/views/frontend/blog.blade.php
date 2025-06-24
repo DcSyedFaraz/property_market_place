@@ -2,7 +2,7 @@
 @section('content')
     <section class="banner">
         <div class="container">
-            <h2 class="bannerh2">Blogs</h2>
+            <h2 class="bannerh2">{{ __('Blogs') }}</h2>
         </div>
     </section>
     <section class="about-main">
@@ -14,7 +14,7 @@
                         <div class="content">
                             <h4 class="publish-date">{{ $blog->created_at }}</h4>
                             <h3 class="blog-title">{{ $blog->title }}</h3>
-                            <a href="{{ route('blog.show', $blog->slug) }}" class="blog-read">Read More</a>
+                            <a href="{{ route('blog.show', $blog->slug) }}" class="blog-read">{{ __('Read More') }}</a>
                         </div>
                     </div>
                 @endforeach
@@ -26,11 +26,10 @@
 
         <div class="about-3">
             <div class="container">
-                <h3 class="about3a">Be the first to know.</h3>
-                <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
-                    announcements about pre-leasing opportunities.</p>
+                <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
+                <p class="about3b">{{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}</p>
                 <form>
-                    <input type="email" placeholder="Enter Your Email Address" name="email" />
+                    <input type="email" placeholder="{{ __('Enter Your Email Address') }}" name="email" />
                     <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                 </form>
             </div>

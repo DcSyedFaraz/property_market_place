@@ -2,9 +2,8 @@
 @section('content')
     <section class="service">
         <div class="container">
-            <h2 class="serviceh2">Services</h2>
-            <p class="banner-p">We are a full-service real estate company in UAE that is able to assist you with all
-                your real estate needs.</p>
+            <h2 class="serviceh2">{{ __('Services') }}</h2>
+            <p class="banner-p">{{ __('We are a full-service real estate company in UAE that is able to assist you with all your real estate needs.') }}</p>
         </div>
     </section>
     <section class="about-main">
@@ -13,9 +12,8 @@
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s1.png') }}" />
-                        <h3> Property management</h3>
-                        <p>Experienced real estate professionals on our team can help you manage your properties
-                            efficiently.</p>
+                        <h3>{{ __('Property management') }}</h3>
+                        <p>{{ __('Experienced real estate professionals on our team can help you manage your properties efficiently.') }}</p>
                     </a>
                 </div>
                 {{-- <div class="service-imgbox">
@@ -35,8 +33,8 @@
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s4.png') }}" />
-                        <h3>Facility Management</h3>
-                        <p>What makes Property Angel the best NRI Property Management.</p>
+                        <h3>{{ __('Facility Management') }}</h3>
+                        <p>{{ __('What makes Property Angel the best NRI Property Management.') }}</p>
                     </a>
                 </div>
                 {{-- <div class="service-imgbox">
@@ -49,11 +47,10 @@
             </div>
             <div class="about-3">
                 <div class="container">
-                    <h3 class="about3a">Be the first to know.</h3>
-                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
-                        announcements about pre-leasing opportunities.</p>
+                    <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
+                    <p class="about3b">{{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}</p>
                     <form>
-                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <input type="email" placeholder="{{ __('Enter Your Email Address') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>
