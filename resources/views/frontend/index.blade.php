@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" @if (app()->getLocale() == 'ar') dir="rtl" @endif>
 
 <head>
     <meta charset="UTF-8" />
@@ -7,6 +7,9 @@
     <title>The H Real Estate</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    @if (app()->getLocale() == 'ar')
+        <meta name="direction" content="rtl">
+    @endif
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Main CSS File -->
