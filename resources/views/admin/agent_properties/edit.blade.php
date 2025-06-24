@@ -81,19 +81,18 @@
             <!-- Bedrooms -->
             <div class="mb-3">
                 <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ $property->bedrooms }}"
-                    required>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ $property->bedrooms }}">
             </div>
 
             <!-- Bathrooms -->
             <div class="mb-3">
                 <label for="bathrooms" class="form-label">No. Bathrooms</label>
                 <input type="number" class="form-control" id="bathrooms" name="bathrooms"
-                    value="{{ $property->bathrooms }}" required>
+                    value="{{ $property->bathrooms }}">
             </div>
 
             <!-- Utility Area -->
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="utility_area" class="form-label">Utility Area</label>
                 <input type="number" class="form-control" step="0.01" id="utility_area"
                     value="{{ $property->utility_area }}" name="utility_area">
@@ -111,7 +110,7 @@
                 <label for="unit_area" class="form-label">Unit Area</label>
                 <input type="number" class="form-control" step="0.01" id="unit_area"
                     value="{{ $property->unit_area }}" name="unit_area">
-            </div>
+            </div> --}}
 
             <!-- Property Main Image -->
             @if ($property->main_image)

@@ -37,7 +37,7 @@
                                 <option>Mall</option>
                                 <option>Villa</option>
                             </select>
-                               {{-- <select>
+                            {{-- <select>
                                 <option disabled selected>Developer</option>
                                 <option>Lorem Ipsum</option>
                                 <option>Lorem Ipsum</option>
@@ -84,21 +84,28 @@
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
                             <h4 class="property-price">AED {{ $project->price }}</h4>
-                            {{-- <p class="property-det" style="color: white;">
+
+                            {{-- <p class="property-det" style="color: white;   ">
                                 {!! \Illuminate\Support\Str::limit($project->description, 10) !!}
                             </p> --}}
 
                             <div class="details">
+                                <img src="{{ asset('/assets/images/projects/location.png') }}" width="30" />
+                                <h4 class="property-price">{{ $project->location }}</h4>
+
                                 @if ($project->bedrooms > 0)
                                     <div class="icons">
-                                        <img src="{{ asset('/assets/images/projects/icon.png') }}" />
+                                        {{-- <img src="{{ asset('/assets/images/projects/icon.png') }}" /> --}}
+                                        <img src="{{ asset('/assets/images/projects/bed.png') }}" />
                                         {{ $project->bedrooms }}
+
                                     </div>
                                 @endif
 
                                 @if ($project->bathrooms > 0)
                                     <div class="icons">
-                                        <img src="{{ asset('/assets/images/projects/icon.png') }}" />
+                                        {{-- <img src="{{ asset('/assets/images/projects/icon.png') }}" /> --}}
+                                        <img src="{{ asset('/assets/images/projects/bathtub.png') }}" />
                                         {{ $project->bathrooms }}
                                     </div>
                                 @endif
