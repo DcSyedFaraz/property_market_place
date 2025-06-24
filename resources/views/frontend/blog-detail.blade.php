@@ -23,7 +23,7 @@
                             <div class="blog-sidebar">
                                 <img src="{{asset('/storage/'.$blog->image)}}" class="blogside-img" />
                                 <h4 class="sidebar-a1">{!! substr($blog->title, 50, 10) !!}</h4>
-                                <a href="{{ route('blog.show', $blog->id) }}" class="sidebar-btn">Read More</a>
+                                <a href="{{ route('blog.show', $blog->id) }}" class="sidebar-btn">{{ __('Read More') }}</a>
                             </div>
 							@endforeach
 
@@ -33,11 +33,10 @@
             </div>
             <div class="about-3">
                 <div class="container">
-                    <h3 class="about3a">Be the first to know.</h3>
-                    <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
-                        announcements about pre-leasing opportunities.</p>
+                    <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
+                    <p class="about3b">{{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}</p>
                     <form>
-                        <input type="email" placeholder="Enter Your Email Address" name="email" />
+                        <input type="email" placeholder="{{ __('Enter Your Email Address') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
                 </div>
