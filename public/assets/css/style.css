@@ -118,6 +118,7 @@ h2 {
 
 .header .btn10:hover {
     background-color: #fff;
+    color: #000 !important;
 }
 
 /*--------------------------------------------------------------
@@ -357,7 +358,7 @@ h2 {
 
 .le5 a:hover {
     background-color: var(--default-color);
-    color: #fff;
+    color: #fff !important;
 }
 
 .sec-5 .item img {
@@ -2072,6 +2073,15 @@ button {
     padding-left: 20px;
 }
 
+.arb {
+    left: auto;
+    right: 4rem;
+}
+
+.header .ms-2 a,
+.header .ms-2 {
+    color: #fff !important;
+}
 
 /*--------------------------------------------------------------
 # Responsive Styles

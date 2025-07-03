@@ -213,7 +213,8 @@
                             <p>Meet our Leaders.</p>
                         </div> --}}
                     </div>
-                    <div class="social-link mob-1">
+                    <div class="social-link mob-1 social @if (app()->getLocale() == 'ar') arb
+                    @endif">
                         <a href="https://www.facebook.com/thehr.ae/"><i class="bi bi-facebook"></i></a>
                         <a href="https://x.com/TheHrealestate2"><i class="bi bi-twitter"></i></a>
                         <a href="https://www.instagram.com/thehr.ae/"><i class="bi bi-instagram"></i></a>
@@ -593,7 +594,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
     $('.service-carol').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: false,
         dots: false,
