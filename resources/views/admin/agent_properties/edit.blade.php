@@ -55,7 +55,7 @@
             <!-- Transaction Type (Checklist) -->
             <div class="mb-3">
                 <label for="transaction_type" class="form-label">Transaction Type</label>
-                <select class="form-control" id="transaction_type" name="transaction_type" required>
+                <select class="form-control" id="transaction_type" name="transaction_type">
                     <option value="">Select Transaction Type</option>
                     <option value="Rent" {{ $property->transaction_type == 'Rent' ? 'selected' : '' }}>
                         Rent</option>
