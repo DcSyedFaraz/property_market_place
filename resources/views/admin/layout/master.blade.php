@@ -302,7 +302,6 @@
     <!-- App js-->
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script>
-
         // toastr.info("{{ auth()->user()->id }}");
 
         @if (session('success'))
@@ -340,14 +339,13 @@
 
         document.getElementById('title').addEventListener('keyup', function() {
             let title = this.value;
-            let slug = title.toLowerCase()
-                .replace(/[^a-z0-9\s-]/g, '') // Special characters remove karega
-                .replace(/\s+/g, '-') // Spaces ko hyphen (-) me convert karega
-                .replace(/-+/g, '-'); // Extra hyphens remove karega
+            let slug = title
+                .toLowerCase()
+                .replace(/[^\u0600-\u06FFa-z0-9\s-]/g, '') // Arabic + Latin characters allowed
+                .replace(/\s+/g, '-') // Convert spaces to hyphens
+                .replace(/-+/g, '-'); // Remove multiple hyphens
             document.getElementById('slug').value = slug;
         });
-
-        
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
