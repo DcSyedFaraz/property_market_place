@@ -11,7 +11,7 @@
             <!-- Property Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Property Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
+                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
             </div>
 
             <!-- Description -->
@@ -23,7 +23,7 @@
             <!-- Location -->
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <select class="form-control" id="location" name="location" required>
+                <select class="form-control" id="location" name="location">
                     <option value="" hidden>Select a location</option>
                     @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
                         <option value="{{ $locationOption }}" {{ old('location') == $locationOption ? 'selected' : '' }}>
@@ -36,7 +36,7 @@
             <!-- Property Type (Dropdown) -->
             <div class="mb-3">
                 <label for="property_type" class="form-label">Property Type</label>
-                <select class="form-control" id="property_type" name="property_type" required>
+                <select class="form-control" id="property_type" name="property_type">
                     <option value="" hidden>Select Property Type</option>
                     <option value="Residential" {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
                     </option>
@@ -51,7 +51,7 @@
             <!-- Transaction Type (Checklist) -->
             <div class="mb-3">
                 <label for="transaction_type" class="form-label">Transaction Type</label>
-                <select class="form-control" id="transaction_type" name="transaction_type" required>
+                <select class="form-control" id="transaction_type" name="transaction_type">
                     <option value="">Select Transaction Type</option>
                     <option value="Rent" {{ old('transaction_type') == 'Rent' ? 'selected' : '' }}>
                         Rent</option>
@@ -64,14 +64,14 @@
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" step=".01" name="price"
-                    value="{{ old('price') }}" required>
+                    value="{{ old('price') }}">
             </div>
 
             <!-- Area (sq meter) -->
             <div class="mb-3">
                 <label for="area" class="form-label">Area (sq meter)</label>
                 <input type="number" class="form-control" id="area" name="area" step="0.01"
-                    value="{{ old('area') }}" required>
+                    value="{{ old('area') }}">
             </div>
 
             <!-- Bedrooms -->
@@ -123,7 +123,7 @@
             <!-- Property Status (Dropdown) -->
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
-                <select class="form-control" id="status" name="status" required>
+                <select class="form-control" id="status" name="status">
                     <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available</option>
                     <option value="sold" {{ old('status') == 'sold' ? 'selected' : '' }}>Sold</option>
                 </select>

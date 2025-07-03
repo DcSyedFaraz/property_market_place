@@ -11,8 +11,7 @@
             <!-- Property Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Property Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $property->title }}"
-                    required>
+                <input type="text" class="form-control" id="title" name="title" value="{{ $property->title }}">
             </div>
 
             <!-- Description -->
@@ -24,7 +23,7 @@
             <!-- Location -->
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <select class="form-control" id="location" name="location" required>
+                <select class="form-control" id="location" name="location">
                     <option value="" hidden>Select a location</option>
                     @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
                         <option value="{{ $locationOption }}"
@@ -39,7 +38,7 @@
             <!-- Property Type (Dropdown) -->
             <div class="mb-3">
                 <label for="property_type" class="form-label">Property Type</label>
-                <select class="form-control" id="property_type" name="property_type" required>
+                <select class="form-control" id="property_type" name="property_type">
                     <option value="" hidden>Select Property Type</option>
                     <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
                         Residential</option>
@@ -68,14 +67,14 @@
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" step=".01" name="price"
-                    value="{{ $property->price }}" required>
+                    value="{{ $property->price }}">
             </div>
 
             <!-- Area (sq meter) -->
             <div class="mb-3">
                 <label for="area" class="form-label">Area (sq meter)</label>
                 <input type="number" class="form-control" id="area" name="area" value="{{ $property->area }}"
-                    required step="0.01">
+                    step="0.01">
             </div>
 
             <!-- Bedrooms -->
@@ -152,7 +151,7 @@
             <!-- Property Status (Dropdown) -->
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
-                <select class="form-control" id="status" name="status" required>
+                <select class="form-control" id="status" name="status">
                     <option value="available" {{ $property->status == 'available' ? 'selected' : '' }}>Available</option>
                     <option value="sold" {{ $property->status == 'sold' ? 'selected' : '' }}>Sold</option>
                 </select>

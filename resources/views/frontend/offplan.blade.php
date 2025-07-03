@@ -120,7 +120,7 @@
                                 @endif
                             </div>
 
-                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">
+                            <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3 text-white">
                                 {{ __('filter.button.details') }}
                             </a>
                             <hr>
