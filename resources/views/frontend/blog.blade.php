@@ -39,7 +39,10 @@
                                 </div>
 
                                 <h3 class="card-title h5 fw-bold text-dark mb-3">
-                                    {{ $blog->title }}
+                                    <a href="{{ route('blog.show', $blog->slug) }}">
+
+                                        {{ $blog->title }}
+                                    </a>
                                 </h3>
 
                                 @if ($blog->excerpt)
@@ -125,90 +128,90 @@
     </section> --}}
 @endsection
 
-    <style>
-        .hover-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
+<style>
+    .hover-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
 
-        .hover-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        }
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
 
-        .blog-image {
-            transition: transform 0.3s ease;
-        }
+    .blog-image {
+        transition: transform 0.3s ease;
+    }
 
-        .hover-card:hover .blog-image {
-            transform: scale(1.05);
-        }
+    .hover-card:hover .blog-image {
+        transform: scale(1.05);
+    }
 
-        .card-title {
-            transition: color 0.2s ease;
-        }
+    .card-title {
+        transition: color 0.2s ease;
+    }
 
-        .hover-card:hover .card-title {
-            color: var(--bs-primary) !important;
-        }
+    .hover-card:hover .card-title {
+        color: var(--bs-primary) !important;
+    }
 
-        .btn-outline-primary {
-            transition: all 0.2s ease;
-        }
+    .btn-outline-primary {
+        transition: all 0.2s ease;
+    }
 
-        .btn-outline-primary:hover {
-            transform: translateX(2px);
-        }
+    .btn-outline-primary:hover {
+        transform: translateX(2px);
+    }
 
-        /* Custom pagination styling */
-        .pagination-wrapper .pagination {
-            gap: 0.25rem;
-        }
+    /* Custom pagination styling */
+    .pagination-wrapper .pagination {
+        gap: 0.25rem;
+    }
 
-        .pagination-wrapper .page-link {
-            border-radius: 0.375rem;
-            margin: 0 0.125rem;
-            transition: all 0.2s ease;
-        }
+    .pagination-wrapper .page-link {
+        border-radius: 0.375rem;
+        margin: 0 0.125rem;
+        transition: all 0.2s ease;
+    }
 
-        .pagination-wrapper .page-link:hover {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-            color: white;
-        }
+    .pagination-wrapper .page-link:hover {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+        color: white;
+    }
 
-        .pagination-wrapper .page-item.active .page-link {
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-        }
+    .pagination-wrapper .page-item.active .page-link {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+    }
 
-        .pagination-wrapper .page-item.disabled .page-link {
-            opacity: 0.5;
-        }
+    .pagination-wrapper .page-item.disabled .page-link {
+        opacity: 0.5;
+    }
 
-        /* Banner gradient background */
-        .banner {
-            background: linear-gradient(135deg, var(--bs-primary), var(--bs-purple, #6f42c1));
-        }
+    /* Banner gradient background */
+    .banner {
+        background: linear-gradient(135deg, var(--bs-primary), var(--bs-purple, #6f42c1));
+    }
 
-        /* Newsletter card gradient */
-        .card.bg-primary {
-            background: linear-gradient(135deg, var(--bs-primary), var(--bs-purple, #6f42c1)) !important;
-        }
+    /* Newsletter card gradient */
+    .card.bg-primary {
+        background: linear-gradient(135deg, var(--bs-primary), var(--bs-purple, #6f42c1)) !important;
+    }
 
-        /* Responsive text truncation */
-        .card-text {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+    /* Responsive text truncation */
+    .card-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
-        .card-title {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
+    .card-title {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
 @push('styles')
 @endpush
