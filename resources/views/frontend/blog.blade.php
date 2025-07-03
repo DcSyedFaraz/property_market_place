@@ -5,7 +5,7 @@
     <section class="banner bg-primary text-white py-5">
         <div class="container">
             <div class="text-center">
-                <h1 class="display-4 fw-bold mb-3">{{ __('Our Blog') }}</h1>
+                <h1 class="display-4 fw-bold mb-3">{{ __('Blogs') }}</h1>
                 <p class="lead opacity-75">{{ __('Discover insights, stories, and updates from our team') }}</p>
             </div>
         </div>
@@ -26,7 +26,7 @@
                                     class="card-img-top blog-image" style="height: 200px; object-fit: cover;" />
                                 <div class="position-absolute top-0 end-0 m-3">
                                     <span class="badge bg-primary rounded-pill">
-                                        {{ __('Blog') }}
+                                        {{ __('Blogs') }}
                                     </span>
                                 </div>
                             </div>
