@@ -66,7 +66,7 @@
                                     <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
                                     <h3 class="h4 fw-bold text-dark mb-3">{{ __('No blogs yet') }}</h3>
                                     <p class="text-muted">
-                                        {{ __('Stay tuned! We\'re working on some amazing content for you.') }}</p>
+                                        {{ __('Stay tuned') }}</p>
                                 </div>
                             </div>
                         </div>
