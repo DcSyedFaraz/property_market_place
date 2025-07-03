@@ -7,7 +7,7 @@
                      <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/logo-footer01.png') }}"
                              alt="logo" class="logo" /></a>
                  </div>
-                 <div class="col-md-9 col-lg-8 mob-1">
+                 <div class="col-md-8 col-lg-7 mob-1">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
@@ -72,7 +72,7 @@
                          </li> --}}
                      </ul>
                  </div>
-                 <div class="col-md-2 mob-1">
+                 <div class="col-md-3 mob-1">
                     <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
                     <div class="d-inline ms-2">
                         <a href="{{ route('lang.switch', 'en') }}">EN</a> |
