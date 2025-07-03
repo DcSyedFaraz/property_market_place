@@ -81,7 +81,8 @@
             <!-- Bedrooms -->
             <div class="mb-3">
                 <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ $property->bedrooms }}">
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms"
+                    value="{{ $property->bedrooms }}">
             </div>
 
             <!-- Bathrooms -->
@@ -126,6 +127,21 @@
                 <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
             </div>
 
+            @if ($property->propertygallery->count() > 0)
+                <div class="mb-3">
+                    <label for="gallery_images" class="form-label">Current Gallery Images</label>
+                    <div class="d-flex flex-wrap">
+                        @foreach ($property->propertygallery as $galleryImage)
+                            <div class="me-2 mb-2">
+                                <img src="{{ asset('storage/' . $galleryImage->image) }}" alt="Gallery Image"
+                                    class="img-thumbnail" width="150">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @else
+                <p>No gallery images uploaded yet.</p>
+            @endif
             <!-- Property Gallery Images -->
             <div class="mb-3">
                 <label for="gallery_images" class="form-label">Upload Property Gallery Images</label>
@@ -140,6 +156,24 @@
                     <option value="available" {{ $property->status == 'available' ? 'selected' : '' }}>Available</option>
                     <option value="sold" {{ $property->status == 'sold' ? 'selected' : '' }}>Sold</option>
                 </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Target Audience</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="target_audience" id="target_uae"
+                        value="UAE" {{ old('target_audience', $property->target_audience) == 'UAE' ? 'checked' : '' }}>
+                    <label class="form-check-label" for="target_uae">
+                        For UAE
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="target_audience" id="target_international"
+                        value="International" {{ $property->target_audience == 'International' ? 'checked' : '' }}>
+                    <label class="form-check-label" for="target_international">
+                        For International
+                    </label>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Property</button>

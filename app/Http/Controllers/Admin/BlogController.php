@@ -28,6 +28,7 @@ class BlogController extends Controller
             'description' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
             'slug' => 'required|string|max:255|unique:blogs,slug',
+            'target_audience' => 'required|in:UAE,International',
         ]);
 
 
@@ -40,6 +41,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title);
         $blog->description = $request->description;
+        $blog->target_audience = $request->input('target_audience');
         $blog->save();
 
         return redirect()->route('blogs.index')->with('success', 'Blog created successfully!');
@@ -59,6 +61,7 @@ class BlogController extends Controller
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'slug' => 'required|string|max:255|unique:blogs,slug,' . $blog->id,
+            'target_audience' => 'required|in:UAE,International',
         ]);
 
         if ($request->hasFile('image')) {
@@ -69,6 +72,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title);
         $blog->description = $request->description;
+        $blog->target_audience = $request->input('target_audience');
         $blog->save();
 
         return redirect()->route('blogs.index')->with('success', 'Blog updated successfully!');

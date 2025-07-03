@@ -121,7 +121,7 @@
                             </div>
 
                             <a href="{{ route('projects', $project->id) }}" class="viewdetails-btn mb-3">
-                                {{ __('filter.button.search') }}
+                                {{ __('filter.button.details') }}
                             </a>
                             <hr>
                         @empty

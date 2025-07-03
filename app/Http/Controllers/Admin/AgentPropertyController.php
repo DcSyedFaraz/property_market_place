@@ -53,6 +53,7 @@ class AgentPropertyController extends Controller
             'gallery_images' => 'required|array',
             'gallery_images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
+            'target_audience' => 'required|in:UAE,International',
         ]);
 
         // Create the new property
@@ -70,6 +71,7 @@ class AgentPropertyController extends Controller
         $property->balcony_area = $request->input('balcony_area');
         $property->unit_area = $request->input('unit_area');
         $property->status = $request->input('status');
+        $property->target_audience = $request->input('target_audience');
 
         // Handle Main Image Upload
         if ($request->hasFile('main_image')) {
@@ -120,7 +122,7 @@ class AgentPropertyController extends Controller
         $property = AgentProperty::findOrFail($id);
 
         // Validate incoming request
-        $request->validate([
+        $rules = [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'location' => 'required|string|max:255',
@@ -134,10 +136,22 @@ class AgentPropertyController extends Controller
             'balcony_area' => 'nullable|numeric',
             'unit_area' => 'nullable|numeric',
             'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-            'gallery_images' => 'required|array',
-            'gallery_images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
             'status' => 'required|in:available,sold',
-        ]);
+            'target_audience' => 'required|in:UAE,International',
+        ];
+
+        // Conditionally make gallery_images required
+        if ($property->propertygallery->isEmpty()) {
+            // If no gallery images exist, then new ones are required
+            $rules['gallery_images'] = 'required|array';
+            $rules['gallery_images.*'] = 'required|image|mimes:jpeg,png,jpg,gif';
+        } else {
+            // If gallery images exist, then new ones are optional
+            $rules['gallery_images'] = 'nullable|array';
+            $rules['gallery_images.*'] = 'nullable|image|mimes:jpeg,png,jpg,gif';
+        }
+
+        $request->validate($rules);
 
         // Update property details
         $property->title = $request->input('title');
@@ -153,6 +167,7 @@ class AgentPropertyController extends Controller
         $property->balcony_area = $request->input('balcony_area');
         $property->unit_area = $request->input('unit_area');
         $property->status = $request->input('status');
+        $property->target_audience = $request->input('target_audience');
 
         // Handle Main Image Upload
         if ($request->hasFile('main_image')) {

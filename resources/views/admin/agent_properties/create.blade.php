@@ -77,7 +77,7 @@
             <!-- Bedrooms -->
             <div class="mb-3">
                 <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ old('bedrooms') }}">  
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ old('bedrooms') }}">
             </div>
 
             <!-- Bathrooms -->
@@ -127,6 +127,23 @@
                     <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available</option>
                     <option value="sold" {{ old('status') == 'sold' ? 'selected' : '' }}>Sold</option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Target Audience</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="target_audience" id="target_uae"
+                        value="UAE" {{ old('target_audience', 'UAE') == 'UAE' ? 'checked' : '' }}>
+                    <label class="form-check-label" for="target_uae">
+                        For UAE
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="target_audience" id="target_international"
+                        value="International" {{ old('target_audience') == 'International' ? 'checked' : '' }}>
+                    <label class="form-check-label" for="target_international">
+                        For International
+                    </label>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Add Property</button>

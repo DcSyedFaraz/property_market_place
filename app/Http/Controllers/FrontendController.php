@@ -194,7 +194,20 @@ class FrontendController extends Controller
     }
     public function blog()
     {
-        $data['blogs'] = Blog::orderBy('created_at', 'desc')->paginate(10);
+        $currentLang = session('locale');
+
+        $query = Blog::orderBy('created_at', 'desc');
+
+        switch ($currentLang) {
+            case 'ar':
+                $query->where('target_audience', 'UAE');
+                break;
+            default:
+                $query->where('target_audience', 'International');
+                break;
+        }
+
+        $data['blogs'] = $query->paginate(10);
 
         return view('frontend.blog', $data);
     }
@@ -471,6 +484,17 @@ class FrontendController extends Controller
             $query = AgentProperty::query();
             $query->where('location', $location);
 
+            $currentLang = session('locale');
+
+            switch ($currentLang) {
+                case 'ar':
+                    $query->where('target_audience', 'UAE');
+                    break;
+                default:
+                    $query->where('target_audience', 'International');
+                    break;
+            }
+
             if ($request->has('sort')) {
                 switch ($request->input('sort')) {
                     case 'newest':
@@ -501,6 +525,17 @@ class FrontendController extends Controller
             // $properties = AgentProperty::where('property_type', $location)->get();
             $query = AgentProperty::query();
             $query->where('property_type', $location);
+
+            $currentLang = session('locale');
+
+            switch ($currentLang) {
+                case 'ar':
+                    $query->where('target_audience', 'UAE');
+                    break;
+                default:
+                    $query->where('target_audience', 'International');
+                    break;
+            }
 
             if ($request->has('sort')) {
                 switch ($request->input('sort')) {

@@ -178,6 +178,7 @@
     "filter.status.sold": "sold",
     "filter.status.available": "available",
     "filter.button.search": "Search",
+    "filter.button.details": "Details",
 
     "sort.heading": "Sort By",
     "sort.newest": "Newest",
