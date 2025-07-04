@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" @if (app()->getLocale() == 'ar') dir="rtl" @endif>
+<html lang="{{ app()->getLocale() }}" @if (app()->getLocale() == 'ar') dir="rtl" @endif translate="no">
 
 <head>
     <meta charset="UTF-8" />
@@ -213,8 +213,7 @@
                             <p>Meet our Leaders.</p>
                         </div> --}}
                     </div>
-                    <div class="social-link mob-1 social @if (app()->getLocale() == 'ar') arb
-                    @endif">
+                    <div class="social-link mob-1 social @if (app()->getLocale() == 'ar') arb @endif">
                         <a href="https://www.facebook.com/thehr.ae/"><i class="bi bi-facebook"></i></a>
                         <a href="https://x.com/TheHrealestate2"><i class="bi bi-twitter"></i></a>
                         <a href="https://www.instagram.com/thehr.ae/"><i class="bi bi-instagram"></i></a>
