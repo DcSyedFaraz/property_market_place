@@ -13,7 +13,7 @@
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s1.png') }}" />
                         <h3>{{ __('Property management') }}</h3>
-                        <p>{{ __('Experienced real estate professionals on our team can help you manage your properties efficiently.') }}</p>
+                        {{-- <p>{{ __('Experienced real estate professionals on our team can help you manage your properties efficiently.') }}</p> --}}
                     </a>
                 </div>
                 {{-- <div class="service-imgbox">
@@ -34,7 +34,7 @@
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s4.png') }}" />
                         <h3>{{ __('Facility Management') }}</h3>
-                        <p>{{ __('What makes Property Angel the best NRI Property Management.') }}</p>
+                        {{-- <p>{{ __('What makes Property Angel the best NRI Property Management.') }}</p> --}}
                     </a>
                 </div>
                 {{-- <div class="service-imgbox">

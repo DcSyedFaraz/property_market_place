@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row ms-2">
             <div class="col-md-4 first-col">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-footer01.png') }}" alt=""
+                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-footer02.png') }}" alt=""
                         class="footer-logo"></a>
                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
                     consectetur tellus ultricies.</p> --}}
@@ -72,8 +72,10 @@
             <div class="col-md-2">
                 <h3>{{ __('Quick links') }}</h3>
                 <ul>
-                    <li><a href="{{ route('service') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Services') }}</a></li>
-                    <li><a href="{{ route('blog') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Blogs') }}</a></li>
+                    <li><a href="{{ route('service') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Services') }}</a>
+                    </li>
+                    <li><a href="{{ route('blog') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Blogs') }}</a>
+                    </li>
                     <li><a href="{{ route('properties.byLocation', 'Residential') }}"><i
                                 class="bi bi-arrow-right-short"></i>{{ __('Residential') }}</a></li>
                     <li><a href="{{ route('properties.byLocation', 'Commercial') }}"><i
@@ -87,10 +89,15 @@
             <div class="col-md-3">
                 <h3>{{ __('Contact us') }}</h3>
                 <ul>
-                    <li><a href="{{ route('contact_us') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Contact us') }}</a></li>
-                    <li><a href="{{ route('complaint.form') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Complaint Form') }}</a>
+                    <li><a href="{{ route('contact_us') }}"><i
+                                class="bi bi-arrow-right-short"></i>{{ __('Contact us') }}</a></li>
+                    <li><a href="{{ route('complaint.form') }}"><i
+                                class="bi bi-arrow-right-short"></i>{{ __('Complaint Form') }}</a>
                     </li>
-                    <li><a href="{{ route('visitor.form') }}"><i class="bi bi-arrow-right-short"></i>{{ __('Visitor Form') }}</a></li>
+                    <li><a href="{{ route('visitor.form') }}"><i
+                                class="bi bi-arrow-right-short"></i>{{ __('Visitor Form') }}</a></li>
+                    <li><a href="{{ route('registration.form') }}"><i
+                                class="bi bi-arrow-right-short"></i>{{ __('Register as vendor') }}</a></li>
                 </ul>
             </div>
         </div>

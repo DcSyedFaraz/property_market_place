@@ -5,7 +5,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">{{ __('Complaint Form') }}</h1>
-                    <p class="text-center"><a href="/">{{ __('Home') }}</a> / <a href="#">{{ __('Complaint Form') }}</a></p>
+                    <p class="text-center"><a href="/">{{ __('Home') }}</a> / <a
+                            href="#">{{ __('Complaint Form') }}</a></p>
                 </div>
             </div>
     </section>
@@ -65,17 +66,20 @@
                                     <h5>{{ __('Contact Information') }}</h5>
                                     <hr>
                                     <div class="mb-3">
-                                        <label class="form-label">{{ __('Phone Number') }} <span class="text-danger">*</span></label>
+                                        <label class="form-label">{{ __('Phone Number') }} <span
+                                                class="text-danger">*</span></label>
                                         <input type="tel" name="phone_number"
                                             class="form-control @error('phone_number') is-invalid @enderror"
-                                            placeholder="{{ __('Phone placeholder') }}" value="{{ old('phone_number') }}" required>
+                                            placeholder="{{ __('Phone placeholder') }}" value="{{ old('phone_number') }}"
+                                            required>
                                         @error('phone_number')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">{{ __('Email') }} <span class="text-danger">*</span></label>
+                                        <label class="form-label">{{ __('Email') }} <span
+                                                class="text-danger">*</span></label>
                                         <input type="email" name="email"
                                             class="form-control @error('email') is-invalid @enderror"
                                             placeholder="{{ __('Your Email') }}" value="{{ old('email') }}" required>
@@ -102,7 +106,8 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">{{ __('Flat No.') }} <span class="text-danger">*</span></label>
+                                        <label class="form-label">{{ __('Flat No.') }} <span
+                                                class="text-danger">*</span></label>
                                         <input type="text" name="flat_no"
                                             class="form-control @error('flat_no') is-invalid @enderror"
                                             placeholder="{{ __('Flat No.') }}" value="{{ old('flat_no') }}" required>
@@ -121,12 +126,14 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Air Conditioner" id="ac">
-                                            <label class="form-check-label" for="ac">{{ __('Air Conditioner') }}</label>
+                                            <label class="form-check-label"
+                                                for="ac">{{ __('Air Conditioner') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Electricity Issue" id="electricity">
-                                            <label class="form-check-label" for="electricity">{{ __('Electricity Issue') }}</label>
+                                            <label class="form-check-label"
+                                                for="electricity">{{ __('Electricity Issue') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
@@ -141,7 +148,8 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Cleaning Issue" id="cleaning">
-                                            <label class="form-check-label" for="cleaning">{{ __('Cleaning Issue') }}</label>
+                                            <label class="form-check-label"
+                                                for="cleaning">{{ __('Cleaning Issue') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
@@ -156,22 +164,26 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Civil Defence" id="civil_defence">
-                                            <label class="form-check-label" for="civil_defence">{{ __('Civil Defence') }}</label>
+                                            <label class="form-check-label"
+                                                for="civil_defence">{{ __('Civil Defence') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="General Maintenance" id="maintenance">
-                                            <label class="form-check-label" for="maintenance">{{ __('General Maintenance') }}</label>
+                                            <label class="form-check-label"
+                                                for="maintenance">{{ __('General Maintenance') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Swimming Pool Issue" id="swimming_pool">
-                                            <label class="form-check-label" for="swimming_pool">{{ __('Swimming Pool Issue') }}</label>
+                                            <label class="form-check-label"
+                                                for="swimming_pool">{{ __('Swimming Pool Issue') }}</label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="complaints[]"
                                                 value="Other Complains" id="other_complains">
-                                            <label class="form-check-label" for="other_complains">{{ __('Other Complains') }}</label>
+                                            <label class="form-check-label"
+                                                for="other_complains">{{ __('Other Complains') }}</label>
                                         </div>
                                     </div>
 
