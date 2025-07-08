@@ -8,7 +8,7 @@
 
     <section class="banner">
         <div class="container">
-            <h2 class="bannerh2">{{ __('banner_title') }}</h2>
+            <h2 class="bannerh2">{{ __('About us') }}</h2>
         </div>
     </section>
 
