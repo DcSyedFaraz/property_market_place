@@ -129,6 +129,7 @@
     "Contact Person Name": "Contact Person Name",
     "Office Address": "Office Address",
     "banner_title": "About Us",
+    "Trade License": "Trade License",
     "intro": "The H Real Estate Company is one of the most reputable and trusted companies established in the United Arab Emirates. With years of experience in project management throughout the country, we offer professional and reliable services that focus on finding the most suitable property for our clients. With our expertise, you can trust that you will be in the best place to find the perfect property. We strive to exceed your expectations, innovate creative solutions, and meet all your requirements, whether you are looking for a luxurious and comfortable space or an affordable option, we will provide exactly what you need.",
     "who_we_are_title": "Who We Are",
     "who_we_are_text": "The H Real Estate Company is one of the most reputable and trusted companies established in the United Arab Emirates, with years of experience in project management throughout the country. In addition, we offer professional and reliable services that focus on finding the most suitable property for our clients. With our expertise, you can trust that you will be in the best place to find the perfect property. We strive to exceed your expectations, innovate creative solutions, and meet all your requirements, whether you are looking for a luxurious and comfortable space or an affordable option, we will provide exactly what you need.",
@@ -177,6 +178,7 @@
     "filter.status.select": "Select Status",
     "filter.status.sold": "sold",
     "filter.status.available": "available",
+    "status": "Status",
     "filter.button.search": "Search",
     "filter.button.details": "Details",
 
@@ -186,8 +188,10 @@
     "sort.price_high_to_low": "Price High to Low",
     "sort.price_low_to_high": "Price Low to High",
     "sort.search_placeholder": "Search by Property",
+    "h_real_estate": "The H Real Estate",
 
     "projects.none": "no project available",
+    "Facility Management": "Facility Management",
 
     "notify.heading": "Be the first to know.",
     "notify.description": "We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.",

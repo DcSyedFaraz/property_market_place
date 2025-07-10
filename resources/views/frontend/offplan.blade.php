@@ -50,7 +50,7 @@
                                 <option>Lorem Ipsum</option>
                                 <option>Lorem Ipsum</option>
                             </select> --}}
-                            <h4 class="contact1a">Status</h4>
+                            <h4 class="contact1a">{{ __('status') }}</h4>
                             <select>
                                 <option disabled selected>{{ __('filter.status.select') }}</option>
                                 <option>{{ __('filter.status.sold') }}</option>

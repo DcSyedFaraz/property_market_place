@@ -5,6 +5,13 @@
             color: white;
         }
     </style>
+    @if (app()->getLocale() == 'ar')
+        <style>
+            .banner {
+                text-align: right !important;
+            }
+        </style>
+    @endif
 
     <section class="banner">
         <div class="container">
@@ -14,7 +21,7 @@
 
     <section class="about-main">
         <div class="container-fluid">
-            <div class="about1">
+            {{-- <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <img src="{{ asset('assets/images/about/about (7).jpg') }}" alt="about1" class="about1-img" />
@@ -23,7 +30,7 @@
                         <p class="about1c">{{ __('intro') }}</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="about2">
                 <div class="row align-items-center">
