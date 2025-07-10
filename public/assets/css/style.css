@@ -1388,7 +1388,7 @@ select {
     height: 70vh;
     display: flex;
     align-items: center;
-    text-align: left;
+    text-align: center;
     /*margin-top: -105px;*/
 }
 

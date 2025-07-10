@@ -5,13 +5,13 @@
             color: white;
         }
     </style>
-    @if (app()->getLocale() == 'ar')
+    {{-- @if (app()->getLocale() == 'ar')
         <style>
             .banner {
                 text-align: right !important;
             }
         </style>
-    @endif
+    @endif --}}
 
     <section class="banner">
         <div class="container">
