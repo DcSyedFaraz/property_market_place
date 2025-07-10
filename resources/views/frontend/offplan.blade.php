@@ -21,28 +21,44 @@
 
                             <select name="min_price">
                                 <option disabled selected>{{ __('filter.starting_price') }}</option>
-                                <option value="100" {{ request('min_price') == '100' ? 'selected' : '' }}>{{ __('filter.price.100') }}</option>
-                                <option value="200" {{ request('min_price') == '200' ? 'selected' : '' }}>{{ __('filter.price.200') }}</option>
-                                <option value="300" {{ request('min_price') == '300' ? 'selected' : '' }}>{{ __('filter.price.300') }}</option>
+                                <option value="100" {{ request('min_price') == '100' ? 'selected' : '' }}>
+                                    {{ __('filter.price.100') }}</option>
+                                <option value="200" {{ request('min_price') == '200' ? 'selected' : '' }}>
+                                    {{ __('filter.price.200') }}</option>
+                                <option value="300" {{ request('min_price') == '300' ? 'selected' : '' }}>
+                                    {{ __('filter.price.300') }}</option>
                             </select>
 
                             <select name="city">
                                 <option disabled selected>{{ __('filter.city') }}</option>
-                                <option value="Dubai" {{ request('city') == 'Dubai' ? 'selected' : '' }}>{{ __('filter.city.Dubai') }}</option>
-                                <option value="Abu Dhabi" {{ request('city') == 'Abu Dhabi' ? 'selected' : '' }}>{{ __('filter.city.AbuDhabi') }}</option>
-                                <option value="Sharjah" {{ request('city') == 'Sharjah' ? 'selected' : '' }}>{{ __('filter.city.Sharjah') }}</option>
-                                <option value="Al Ain" {{ request('city') == 'Al Ain' ? 'selected' : '' }}>{{ __('filter.city.AlAin') }}</option>
-                                <option value="Fujairah" {{ request('city') == 'Fujairah' ? 'selected' : '' }}>{{ __('filter.city.Fujairah') }}</option>
-                                <option value="Ras Al Khaimah" {{ request('city') == 'Ras Al Khaimah' ? 'selected' : '' }}>{{ __('filter.city.RAK') }}</option>
+                                <option value="Dubai" {{ request('city') == 'Dubai' ? 'selected' : '' }}>
+                                    {{ __('filter.city.Dubai') }}</option>
+                                <option value="Abu Dhabi" {{ request('city') == 'Abu Dhabi' ? 'selected' : '' }}>
+                                    {{ __('filter.city.AbuDhabi') }}</option>
+                                <option value="Sharjah" {{ request('city') == 'Sharjah' ? 'selected' : '' }}>
+                                    {{ __('filter.city.Sharjah') }}</option>
+                                <option value="Al Ain" {{ request('city') == 'Al Ain' ? 'selected' : '' }}>
+                                    {{ __('filter.city.AlAin') }}</option>
+                                <option value="Fujairah" {{ request('city') == 'Fujairah' ? 'selected' : '' }}>
+                                    {{ __('filter.city.Fujairah') }}</option>
+                                <option value="Ras Al Khaimah" {{ request('city') == 'Ras Al Khaimah' ? 'selected' : '' }}>
+                                    {{ __('filter.city.RAK') }}</option>
                             </select>
 
                             <select name="property_type">
                                 <option disabled selected>{{ __('filter.property_type') }}</option>
-                                <option value="Residential" {{ request('property_type') == 'Residential' ? 'selected' : '' }}>{{ __('filter.property_type.Residential') }}</option>
-                                <option value="Commercial" {{ request('property_type') == 'Commercial' ? 'selected' : '' }}>{{ __('filter.property_type.Commercial') }}</option>
-                                <option value="Off-Plan" {{ request('property_type') == 'Off-Plan' ? 'selected' : '' }}>{{ __('filter.property_type.OffPlan') }}</option>
-                                <option value="Mall" {{ request('property_type') == 'Mall' ? 'selected' : '' }}>{{ __('filter.property_type.Mall') }}</option>
-                                <option value="Villa" {{ request('property_type') == 'Villa' ? 'selected' : '' }}>{{ __('filter.property_type.Villa') }}</option>
+                                <option value="Residential"
+                                    {{ request('property_type') == 'Residential' ? 'selected' : '' }}>
+                                    {{ __('filter.property_type.Residential') }}</option>
+                                <option value="Commercial"
+                                    {{ request('property_type') == 'Commercial' ? 'selected' : '' }}>
+                                    {{ __('filter.property_type.Commercial') }}</option>
+                                <option value="Off-Plan" {{ request('property_type') == 'Off-Plan' ? 'selected' : '' }}>
+                                    {{ __('filter.property_type.OffPlan') }}</option>
+                                <option value="Mall" {{ request('property_type') == 'Mall' ? 'selected' : '' }}>
+                                    {{ __('filter.property_type.Mall') }}</option>
+                                <option value="Villa" {{ request('property_type') == 'Villa' ? 'selected' : '' }}>
+                                    {{ __('filter.property_type.Villa') }}</option>
                             </select>
                             {{-- <select>
                                 <option disabled selected>Developer</option>
@@ -53,8 +69,10 @@
                             <h4 class="contact1a">{{ __('status') }}</h4>
                             <select name="status">
                                 <option disabled selected>{{ __('filter.status.select') }}</option>
-                                <option value="sold" {{ request('status') == 'sold' ? 'selected' : '' }}>{{ __('filter.status.sold') }}</option>
-                                <option value="available" {{ request('status') == 'available' ? 'selected' : '' }}>{{ __('filter.status.available') }}</option>
+                                <option value="sold" {{ request('status') == 'sold' ? 'selected' : '' }}>
+                                    {{ __('filter.status.sold') }}</option>
+                                <option value="available" {{ request('status') == 'available' ? 'selected' : '' }}>
+                                    {{ __('filter.status.available') }}</option>
                             </select>
 
                             <button type="submit" class="filter-btn">
@@ -67,8 +85,6 @@
                         @if (isset($location))
                             <form method="GET" action="{{ route('properties.byLocation', $location) }}"
                                 class="search-form">
-                        @else
-                            <form method="GET" action="{{ route('properties.index') }}" class="search-form">
 
                                 <select name="sort" onchange="this.form.submit()">
                                     <option value="">{{ __('sort.heading') }}</option>
@@ -88,7 +104,7 @@
                                     </option>
                                 </select>
 
-                                <input type="text" name="field3" value="{{ request('field3') }}" placeholder="{{ __('sort.search_placeholder') }}" />
+                                <input type="text" placeholder="{{ '    ' . __('sort.search_placeholder') }}" />
                             </form>
                         @endif
 
