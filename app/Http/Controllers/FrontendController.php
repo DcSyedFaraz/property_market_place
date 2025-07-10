@@ -357,24 +357,17 @@ class FrontendController extends Controller
 
     public function filter(Request $request)
     {
-
-        // dd($request->all());
         $validated = $request->validate([
             'min_price' => 'nullable|numeric|min:0',
             'max_price' => 'nullable|numeric|min:0|gte:min_price',
-            // 'city' => 'nullable|string|exists:cities,name',
-            'communities' => 'nullable|array',
-            'communities.*' => 'exists:communities,id',
-            'developers' => 'nullable|array',
-            'developers.*' => 'exists:developers,id',
-            'status' => 'nullable|string|in:new,under_construction,ready_to_move',
-            'accommodations' => 'nullable|array',
-            'accommodations.*' => 'integer|min:1|max:8', // Assuming 1-8 bedrooms
+            'status'    => 'nullable|string',
+            'sort'      => 'nullable|string',
+            'field3'    => 'nullable|string',
         ]);
-        // Start building the query
+
+        // Base query
         $query = DeveloperProperty::query();
 
-        // Filter by price range
         if ($request->filled('min_price')) {
             $query->where('price', '>=', $request->input('min_price'));
         }
@@ -382,84 +375,36 @@ class FrontendController extends Controller
         if ($request->filled('max_price')) {
             $query->where('price', '<=', $request->input('max_price'));
         }
-        // Alternatively, if using sliders
-        if ($request->filled('min_price_slider')) {
-            $query->where('price', '>=', $request->input('min_price_slider'));
-        }
 
-        if ($request->filled('max_price_slider')) {
-            $query->where('price', '<=', $request->input('max_price_slider'));
-        }
-
-        // Filter by city
-        // if ($request->filled('city')) {
-        //     $query->where('city', $request->input('city'));
-        // }
-
-        // Filter by communities (assuming a many-to-many relationship)
-        if ($request->filled('communities')) {
-            $query->whereHas('community_name', function ($q) use ($request) {
-                $q->whereIn('communities.id', $request->input('communities'));
-            });
-        }
-
-        // Filter by developers
-        if ($request->filled('developers')) {
-            $query->whereIn('developer_id', $request->input('developers'));
-        }
-
-        // Filter by status
         if ($request->filled('status')) {
             $query->where('status', $request->input('status'));
         }
 
-        // Filter by accommodation (assuming 'accommodation' is a field or related model)
-        if ($request->filled('accommodations')) {
-            $query->whereIn('accommodation', $request->input('accommodations'));
+        if ($request->filled('field3')) {
+            $query->where('name', 'LIKE', '%' . $request->input('field3') . '%');
         }
 
-        // Additional filters can be added here...
-
-        // Execute the query and paginate results
-        $properties = $query->paginate(20)->appends($request->except('page'));
-        // dd($properties);
-
-        $communities = Community::all();
-        $developers = Developer::all();
-
-        $search = $request->input('field3');
-
-        if ($search) {
-            $properties = DeveloperProperty::where('name', 'LIKE', '%' . $search . '%')->get();
-        } else {
-            $properties = DeveloperProperty::all();
-        }
-
-        $query = DeveloperProperty::query();
-
-        // Check if sort option is set
         if ($request->has('sort')) {
             switch ($request->input('sort')) {
                 case 'newest':
-                    $query->orderBy('created_at', 'DESC'); // Sort by newest first
+                    $query->orderBy('created_at', 'desc');
                     break;
                 case 'oldest':
-                    $query->orderBy('created_at', 'ASC'); // Sort by oldest first
+                    $query->orderBy('created_at', 'asc');
                     break;
                 case 'price_high_to_low':
-                    $query->orderBy('price', 'DESC'); // Sort by price high to low
+                    $query->orderBy('price', 'desc');
                     break;
                 case 'price_low_to_high':
-                    $query->orderBy('price', 'ASC'); // Sort by price low to high
-                    break;
-                default:
+                    $query->orderBy('price', 'asc');
                     break;
             }
         }
 
-        // Get the properties with applied sorting
-        $properties = $query->get();
-        // dd($properties);
+        $properties   = $query->paginate(20)->appends($request->except('page'));
+        $communities  = Community::all();
+        $developers   = Developer::all();
+        $search       = $request->input('field3');
 
         return view('frontend.offplan', compact('properties', 'search', 'communities', 'developers'));
     }
