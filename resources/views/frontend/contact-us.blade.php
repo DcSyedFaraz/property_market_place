@@ -9,7 +9,8 @@
                 text-align: right !important;
                 /* ensure both placeholder & user text align right */
             }
-            .about-3 form input{
+
+            .about-3 form input {
                 direction: rtl !important;
                 text-align: right !important;
             }
@@ -47,16 +48,16 @@
                         <form class="contact-form">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="{{ __('Your Name') }}" required />
+                                    <input type="text" placeholder="{{ '    ' . __('Your Name') }}" required />
                                 </div>
                                 <div class="col-md-6 mob-input">
                                     <input type="email" placeholder="{{ __('Your Email') }}" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <input type="number" placeholder="{{ __('Your Phone') }}" required />
+                                    <input type="number" placeholder="{{ '    ' . __('Your Phone') }}" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <textarea rows="6" placeholder="{{ __('Message') }}"></textarea>
+                                    <textarea rows="6" placeholder="{{ '  ' . __('Message') }}"></textarea>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <button type="submit">{{ __('Submit') }}</button>

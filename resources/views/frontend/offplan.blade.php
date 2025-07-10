@@ -3,7 +3,7 @@
     <section class="propdetails-banner">
         <div class="container">
             <h2 class="serviceh2">
-                {{ __('propdetails.banner.title', ['location' => $locationName ?? $location ?? '']) }}
+                {{ __('propdetails.banner.title', ['location' => $locationName ?? ($location ?? '')]) }}
             </h2>
             <p class="banner-p">
                 {{ __('propdetails.banner.description') }}
@@ -86,7 +86,7 @@
                                     </option>
                                 </select>
 
-                                <input type="text" placeholder="{{ __('sort.search_placeholder') }}" />
+                                <input type="text" placeholder="{{ '    ' . __('sort.search_placeholder') }}" />
                             </form>
                         @endif
 
