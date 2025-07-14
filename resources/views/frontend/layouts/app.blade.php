@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="news__form">
-                        <input type="email" placeholder="{{ __('Enter your email address') }}" />
+                        <input type="email" placeholder="{{ __('notify.email_placeholder') }}" />
                         <button class="news__btn">{{ __('Subscribe Now') }}</button>
                     </div>
                 </div>

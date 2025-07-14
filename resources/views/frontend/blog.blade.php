@@ -107,7 +107,7 @@
                                 @csrf
                                 <div class="col-md-8">
                                     <input type="email" name="email" class="form-control form-control-lg"
-                                        placeholder="{{ __('Enter your email address') }}" required />
+                                        placeholder="{{ __('notify.email_placeholder') }}" required />
                                 </div>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-light btn-lg w-100">
