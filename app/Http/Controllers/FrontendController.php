@@ -360,9 +360,9 @@ class FrontendController extends Controller
         $validated = $request->validate([
             'min_price' => 'nullable|numeric|min:0',
             'max_price' => 'nullable|numeric|min:0|gte:min_price',
-            'status'    => 'nullable|string',
-            'sort'      => 'nullable|string',
-            'field3'    => 'nullable|string',
+            'status' => 'nullable|string',
+            'sort' => 'nullable|string',
+            'field3' => 'nullable|string',
         ]);
 
         // Base query
@@ -401,10 +401,10 @@ class FrontendController extends Controller
             }
         }
 
-        $properties   = $query->paginate(20)->appends($request->except('page'));
-        $communities  = Community::all();
-        $developers   = Developer::all();
-        $search       = $request->input('field3');
+        $properties = $query->paginate(20)->appends($request->except('page'));
+        $communities = Community::all();
+        $developers = Developer::all();
+        $search = $request->input('field3');
 
         return view('frontend.offplan', compact('properties', 'search', 'communities', 'developers'));
     }
@@ -458,7 +458,8 @@ class FrontendController extends Controller
             }
 
             $properties = $query->get();
-            $locationName = __($location);
+            $locationName = __("head_$location");
+            dd($locationName);
 
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
         }
@@ -500,8 +501,8 @@ class FrontendController extends Controller
             }
 
             $properties = $query->get();
-            $locationName = __($location);
-            // dd($properties->main_image);
+            $locationName = __("head_$location");
+            // dd($locationName);
 
 
             return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
