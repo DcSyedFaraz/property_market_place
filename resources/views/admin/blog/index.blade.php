@@ -23,7 +23,7 @@
             @forelse($blogs  as $blog)
                 <tr>
                     <td>{{ $blog->id }}</td>
-                    <td>{{ $blog->title }}</td>
+                    <td>{{ $blog->translate()->title }}</td>
                     <td>
                         <img src="{{ asset('storage/' . $blog->image) }}"
                         alt="{{ $blog->image }}" width="100">

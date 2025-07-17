@@ -35,52 +35,61 @@ class AgentPropertyController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $locales = ['en', 'ar']; // Add more if needed
+
         // Validate incoming request
         $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'title' => 'required|array',
+            'title.*' => 'required|string|max:255',
+
+            'description' => 'nullable|array',
+            'description.*' => 'nullable|string',
+
             'location' => 'required|string|max:255',
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
-            'transaction_type' => 'required',
+            'transaction_type' => 'required|in:Rent,Sale',
+
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
-            'utility_area' => 'nullable|numeric',
-            'balcony_area' => 'nullable|numeric',
-            'unit_area' => 'nullable|numeric',
-            'main_image' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'gallery_images' => 'required|array',
-            'gallery_images.*' => 'required|image|mimes:jpeg,png,jpg,gif',
+
+            'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
+
             'status' => 'required|in:available,sold',
-            'target_audience' => 'required|in:UAE,International',
+            // 'target_audience' => 'required|in:UAE,International',
         ]);
 
         // Create the new property
         $property = new AgentProperty();
-        $property->title = $request->input('title');
-        $property->description = $request->input('description');
-        $property->location = $request->input('location');
-        $property->property_type = $request->input('property_type');
-        $property->transaction_type = $request->input('transaction_type');
-        $property->price = $request->input('price');
-        $property->area = $request->input('area');
-        $property->bedrooms = $request->input('bedrooms');
-        $property->bathrooms = $request->input('bathrooms');
-        $property->utility_area = $request->input('utility_area');
-        $property->balcony_area = $request->input('balcony_area');
-        $property->unit_area = $request->input('unit_area');
-        $property->status = $request->input('status');
-        $property->target_audience = $request->input('target_audience');
+        $property->location = $request->location;
+        $property->property_type = $request->property_type;
+        $property->transaction_type = $request->transaction_type;
+        $property->price = $request->price;
+        $property->area = $request->area;
+        $property->bedrooms = $request->bedrooms;
+        $property->bathrooms = $request->bathrooms;
+        $property->status = $request->status;
+        // $property->target_audience = $request->target_audience;
 
-        // Handle Main Image Upload
+
+        // Handle main image upload
         if ($request->hasFile('main_image')) {
-            $property->main_image = $request->file('main_image')->store('properties', 'public');
+            $property->main_image = $request->file('main_image')->store('properties/main', 'public');
         }
-
         // Save the property
         $property->save();
-
+        // Save multilingual data (assuming you have a property_translations table)
+        foreach ($locales as $locale) {
+            $property->translations()->create([
+                'locale' => $locale,
+                'title' => $request->input("title.$locale"),
+                'description' => $request->input("description.$locale"),
+            ]);
+        }
         // Handle Gallery Images
         if ($request->hasFile('gallery_images')) {
             foreach ($request->file('gallery_images') as $image) {
@@ -90,7 +99,6 @@ class AgentPropertyController extends Controller
                 ]);
             }
         }
-
         return redirect()->route('property.show', $property->id)->with('success', 'Property added successfully');
     }
 
@@ -119,62 +127,68 @@ class AgentPropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $property = AgentProperty::findOrFail($id);
+        $locales = ['en', 'ar'];
 
-        // Validate incoming request
-        $rules = [
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
+        $request->validate([
+            'title' => 'required|array',
+            'title.*' => 'required|string|max:255',
+
+            'description' => 'nullable|array',
+            'description.*' => 'nullable|string',
+
             'location' => 'required|string|max:255',
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
-            'transaction_type' => 'nullable',
+            'transaction_type' => 'required|in:Rent,Sale',
+
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
-            'utility_area' => 'nullable|numeric',
-            'balcony_area' => 'nullable|numeric',
-            'unit_area' => 'nullable|numeric',
+
             'main_image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'gallery_images' => 'nullable|array',
+            'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
+
             'status' => 'required|in:available,sold',
-            'target_audience' => 'required|in:UAE,International',
-        ];
+        ]);
 
-        // Conditionally make gallery_images required
-        if ($property->propertygallery->isEmpty()) {
-            // If no gallery images exist, then new ones are required
-            $rules['gallery_images'] = 'required|array';
-            $rules['gallery_images.*'] = 'required|image|mimes:jpeg,png,jpg,gif';
-        } else {
-            // If gallery images exist, then new ones are optional
-            $rules['gallery_images'] = 'nullable|array';
-            $rules['gallery_images.*'] = 'nullable|image|mimes:jpeg,png,jpg,gif';
-        }
+        $property = AgentProperty::findOrFail($id);
+        $property->location = $request->location;
+        $property->property_type = $request->property_type;
+        $property->transaction_type = $request->transaction_type;
+        $property->price = $request->price;
+        $property->area = $request->area;
+        $property->bedrooms = $request->bedrooms;
+        $property->bathrooms = $request->bathrooms;
+        $property->status = $request->status;
 
-        $request->validate($rules);
-
-        // Update property details
-        $property->title = $request->input('title');
-        $property->description = $request->input('description');
-        $property->location = $request->input('location');
-        $property->property_type = $request->input('property_type');
-        $property->transaction_type = $request->input('transaction_type');
-        $property->price = $request->input('price');
-        $property->area = $request->input('area');
-        $property->bedrooms = $request->input('bedrooms');
-        $property->bathrooms = $request->input('bathrooms');
-        $property->utility_area = $request->input('utility_area');
-        $property->balcony_area = $request->input('balcony_area');
-        $property->unit_area = $request->input('unit_area');
-        $property->status = $request->input('status');
-        $property->target_audience = $request->input('target_audience');
-
-        // Handle Main Image Upload
+        // Handle Main Image
         if ($request->hasFile('main_image')) {
-            $property->main_image = $request->file('main_image')->store('properties', 'public');
+            // Optionally delete old image from storage
+            if ($property->main_image && \Storage::disk('public')->exists($property->main_image)) {
+                \Storage::disk('public')->delete($property->main_image);
+            }
+            $property->main_image = $request->file('main_image')->store('properties/main', 'public');
         }
 
         $property->save();
+
+        // Update Translations
+        foreach ($locales as $locale) {
+            $translation = $property->translations()->where('locale', $locale)->first();
+            if ($translation) {
+                $translation->update([
+                    'title' => $request->input("title.$locale"),
+                    'description' => $request->input("description.$locale"),
+                ]);
+            } else {
+                $property->translations()->create([
+                    'locale' => $locale,
+                    'title' => $request->input("title.$locale"),
+                    'description' => $request->input("description.$locale"),
+                ]);
+            }
+        }
 
         // Handle Gallery Images
         if ($request->hasFile('gallery_images')) {
@@ -186,8 +200,9 @@ class AgentPropertyController extends Controller
             }
         }
 
-        return redirect()->route('property.show', $property->id)->with('success', 'Property updated successfully');
+        return redirect()->route('property.edit', $property->id)->with('success', 'Property updated successfully');
     }
+
 
 
     /**

@@ -17,13 +17,14 @@
                         {{-- <p class="prop-1b">Test</p> --}}
 
                         <h5 class="prop-1a">Description</h5>
-                        <p class="prop-1b text-white">{!! $property->description !!} </p>
+                        <p class="prop-1b text-white">{!! $property->translated('description') !!}</p>
+
 
                         <h5 class="prop-1a">Location</h5>
                         <p class="prop-1b">{{ $property->location }} </p>
 
                         <h5 class="prop-1a">Property Title</h5>
-                        <p class="prop-1b">{{ $property->title }}</p>
+                         <p class="prop-1b text-white">{!! $property->translated('title') !!}</p>
 
                         <div class="property-details">
                             <div>

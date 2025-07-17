@@ -111,11 +111,8 @@
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
                             <h4 class="property-price">AED {{ $project->price }}</h4>
-
-                            {{-- <p class="property-det" style="color: white;   ">
-                                {!! \Illuminate\Support\Str::limit($project->description, 10) !!}
-                            </p> --}}
-
+                            <p class="property-det" style="color: white;   ">
+                            </p>
                             <div class="details">
                                 <img src="{{ asset('/assets/images/projects/location.png') }}" width="30" />
                                 <h4 class="property-price">{{ $project->location }}</h4>

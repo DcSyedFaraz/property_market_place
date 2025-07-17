@@ -19,32 +19,31 @@ class BlogController extends Controller
     {
         return view('admin.blog.create');
     }
-
     public function store(Request $request)
     {
+        $locales = ['en', 'ar'];
 
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'slug' => 'required|string|max:255|unique:blogs,slug',
-            'target_audience' => 'required|in:UAE,International',
+        $validated = $request->validate([
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx',
+            'target_audience' => 'required',
+            'title.*' => 'required|string|max:255',
+            'slug.*' => 'nullable|string|max:255',
+            'description.*' => 'required|string',
+        ]);
+        $blog = Blog::create([
+            'image' => $request->file('image')?->store('blogs', 'public'),
+            'target_audience' => $request->target_audience,
         ]);
 
-
-        $blog = new Blog();
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-            $imagePath = $request->image->storeAs('blog_images', $imageName, 'public');
-            $blog->image = $imagePath;
+        foreach ($locales as $locale) {
+            $blog->translations()->create([
+                'locale' => $locale,
+                'title' => $validated['title'][$locale],
+                'slug' => $validated['slug'][$locale] ?? \Str::slug($validated['title'][$locale]),
+                'description' => $validated['description'][$locale],
+            ]);
         }
-        $blog->title = $request->title;
-        $blog->slug = Str::slug($request->title);
-        $blog->description = $request->description;
-        $blog->target_audience = $request->input('target_audience');
-        $blog->save();
-
-        return redirect()->route('blogs.index')->with('success', 'Blog created successfully!');
+        return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
     }
 
     public function edit($id)
@@ -54,30 +53,39 @@ class BlogController extends Controller
     }
 
 
+
     public function update(Request $request, Blog $blog)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
-            'slug' => 'required|string|max:255|unique:blogs,slug,' . $blog->id,
+        $locales = ['en', 'ar'];
+
+        $validated = $request->validate([
+            'title.*' => 'required|string|max:255',
+            'slug.*' => 'nullable|string|max:255',
+            'description.*' => 'required|string',
             'target_audience' => 'required|in:UAE,International',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx',
         ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-            $imagePath = $request->image->storeAs('blog_images', $imageName, 'public');
-            $blog->image = $imagePath;
+            $blog->image = $request->file('image')->store('blogs', 'public');
         }
-        $blog->title = $request->title;
-        $blog->slug = Str::slug($request->title);
-        $blog->description = $request->description;
-        $blog->target_audience = $request->input('target_audience');
+
+        $blog->target_audience = $request->target_audience;
         $blog->save();
 
-        return redirect()->route('blogs.index')->with('success', 'Blog updated successfully!');
-    }
+        foreach ($locales as $locale) {
+            $blog->translations()->updateOrCreate(
+                ['locale' => $locale],
+                [
+                    'title' => $validated['title'][$locale],
+                    'slug' => $validated['slug'][$locale] ?? Str::slug($validated['title'][$locale]),
+                    'description' => $validated['description'][$locale],
+                ]
+            );
+        }
 
+        return redirect()->route('blogs.index')->with('status', 'Blog updated successfully.');
+    }
     public function destroy(Blog $blog)
     {
         $blog->delete();

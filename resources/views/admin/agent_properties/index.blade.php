@@ -21,7 +21,8 @@
                 @forelse($properties as $property)
                     <tr>
                         <td>{{ $property->id }}</td>
-                        <td>{{ $property->title }}</td>
+                       <td>{{ $property->translations->pluck('title')->implode(' | ') }}</td>
+
                         <td>{{ $property->location }}</td>
                         <td>{{ number_format($property->price, 2) }}</td>
                         <td>{{ $property->area }}</td>

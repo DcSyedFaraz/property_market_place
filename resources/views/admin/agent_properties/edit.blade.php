@@ -2,180 +2,140 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Property</h1>
+        @php
+            $locales = ['en' => 'English', 'ar' => 'Arabic'];
+        @endphp
 
-        <form action="{{ route('property.update', $property->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-
-            <!-- Property Title -->
-            <div class="mb-3">
-                <label for="title" class="form-label">Property Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $property->title }}">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h1>Edit Property</h1>
             </div>
 
-            <!-- Description -->
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description">{{ $property->description }}</textarea>
-            </div>
+            <div class="card-body">
+                <form action="{{ route('property.update', $property->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
-            <!-- Location -->
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <select class="form-control" id="location" name="location">
-                    <option value="" hidden>Select a location</option>
-                    @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
-                        <option value="{{ $locationOption }}"
-                            {{ $property->location == $locationOption ? 'selected' : '' }}>
-                            {{ $locationOption }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                    <!-- Language Tabs -->
+                    <ul class="nav nav-tabs" id="langTabs" role="tablist">
+                        @foreach ($locales as $locale => $label)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link @if ($loop->first) active @endif"
+                                    id="tab-{{ $locale }}" data-bs-toggle="tab"
+                                    data-bs-target="#lang-{{ $locale }}" type="button" role="tab"
+                                    aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                    {{ $label }}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
 
+                    <!-- Language Fields -->
+                    <div class="tab-content p-3 border border-top-0 mb-4" id="langTabsContent">
+                        @foreach ($locales as $locale => $label)
+                            <div class="tab-pane fade @if ($loop->first) show active @endif"
+                                 id="lang-{{ $locale }}" role="tabpanel">
+                                <div class="mb-3">
+                                    <label class="form-label">Title ({{ strtoupper($locale) }})</label>
+                                    <input type="text" class="form-control"
+                                           name="title[{{ $locale }}]"
+                                           value="{{ old("title.$locale", $property->translate($locale)?->title) }}"
+                                           dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">
+                                </div>
 
-            <!-- Property Type (Dropdown) -->
-            <div class="mb-3">
-                <label for="property_type" class="form-label">Property Type</label>
-                <select class="form-control" id="property_type" name="property_type">
-                    <option value="" hidden>Select Property Type</option>
-                    <option value="Residential" {{ $property->property_type == 'Residential' ? 'selected' : '' }}>
-                        Residential</option>
-                    <option value="Commercial" {{ $property->property_type == 'Commercial' ? 'selected' : '' }}>Commercial
-                    </option>
-                    <option value="Off-Plan" {{ $property->property_type == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
-                    </option>
-                    <option value="Mall" {{ $property->property_type == 'Mall' ? 'selected' : '' }}>Mall</option>
-                    <option value="Villa" {{ $property->property_type == 'Villa' ? 'selected' : '' }}>Villa</option>
-                </select>
-            </div>
-
-            <!-- Transaction Type (Checklist) -->
-            <div class="mb-3">
-                <label for="transaction_type" class="form-label">Transaction Type</label>
-                <select class="form-control" id="transaction_type" name="transaction_type">
-                    <option value="">Select Transaction Type</option>
-                    <option value="Rent" {{ $property->transaction_type == 'Rent' ? 'selected' : '' }}>
-                        Rent</option>
-                    {{-- <option value="For Sale" {{ $property->transaction_type == 'For Sale' ? 'selected' : '' }}>For Sale
-                    </option> --}}
-                </select>
-            </div>
-
-            <!-- Price -->
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" step=".01" name="price"
-                    value="{{ $property->price }}">
-            </div>
-
-            <!-- Area (sq meter) -->
-            <div class="mb-3">
-                <label for="area" class="form-label">Area (sq meter)</label>
-                <input type="number" class="form-control" id="area" name="area" value="{{ $property->area }}"
-                    step="0.01">
-            </div>
-
-            <!-- Bedrooms -->
-            <div class="mb-3">
-                <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms"
-                    value="{{ $property->bedrooms }}">
-            </div>
-
-            <!-- Bathrooms -->
-            <div class="mb-3">
-                <label for="bathrooms" class="form-label">No. Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms"
-                    value="{{ $property->bathrooms }}">
-            </div>
-
-            <!-- Utility Area -->
-            {{-- <div class="mb-3">
-                <label for="utility_area" class="form-label">Utility Area</label>
-                <input type="number" class="form-control" step="0.01" id="utility_area"
-                    value="{{ $property->utility_area }}" name="utility_area">
-            </div>
-
-            <!-- Balcony Area -->
-            <div class="mb-3">
-                <label for="balcony_area" class="form-label">Balcony Area</label>
-                <input type="number" class="form-control" step="0.01" id="balcony_area"
-                    value="{{ $property->balcony_area }}" name="balcony_area">
-            </div>
-
-            <!-- Unit Area -->
-            <div class="mb-3">
-                <label for="unit_area" class="form-label">Unit Area</label>
-                <input type="number" class="form-control" step="0.01" id="unit_area"
-                    value="{{ $property->unit_area }}" name="unit_area">
-            </div> --}}
-
-            <!-- Property Main Image -->
-            @if ($property->main_image)
-                <div class="mb-3">
-                    <label for="main_image" class="form-label">Current Property Image</label>
-                    <img src="{{ asset('storage/' . $property->main_image) }}" alt="Property Main Image"
-                        class="img-thumbnail" width="150">
-                </div>
-            @endif
-
-            <div class="mb-3">
-                <label for="main_image" class="form-label">Upload New Property Image</label>
-                <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
-            </div>
-
-            @if ($property->propertygallery->count() > 0)
-                <div class="mb-3">
-                    <label for="gallery_images" class="form-label">Current Gallery Images</label>
-                    <div class="d-flex flex-wrap">
-                        @foreach ($property->propertygallery as $galleryImage)
-                            <div class="me-2 mb-2">
-                                <img src="{{ asset('storage/' . $galleryImage->image) }}" alt="Gallery Image"
-                                    class="img-thumbnail" width="150">
+                                <div class="mb-3">
+                                    <label class="form-label">Description ({{ strtoupper($locale) }})</label>
+                                    <textarea class="form-control" name="description[{{ $locale }}]" rows="4"
+                                              dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">{{ old("description.$locale", $property->translate($locale)?->description) }}</textarea>
+                                </div>
                             </div>
                         @endforeach
                     </div>
-                </div>
-            @else
-                <p>No gallery images uploaded yet.</p>
-            @endif
-            <!-- Property Gallery Images -->
-            <div class="mb-3">
-                <label for="gallery_images" class="form-label">Upload Property Gallery Images</label>
-                <input type="file" class="form-control" id="gallery_images" name="gallery_images[]" multiple
-                    accept="image/*">
-            </div>
 
-            <!-- Property Status (Dropdown) -->
-            <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <select class="form-control" id="status" name="status">
-                    <option value="available" {{ $property->status == 'available' ? 'selected' : '' }}>Available</option>
-                    <option value="sold" {{ $property->status == 'sold' ? 'selected' : '' }}>Sold</option>
-                </select>
-            </div>
+                    <!-- Common Fields -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <select class="form-control" name="location">
+                            @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $loc)
+                                <option value="{{ $loc }}" {{ $property->location === $loc ? 'selected' : '' }}>
+                                    {{ $loc }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-            <div class="mb-3">
-                <label class="form-label">Target Audience</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="target_audience" id="target_uae"
-                        value="UAE" {{ old('target_audience', $property->target_audience) == 'UAE' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="target_uae">
-                        For UAE
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="target_audience" id="target_international"
-                        value="International" {{ $property->target_audience == 'International' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="target_international">
-                        For International
-                    </label>
-                </div>
-            </div>
+                    <div class="mb-3">
+                        <label class="form-label">Property Type</label>
+                        <select class="form-control" name="property_type">
+                            @foreach (['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'] as $type)
+                                <option value="{{ $type }}" {{ $property->property_type === $type ? 'selected' : '' }}>
+                                    {{ $type }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Update Property</button>
-        </form>
+                    <div class="mb-3">
+                        <label class="form-label">Transaction Type</label>
+                        <select class="form-control" name="transaction_type">
+                            <option value="Rent" {{ $property->transaction_type === 'Rent' ? 'selected' : '' }}>Rent</option>
+                            <option value="Sale" {{ $property->transaction_type === 'Sale' ? 'selected' : '' }}>Sale</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" value="{{ $property->price }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Area (sq meter)</label>
+                        <input type="number" class="form-control" name="area" value="{{ $property->area }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Bedrooms</label>
+                        <input type="number" class="form-control" name="bedrooms" value="{{ $property->bedrooms }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Bathrooms</label>
+                        <input type="number" class="form-control" name="bathrooms" value="{{ $property->bathrooms }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Current Main Image</label><br>
+                        @if ($property->main_image)
+                            <img src="{{ asset('storage/' . $property->main_image) }}" width="150">
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Change Main Image</label>
+                        <input type="file" class="form-control" name="main_image" accept="image/*">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Gallery Images</label><br>
+                        @foreach ($property->propertygallery as $image)
+                            <img src="{{ asset('storage/' . $image->image) }}" width="80" class="me-2 mb-2">
+                        @endforeach
+                        <input type="file" class="form-control mt-2" name="gallery_images[]" multiple>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-control" name="status">
+                            <option value="available" {{ $property->status == 'available' ? 'selected' : '' }}>Available</option>
+                            <option value="sold" {{ $property->status == 'sold' ? 'selected' : '' }}>Sold</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Update Property</button>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection

@@ -192,32 +192,40 @@ class FrontendController extends Controller
         $teammember = TeamMember::where('slug', $slug)->firstorfail();
         return view('frontend.leadership_detail', compact("teammember"));
     }
+    // public function blog()
+    // {
+    //     $currentLang = session('locale');
+
+    //     $query = Blog::orderBy('created_at', 'desc');
+
+    //     switch ($currentLang) {
+    //         case 'ar':
+    //             $query->where('target_audience', 'UAE');
+    //             break;
+    //         default:
+    //             $query->where('target_audience', 'International');
+    //             break;
+    //     }
+
+    //     $data['blogs'] = $query->paginate(10);
+
+    //     return view('frontend.blog', $data);
+    // }
     public function blog()
     {
-        $currentLang = session('locale');
+        $locale = session('locale');
 
-        $query = Blog::orderBy('created_at', 'desc');
+        $blogs = Blog::with(['translations' => function ($q) use ($locale) {
+            $q->where('locale', $locale);
+        }])->latest()->paginate(9);
 
-        switch ($currentLang) {
-            case 'ar':
-                $query->where('target_audience', 'UAE');
-                break;
-            default:
-                $query->where('target_audience', 'International');
-                break;
-        }
-
-        $data['blogs'] = $query->paginate(10);
-
-        return view('frontend.blog', $data);
+        return view('frontend.blog', compact('blogs'));
     }
-
-    public function blogdetail($slug)
+    public function blogdetail($id)
     {
-        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+        $data['blog'] = Blog::where('id', $id)->firstOrFail();
         $data['blogs'] = Blog::get();
         $data['developer_property'] = DeveloperProperty::first();
-
         return view('frontend.blog-detail', $data);
     }
 
@@ -411,113 +419,47 @@ class FrontendController extends Controller
 
     public function showPropertiesByLocation(Request $request, $location)
     {
-
         $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
-        $allowedTypes = [
-            'Residential',
-            'Commercial',
-            'Off-Plan',
-            'Mall',
-            'Villa',
-        ];
-        $communities = Community::all();
+        $allowedTypes = ['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'];
 
+        $communities = Community::all();
         $developers = Developer::all();
 
-        if (in_array($location, $allowedLocations)) {
-            // Search by location
-            $query = AgentProperty::query();
+        $query = AgentProperty::query();
+        $currentLang = session('locale');
+        if (in_array($location, $allowedLocations)) 
+        {
             $query->where('location', $location);
-
-            $currentLang = session('locale');
-
-            switch ($currentLang) {
-                case 'ar':
-                    $query->where('target_audience', 'UAE');
-                    break;
-                default:
-                    $query->where('target_audience', 'International');
-                    break;
-            }
-
-            if ($request->has('sort')) {
-                switch ($request->input('sort')) {
-                    case 'newest':
-                        $query->orderBy('created_at', 'desc');
-                        break;
-                    case 'oldest':
-                        $query->orderBy('created_at', 'asc');
-                        break;
-                    case 'price_high_to_low':
-                        $query->orderBy('price', 'desc');
-                        break;
-                    case 'price_low_to_high':
-                        $query->orderBy('price', 'asc');
-                        break;
-                }
-            }
-
-            $properties = $query->get();
             $locationName = __("head_$location");
-            dd($locationName);
-
-            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
-        }
-
-        // Check if the search term is a valid property type
-        elseif (in_array($location, $allowedTypes)) {
-            // Search by property type
-
-            // $properties = AgentProperty::where('property_type', $location)->get();
-            $query = AgentProperty::query();
-            $query->where('property_type', $location);
-
-            $currentLang = session('locale');
-
-            switch ($currentLang) {
-                case 'ar':
-                    $query->where('target_audience', 'UAE');
-                    break;
-                default:
-                    $query->where('target_audience', 'International');
-                    break;
-            }
-
-            if ($request->has('sort')) {
-                switch ($request->input('sort')) {
-                    case 'newest':
-                        $query->orderBy('created_at', 'desc');
-                        break;
-                    case 'oldest':
-                        $query->orderBy('created_at', 'asc');
-                        break;
-                    case 'price_high_to_low':
-                        $query->orderBy('price', 'desc');
-                        break;
-                    case 'price_low_to_high':
-                        $query->orderBy('price', 'asc');
-                        break;
-                }
-            }
-
-            $properties = $query->get();
+        } elseif (in_array($location, $allowedTypes)) { 
             $locationName = __("head_$location");
-            // dd($locationName);
-
-
-            return view('frontend.offplan', compact('properties', 'communities', 'developers', 'location', 'locationName'));
+        } else {
+            abort(404, 'Location or Property Type not found.');
         }
-
-        // If the search term is invalid, abort with a 404 error
-        else {
-            abort(404, 'Invalid search term');
+        // Sorting logic
+        if ($request->has('sort')) {
+            switch ($request->input('sort')) {
+                case 'newest':
+                    $query->orderBy('created_at', 'desc');
+                    break;
+                case 'oldest':
+                    $query->orderBy('created_at', 'asc');
+                    break;
+                case 'price_high_to_low':
+                    $query->orderBy('price', 'desc');
+                    break;
+                case 'price_low_to_high':
+                    $query->orderBy('price', 'asc');
+                    break;
+            }
         }
-        //  dd($properties, $location);
-
-
-        // Return view with filtered developer properties
+        $properties = $query->get();
+        return view('frontend.offplan', compact(
+            'properties',
+            'communities',
+            'developers',
+            'location',
+            'locationName'
+        ));
     }
-
-
-
 }

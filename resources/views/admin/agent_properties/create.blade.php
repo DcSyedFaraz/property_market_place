@@ -2,151 +2,133 @@
 
 @section('content')
     <div class="container">
-        <h1>Add New Property</h1>
 
-        <form action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
+        @php
+            $locales = ['en' => 'English', 'ar' => 'Arabic'];
+        @endphp
 
 
-            <!-- Property Title -->
-            <div class="mb-3">
-                <label for="title" class="form-label">Property Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h1>Add New Property</h1>
             </div>
+            <div class="card-body">
 
-            <!-- Description -->
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description">{{ old('description') }}</textarea>
+                <form action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <!-- Tabs Navigation -->
+                    <ul class="nav nav-tabs" id="langTabs" role="tablist">
+                        @foreach ($locales as $locale => $label)
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link @if ($loop->first) active @endif"
+                                    id="tab-{{ $locale }}" data-bs-toggle="tab"
+                                    data-bs-target="#lang-{{ $locale }}" type="button" role="tab"
+                                    aria-controls="lang-{{ $locale }}"
+                                    aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                    {{ $label }}
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+
+                    <!-- Tabs Content -->
+                    <div class="tab-content p-3 border border-top-0 mb-4" id="langTabsContent">
+                        @foreach ($locales as $locale => $label)
+                            <div class="tab-pane fade @if ($loop->first) show active @endif"
+                                id="lang-{{ $locale }}" role="tabpanel">
+                                <!-- Title -->
+                                <div class="mb-3">
+                                    <label class="form-label">Property Title ({{ strtoupper($locale) }})</label>
+                                    <input type="text" class="form-control" name="title[{{ $locale }}]"
+                                        dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}" value="{{ old("title.$locale") }}">
+                                </div>
+                                <!-- Description -->
+                                <div class="mb-3">
+                                    <label class="form-label">Description ({{ strtoupper($locale) }})</label>
+                                    <textarea class="form-control " name="description[{{ $locale }}]" rows="4"
+                                        dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">{{ old("description.$locale") }}</textarea>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Common Fields -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <select class="form-control" id="location" name="location">
+                            <option value="" hidden>Select a location</option>
+                            @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $loc)
+                                <option value="{{ $loc }}" {{ old('location') == $loc ? 'selected' : '' }}>
+                                    {{ $loc }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="property_type" class="form-label">Property Type</label>
+                        <select class="form-control" name="property_type">
+                            <option value="">Select Property Type</option>
+                            @foreach (['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'] as $type)
+                                <option value="{{ $type }}" {{ old('property_type') == $type ? 'selected' : '' }}>
+                                    {{ $type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="transaction_type" class="form-label">Transaction Type</label>
+                        <select class="form-control" name="transaction_type">
+                            <option value="">Select Transaction Type</option>
+                            <option value="Rent" {{ old('transaction_type') == 'Rent' ? 'selected' : '' }}>Rent</option>
+                            {{-- Add more options if needed --}}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control" name="price" step="0.01"
+                            value="{{ old('price') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Area (sq meter)</label>
+                        <input type="number" class="form-control" name="area" step="0.01"
+                            value="{{ old('area') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">No. Bedrooms</label>
+                        <input type="number" class="form-control" name="bedrooms" value="{{ old('bedrooms') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">No. Bathrooms</label>
+                        <input type="number" class="form-control" name="bathrooms" value="{{ old('bathrooms') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="main_image" class="form-label">Main Image</label>
+                        <input type="file" class="form-control" name="main_image" accept="image/*">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gallery_images" class="form-label">Gallery Images</label>
+                        <input type="file" class="form-control" name="gallery_images[]" accept="image/*" multiple>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-control" name="status">
+                            <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available
+                            </option>
+                            <option value="sold" {{ old('status') == 'sold' ? 'selected' : '' }}>Sold</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Property</button>
+                </form>
+
             </div>
+        </div>
 
-            <!-- Location -->
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <select class="form-control" id="location" name="location">
-                    <option value="" hidden>Select a location</option>
-                    @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $locationOption)
-                        <option value="{{ $locationOption }}" {{ old('location') == $locationOption ? 'selected' : '' }}>
-                            {{ $locationOption }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <!-- Property Type (Dropdown) -->
-            <div class="mb-3">
-                <label for="property_type" class="form-label">Property Type</label>
-                <select class="form-control" id="property_type" name="property_type">
-                    <option value="" hidden>Select Property Type</option>
-                    <option value="Residential" {{ old('property_type') == 'Residential' ? 'selected' : '' }}>Residential
-                    </option>
-                    <option value="Commercial" {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>Commercial
-                    </option>
-                    <option value="Off-Plan" {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan</option>
-                    <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>Mall</option>
-                    <option value="Villa" {{ old('property_type') == 'Villa' ? 'selected' : '' }}>Villa</option>
-                </select>
-            </div>
-
-            <!-- Transaction Type (Checklist) -->
-            <div class="mb-3">
-                <label for="transaction_type" class="form-label">Transaction Type</label>
-                <select class="form-control" id="transaction_type" name="transaction_type">
-                    <option value="">Select Transaction Type</option>
-                    <option value="Rent" {{ old('transaction_type') == 'Rent' ? 'selected' : '' }}>
-                        Rent</option>
-                    {{-- <option value="For Sale" {{ old('transaction_type') == 'For Sale' ? 'selected' : '' }}>For Sale
-                    </option> --}}
-                </select>
-            </div>
-
-            <!-- Price -->
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" step=".01" name="price"
-                    value="{{ old('price') }}">
-            </div>
-
-            <!-- Area (sq meter) -->
-            <div class="mb-3">
-                <label for="area" class="form-label">Area (sq meter)</label>
-                <input type="number" class="form-control" id="area" name="area" step="0.01"
-                    value="{{ old('area') }}">
-            </div>
-
-            <!-- Bedrooms -->
-            <div class="mb-3">
-                <label for="bedrooms" class="form-label">No. Bedrooms</label>
-                <input type="number" class="form-control" id="bedrooms" name="bedrooms" value="{{ old('bedrooms') }}">
-            </div>
-
-            <!-- Bathrooms -->
-            <div class="mb-3">
-                <label for="bathrooms" class="form-label">No. Bathrooms</label>
-                <input type="number" class="form-control" id="bathrooms" name="bathrooms" value="{{ old('bathrooms') }}">
-            </div>
-
-            {{-- <!-- Utility Area -->
-            <div class="mb-3">
-                <label for="utility_area" class="form-label">Utility Area</label>
-                <input type="number" class="form-control" step="0.01" id="utility_area" value="{{ old('utility_area') }}"
-                    name="utility_area">
-            </div>
-
-            <!-- Balcony Area -->
-            <div class="mb-3">
-                <label for="balcony_area" class="form-label">Balcony Area</label>
-                <input type="number" class="form-control" step="0.01" id="balcony_area" value="{{ old('balcony_area') }}"
-                    name="balcony_area">
-            </div>
-
-            <!-- Unit Area -->
-            <div class="mb-3">
-                <label for="unit_area" class="form-label">Unit Area</label>
-                <input type="number" class="form-control" step="0.01" id="unit_area" value="{{ old('unit_area') }}"
-                    name="unit_area">
-            </div> --}}
-
-            <!-- Property Main Image -->
-            <div class="mb-3">
-                <label for="main_image" class="form-label">Upload Property Image</label>
-                <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
-            </div>
-
-            <!-- Property Gallery Images -->
-            <div class="mb-3">
-                <label for="gallery_images" class="form-label">Upload Property Gallery Images</label>
-                <input type="file" class="form-control" id="gallery_images" name="gallery_images[]" multiple
-                    accept="image/*">
-            </div>
-
-            <!-- Property Status (Dropdown) -->
-            <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <select class="form-control" id="status" name="status">
-                    <option value="available" {{ old('status') == 'available' ? 'selected' : '' }}>Available</option>
-                    <option value="sold" {{ old('status') == 'sold' ? 'selected' : '' }}>Sold</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Target Audience</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="target_audience" id="target_uae"
-                        value="UAE" {{ old('target_audience', 'UAE') == 'UAE' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="target_uae">
-                        For UAE
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="target_audience" id="target_international"
-                        value="International" {{ old('target_audience') == 'International' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="target_international">
-                        For International
-                    </label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Add Property</button>
-        </form>
     </div>
 @endsection
