@@ -1,11 +1,11 @@
 @extends('frontend.layout.app')
 
 @section('content')
-    <section class="blog-banner">
+    {{-- <section class="blog-banner">
         <div class="container">
             <h2 class="bannerh2">{{ $blog->translate()?->title }}</h2>
         </div>
-    </section>
+    </section> --}}
 
     <section class="about-main">
         <div class="container">

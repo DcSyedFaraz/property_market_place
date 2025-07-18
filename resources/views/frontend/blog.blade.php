@@ -5,7 +5,7 @@
     <section class="banner bg-primary text-white py-5">
         <div class="container">
             <div class="text-center">
-                <h1 class="display-4 fw-bold mb-3">{{ __('Blogs') }}</h1>
+                   <h2 class="bannerh2">{{ __('Blogs') }}</h2>
             </div>
         </div>
     </section>
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <h3 class="card-title h5 fw-bold text-dark mb-3">
-                                    <a href="{{ route('blog.show', $blog->translate()?->slug) }}">
+                                    <a href="{{ route('blog.show', $blog->id) }}">
                                         {{ $blog->translate()?->title }}
                                     </a>
                                 </h3>
