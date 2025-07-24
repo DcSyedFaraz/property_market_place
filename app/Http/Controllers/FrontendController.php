@@ -427,11 +427,11 @@ class FrontendController extends Controller
 
         $query = AgentProperty::query();
         $currentLang = session('locale');
-        if (in_array($location, $allowedLocations)) 
+        if (in_array($location, $allowedLocations))
         {
             $query->where('location', $location);
             $locationName = __("head_$location");
-        } elseif (in_array($location, $allowedTypes)) { 
+        } elseif (in_array($location, $allowedTypes)) {
             $locationName = __("head_$location");
         } else {
             abort(404, 'Location or Property Type not found.');

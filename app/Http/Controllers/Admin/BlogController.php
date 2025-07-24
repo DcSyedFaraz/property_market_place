@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use DB;
 use Illuminate\Http\Request;
 use Str;
 
@@ -21,29 +22,62 @@ class BlogController extends Controller
     }
     public function store(Request $request)
     {
+        // Supported locales
         $locales = ['en', 'ar'];
 
+        // 1. Validation
         $validated = $request->validate([
-            'image' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx',
-            'target_audience' => 'required',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,pdf,docx|max:2048',
+            'target_audience' => 'required|string|max:255',
             'title.*' => 'required|string|max:255',
             'slug.*' => 'nullable|string|max:255',
             'description.*' => 'required|string',
         ]);
-        $blog = Blog::create([
-            'image' => $request->file('image')?->store('blogs', 'public'),
-            'target_audience' => $request->target_audience,
-        ]);
 
-        foreach ($locales as $locale) {
-            $blog->translations()->create([
-                'locale' => $locale,
-                'title' => $validated['title'][$locale],
-                'slug' => $validated['slug'][$locale] ?? \Str::slug($validated['title'][$locale]),
-                'description' => $validated['description'][$locale],
+        // 2. File upload and DB transaction
+        DB::beginTransaction();
+        try {
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+
+                $imagePath = $request->file('image')
+                    ->store('blog', 'public');
+            }
+
+            // 3. Create primary blog record
+            $blog = Blog::create([
+                'image' => $imagePath,
+                'target_audience' => $validated['target_audience'],
             ]);
+
+            // 4. Create translations
+            foreach ($locales as $locale) {
+                $title = $validated['title'][$locale];
+                $slug = $validated['slug'][$locale] ?? Str::slug($title);
+                $description = $validated['description'][$locale];
+
+                $blog->translations()->create([
+                    'locale' => $locale,
+                    'title' => $title,
+                    'slug' => $slug,
+                    'description' => $description,
+                ]);
+            }
+
+            DB::commit();
+
+            return redirect()
+                ->route('blogs.index')
+                ->with('success', 'Blog created successfully.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            // Log the exception or handle as needed
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['error' => 'Failed to create blog: ' . $e->getMessage()]);
         }
-        return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
     }
 
     public function edit($id)
