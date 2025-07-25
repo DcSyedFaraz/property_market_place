@@ -73,7 +73,7 @@
                     <p class="about3b">
                         {{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}
                     </p>
-                    <form dir="rtl">
+                    <form dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
                         <input type="email" placeholder="{{ __('notify.email_placeholder') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
