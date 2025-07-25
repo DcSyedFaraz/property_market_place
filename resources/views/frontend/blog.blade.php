@@ -47,7 +47,7 @@
                                 </p>
 
                                 <div class="mt-auto">
-                                    <a href="{{ route('blog.show', $blog->id) }}" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('blog.show', $blog->id) }}" class="btn10 btn-outline-primary btn-sm">
                                         {{ __('Read More') }}
                                         <i class="fas fa-arrow-right ms-1"></i>
                                     </a>

@@ -217,5 +217,19 @@
     "Describe your complaint in detail...": "Describe your complaint in detail...",
     "Any suggestions to improve our services...": "Any suggestions to improve our services...",
     "No blogs yet": "No blogs yet",
-    "Stay tuned": "Stay tuned! We're working on some amazing content for you."
+    "Stay tuned": "Stay tuned! We're working on some amazing content for you.",
+    "properties.property_detail": "Properties Detail",
+    "properties.banner_description": "We are a full-service real estate company in UAE that is able to assist you with all your real estate needs.",
+    "properties.new_property": "New Property",
+    "properties.description": "Description",
+    "properties.location": "Location",
+    "properties.property_title": "Property Title",
+    "properties.area_sqft": "Area (sq ft)",
+    "properties.no_bedrooms": "No. Bedrooms",
+    "properties.no_bathrooms": "No. Bathrooms",
+    "properties.utility_area": "Utility Area",
+    "properties.balcony_area": "Balcony Area",
+    "properties.unit_area": "Unit Area",
+    "properties.status": "Status",
+    "properties.be_first_to_know": "Be the first to know."
 }

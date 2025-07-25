@@ -457,6 +457,7 @@
                             <a href="">All Properties</a>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center">
                     <div class="owl-carousel type-carol owl-theme mt-4">
                         <div class="item">
                             <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
@@ -483,6 +484,7 @@
                             </a>
                         </div>
 
+                    </div>
                     </div>
                 </div>
             </div>
