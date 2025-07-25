@@ -39,7 +39,7 @@
                         <p class="about1c">{{ __('who_we_are_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (1).jpg') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/Union 1.png') }}" alt="about1" class="about2-img" />
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (2).jpg') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/Union 2.png') }}" alt="about1" class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('services_title') }}</h3>
@@ -71,7 +71,7 @@
                         <p class="about1c">{{ __('goal_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (3).jpg') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/Union 3.png') }}" alt="about1" class="about2-img" />
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (4).jpg') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/Union 7.png') }}" alt="about1" class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('vision_title') }}</h3>
@@ -95,7 +95,7 @@
                         <p class="about1c">{{ __('mission_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (5).jpg') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/Union 8.png') }}" alt="about1" class="about2-img" />
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/about (6).jpg') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/Union 9.png') }}" alt="about1" class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('why_choose_us_title') }}</h3>
