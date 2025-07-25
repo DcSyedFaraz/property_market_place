@@ -216,5 +216,19 @@
     "Describe your complaint in detail...": "صف شكواك بالتفصيل...",
     "Any suggestions to improve our services...": "أي اقتراحات لتحسين خدماتنا...",
     "No blogs yet": "لا توجد مدونات حتى الآن",
-    "Stay tuned": "تابعونا! نعمل على محتوى رائع لكم."
+    "Stay tuned": "تابعونا! نعمل على محتوى رائع لكم.",
+    "properties.property_detail": "تفاصيل العقارات",
+    "properties.banner_description": "نحن شركة عقارية متكاملة الخدمات في الإمارات العربية المتحدة، يمكننا مساعدتك في جميع احتياجاتك العقارية.",
+    "properties.new_property": "عقار جديد",
+    "properties.description": "الوصف",
+    "properties.location": "الموقع",
+    "properties.property_title": "عنوان العقار",
+    "properties.area_sqft": "المساحة (قدم مربع)",
+    "properties.no_bedrooms": "عدد غرف النوم",
+    "properties.no_bathrooms": "عدد الحمامات",
+    "properties.utility_area": "منطقة الخدمات",
+    "properties.balcony_area": "مساحة الشرفة",
+    "properties.unit_area": "مساحة الوحدة",
+    "properties.status": "الحالة",
+    "properties.be_first_to_know": "كن أول من يعرف."
 }
