@@ -458,33 +458,33 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                    <div class="owl-carousel type-carol owl-theme mt-4">
-                        <div class="item">
-                            <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
-                            <a href="{{ route('properties.byLocation', 'Residential') }}">
-                                <h4>{{ __('Residential') }}</h4>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
-                            <a href="{{ route('properties.byLocation', 'Commercial') }}">
-                                <h4>{{ __('Commercial') }}</h4>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('assets/img/mall.webp') }}" alt="" />
-                            <a href="{{ route('properties.byLocation', 'Mall') }}">
-                                <h4>{{ __('Mall') }}</h4>
-                            </a>
-                        </div>
-                        <div class="item">
-                            <img src="{{ asset('assets/img/villa.webp') }}" alt="" />
-                            <a href="{{ route('properties.byLocation', 'Villa') }}">
-                                <h4>{{ __('Villa') }}</h4>
-                            </a>
-                        </div>
+                        <div class="owl-carousel type-carol owl-theme mt-4">
+                            <div class="item">
+                                <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
+                                <a href="{{ route('properties.byLocation', 'Residential') }}">
+                                    <h4>{{ __('Residential') }}</h4>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
+                                <a href="{{ route('properties.byLocation', 'Commercial') }}">
+                                    <h4>{{ __('Commercial') }}</h4>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('assets/img/mall.webp') }}" alt="" />
+                                <a href="{{ route('properties.byLocation', 'Mall') }}">
+                                    <h4>{{ __('Mall') }}</h4>
+                                </a>
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('assets/img/villa.webp') }}" alt="" />
+                                <a href="{{ route('properties.byLocation', 'Villa') }}">
+                                    <h4>{{ __('Villa') }}</h4>
+                                </a>
+                            </div>
 
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -638,7 +638,8 @@
         margin: 10,
         nav: false,
         dots: false,
-        items: 3,
+        // autoWidth: true, // <‑‑ key line
+        // autoHeight: true, // uncomment if you also want dynamic height
         responsive: {
             0: {
                 items: 3
@@ -650,8 +651,9 @@
                 items: 6
             }
         }
-    })
+    });
 </script>
+
 <!-- Floating Buttons Container -->
 <div class="floating-buttons">
     <!-- Visitor Button -->
@@ -750,6 +752,5 @@
 </style>
 
 <!-- Font Awesome for Icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </html>

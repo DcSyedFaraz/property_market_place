@@ -1,6 +1,21 @@
 @extends('frontend.layout.app')
 @section('content')
-    <section class="propdetails-banner">
+    <style>
+        .propdetails-banner {
+            background-repeat: no-repeat, no-repeat;
+            background-position: center center, center center;
+            background-size: cover, cover;
+
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+    <section class="propdetails-banner"
+        style="background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('{{ asset("assets/images/$bannerImage") }}');">
         <div class="container">
             <h2 class="serviceh2">
                 {{ __('propdetails.banner.title', ['location' => $locationName ?? ($location ?? '')]) }}

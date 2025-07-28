@@ -125,7 +125,11 @@ h2 {
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-    background-image: url(../img/hero-back.png);
+    background-image:
+        /* top layer: 50%-black overlay */
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        /* bottom layer: your JPG */
+        url("../images/about/homepage\ banner.jpg");
     height: 100vh;
     width: 100%;
     background-repeat: no-repeat;
@@ -449,16 +453,10 @@ h2 {
     margin: auto;
 }
 
-.logo-carol .item img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin: auto;
-}
 
-.logo-carol .owl-item.active:nth-child(2) {
+/* .logo-carol .owl-item.active:nth-child(2) {
     background-color: #fff;
-}
+} */
 
 /*--------------------------------------------------------------
 # Footer - Css
@@ -886,7 +884,7 @@ select {
 }
 
 .sec-001 {
-    background-image: url(../img/bread-img01.png);
+    background-image: url(../images/about/complaint\ banner.jpg);
     height: 400px;
     background-repeat: no-repeat;
     display: flex;
@@ -1382,15 +1380,24 @@ select {
 
 /*----additional css*/
 .banner {
-    background: url(../images/about/Group\ 1239.jpg) no-repeat;
-    background-position: center center;
-    background-size: cover;
+    /* set up the image + gradient together */
+    background-image:
+        /* top layer: 50%-black overlay */
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        /* bottom layer: your JPG */
+        url("../images/about/about us banner.jpg");
+
+    /* now separately declare how each layer behaves */
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center, center center;
+    background-size: cover, cover;
+
     height: 70vh;
     display: flex;
     align-items: center;
     text-align: center;
-    /*margin-top: -105px;*/
 }
+
 
 p {
     font-family: var(--default-font);
@@ -1714,7 +1721,7 @@ p {
 }
 
 .service {
-    background: url(../images/service/bg.png) no-repeat;
+    background: url(../images/about/services\ banner.jpg) no-repeat;
     background-position: center center;
     background-size: cover;
     height: 70vh;
@@ -1824,7 +1831,7 @@ p {
 }
 
 .contact-banner {
-    background: url(../images/contacts/bg.png) no-repeat;
+    background: url(../images/about/contact\ banner.jpg) no-repeat;
     background-position: center center;
     background-size: cover;
     height: 70vh;
@@ -1889,16 +1896,6 @@ p {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-}
-
-.propdetails-banner {
-    background: url(/assets/images/property-details/bg.png) no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    text-align: left;
 }
 
 /*Property Details*/

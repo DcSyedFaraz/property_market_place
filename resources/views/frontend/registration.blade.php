@@ -1,6 +1,16 @@
 @extends('frontend.layout.app')
 
 @section('content')
+    <section class="sec-001 bread-crumb" style="background-image: url('{{asset('assets/images/about/vendor banner.jpg')}}');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">{{ __('Register as vendor') }}</h1>
+                    <p class="text-center"><a href="/">{{ __('Home') }}</a> / <a
+                            href="#">{{ __('Register as vendor') }}</a></p>
+                </div>
+            </div>
+    </section>
     <div class="container mt-5">
 
         @if (session('success'))
@@ -44,7 +54,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="w-100 form-control @error('email') is-invalid @enderror" name="email" required>
+                                        class="w-100 form-control @error('email') is-invalid @enderror" name="email"
+                                        required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -203,7 +214,8 @@
                             <!-- Submit Button -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-block" style="background-color: #007681;color:#fff;">
+                                    <button type="submit" class="btn btn-block"
+                                        style="background-color: #007681;color:#fff;">
                                         {{ __('Submit') }}
                                     </button>
                                 </div>

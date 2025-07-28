@@ -1,6 +1,6 @@
 @extends('frontend.layout.app')
 @section('content')
-    <section class="sec-001 bread-crumb">
+    <section class="sec-001 bread-crumb" style="background-image: url('{{asset('assets/images/about/visitor banner.jpg')}}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

@@ -215,9 +215,11 @@ class FrontendController extends Controller
     {
         $locale = session('locale');
 
-        $blogs = Blog::with(['translations' => function ($q) use ($locale) {
-            $q->where('locale', $locale);
-        }])->latest()->paginate(9);
+        $blogs = Blog::with([
+            'translations' => function ($q) use ($locale) {
+                $q->where('locale', $locale);
+            }
+        ])->latest()->paginate(9);
 
         return view('frontend.blog', compact('blogs'));
     }
@@ -422,13 +424,18 @@ class FrontendController extends Controller
         $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
         $allowedTypes = ['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'];
 
+        $bannerImages = [
+            'Residential' => 'about/residential project banner.jpg',
+            'Commercial' => 'about/commercial project banner.jpg',
+            'Mall' => 'about/mall project banner.jpg',
+        ];
+
         $communities = Community::all();
         $developers = Developer::all();
 
         $query = AgentProperty::query();
         $currentLang = session('locale');
-        if (in_array($location, $allowedLocations))
-        {
+        if (in_array($location, $allowedLocations)) {
             $query->where('location', $location);
             $locationName = __("head_$location");
         } elseif (in_array($location, $allowedTypes)) {
@@ -454,12 +461,15 @@ class FrontendController extends Controller
             }
         }
         $properties = $query->get();
+        $bannerImage  = $bannerImages[$location] ?? 'property-details/bg.png';
+
         return view('frontend.offplan', compact(
             'properties',
             'communities',
             'developers',
             'location',
-            'locationName'
+            'locationName',
+            'bannerImage'
         ));
     }
 }
