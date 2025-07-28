@@ -1721,7 +1721,12 @@ p {
 }
 
 .service {
-    background: url(../images/about/services\ banner.jpg) no-repeat;
+    /* background: url(../images/about/services\ banner.jpg) no-repeat; */
+    background-image:
+        /* top layer: 50%-black overlay */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        /* bottom layer: your JPG */
+        url("../images/about/services\ banner.jpg");
     background-position: center center;
     background-size: cover;
     height: 70vh;
@@ -1831,7 +1836,12 @@ p {
 }
 
 .contact-banner {
-    background: url(../images/about/contact\ banner.jpg) no-repeat;
+    /* background: url(../images/about/contact\ banner.jpg) no-repeat; */
+    background-image:
+        /* top layer: 50%-black overlay */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        /* bottom layer: your JPG */
+        url("../images/about/contact\ banner.jpg");
     background-position: center center;
     background-size: cover;
     height: 70vh;
