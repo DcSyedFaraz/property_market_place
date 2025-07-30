@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-       
+
         @php
             $locales = ['en' => 'English', 'ar' => 'Arabic']; // Add more if needed
         @endphp
@@ -21,7 +21,7 @@
             @csrf
             <div class="card mb-4">
                 <div class="card-header">
-                     <h1>Create New Blog</h1>
+                    <h1>Create New Blog</h1>
                 </div>
                 <div class="card p-3">
                     <div class="mb-3">
@@ -54,21 +54,24 @@
                         {{-- Title --}}
                         <div class="mb-3">
                             <label class="form-label">Title ({{ strtoupper($locale) }})</label>
-                            <input type="text" name="title[{{ $locale }}]" class="form-control"
+                            <input type="text" name="title[{{ $locale }}]"
+                                id="{{ $locale === 'en' ? 'title_en' : '' }}" class="form-control"
                                 dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}" value="{{ old("title.$locale") }}">
                         </div>
 
-                        {{-- Slug --}}
-                        <div class="mb-3">
-                            <label class="form-label">Slug ({{ strtoupper($locale) }})</label>
-                            <input type="text" name="slug[{{ $locale }}]" class="form-control"
-                                dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}" value="{{ old("slug.$locale") }}">
-                        </div>
+                        {{-- Slug input only for English --}}
+                        @if ($locale === 'en')
+                            <div class="mb-3">
+                                <label class="form-label">Slug</label>
+                                <input type="text" name="slug" id="slug" class="form-control" dir="ltr"
+                                    readonly>
+                            </div>
+                        @endif
 
                         {{-- Description --}}
                         <div class="mb-3">
                             <label class="form-label">Description ({{ strtoupper($locale) }})</label>
-                            <textarea name="description[{{ $locale }}]" class="form-control description" rows="5" 
+                            <textarea name="description[{{ $locale }}]" class="form-control description" rows="5"
                                 dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">{{ old("description.$locale") }}</textarea>
                         </div>
                     </div>

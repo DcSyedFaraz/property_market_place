@@ -351,14 +351,23 @@
             });
         });
 
-        document.getElementById('title').addEventListener('keyup', function() {
-            let title = this.value;
-            let slug = title
-                .toLowerCase()
-                .replace(/[^\u0600-\u06FFa-z0-9\s-]/g, '') // Arabic + Latin characters allowed
-                .replace(/\s+/g, '-') // Convert spaces to hyphens
-                .replace(/-+/g, '-'); // Remove multiple hyphens
-            document.getElementById('slug').value = slug;
+        document.addEventListener("DOMContentLoaded", function() {
+            const titleInput = document.getElementById("title_en");
+            const slugInput = document.getElementById("slug");
+
+            if (titleInput && slugInput) {
+                titleInput.addEventListener("input", function() {
+                    let title = titleInput.value;
+
+                    // Slug banana: lowercase, special chars hatana, space ko dash me convert karna
+                    let slug = title.toLowerCase()
+                        .replace(/[^a-z0-9\s-]/g, '') // special characters hatao
+                        .trim()
+                        .replace(/\s+/g, '-'); // spaces ko dash se replace
+
+                    slugInput.value = slug;
+                });
+            }
         });
     </script>
 

@@ -223,9 +223,9 @@ class FrontendController extends Controller
 
         return view('frontend.blog', compact('blogs'));
     }
-    public function blogdetail($id)
+    public function blogdetail($slug)
     {
-        $data['blog'] = Blog::where('id', $id)->firstOrFail();
+        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
         $data['blogs'] = Blog::get();
         $data['developer_property'] = DeveloperProperty::first();
         return view('frontend.blog-detail', $data);
@@ -461,7 +461,7 @@ class FrontendController extends Controller
             }
         }
         $properties = $query->get();
-        $bannerImage  = $bannerImages[$location] ?? 'property-details/bg.png';
+        $bannerImage = $bannerImages[$location] ?? 'property-details/bg.png';
 
         return view('frontend.offplan', compact(
             'properties',

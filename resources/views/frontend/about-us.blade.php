@@ -2,7 +2,7 @@
 @section('content')
     <style>
         ul {
-            color: white;
+            /* color: white; */
         }
     </style>
     {{-- @if (app()->getLocale() == 'ar')
@@ -47,7 +47,8 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/our services includes.png') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/our services includes.png') }}" alt="about1"
+                            class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('services_title') }}</h3>
@@ -103,7 +104,8 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/why choose us.png') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/why choose us.png') }}" alt="about1"
+                            class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('why_choose_us_title') }}</h3>

@@ -30,7 +30,8 @@
                     <div class="mb-3">
                         <label class="form-label">Current Blog Image</label><br>
                         @if ($blog->image)
-                            <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image" width="150" class="mb-2">
+                            <img src="{{ asset('storage/' . $blog->image) }}" alt="Blog Image" width="150"
+                                class="mb-2">
                         @else
                             <p>No image uploaded.</p>
                         @endif
@@ -48,12 +49,14 @@
                         <label class="form-label">Target Audience</label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="target_audience" id="target_uae"
-                                value="UAE" {{ old('target_audience', $blog->target_audience) == 'UAE' ? 'checked' : '' }}>
+                                value="UAE"
+                                {{ old('target_audience', $blog->target_audience) == 'UAE' ? 'checked' : '' }}>
                             <label class="form-check-label" for="target_uae">For UAE</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="target_audience" id="target_international"
-                                value="International" {{ old('target_audience', $blog->target_audience) == 'International' ? 'checked' : '' }}>
+                                value="International"
+                                {{ old('target_audience', $blog->target_audience) == 'International' ? 'checked' : '' }}>
                             <label class="form-check-label" for="target_international">For International</label>
                         </div>
                     </div>
@@ -70,18 +73,20 @@
                         {{-- Title --}}
                         <div class="mb-3">
                             <label class="form-label">Title ({{ strtoupper($locale) }})</label>
-                            <input type="text" name="title[{{ $locale }}]" class="form-control"
+                            <input type="text" name="title[{{ $locale }}]"
+                                id="{{ $locale === 'en' ? 'title_en' : '' }}" class="form-control"
                                 dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}"
                                 value="{{ old("title.$locale", $blog->translate($locale)?->title) }}">
                         </div>
 
-                        {{-- Slug --}}
-                        <div class="mb-3">
-                            <label class="form-label">Slug ({{ strtoupper($locale) }})</label>
-                            <input type="text" name="slug[{{ $locale }}]" class="form-control"
-                                dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}"
-                                value="{{ old("slug.$locale", $blog->translate($locale)?->slug) }}">
-                        </div>
+                        {{-- Slug input only for English --}}
+                        @if ($locale === 'en')
+                            <div class="mb-3">
+                                <label class="form-label">Slug</label>
+                                <input type="text" name="slug" id="slug" class="form-control" dir="ltr"
+                                    value="{{ old('slug', $blog->slug) }}" readonly>
+                            </div>
+                        @endif
 
                         {{-- Description --}}
                         <div class="mb-3">

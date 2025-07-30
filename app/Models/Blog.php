@@ -12,8 +12,11 @@ class Blog extends Model
     protected $table = 'blogs';
 
     protected $fillable = [
-        'title', 'description', 'image',
+        'image',
+        'slug',
+        'target_audience',
     ];
+
     public function translations()
     {
         return $this->hasMany(BlogTranslation::class);
