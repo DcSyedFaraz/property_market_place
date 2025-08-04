@@ -2,8 +2,8 @@
 @section('content')
     <section class="propdetails-banner">
         <div class="container">
-            <h2 class="serviceh2">@lang('properties.property_detail')</h2>
-            <p class="banner-p">@lang('properties.banner_description')</p>
+            <h2 class="serviceh2 text-black">@lang('properties.property_detail')</h2>
+            <p class="banner-p text-black">@lang('properties.banner_description')</p>
         </div>
     </section>
 
