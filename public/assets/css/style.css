@@ -1461,10 +1461,10 @@ p {
     width: 100%;
     background: transparent;
     border: 0;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #000;
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    /* color: #fff; */
     font-family: var(--default-font);
     padding-bottom: 10px;
 }
@@ -1472,7 +1472,7 @@ p {
 .about-3 form button {
     background: transparent;
     border: 0;
-    color: #fff;
+    color: #000;
     font-size: 16px;
     position: absolute;
     right: 0;
@@ -1486,7 +1486,7 @@ p {
 }
 
 .about-3 form input::placeholder {
-    color: #ffffff99 !important;
+    /* color: #ffffff99 !important; */
 }
 
 .about-3 form input:focus {
@@ -1591,7 +1591,8 @@ p {
 .blog-a1 {
     font-size: 14px;
     font-weight: 500;
-    color: #fff;
+    /* color: #fff; */
+    color: #000;
     margin-top: 10px;
 }
 
@@ -1604,7 +1605,8 @@ p {
 
 .blog-a2 {
     font-size: 36px;
-    color: #fff;
+    /* color: #fff; */
+    color: #000;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -1658,7 +1660,11 @@ p {
 }
 
 .blog-text p {
-    color: #fff;
+    /* color: #fff; */
+}
+
+.blog-text span {
+    color: #000 !important;
 }
 
 .about-main span {
@@ -1754,17 +1760,17 @@ p {
 .contact1a {
     font-size: 46px;
     font-weight: 400;
-    color: #fff;
+    /* color: #fff; */
 }
 
 .contact1b {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    /* color: #fff; */
 }
 
 .call>a {
-    color: #fff !important;
+    /* color: #fff !important; */
     font-size: 16px;
     text-decoration: none;
     font-family: var(--default-font);
@@ -1792,7 +1798,7 @@ p {
 .contact1c {
     font-size: 15px;
     font-weight: 400;
-    color: #fff;
+    /* color: #fff; */
     margin: 0;
     width: 80%;
 }
@@ -1915,9 +1921,9 @@ p {
     height: 50px;
     border-radius: 30px;
     background: transparent;
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     margin-bottom: 10px;
-    color: #fff;
+    /* color: #fff; */
     padding-left: 10px;
     font-size: 14px;
 }
@@ -2004,9 +2010,9 @@ p {
     height: 50px;
     border-radius: 30px;
     background: transparent;
-    border: 1px solid #fff;
+
     margin-bottom: 10px;
-    color: #fff;
+
     padding-left: 10px;
     font-size: 14px;
 }
@@ -2016,9 +2022,9 @@ p {
     height: 50px;
     border-radius: 30px;
     background: transparent;
-    border: 1px solid #fff;
+
     margin-bottom: 10px;
-    color: #fff;
+
     padding-left: 15px;
     font-size: 14px;
 }
@@ -2030,7 +2036,7 @@ p {
 }
 
 .search-form input::placeholder {
-    color: #fff;
+    /* color: #fff; */
 }
 
 .search-form input:focus {
@@ -2053,7 +2059,7 @@ p {
 }
 
 .project-main .col-md-6:first-of-type {
-    border-right: 1px solid #fff;
+    border-right: 1px solid #000;
 }
 
 select,
