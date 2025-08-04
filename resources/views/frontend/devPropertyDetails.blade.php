@@ -16,13 +16,13 @@
                         <h5 class="prop-1a">{{ $property->title }}</h5>
 
                         <h5 class="prop-1a">@lang('properties.description')</h5>
-                        <p class="prop-1b text-white">{!! $property->translated('description') !!}</p>
+                        <p class="prop-1b">{!! $property->translated('description') !!}</p>
 
                         <h5 class="prop-1a">@lang('properties.location')</h5>
                         <p class="prop-1b">{{ $property->location }}</p>
 
                         <h5 class="prop-1a">@lang('properties.property_title')</h5>
-                        <p class="prop-1b text-white">{!! $property->translated('title') !!}</p>
+                        <p class="prop-1b">{!! $property->translated('title') !!}</p>
 
                         <div class="property-details">
                             <div>

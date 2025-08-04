@@ -1860,14 +1860,14 @@ p {
 .prop-1a {
     font-size: 18px;
     font-weight: 600;
-    color: #fff;
+    /* color: #fff; */
     margin: 25px 0 5px;
 }
 
 .prop-1b {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    /* color: #fff; */
 }
 
 .property-details {
@@ -1962,7 +1962,7 @@ p {
 .property-price {
     font-size: 32px;
     font-weight: 600;
-    color: #fff;
+    /* color: #fff; */
 }
 
 .property-det {
@@ -1972,7 +1972,7 @@ p {
 }
 
 .icons {
-    color: #fff;
+    /* color: #fff; */
     font-size: 14px;
     display: flex;
     align-items: center;

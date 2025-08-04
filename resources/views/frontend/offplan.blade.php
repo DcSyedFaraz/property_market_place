@@ -112,13 +112,15 @@
                             <p class="property-det" style="color: white;   ">
                             </p>
                             <div class="details">
-                                <img src="{{ asset('/assets/images/projects/location.png') }}" width="30" />
+                                {{-- <img src="{{ asset('/assets/images/projects/location.png') }}" width="30" /> --}}
+                                <i class="fa-solid fa-location-dot"></i>
                                 <h4 class="property-price">{{ $project->location }}</h4>
 
                                 @if ($project->bedrooms > 0)
                                     <div class="icons">
                                         {{-- <img src="{{ asset('/assets/images/projects/icon.png') }}" /> --}}
-                                        <img src="{{ asset('/assets/images/projects/bed.png') }}" />
+                                        {{-- <img src="{{ asset('/assets/images/projects/bed.png') }}" /> --}}
+                                       <i class="fa-solid fa-bed"></i>
                                         {{ $project->bedrooms }}
 
                                     </div>
@@ -127,7 +129,8 @@
                                 @if ($project->bathrooms > 0)
                                     <div class="icons">
                                         {{-- <img src="{{ asset('/assets/images/projects/icon.png') }}" /> --}}
-                                        <img src="{{ asset('/assets/images/projects/bathtub.png') }}" />
+                                        {{-- <img src="{{ asset('/assets/images/projects/bathtub.png') }}" /> --}}
+                                        <i class="fa-solid fa-bath"></i>
                                         {{ $project->bathrooms }}
                                     </div>
                                 @endif
