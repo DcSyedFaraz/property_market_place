@@ -225,7 +225,12 @@ class FrontendController extends Controller
     }
     public function blogdetail($slug)
     {
-        $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+
+
+        $data["blog"] = Blog::whereHas('translations', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->firstOrFail();
+        // $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
         $data['blogs'] = Blog::get();
         $data['developer_property'] = DeveloperProperty::first();
         return view('frontend.blog-detail', $data);
