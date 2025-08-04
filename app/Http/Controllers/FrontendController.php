@@ -426,6 +426,7 @@ class FrontendController extends Controller
 
     public function showPropertiesByLocation(Request $request, $location)
     {
+        // dd($request->all(), $location);
         $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
         $allowedTypes = ['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'];
 
@@ -434,17 +435,30 @@ class FrontendController extends Controller
             'Commercial' => 'about/commercial project banner.jpg',
             'Mall' => 'about/mall project banner.jpg',
         ];
-
-        $communities = Community::all();
-        $developers = Developer::all();
+        $type = $request->query('property_type'); // e.g. “Residential”
+        $community = $request->query('community');
+        // $communities = Community::all();
+        // $developers = Developer::all();
 
         $query = AgentProperty::query();
         $currentLang = session('locale');
-        if (in_array($location, $allowedLocations)) {
-            $query->where('location', $location);
-            $locationName = __("head_$location");
-        } elseif (in_array($location, $allowedTypes)) {
-            $locationName = __("head_$location");
+        $query->where('status', 'available');
+        if (!$type && !$community) {
+            if (in_array($location, $allowedLocations)) {
+                $query->where('location', $location);
+                $locationName = __("$location");
+            } elseif (in_array($location, $allowedTypes)) {
+                $query->where('property_type', $location);
+                $locationName = __("head_$location");
+            } else {
+                abort(404, 'Location or Property Type not found.');
+            }
+        } elseif ($type) {
+            $query->where('property_type', $type);
+            $locationName = __("head_$type");
+        } elseif ($community) {
+            $query->where('location', $community);
+            $locationName = __("$community");
         } else {
             abort(404, 'Location or Property Type not found.');
         }
@@ -470,8 +484,8 @@ class FrontendController extends Controller
 
         return view('frontend.offplan', compact(
             'properties',
-            'communities',
-            'developers',
+            // 'communities',
+            // 'developers',
             'location',
             'locationName',
             'bannerImage'

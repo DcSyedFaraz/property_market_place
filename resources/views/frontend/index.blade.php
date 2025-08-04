@@ -247,7 +247,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="profile"
                                     aria-selected="false">
                                     {{ __('Buy') }}
                                 </button>
@@ -256,40 +256,34 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="home">
-                                <form action="" id="state-form">
-                                    <select class="f1">
+                                <form method="GET" id="state-form"
+                                    data-base-url="{{ route('properties.byLocation', ['location' => '__LOCATION__']) }}">
+                                    {{-- @csrf --}}
+
+                                    <select name="property_type" id="property_type" class="f1">
                                         <option value="" hidden>{{ __('Select Property Type') }}</option>
-                                        <option value="Residential"
-                                            {{ old('property_type') == 'Residential' ? 'selected' : '' }}>
-                                            {{ __('Residential') }}
-                                        </option>
-                                        <option value="Commercial"
-                                            {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
-                                            {{ __('Commercial') }}
-                                        </option>
-                                        {{-- <option value="Off-Plan"
-                                            {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>Off-Plan
-                                        </option> --}}
-                                        <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
-                                            {{ __('Mall') }}</option>
-                                        <option value="Villa"
-                                            {{ old('property_type') == 'Villa' ? 'selected' : '' }}>
-                                            {{ __('Villa') }}</option>
+                                        <option value="Residential">{{ __('Residential') }}</option>
+                                        <option value="Commercial">{{ __('Commercial') }}</option>
+                                        <option value="Mall">{{ __('Mall') }}</option>
+                                        <option value="Villa">{{ __('Villa') }}</option>
                                     </select>
 
-                                    <select class="f2">
-                                        <option value="">
-                                            {{ __('City Neighborhood, Community') }}
+                                    <select name="community" id="community" class="f2">
+                                        <option value="" hidden>{{ __('City, Neighborhood, or Community') }}
                                         </option>
-                                        <option value="">{{ __('City Neighborhood') }}</option>
+                                        <option value="Dubai">{{ __('Dubai') }}</option>
+                                        <option value="Abu Dhabi">{{ __('Abu Dhabi') }}</option>
+                                        <option value="Sharjah">{{ __('Sharjah') }}</option>
+                                        {{-- …and so on for each allowed location… --}}
                                     </select>
 
-                                    <button class="button has-icon icon-send">
+                                    <button type="submit" class="button has-icon icon-send">
                                         <i class="bi bi-search"></i>
                                     </button>
                                 </form>
+
                             </div>
-                            <div class="tab-pane" id="profile">
+                            {{-- <div class="tab-pane" id="profile">
                                 <form action="" id="state-form"></form>
                                 <select class="f1">
                                     <option value="" hidden>{{ __('Select Property Type') }}</option>
@@ -301,8 +295,6 @@
                                         {{ old('property_type') == 'Commercial' ? 'selected' : '' }}>
                                         {{ __('Commercial') }}
                                     </option>
-                                    {{-- <option value="Off-Plan"
-                                        {{ old('property_type') == 'Off-Plan' ? 'selected' : '' }}>{{__('Off')}}-Plan</option> --}}
                                     <option value="Mall" {{ old('property_type') == 'Mall' ? 'selected' : '' }}>
                                         {{ __('Mall') }}
                                     </option>
@@ -322,7 +314,7 @@
                                     <i class="bi bi-search"></i>
                                 </button>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -750,6 +742,25 @@
         visibility: visible;
     }
 </style>
+<script>
+    document.getElementById('state-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const type = document.getElementById('property_type').value;
+        const place = document.getElementById('community').value;
+        const filter = place || type;
+
+        if (!filter) {
+            return alert('Please select a property type or a location.');
+        }
+
+        // grab the Blade-generated template URL
+        const template = this.dataset.baseUrl;
+        // replace the placeholder with the real, encoded filter
+        this.action = template.replace('__LOCATION__', encodeURIComponent(filter));
+        this.submit();
+    });
+</script>
 
 <!-- Font Awesome for Icons -->
 
