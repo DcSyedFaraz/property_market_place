@@ -34,15 +34,6 @@
                         <form method="GET" action="{{ route('properties.index') }}" class="filter-form">
                             <h4 class="contact1a">{{ __('filter.heading') }}</h4>
 
-                            <select name="min_price">
-                                <option disabled selected>{{ __('filter.starting_price') }}</option>
-                                <option value="100" {{ request('min_price') == '100' ? 'selected' : '' }}>
-                                    {{ __('filter.price.100') }}</option>
-                                <option value="200" {{ request('min_price') == '200' ? 'selected' : '' }}>
-                                    {{ __('filter.price.200') }}</option>
-                                <option value="300" {{ request('min_price') == '300' ? 'selected' : '' }}>
-                                    {{ __('filter.price.300') }}</option>
-                            </select>
 
                             <select name="city">
                                 <option disabled selected>{{ __('filter.city') }}</option>
@@ -68,19 +59,11 @@
                                 <option value="Commercial"
                                     {{ request('property_type') == 'Commercial' ? 'selected' : '' }}>
                                     {{ __('filter.property_type.Commercial') }}</option>
-                                <option value="Off-Plan" {{ request('property_type') == 'Off-Plan' ? 'selected' : '' }}>
-                                    {{ __('filter.property_type.OffPlan') }}</option>
                                 <option value="Mall" {{ request('property_type') == 'Mall' ? 'selected' : '' }}>
                                     {{ __('filter.property_type.Mall') }}</option>
                                 <option value="Villa" {{ request('property_type') == 'Villa' ? 'selected' : '' }}>
                                     {{ __('filter.property_type.Villa') }}</option>
                             </select>
-                            {{-- <select>
-                                <option disabled selected>Developer</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                                <option>Lorem Ipsum</option>
-                            </select> --}}
                             <h4 class="contact1a">{{ __('status') }}</h4>
                             <select name="status">
                                 <option disabled selected>{{ __('filter.status.select') }}</option>

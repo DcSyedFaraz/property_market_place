@@ -68,7 +68,7 @@
                         <label for="property_type" class="form-label">Property Type</label>
                         <select class="form-control" name="property_type">
                             <option value="">Select Property Type</option>
-                            @foreach (['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'] as $type)
+                            @foreach (['Residential', 'Commercial', 'Mall', 'Villa'] as $type)
                                 <option value="{{ $type }}" {{ old('property_type') == $type ? 'selected' : '' }}>
                                     {{ $type }}</option>
                             @endforeach

@@ -53,10 +53,12 @@
                     <div class="mb-3">
                         <strong>Gallery Images:</strong>
                         <div class="d-flex flex-wrap gap-2 mt-2">
-                            @foreach ($property->gallery as $image)
-                                <img src="{{ asset('storage/' . $image->image) }}" alt="Gallery Image"
-                                    class="img-thumbnail" style="height: 100px; object-fit: cover;">
-                            @endforeach
+                            @if (isset($property->propertygallery))
+                                @foreach ($property->propertygallery as $image)
+                                    <img src="{{ asset('storage/' . $image->image) }}" alt="Gallery Image"
+                                        class="img-thumbnail" style="height: 100px; object-fit: cover;">
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 @endif

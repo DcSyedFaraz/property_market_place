@@ -54,20 +54,19 @@
                                     <i class="fas fa-calendar-alt me-2"></i>
                                     <small>{{ $blog->created_at->format('F j, Y') }}</small>
                                 </div>
-
                                 <h3 class="card-title h5 fw-bold text-dark mb-3">
-                                    <a href="{{ route('blog.show',  $blog->translate()?->slug) }}">
+                                    <a href="{{ route('blog.show',  $blog->slug) }}">
                                         {{ $blog->translate()?->title }}
                                     </a>
                                 </h3>
 
                                 <p class="card-text text-muted mb-4 flex-grow-1">
-                                    {{ Str::limit(strip_tags($blog->translate()?->description), 120) }} 
+                                    {{ Str::limit(strip_tags($blog->translate()?->description), 120) }}
                                 </p>
-                                
+
 
                                 <div class="mt-auto">
-                                    <a href="{{ route('blog.show', $blog->translate()?->slug) }}"
+                                    <a href="{{ route('blog.show', $blog->slug) }}"
                                         class="btn10 btn-outline-primary btn-sm">
                                         {{ __('Read More') }}
                                         <i class="fas fa-arrow-right ms-1"></i>
