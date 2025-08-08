@@ -104,7 +104,7 @@
                         </ul>
                     </div>
                     <div class="col-md-2 col-lg-3 mob-1">
-                        <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
                         <div class="d-inline ms-2">
                             <a href="{{ route('lang.switch', 'en') }}">EN</a> |
                             <a href="{{ route('lang.switch', 'ar') }}">ع</a>
@@ -180,8 +180,8 @@
                                             <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                         </ul>
                                     </li>
-                                    <li><a class="nav-link btn10"
-                                            href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    {{-- <li><a class="nav-link btn10"
+                                            href="{{ route('login') }}">{{ __('Login') }}</a> --}}
                                         <div class="d-inline ms-2">
                                             <a href="{{ route('lang.switch', 'en') }}">EN</a> |
                                             <a href="{{ route('lang.switch', 'ar') }}">ع</a>
@@ -245,13 +245,13 @@
                                     {{ __('Rent') }}
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="profile"
                                     aria-selected="false">
                                     {{ __('Buy') }}
                                 </button>
-                            </li>
+                            </li> --}}
                         </ul>
 
                         <div class="tab-content">

@@ -73,7 +73,7 @@
                      </ul>
                  </div>
                  <div class="col-md-3 mob-1">
-                    <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
                     <div class="d-inline ms-2">
                         <a href="{{ route('lang.switch', 'en') }}">EN</a> |
                         <a href="{{ route('lang.switch', 'ar') }}">ع</a>
@@ -150,7 +150,7 @@
                                      </ul>
                                  </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
                                     <div class="d-inline ms-2">
                                         <a href="{{ route('lang.switch', 'en') }}">EN</a> |
                                         <a href="{{ route('lang.switch', 'ar') }}">ع</a>

@@ -31,13 +31,15 @@
             <div class="contact-main project-main">
                 <div class="row">
                     <div class="col-md-6">
-                        <form method="GET" action="{{ route('properties.index') }}" class="filter-form">
+                        <form id="filter-form" method="GET"
+                            data-base-url="{{ route('properties.byLocation', ['location' => '__LOCATION__']) }}"
+                            class="filter-form">
+
                             <h4 class="contact1a">{{ __('filter.heading') }}</h4>
 
-
-                            <select name="city">
-                                <option disabled selected>{{ __('filter.city') }}</option>
-                                <option value="Dubai" {{ request('city') == 'Dubai' ? 'selected' : '' }}>
+                            <select id="community" name="community">
+                                {{-- <option selected>{{ __('filter.city') }}</option> --}}
+                                <option selected value="Dubai" {{ request('city') == 'Dubai' ? 'selected' : '' }}>
                                     {{ __('filter.city.Dubai') }}</option>
                                 <option value="Abu Dhabi" {{ request('city') == 'Abu Dhabi' ? 'selected' : '' }}>
                                     {{ __('filter.city.AbuDhabi') }}</option>
@@ -51,7 +53,7 @@
                                     {{ __('filter.city.RAK') }}</option>
                             </select>
 
-                            <select name="property_type">
+                            <select id="property_type" name="property_type">
                                 <option disabled selected>{{ __('filter.property_type') }}</option>
                                 <option value="Residential"
                                     {{ request('property_type') == 'Residential' ? 'selected' : '' }}>
@@ -64,6 +66,7 @@
                                 <option value="Villa" {{ request('property_type') == 'Villa' ? 'selected' : '' }}>
                                     {{ __('filter.property_type.Villa') }}</option>
                             </select>
+
                             <h4 class="contact1a">{{ __('status') }}</h4>
                             <select name="status">
                                 <option disabled selected>{{ __('filter.status.select') }}</option>
@@ -120,7 +123,7 @@
                                     <div class="icons">
                                         {{-- <img src="{{ asset('/assets/images/projects/icon.png') }}" /> --}}
                                         {{-- <img src="{{ asset('/assets/images/projects/bed.png') }}" /> --}}
-                                       <i class="fa-solid fa-bed"></i>
+                                        <i class="fa-solid fa-bed"></i>
                                         {{ $project->bedrooms }}
 
                                     </div>
@@ -159,4 +162,38 @@
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById('filter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const type = document.getElementById('property_type').value || '';
+            const city = document.getElementById('community').value || '';
+            const status = document.getElementById('status')?.value || ''; // if you have a status filter
+
+            // Use city first, then type, as the __LOCATION__ placeholder
+            const mainFilter = city || type;
+
+            if (!mainFilter) {
+                return alert('Please select at least a city or a property type.');
+            }
+
+            // Get base URL from Blade
+            const template = this.dataset.baseUrl;
+            let actionUrl = template.replace('__LOCATION__', encodeURIComponent(mainFilter));
+
+            // Build query string only with non-empty filters
+            const params = new URLSearchParams();
+            if (city) params.append('city', city);
+            // alert('City: ' + city);
+            if (type) params.append('property_type', type);
+            if (status) params.append('status', status);
+
+            if (params.toString()) {
+                actionUrl += '?' + params.toString();
+            }
+
+            this.action = actionUrl;
+            this.submit();
+        });
+    </script>
 @endsection

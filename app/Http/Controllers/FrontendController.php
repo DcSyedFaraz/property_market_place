@@ -17,6 +17,7 @@ use App\Models\Blog;
 use App\Models\TeamMember;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Mail;
 
 class FrontendController extends Controller
@@ -427,8 +428,22 @@ class FrontendController extends Controller
     public function showPropertiesByLocation(Request $request, $location)
     {
         // dd($request->all(), $location);
+        $request->validate([
+            'city' => ['nullable', 'string', Rule::in(['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'])],
+            'community' => ['nullable', 'string', Rule::in(['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'])],
+            'property_type' => ['nullable', 'string', Rule::in(['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'])],
+            'status' => ['nullable', 'string', Rule::in(['sold', 'available'])],
+        ]);
+
         $allowedLocations = ['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'];
         $allowedTypes = ['Residential', 'Commercial', 'Off-Plan', 'Mall', 'Villa'];
+
+        $allowedAll = array_merge($allowedLocations, $allowedTypes);
+
+        validator(
+            ['location' => $location],
+            ['location' => ['required', Rule::in($allowedAll)]]
+        )->validate();
 
         $bannerImages = [
             'Residential' => 'about/residential project banner.jpg',
@@ -436,14 +451,35 @@ class FrontendController extends Controller
             'Mall' => 'about/mall project banner.jpg',
         ];
         $type = $request->query('property_type'); // e.g. “Residential”
+        $status = $request->query('status'); // e.g. “Residential”
         $community = $request->query('community');
         // $communities = Community::all();
         // $developers = Developer::all();
 
         $query = AgentProperty::query();
         $currentLang = session('locale');
-        $query->where('status', 'available');
-        if (!$type && !$community) {
+        if ($status) {
+            $query->where('status', $status);
+        }
+
+        if ($type || $community) {
+            // If both are provided
+            if ($type && $community) {
+                $query->where('property_type', $type)
+                    ->where('location', $community);
+                $locationName = __("head_$type");
+            }
+            // If only type is provided
+            elseif ($type) {
+                $query->where('property_type', $type);
+                $locationName = __("head_$type");
+            }
+            // If only community is provided
+            elseif ($community) {
+                $query->where('location', $community);
+                $locationName = __($community);
+            }
+        } elseif ($location) {
             if (in_array($location, $allowedLocations)) {
                 $query->where('location', $location);
                 $locationName = __("$location");
@@ -453,15 +489,10 @@ class FrontendController extends Controller
             } else {
                 abort(404, 'Location or Property Type not found.');
             }
-        } elseif ($type) {
-            $query->where('property_type', $type);
-            $locationName = __("head_$type");
-        } elseif ($community) {
-            $query->where('location', $community);
-            $locationName = __("$community");
         } else {
             abort(404, 'Location or Property Type not found.');
         }
+
         // Sorting logic
         if ($request->has('sort')) {
             switch ($request->input('sort')) {
@@ -480,7 +511,15 @@ class FrontendController extends Controller
             }
         }
         $properties = $query->get();
-        $bannerImage = $bannerImages[$location] ?? 'property-details/bg.png';
+        // dd($properties);
+        if ($type) {
+            $bannerImage = $bannerImages[$type];
+        } elseif ($location) {
+            $bannerImage = $bannerImages[$location] ?? 'property-details/bg.png';
+            // dd($bannerImage);
+        } else {
+            $bannerImage = 'property-details/bg.png';
+        }
 
         return view('frontend.offplan', compact(
             'properties',
