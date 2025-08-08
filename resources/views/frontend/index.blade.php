@@ -445,9 +445,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-5">
-                        <div class="le5 align-items-center justify-content-end d-flex">
+                        {{-- <div class="le5 align-items-center justify-content-end d-flex">
                             <a href="">All Properties</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="owl-carousel type-carol owl-theme mt-4">
