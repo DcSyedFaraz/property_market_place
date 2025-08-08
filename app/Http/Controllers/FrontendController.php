@@ -513,7 +513,7 @@ class FrontendController extends Controller
         $properties = $query->get();
         // dd($properties);
         if ($type) {
-            $bannerImage = $bannerImages[$type];
+            $bannerImage = $bannerImages[$type] ?? 'property-details/bg.png';
         } elseif ($location) {
             $bannerImage = $bannerImages[$location] ?? 'property-details/bg.png';
             // dd($bannerImage);
