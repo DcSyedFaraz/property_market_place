@@ -12,6 +12,17 @@
     @if (app()->getLocale() == 'ar')
         <meta name="direction" content="rtl">
     @endif
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4XHPK2JSCJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-4XHPK2JSCJ');
+    </script>
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}"
         alt="The H Real Estate Logo" title="Logo">
