@@ -13,7 +13,7 @@
         <meta name="direction" content="rtl">
     @endif
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4XHPK2JSCJ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6JTNVW0EQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -21,7 +21,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'G-4XHPK2JSCJ');
+        gtag('config', 'G-G6JTNVW0EQ');
     </script>
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}"
