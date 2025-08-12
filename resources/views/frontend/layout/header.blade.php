@@ -5,16 +5,16 @@
              <div class="row align-items-center">
                  <div class="col-md-2 col-6">
                      <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/logo-footer01.png') }}"
-                             alt="logo" class="logo" /></a>
+                             alt="logo" class="logo" title="Logo" /></a>
                  </div>
                  <div class="col-md-8 col-lg-7 mob-1">
                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about_us') }}">{{ __('About us') }}</a>
-                        </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ route('about_us') }}">{{ __('About us') }}</a>
+                         </li>
                          {{-- <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button"
                                  data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +28,7 @@
                          <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" role="button"
                                  data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ __('Properties') }}
+                                 {{ __('Properties') }}
                              </a>
                              <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
                                  <li><a class="dropdown-item"
@@ -40,9 +40,11 @@
                                  {{-- <li><a class="dropdown-item"
                                          href="{{ route('properties.byLocation', 'Off-Plan') }}">Off-Plan</a></li> --}}
                                  <li><a class="dropdown-item"
-                                         href="{{ route('properties.byLocation', 'Mall') }}">{{ __('Mall') }}</a></li>
+                                         href="{{ route('properties.byLocation', 'Mall') }}">{{ __('Mall') }}</a>
+                                 </li>
                                  <li><a class="dropdown-item"
-                                         href="{{ route('properties.byLocation', 'Villa') }}">{{ __('Villa') }}</a></li>
+                                         href="{{ route('properties.byLocation', 'Villa') }}">{{ __('Villa') }}</a>
+                                 </li>
                              </ul>
                          </li>
                          <li class="nav-item">
@@ -57,11 +59,15 @@
                                  {{ __('Contact us') }}
                              </a>
                              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                 <li><a class="dropdown-item" href="{{ route('contact_us') }}">{{ __('Contact us') }}</a></li>
-                                 <li><a class="dropdown-item" href="{{ route('complaint.form') }}">{{ __('Complaint Form') }}</a></li>
-                                 <li><a class="dropdown-item" href="{{ route('visitor.form') }}">{{ __('Visitor Form') }}</a></li>
-                                 <li><a class="dropdown-item" href="{{ route('registration.form') }}">{{ __('Register as vendor') }}
-                                         </a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('contact_us') }}">{{ __('Contact us') }}</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('complaint.form') }}">{{ __('Complaint Form') }}</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('visitor.form') }}">{{ __('Visitor Form') }}</a></li>
+                                 <li><a class="dropdown-item"
+                                         href="{{ route('registration.form') }}">{{ __('Register as vendor') }}
+                                     </a></li>
                              </ul>
                          </li>
                          {{-- <li class="nav-item">
@@ -73,12 +79,12 @@
                      </ul>
                  </div>
                  <div class="col-md-3 mob-1">
-                    {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
-                    <div class="d-inline ms-2">
-                        <a href="{{ route('lang.switch', 'en') }}">EN</a> |
-                        <a href="{{ route('lang.switch', 'ar') }}">ع</a>
-                    </div>
-                </div>
+                     {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+                     <div class="d-inline ms-2">
+                         <a href="{{ route('lang.switch', 'en') }}">EN</a> |
+                         <a href="{{ route('lang.switch', 'ar') }}">ع</a>
+                     </div>
+                 </div>
                  <div class="col-6 col-md-10 d-lg-none d-md-block">
                      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                          data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false"
@@ -149,13 +155,13 @@
                                          <li><a class="dropdown-item" href="{{ url('visitor') }}">Visitor</a></li>
                                      </ul>
                                  </li>
-                                <li class="nav-item">
-                                    {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
-                                    <div class="d-inline ms-2">
-                                        <a href="{{ route('lang.switch', 'en') }}">EN</a> |
-                                        <a href="{{ route('lang.switch', 'ar') }}">ع</a>
-                                    </div>
-                                </li>
+                                 <li class="nav-item">
+                                     {{-- <a class="nav-link btn10" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
+                                     <div class="d-inline ms-2">
+                                         <a href="{{ route('lang.switch', 'en') }}">EN</a> |
+                                         <a href="{{ route('lang.switch', 'ar') }}">ع</a>
+                                     </div>
+                                 </li>
                              </ul>
                          </div>
                      </div>

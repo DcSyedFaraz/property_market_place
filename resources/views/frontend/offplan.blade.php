@@ -1,4 +1,7 @@
 @extends('frontend.layout.app')
+
+@section('title', 'The H Real Estate | Properties')
+
 @section('content')
     <style>
         .propdetails-banner {

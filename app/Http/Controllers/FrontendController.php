@@ -18,7 +18,7 @@ use App\Models\TeamMember;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -250,6 +250,31 @@ class FrontendController extends Controller
     {
         return view('frontend.contact-us');
     }
+
+    public function emailsend(Request $request)
+    {
+        $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email',
+            'phone'   => 'required',
+            'message' => 'required|string',
+        ]);
+
+        // Email send
+        Mail::send('frontend.emails.contact', [
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'messageContent' => $request->message
+        ], function ($mail) use ($request) {
+            $mail->from($request->email, $request->name);
+            $mail->to('your-email@example.com') // apna email yahan likhen
+                ->subject('New Contact Form Submission');
+        });
+
+        return back()->with('success', 'Your message has been sent successfully!');
+    }
+
     public function faqs()
     {
         return view('frontend.faqs');

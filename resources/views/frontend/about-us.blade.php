@@ -1,4 +1,5 @@
 @extends('frontend.layout.app')
+@section('title', 'The H Real Estate | About Us')
 @section('content')
     <style>
         ul {
@@ -15,7 +16,7 @@
 
     <section class="banner">
         <div class="container">
-            <h2 class="bannerh2">{{ __('About us') }}</h2>
+            <h1 class="bannerh2">{{ __('ABOUT US') }}</h1>
         </div>
     </section>
 
@@ -39,7 +40,8 @@
                         <p class="about1c">{{ __('who_we_are_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/who we are.png') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/who we are.png') }}" alt="aboutus1" class="about2-img"
+                            title="Who we are" />
                     </div>
                 </div>
             </div>
@@ -47,8 +49,8 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/our services includes.png') }}" alt="about1"
-                            class="about1-img" />
+                        <img src="{{ asset('assets/images/about/our services includes.png') }}" alt="aboutus2"
+                            title="Our Services" class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('services_title') }}</h3>
@@ -72,7 +74,8 @@
                         <p class="about1c">{{ __('goal_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/our goal.png') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/our goal.png') }}" alt="aboutus3" title="Our Goal"
+                            class="about2-img" />
                     </div>
                 </div>
             </div>
@@ -80,7 +83,8 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/vision.png') }}" alt="about1" class="about1-img" />
+                        <img src="{{ asset('assets/images/about/vision.png') }}" alt="aboutus4" title="Vision"
+                            class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('vision_title') }}</h3>
@@ -96,7 +100,8 @@
                         <p class="about1c">{{ __('mission_text') }}</p>
                     </div>
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/mission.png') }}" alt="about1" class="about2-img" />
+                        <img src="{{ asset('assets/images/about/mission.png') }}" alt="aboutus5" title="Mission"
+                            class="about2-img" />
                     </div>
                 </div>
             </div>
@@ -104,8 +109,8 @@
             <div class="about1">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <img src="{{ asset('assets/images/about/why choose us.png') }}" alt="about1"
-                            class="about1-img" />
+                        <img src="{{ asset('assets/images/about/why choose us.png') }}" alt="aboutus6"
+                            title="Why Choose Us" class="about1-img" />
                     </div>
                     <div class="col-md-6">
                         <h3 class="about1b">{{ __('why_choose_us_title') }}</h3>

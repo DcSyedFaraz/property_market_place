@@ -1,11 +1,14 @@
 @extends('frontend.layout.app')
+@section('title', 'The H Real Estate | Visitor Form')
 @section('content')
-    <section class="sec-001 bread-crumb" style="background-image: url('{{asset('assets/images/about/visitor banner.jpg')}}');">
+    <section class="sec-001 bread-crumb"
+        style="background-image: url('{{ asset('assets/images/about/visitor banner.jpg') }}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">{{ __('Visitor Form') }}</h1>
-                    <p class="text-center"><a href="/">{{ __('Home') }}</a> / <a href="#">{{ __('Visitor Form') }}</a></p>
+                    <p class="text-center"><a href="/">{{ __('Home') }}</a> / <a
+                            href="#">{{ __('Visitor Form') }}</a></p>
                 </div>
             </div>
     </section>
@@ -43,7 +46,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone_number" class="form-label">{{ __('Phone Number') }}</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                        required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">{{ __('Email') }}</label>
@@ -60,19 +64,22 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="specifications" class="form-label">{{ __('Specifications/Requirements') }}</label>
+                                    <label for="specifications"
+                                        class="form-label">{{ __('Specifications/Requirements') }}</label>
                                     <textarea class="form-control" id="specifications" name="specifications" rows="3"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="preferred_location" class="form-label">{{ __('Preferred Location') }}</label>
-                                    <input type="text" class="form-control" id="preferred_location" name="preferred_location">
+                                    <label for="preferred_location"
+                                        class="form-label">{{ __('Preferred Location') }}</label>
+                                    <input type="text" class="form-control" id="preferred_location"
+                                        name="preferred_location">
                                 </div>
                                 <div class="mb-3">
                                     <label for="budget_range" class="form-label">{{ __('Budget Range') }}</label>
                                     <input type="number" class="form-control" id="budget_range" name="budget_range">
                                 </div>
-                                 <!-- Submit Button -->
-                                 <div class="d-grid">
+                                <!-- Submit Button -->
+                                <div class="d-grid">
                                     <button type="submit" style="background-color:#007681; border: #007681"
                                         class="btn btn-dark btn-lg">{{ __('Submit Request') }}</button>
                                 </div>

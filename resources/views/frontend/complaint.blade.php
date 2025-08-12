@@ -1,4 +1,5 @@
 @extends('frontend.layout.app')
+@section('title', 'The H Real Estate | Complaint Form')
 @section('content')
     <section class="sec-001 bread-crumb">
         <div class="container">

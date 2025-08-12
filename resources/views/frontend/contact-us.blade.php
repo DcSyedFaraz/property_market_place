@@ -1,4 +1,5 @@
 @extends('frontend.layout.app')
+@section('title', 'The H Real Estate | Contact Us')
 @section('content')
     @if (app()->getLocale() == 'ar')
         <style>
@@ -45,19 +46,22 @@
                     </div>
                     <div class="col-md-6">
 
-                        <form class="contact-form">
+                        <form class="contact-form" method="POST" action="{{ route('contact.send') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="{{ '    ' . __('Your Name') }}" required />
+                                    <input type="text" placeholder="{{ '    ' . __('Your Name') }}" name="name"
+                                        required />
                                 </div>
                                 <div class="col-md-6 mob-input">
-                                    <input type="email" placeholder="{{ __('Your Email') }}" required />
+                                    <input type="email" placeholder="{{ __('Your Email') }}" name="email" required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <input type="number" placeholder="{{ '    ' . __('Your Phone') }}" required />
+                                    <input type="number" placeholder="{{ '    ' . __('Your Phone') }}" name="phone"
+                                        required />
                                 </div>
                                 <div class="col-md-12 mt-3">
-                                    <textarea rows="6" placeholder="{{ '  ' . __('Message') }}"></textarea>
+                                    <textarea rows="6" placeholder="{{ '  ' . __('Message') }}" name="message"></textarea>
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <button type="submit">{{ __('Submit') }}</button>

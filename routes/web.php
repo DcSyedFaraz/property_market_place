@@ -70,6 +70,7 @@ Route::controller(FrontendController::class)->group(function () {
 
     Route::get('/inner-blog', 'inner_blog')->name('inner_blog');
     Route::get('/contact-us', 'contact_us')->name('contact_us');
+    Route::post('/contact/send', 'emailsend')->name('contact.send');
     Route::get('/offplan', 'offplan')->name('offplan');
     Route::get('/developer-list', 'developer_list')->name('developer_list');
     Route::get('/location', 'location')->name('location');
@@ -127,12 +128,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 
     Route::get('user/dashboard', [UserController::class, 'user'])->name('user.dashboard');
-
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:user|admin']], function () {
-
-});
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:user|admin']], function () {});
 
 
 

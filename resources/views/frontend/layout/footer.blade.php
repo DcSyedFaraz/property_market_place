@@ -26,8 +26,8 @@
     <div class="container">
         <div class="row ms-2">
             <div class="col-md-4 first-col">
-                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-footer02.png') }}" alt=""
-                        class="footer-logo"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('assets/img/logo-footer02.png') }}" alt="Footer Logo"
+                        title="The H Real Estate Logo" class="footer-logo"></a>
                 {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi in nisi semper, vel
                     consectetur tellus ultricies.</p> --}}
                 <div class="foter-social-logo mt-4 mb-4">

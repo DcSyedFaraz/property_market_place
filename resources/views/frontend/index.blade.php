@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The H Real Estate</title>
-    <meta name="description" content="" />
+    <meta name="title" content="The H Real Estate | UAE Property Experts">
+    <title>The H Real Estate | UAE Property Experts</title>
+    <meta name="description"
+        content="Trusted UAE real estate company offering expert property solutions. Find luxury or affordable homes tailored to your needs with us." />
     <meta name="keywords" content="" />
     @if (app()->getLocale() == 'ar')
         <meta name="direction" content="rtl">
     @endif
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}"
+        alt="The H Real Estate Logo" title="Logo">
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <!-- Bootstrap Files -->
@@ -30,7 +33,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-2 col-6">
                         <a class="navbar-brand" href="/"><img src="{{ asset('assets/img/image 10.png') }}"
-                                alt="logo" class="logo"></a>
+                                alt="logo" class="logo" title="Logo"></a>
                     </div>
                     <div class="col-md-8 col-lg-7 mob-1">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -182,10 +185,10 @@
                                     </li>
                                     {{-- <li><a class="nav-link btn10"
                                             href="{{ route('login') }}">{{ __('Login') }}</a> --}}
-                                        <div class="d-inline ms-2">
-                                            <a href="{{ route('lang.switch', 'en') }}">EN</a> |
-                                            <a href="{{ route('lang.switch', 'ar') }}">ع</a>
-                                        </div>
+                                    <div class="d-inline ms-2">
+                                        <a href="{{ route('lang.switch', 'en') }}">EN</a> |
+                                        <a href="{{ route('lang.switch', 'ar') }}">ع</a>
+                                    </div>
                                     </li>
                                 </ul>
                             </div>
@@ -334,37 +337,42 @@
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Abu Dhabi') }}">
-                                    <img src="{{ asset('assets/img/Abu Dhabi.webp') }}" alt="Abu Dhabi" />
+                                    <img src="{{ asset('assets/img/Abu Dhabi.webp') }}" alt="Abu Dhabi"
+                                        title="Abu Dhabi" />
                                     <h4>{{ __('Abu Dhabi') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Dubai') }}">
-                                    <img src="{{ asset('assets/img/dubai.webp') }}" alt="Dubai" />
+                                    <img src="{{ asset('assets/img/dubai.webp') }}" alt="Dubai" title="Dubai" />
                                     <h4>{{ __('Dubai') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Al Ain') }}">
-                                    <img src="{{ asset('assets/img/Al Ain.webp') }}" alt="Al Ain" />
+                                    <img src="{{ asset('assets/img/Al Ain.webp') }}" alt="Al Ain"
+                                        title="Al Ain" />
                                     <h4>{{ __('Al Ain') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Sharjah') }}">
-                                    <img src="{{ asset('assets/img/Sharjah.webp') }}" alt="Sharjah" />
+                                    <img src="{{ asset('assets/img/Sharjah.webp') }}" alt="Sharjah"
+                                        title="Sharjah" />
                                     <h4>{{ __('Sharjah') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Fujairah') }}">
-                                    <img src="{{ asset('assets/img/Fujairah.webp') }}" alt="Fujairah" />
+                                    <img src="{{ asset('assets/img/Fujairah.webp') }}" alt="Fujairah"
+                                        title="Fujairah" />
                                     <h4>{{ __('Fujairah') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
                                 <a href="{{ route('properties.byLocation', 'Ras Al Khaimah') }}">
-                                    <img src="{{ asset('assets/img/Ras Al Khaimah.webp') }}" alt="Ras Al Khaimah" />
+                                    <img src="{{ asset('assets/img/Ras Al Khaimah.webp') }}" alt="Ras Al Khaimah"
+                                        title="Ras Al Khaimah" />
                                     <h4>{{ __('Ras Al Khaimah') }}</h4>
                                 </a>
                             </div>
@@ -452,25 +460,27 @@
                     <div class="d-flex justify-content-center">
                         <div class="owl-carousel type-carol owl-theme mt-4">
                             <div class="item">
-                                <img src="{{ asset('assets/img/Residential.webp') }}" alt="" />
+                                <img src="{{ asset('assets/img/Residential.webp') }}" alt="Residential"
+                                    title="Residential" />
                                 <a href="{{ route('properties.byLocation', 'Residential') }}">
                                     <h4>{{ __('Residential') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
-                                <img src="{{ asset('assets/img/commercial.webp') }}" alt="" />
+                                <img src="{{ asset('assets/img/commercial.webp') }}" alt="Commercial"
+                                    title="Commercial" />
                                 <a href="{{ route('properties.byLocation', 'Commercial') }}">
                                     <h4>{{ __('Commercial') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
-                                <img src="{{ asset('assets/img/mall.webp') }}" alt="" />
+                                <img src="{{ asset('assets/img/mall.webp') }}" alt="Mall" title="Mall" />
                                 <a href="{{ route('properties.byLocation', 'Mall') }}">
                                     <h4>{{ __('Mall') }}</h4>
                                 </a>
                             </div>
                             <div class="item">
-                                <img src="{{ asset('assets/img/villa.webp') }}" alt="" />
+                                <img src="{{ asset('assets/img/villa.webp') }}" alt="Villa" title="Villa" />
                                 <a href="{{ route('properties.byLocation', 'Villa') }}">
                                     <h4>{{ __('Villa') }}</h4>
                                 </a>
@@ -559,17 +569,19 @@
                     </div>
                 </div>
                 <div class="owl-carousel logo-carol owl-theme mt-4">
-                    <div class="item"><img src="{{ asset('assets/img/Aldar Logo.webp') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/img/Aldar Logo.webp') }}" alt="Aldar Logo"
+                            title="Aldar Logo"></div>
                     <div class="item"><img src="{{ asset('assets/img/Azizi Profile Logo.webp') }}"
-                            alt="">
-                    </div>
+                            alt="Azizi Logo" title="Azizi Logo"></div>
                     <div class="item"><img src="{{ asset('assets/img/Dubai properties Logo.webp') }}"
-                            alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/Ellington Logo.webp') }}" alt="">
+                            alt="Dubai Properties Logo" title="Dubai Properties Logo"></div>
+                    <div class="item"><img src="{{ asset('assets/img/Ellington Logo.webp') }}"
+                            alt="Ellington Logo" title="Ellington Logo">
                     </div>
                     <div class="item"><img src="{{ asset('assets/img/Emaar Properties Logo.webp') }}"
-                            alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/img/Meraas Logo.webp') }}" alt=""></div>
+                            alt="Emaar Properties Logo" title="Emaar Properties Logo"></div>
+                    <div class="item"><img src="{{ asset('assets/img/Meraas Logo.webp') }}" alt="Meraas Logo"
+                            title="Meraas Logo"></div>
                     {{-- <div class="item"><img src="{{ asset('assets/img/logo03.png') }}" alt="">
                 </div> --}}
                 </div>

@@ -1,7 +1,8 @@
 @extends('frontend.layout.app')
-
+@section('title', 'The H Real Estate | Registration Form')
 @section('content')
-    <section class="sec-001 bread-crumb" style="background-image: url('{{asset('assets/images/about/vendor banner.jpg')}}');">
+    <section class="sec-001 bread-crumb"
+        style="background-image: url('{{ asset('assets/images/about/vendor banner.jpg') }}');">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

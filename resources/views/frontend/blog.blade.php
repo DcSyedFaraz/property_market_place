@@ -1,5 +1,7 @@
 @extends('frontend.layout.app')
 
+@section('title', 'The H Real Estate | Blogs')
+
 @section('content')
     <style>
         .banners {
@@ -55,7 +57,7 @@
                                     <small>{{ $blog->created_at->format('F j, Y') }}</small>
                                 </div>
                                 <h3 class="card-title h5 fw-bold text-dark mb-3">
-                                    <a href="{{ route('blog.show',  $blog->slug) }}">
+                                    <a href="{{ route('blog.show', $blog->slug) }}">
                                         {{ $blog->translate()?->title }}
                                     </a>
                                 </h3>
