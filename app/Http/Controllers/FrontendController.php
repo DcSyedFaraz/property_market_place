@@ -15,10 +15,12 @@ use App\Models\MasterPlan;
 use App\Models\Product;
 use App\Models\Blog;
 use App\Models\TeamMember;
+use Config;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
+use Log;
 
 class FrontendController extends Controller
 {
@@ -63,9 +65,16 @@ class FrontendController extends Controller
             'suggestion' => $validated['suggestion'] ?? 'N/A',
         ];
 
-        // // Send the email
-        // Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
-
+        try {
+            // Simple check: Ensure mailer host is set
+            if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
+                Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
+            } else {
+                Log::warning('SMTP configuration not available. Email not sent.');
+            }
+        } catch (\Exception $e) {
+            Log::error('Failed to send email: ' . $e->getMessage());
+        }
         // Redirect back with success message
         return redirect()->back()->with('success', 'Your complaint has been submitted successfully.');
     }
@@ -254,17 +263,17 @@ class FrontendController extends Controller
     public function emailsend(Request $request)
     {
         $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email',
-            'phone'   => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required',
             'message' => 'required|string',
         ]);
 
         // Email send
         Mail::send('frontend.emails.contact', [
-            'name'    => $request->name,
-            'email'   => $request->email,
-            'phone'   => $request->phone,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
             'messageContent' => $request->message
         ], function ($mail) use ($request) {
             $mail->from($request->email, $request->name);
