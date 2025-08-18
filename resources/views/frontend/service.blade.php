@@ -38,7 +38,7 @@
                 </div> --}}
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="{{ asset('assets/images/service/s5.png') }}" alt="Facility Management"
+                        <img src="{{ asset('assets/images/service/s4.png') }}" alt="Facility Management"
                             title="Facility Management" />
                         <h3>{{ __('Facility Management') }}</h3>
                         {{-- <p>{{ __('What makes Property Angel the best NRI Property Management.') }}</p> --}}
