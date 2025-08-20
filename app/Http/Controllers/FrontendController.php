@@ -68,7 +68,7 @@ class FrontendController extends Controller
         try {
             // Simple check: Ensure mailer host is set
             if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
-                Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
+                Mail::to('maintenance@thehr.ae')->send(new ComplaintMail($data));
             } else {
                 Log::warning('SMTP configuration not available. Email not sent.');
             }
@@ -166,7 +166,7 @@ class FrontendController extends Controller
         ];
 
         // // Send the email
-        Mail::to('info@thehr.ae')->send(new VisitorMail($data));
+        Mail::to('maintenance@thehr.ae')->send(new VisitorMail($data));
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully!');
     }
