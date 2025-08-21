@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h2>New Complaint Submitted</h2>
+    <h2>Complaint</h2>
     <p><strong>Full Name:</strong> {{ $data['full_name'] }}</p>
     <p><strong>Phone Number:</strong> {{ $data['phone_number'] }}</p>
     <p><strong>Email:</strong> {{ $data['email'] }}</p>

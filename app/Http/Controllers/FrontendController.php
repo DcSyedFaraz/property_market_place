@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ComplaintMail;
+use App\Mail\ContactForm;
 use App\Mail\VisitorMail;
 use App\Models\AgentProperty;
 use App\Models\Community;
@@ -68,7 +69,7 @@ class FrontendController extends Controller
         try {
             // Simple check: Ensure mailer host is set
             if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
-                Mail::to('maintenance@thehr.ae')->send(new ComplaintMail($data));
+                Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
             } else {
                 Log::warning('SMTP configuration not available. Email not sent.');
             }
@@ -131,8 +132,6 @@ class FrontendController extends Controller
         $registration->office_address = $validated['office_address'];
         $registration->save();
 
-        // dd($registration);
-
         return redirect()->back()->with('success', 'Registration submitted successfully.');
     }
 
@@ -166,7 +165,7 @@ class FrontendController extends Controller
         ];
 
         // // Send the email
-        Mail::to('maintenance@thehr.ae')->send(new VisitorMail($data));
+        Mail::to('info@thehr.ae')->send(new VisitorMail($data));
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully!');
     }
@@ -268,19 +267,20 @@ class FrontendController extends Controller
             'phone' => 'required',
             'message' => 'required|string',
         ]);
-
         // Email send
-        Mail::send('frontend.emails.contact', [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'messageContent' => $request->message
-        ], function ($mail) use ($request) {
-            $mail->from($request->email, $request->name);
-            $mail->to('your-email@example.com') // apna email yahan likhen
-                ->subject('New Contact Form Submission');
-        });
 
+
+
+        try {
+            // Simple check: Ensure mailer host is set
+            if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
+                Mail::to('infor@thehr.ae')->send(new ContactForm($request->all()));
+            } else {
+                Log::warning('SMTP configuration not available. Email not sent.');
+            }
+        } catch (\Exception $e) {
+            Log::error('Failed to send email: ' . $e->getMessage());
+        }
         return back()->with('success', 'Your message has been sent successfully!');
     }
 
