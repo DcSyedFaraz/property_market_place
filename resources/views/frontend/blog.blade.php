@@ -68,7 +68,7 @@
 
 
                                 <div class="mt-auto">
-                                    <a href="{{ route('blog.show', $blog->translate()?->slug) }}"
+                                    <a href="{{ route('blog.show', $blog->slug) }}"
                                         class="btn10 btn-outline-primary btn-sm">
                                         {{ __('Read More') }}
                                         <i class="fas fa-arrow-right ms-1"></i>
