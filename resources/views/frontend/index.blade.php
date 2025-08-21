@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="The H Real Estate | UAE Property Experts">
     <title>The H Real Estate | UAE Property Experts</title>
+    <link rel="canonical" href="https://thehr.ae/" />
     <meta name="description"
         content="Trusted UAE real estate company offering expert property solutions. Find luxury or affordable homes tailored to your needs with us." />
     <meta name="keywords" content="" />
