@@ -13,7 +13,7 @@
     </section>
     <section class="about-main">
         <div class="container">
-            <div class="service1">
+            <div class="service1 d-flex justify-content-center">
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s1.png') }}" alt="Property Management"

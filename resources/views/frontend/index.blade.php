@@ -284,10 +284,12 @@
                                     <select name="community" id="community" class="f2">
                                         <option value="" hidden>{{ __('City, Neighborhood, or Community') }}
                                         </option>
-                                        <option value="Dubai">{{ __('Dubai') }}</option>
                                         <option value="Abu Dhabi">{{ __('Abu Dhabi') }}</option>
+                                        <option value="Dubai">{{ __('Dubai') }}</option>
+                                        <option value="Al Ain">{{ __('Al Ain') }}</option>
                                         <option value="Sharjah">{{ __('Sharjah') }}</option>
-                                        {{-- …and so on for each allowed location… --}}
+                                        <option value="Fujairah">{{ __('Fujairah') }}</option>
+                                        <option value="Ras Al Khaimah">{{ __('Ras Al Khaimah') }}</option>
                                     </select>
 
                                     <button type="submit" class="button has-icon icon-send">
@@ -458,7 +460,7 @@
                         <div class="le5">
                             <h2 class="le-title">{{ __('Browse by property type') }}</h2>
                             <p class="card-text">
-                                {{ __('Handpicked projects for you') }}
+                                {{-- {{ __('Handpicked projects for you') }} --}}
                             </p>
                         </div>
                     </div>
