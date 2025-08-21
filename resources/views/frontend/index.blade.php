@@ -344,7 +344,7 @@
                     <div class="col-md-12 me-auto text-center content1">
                         <h2>{{ __('Our properties') }}</h2>
                         <p>
-                            {{ __('New Properties') }}
+                            {{-- {{ __('New Properties') }} --}}
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
