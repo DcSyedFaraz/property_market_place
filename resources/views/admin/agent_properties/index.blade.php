@@ -10,7 +10,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Location</th>
+                    <th>Location</th>           
+                    <th>Type</th>
                     <th>Price</th>
                     <th>Area (sq meter)</th>
                     <th>Status</th>
@@ -24,6 +25,7 @@
                        <td>{{ $property->translations->pluck('title')->implode(' | ') }}</td>
 
                         <td>{{ $property->location }}</td>
+                        <td>{{ $property->property_type }}</td>
                         <td>{{ number_format($property->price, 2) }}</td>
                         <td>{{ $property->area }}</td>
                         <td>{{ ucfirst($property->status) }}</td>

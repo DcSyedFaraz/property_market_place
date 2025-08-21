@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h2>New Property Request</h2>
+    <h2>Visitor</h2>
     <p><strong>Name:</strong> {{ $data['name'] }}</p>
     <p><strong>Phone:</strong> {{ $data['phone_number'] }}</p>
     <p><strong>Email:</strong> {{ $data['email'] }}</p>

@@ -13,7 +13,7 @@
     </section>
     <section class="about-main">
         <div class="container">
-            <div class="service1">
+            <div class="service1 d-flex justify-content-center">
                 <div class="service-imgbox">
                     <a href="#">
                         <img src="{{ asset('assets/images/service/s1.png') }}" alt="Property Management"
@@ -38,7 +38,7 @@
                 </div> --}}
                 <div class="service-imgbox">
                     <a href="#">
-                        <img src="{{ asset('assets/images/service/s4.png') }}" alt="Facility Management"
+                        <img src="{{ asset('assets/images/service/s6.jpg') }}" alt="Facility Management"
                             title="Facility Management" />
                         <h3>{{ __('Facility Management') }}</h3>
                         {{-- <p>{{ __('What makes Property Angel the best NRI Property Management.') }}</p> --}}
@@ -53,7 +53,7 @@
                 </div> --}}
             </div>
             <div class="about-3">
-                <div class="container">
+                {{-- <div class="container">
                     <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
                     <p class="about3b">
                         {{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}
@@ -62,7 +62,7 @@
                         <input type="email" placeholder="{{ __('notify.email_placeholder') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

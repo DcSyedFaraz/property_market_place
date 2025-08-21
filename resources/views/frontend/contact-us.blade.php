@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="about-3">
-                <div class="container">
+                {{-- <div class="container">
                     <h3 class="about3a">{{ __('Be the first to know.') }}</h3>
                     <p class="about3b">
                         {{ __('We invite you to register below and we’ll be in touch with exclusive updates and announcements about pre-leasing opportunities.') }}
@@ -81,7 +81,7 @@
                         <input type="email" placeholder="{{ __('notify.email_placeholder') }}" name="email" />
                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

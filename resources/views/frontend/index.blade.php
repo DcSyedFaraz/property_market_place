@@ -14,16 +14,15 @@
         <meta name="direction" content="rtl">
     @endif
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6JTNVW0EQ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NHSHZHZEWD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-G6JTNVW0EQ');
-    </script>
+  gtag('config', 'G-NHSHZHZEWD');
+</script>
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}"
         alt="The H Real Estate Logo" title="Logo">
@@ -286,10 +285,12 @@
                                     <select name="community" id="community" class="f2">
                                         <option value="" hidden>{{ __('City, Neighborhood, or Community') }}
                                         </option>
-                                        <option value="Dubai">{{ __('Dubai') }}</option>
                                         <option value="Abu Dhabi">{{ __('Abu Dhabi') }}</option>
+                                        <option value="Dubai">{{ __('Dubai') }}</option>
+                                        <option value="Al Ain">{{ __('Al Ain') }}</option>
                                         <option value="Sharjah">{{ __('Sharjah') }}</option>
-                                        {{-- …and so on for each allowed location… --}}
+                                        <option value="Fujairah">{{ __('Fujairah') }}</option>
+                                        <option value="Ras Al Khaimah">{{ __('Ras Al Khaimah') }}</option>
                                     </select>
 
                                     <button type="submit" class="button has-icon icon-send">
@@ -344,7 +345,7 @@
                     <div class="col-md-12 me-auto text-center content1">
                         <h2>{{ __('Our properties') }}</h2>
                         <p>
-                            {{ __('New Properties') }}
+                            {{-- {{ __('New Properties') }} --}}
                         </p>
                         <div class="owl-carousel service-carol owl-theme">
                             <div class="item">
@@ -460,7 +461,7 @@
                         <div class="le5">
                             <h2 class="le-title">{{ __('Browse by property type') }}</h2>
                             <p class="card-text">
-                                {{ __('Handpicked projects for you') }}
+                                {{-- {{ __('Handpicked projects for you') }} --}}
                             </p>
                         </div>
                     </div>

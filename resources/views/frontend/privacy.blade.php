@@ -33,7 +33,7 @@
             <p class="priv2">By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site. Your continued use of the Site following the posting of changes to this policy will be deemed your acceptance of those changes.</p>
         </div>
         <div class="about-3">
-            <div class="container">
+            {{-- <div class="container">
                 <h3 class="about3a">Be the first to know.</h3>
                 <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and
                     announcements about pre-leasing opportunities.</p>
@@ -41,7 +41,7 @@
                     <input type="email" placeholder="Enter Your Email Address" name="email" />
                     <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                 </form>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

@@ -12,9 +12,8 @@
     @if (app()->getLocale() == 'ar')
         <meta name="direction" content="rtl">
     @endif
-
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6JTNVW0EQ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHSHZHZEWD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -22,9 +21,9 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'G-G6JTNVW0EQ');
-    </script>
 
+        gtag('config', 'G-NHSHZHZEWD');
+    </script>
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}">
     <!-- Font Awesome 4 -->
