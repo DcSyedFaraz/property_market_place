@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', $property->title . ' | The H Real Estate UAE')
+@section('description', 'View details of ' . $property->title . ' located in ' . $property->location . '. ' . \Illuminate\Support\Str::limit(strip_tags($property->description), 120))
 @section('content')
     <!-- Bread Crumb -->
     <section class="sec-001 bread-crumb" style="background-image: url('{{ asset('storage/' . $property->image) }}');">

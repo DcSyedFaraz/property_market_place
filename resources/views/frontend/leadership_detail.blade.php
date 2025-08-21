@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', $teammember->name . ' - ' . $teammember->position . ' | The H Real Estate UAE')
+@section('description', 'Learn more about ' . $teammember->name . ', ' . $teammember->position . ' at The H Real Estate. ' . \Illuminate\Support\Str::limit(strip_tags($teammember->description), 140))
 @section('content')
 
     <style>
@@ -51,7 +53,7 @@
 					<img src="{{ asset('/uploads/'.$teammember->image ) }}" alt="Profile Image" class="profile-img">
 				</div>
 				<div class="col-md-8 info-section text-white">
-					
+
 			        <h2 class="bannerh2 fw-bold fs-1">{{ $teammember->name }}</h2>
       			    <h2>{{ $teammember->position }}</h2>
 					<p>{{ $teammember->description }}</p>

@@ -1,5 +1,6 @@
 @extends('frontend.layout.app')
-@section('title', 'The H Real Estate | Contact Us')
+@section('title', 'Contact The H Real Estate | UAE Property Experts')
+@section('description', 'Get in touch with The H Real Estate for trusted property guidance. Reach us for residential, commercial, and luxury real estate solutions.')
 @section('content')
     @if (app()->getLocale() == 'ar')
         <style>

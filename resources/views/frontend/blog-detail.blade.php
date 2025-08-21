@@ -1,5 +1,6 @@
 @extends('frontend.layout.app')
-
+@section('title', $blog->translate()?->title . ' | The H Real Estate Blog')
+@section('description', \Illuminate\Support\Str::limit(strip_tags($blog->translate()?->description), 160))
 @section('content')
     {{-- <section class="blog-banner">
         <div class="container">
@@ -14,7 +15,7 @@
                     <div class="col-md-12 col-lg-9 p-5">
                         <div class="blog-text">
                               <img src="{{ $blog->image ? asset('storage/' . $blog->image) : 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg' }}"
-                        
+
                                 class="blog-image"
                                 alt="{{ $blog->translate()?->title }}" />
 
@@ -27,7 +28,7 @@
                     </div>
 
                     {{-- Optional Sidebar for Related Blogs --}}
-                    {{-- 
+                    {{--
                     <div class="col-md-3">
                         <div class="border-left">
                             @foreach ($blogs as $related)

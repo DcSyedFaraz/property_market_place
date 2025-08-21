@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="The H Real Estate | UAE Property Experts">
-    <title>The H Real Estate | UAE Property Experts</title>
+    <meta name="title" content="The H Real Estate | Trusted UAE Property Experts">
+    <title>The H Real Estate | Trusted UAE Property Experts</title>
     <link rel="canonical" href="https://thehr.ae/" />
     <meta name="description"
-        content="Trusted UAE real estate company offering expert property solutions. Find luxury or affordable homes tailored to your needs with us." />
+        content="Find your perfect property with The H Real Estate. Trusted UAE experts in residential, commercial, and luxury real estate solutions." />
     <meta name="keywords" content="" />
     @if (app()->getLocale() == 'ar')
         <meta name="direction" content="rtl">
     @endif
     <!-- Google tag (gtag.js) -->
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NHSHZHZEWD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHSHZHZEWD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-NHSHZHZEWD');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NHSHZHZEWD');
+    </script>
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/logo-footer01.png') }}"
         alt="The H Real Estate Logo" title="Logo">

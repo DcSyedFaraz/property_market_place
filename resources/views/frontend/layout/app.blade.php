@@ -5,9 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'The H Real Estate | UAE Property Experts')</title>
-    <meta name="title" content="The H Real Estate | UAE Property Experts">
-    <meta name="description"
-        content="Trusted UAE real estate company offering expert property solutions. Find luxury or affordable homes tailored to your needs with us.">
+    <meta name="title" content="@yield('title', 'The H Real Estate | UAE Property Experts')">
+    <meta name="description" content="@yield('description', 'Trusted UAE real estate company offering expert property solutions. Find luxury or affordable homes tailored to your needs with us.')">
     <meta name="keywords" content="" />
     @if (app()->getLocale() == 'ar')
         <meta name="direction" content="rtl">

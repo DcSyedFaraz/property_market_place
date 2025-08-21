@@ -1,5 +1,6 @@
 @extends('frontend.layout.app')
-@section('title', 'The H Real Estate | About Us')
+@section('title', 'About The H Real Estate | UAE\'s Trusted Realtors')
+@section('description', 'Learn more about The H Real Estate, a trusted name in UAE with years of experience in property solutions, project management, and client care.')
 @section('content')
     <style>
         ul {

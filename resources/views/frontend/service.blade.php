@@ -1,6 +1,7 @@
 @extends('frontend.layout.app')
 
-@section('title', 'The H Real Estate | Services')
+@section('title', 'Real Estate Services | The H Real Estate UAE')
+@section('description', 'From buying and selling to project management, The H Real Estate provides professional, reliable services tailored to meet every client\'s needs.')
 
 @section('content')
     <section class="service">

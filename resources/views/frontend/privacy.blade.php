@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', 'Privacy Policy | The H Real Estate UAE')
+@section('description', 'Read our privacy policy to understand how The H Real Estate collects, uses, and protects your personal information when you use our services.')
 @section('content')
 <section class="service">
     <div class="container">
@@ -10,7 +12,7 @@
         <div class="privacy-main">
             <h3 class="priv3">Privacy Policy</h3>
             <p class="priv2">This Privacy Policy governs the manner in which Real Estate WordPress Theme collects, uses, maintains and discloses information collected from users (each, a “User”) of the website (“Site”). This privacy policy applies to the Site and all products and services offered by Real Estate WordPress Theme.</p>
-            
+
             <h3 class="priv1">Personal identification information</h3>
             <p class="priv2">We may collect personal identification information from Users in a variety of ways in connection with activities, services, features or resources we make available on our Site.. Users may visit our Site anonymously. We will collect personal identification information from Users only if they voluntarily submit such information to us. Users can always refuse to supply personally identification information, except that it may prevent them from engaging in certain Site related activities.</p>
 

@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', $developers->name . ' Properties | The H Real Estate UAE')
+@section('description', 'Explore properties by ' . $developers->name . '. ' . \Illuminate\Support\Str::limit(strip_tags($developers->description), 140))
 @section('content')
     <!-- Bread Crumb -->
     <section class="sec-001 bread-crumb">

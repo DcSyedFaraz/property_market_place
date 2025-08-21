@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', 'Leadership Team | The H Real Estate UAE')
+@section('description', 'Meet our experienced leadership team at The H Real Estate. Our experts bring years of knowledge and dedication to provide exceptional real estate services in UAE.')
 @section('content')
 
 <style>

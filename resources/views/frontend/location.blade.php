@@ -1,4 +1,6 @@
 @extends('frontend.layout.app')
+@section('title', 'Property Locations | The H Real Estate UAE')
+@section('description', 'Find properties in prime locations across UAE. Explore residential and commercial properties in Dubai, Abu Dhabi, Sharjah, and other Emirates.')
 @section('content')
 
  <!-- Bread Crumb -->
