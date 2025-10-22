@@ -26,7 +26,13 @@
 
                         <td>{{ $property->location }}</td>
                         <td>{{ $property->property_type }}</td>
-                        <td>{{ number_format($property->price, 2) }}</td>
+                        <td>
+                            @if (!is_null($property->price))
+                                {{ number_format($property->price, 2) }}
+                            @else
+                                {{ __('properties.contact_for_price') }}
+                            @endif
+                        </td>
                         <td>{{ $property->area }}</td>
                         <td>{{ ucfirst($property->status) }}</td>
                         <td>

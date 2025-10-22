@@ -146,25 +146,84 @@ class FrontendController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:20',
             'email' => 'required|email',
-            'property_type' => 'required',
-            'specifications' => 'required|string',
+            // allow country code characters: +, digits, spaces, hyphens, parentheses
+            'phone_number' => ['required','string','max:20','regex:/^[+0-9\s()\-]{7,20}$/'],
+            'nationality' => 'required|string|max:255',
+
+            // Existing optional fields
+            'property_type' => 'nullable|string',
+            'specifications' => 'nullable|string',
             'preferred_location' => 'nullable|string',
             'budget_range' => 'nullable|integer',
+
+            // Rent-specific fields
+            'payment_for_rent' => 'required|in:Personal,Company',
+            'number_of_family_members' => 'nullable|integer|min:0',
+
+            // Files: PDFs only, 100 MB (102400 KB)
+            'passport' => 'required|file|mimes:pdf|max:102400',
+            'emirates_id' => 'required|file|mimes:pdf|max:102400',
+            'bank_statement' => 'required|file|mimes:pdf|max:102400',
+            'trade_license' => 'nullable|file|mimes:pdf|max:102400',
+            'vat_registration_certificate' => 'nullable|file|mimes:pdf|max:102400',
+            'etihad_credit_bureau' => 'nullable|file|mimes:pdf|max:102400',
         ]);
 
+        // Store files
+        $storePdf = function($file, $dir) {
+            if (!$file) return null;
+            $name = $dir . '_' . time() . '_' . uniqid() . '.pdf';
+            return $file->storeAs('visitor_uploads/' . $dir, $name, 'public');
+        };
+
+        $passportPath = $storePdf($request->file('passport'), 'passport');
+        $emiratesIdPath = $storePdf($request->file('emirates_id'), 'emirates_id');
+        $bankStatementPath = $storePdf($request->file('bank_statement'), 'bank_statement');
+        $tradeLicensePath = $storePdf($request->file('trade_license'), 'trade_license');
+        $vatCertPath = $storePdf($request->file('vat_registration_certificate'), 'vat_registration_certificate');
+        $ecbPath = $storePdf($request->file('etihad_credit_bureau'), 'etihad_credit_bureau');
+
+        // Persist to DB
+        $submission = new \App\Models\VisitorSubmission();
+        $submission->name = $validated['name'];
+        $submission->email = $validated['email'];
+        $submission->phone_number = $validated['phone_number'];
+        $submission->nationality = $validated['nationality'];
+        $submission->property_type = $validated['property_type'] ?? null;
+        $submission->specifications = $validated['specifications'] ?? null;
+        $submission->preferred_location = $validated['preferred_location'] ?? null;
+        $submission->budget_range = $validated['budget_range'] ?? null;
+        $submission->payment_for_rent = $validated['payment_for_rent'];
+        $submission->number_of_family_members = $validated['number_of_family_members'] ?? null;
+        $submission->passport_pdf = $passportPath;
+        $submission->emirates_id_pdf = $emiratesIdPath;
+        $submission->bank_statement_pdf = $bankStatementPath;
+        $submission->trade_license_pdf = $tradeLicensePath;
+        $submission->vat_registration_certificate_pdf = $vatCertPath;
+        $submission->etihad_credit_bureau_pdf = $ecbPath;
+        $submission->save();
+
+        // Prepare data for email (no large attachments, provide links)
         $data = [
-            'name' => $validated['name'],
-            'phone_number' => $validated['phone_number'],
-            'email' => $validated['email'],
-            'property_type' => $validated['property_type'],
-            'specifications' => $validated['specifications'],
-            'preferred_location' => $validated['preferred_location'],
-            'budget_range' => $validated['budget_range'],
+            'name' => $submission->name,
+            'phone_number' => $submission->phone_number,
+            'email' => $submission->email,
+            'nationality' => $submission->nationality,
+            'property_type' => $submission->property_type,
+            'specifications' => $submission->specifications,
+            'preferred_location' => $submission->preferred_location,
+            'budget_range' => $submission->budget_range,
+            'payment_for_rent' => $submission->payment_for_rent,
+            'number_of_family_members' => $submission->number_of_family_members,
+            'passport_pdf' => $submission->passport_pdf,
+            'emirates_id_pdf' => $submission->emirates_id_pdf,
+            'bank_statement_pdf' => $submission->bank_statement_pdf,
+            'trade_license_pdf' => $submission->trade_license_pdf,
+            'vat_registration_certificate_pdf' => $submission->vat_registration_certificate_pdf,
+            'etihad_credit_bureau_pdf' => $submission->etihad_credit_bureau_pdf,
         ];
 
-        // // Send the email
         Mail::to('info@thehr.ae')->send(new VisitorMail($data));
 
         return redirect()->back()->with('success', 'Your request has been submitted successfully!');

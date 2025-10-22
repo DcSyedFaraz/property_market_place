@@ -430,7 +430,11 @@
                     <p class="card-text">
                         {{ $property->description }}
                     </p>
-                    <h6 class="price0">{{ $property->price }} AED</h6>
+                    @if (!is_null($property->price))
+                        <h6 class="price0">AED {{ number_format($property->price) }}</h6>
+                    @else
+                        <h6 class="price0">{{ __('properties.contact_for_price') }}</h6>
+                    @endif
                     <div class="serv-icon mt-4">
                         <i class="fa fa-bed"><span>Bed
                                 {{ $property->propertyTypes->first()->unit_type }}</span></i>

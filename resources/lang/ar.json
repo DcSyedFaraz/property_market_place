@@ -230,5 +230,6 @@
     "properties.balcony_area": "مساحة الشرفة",
     "properties.unit_area": "مساحة الوحدة",
     "properties.status": "الحالة",
-    "properties.be_first_to_know": "كن أول من يعرف."
+    "properties.be_first_to_know": "كن أول من يعرف.",
+    "properties.contact_for_price": "الاتصال للحصول على السعر"
 }

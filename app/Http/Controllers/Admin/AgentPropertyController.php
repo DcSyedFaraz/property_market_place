@@ -50,7 +50,7 @@ class AgentPropertyController extends Controller
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
             'transaction_type' => 'required|in:Rent,Sale',
 
-            'price' => 'required|numeric',
+            'price' => 'nullable|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
@@ -68,7 +68,7 @@ class AgentPropertyController extends Controller
         $property->location = $request->location;
         $property->property_type = $request->property_type;
         $property->transaction_type = $request->transaction_type;
-        $property->price = $request->price;
+        $property->price = $request->filled('price') ? $request->price : null;
         $property->area = $request->area;
         $property->bedrooms = $request->bedrooms;
         $property->bathrooms = $request->bathrooms;
@@ -140,7 +140,7 @@ class AgentPropertyController extends Controller
             'property_type' => 'required|in:Residential,Commercial,Off-Plan,Mall,Villa',
             'transaction_type' => 'required|in:Rent,Sale',
 
-            'price' => 'required|numeric',
+            'price' => 'nullable|numeric',
             'area' => 'required|numeric',
             'bedrooms' => 'nullable|integer',
             'bathrooms' => 'nullable|integer',
@@ -156,7 +156,7 @@ class AgentPropertyController extends Controller
         $property->location = $request->location;
         $property->property_type = $request->property_type;
         $property->transaction_type = $request->transaction_type;
-        $property->price = $request->price;
+        $property->price = $request->filled('price') ? $request->price : null;
         $property->area = $request->area;
         $property->bedrooms = $request->bedrooms;
         $property->bathrooms = $request->bathrooms;

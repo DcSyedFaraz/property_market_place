@@ -231,5 +231,6 @@
     "properties.balcony_area": "Balcony Area",
     "properties.unit_area": "Unit Area",
     "properties.status": "Status",
-    "properties.be_first_to_know": "Be the first to know."
+    "properties.be_first_to_know": "Be the first to know.",
+    "properties.contact_for_price": "Contact for price"
 }

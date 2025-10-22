@@ -38,11 +38,15 @@
                             <h4 class="mb-0">{{ __('Submit a Request of Visitor') }}</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('visitor.submit') }}" method="POST">
+                            <form action="{{ route('visitor.submit') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="name" class="form-label">{{ __('Name') }}</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">{{ __('Email') }}</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone_number" class="form-label">{{ __('Phone Number') }}</label>
@@ -50,8 +54,8 @@
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">{{ __('Email') }}</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <label for="nationality" class="form-label">{{ __('Nationality') }}</label>
+                                    <input type="text" class="form-control" id="nationality" name="nationality" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="property_type" class="form-label">{{ __('Property Type') }}</label>
@@ -77,6 +81,41 @@
                                 <div class="mb-3">
                                     <label for="budget_range" class="form-label">{{ __('Budget Range') }}</label>
                                     <input type="number" class="form-control" id="budget_range" name="budget_range">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="payment_for_rent" class="form-label">{{ __('Payment for the rent is for') }}</label>
+                                    <select class="form-select" id="payment_for_rent" name="payment_for_rent" required>
+                                        <option value="Personal">{{ __('Personal') }}</option>
+                                        <option value="Company">{{ __('Company') }}</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="number_of_family_members" class="form-label">{{ __('Number of Family Members') }}</label>
+                                    <input type="number" class="form-control" id="number_of_family_members" name="number_of_family_members" min="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passport" class="form-label">{{ __('Passport (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="passport" name="passport" accept="application/pdf" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="emirates_id" class="form-label">{{ __('Emirates ID (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="emirates_id" name="emirates_id" accept="application/pdf" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="bank_statement" class="form-label">{{ __('Bank Statement (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="bank_statement" name="bank_statement" accept="application/pdf" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="trade_license" class="form-label">{{ __('Trade License (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="trade_license" name="trade_license" accept="application/pdf">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="vat_registration_certificate" class="form-label">{{ __('VAT Registration Certificate (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="vat_registration_certificate" name="vat_registration_certificate" accept="application/pdf">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="etihad_credit_bureau" class="form-label">{{ __('Etihad Credit Bureau (PDF only, max 100 MB)') }}</label>
+                                    <input type="file" class="form-control" id="etihad_credit_bureau" name="etihad_credit_bureau" accept="application/pdf">
                                 </div>
                                 <!-- Submit Button -->
                                 <div class="d-grid">

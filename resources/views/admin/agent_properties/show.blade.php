@@ -31,7 +31,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-2"><strong>Location:</strong> {{ $property->location }}</div>
-                <div class="mb-2"><strong>Price:</strong> AED {{ number_format($property->price, 2) }}</div>
+                <div class="mb-2">
+                    <strong>Price:</strong>
+                    @if (!is_null($property->price))
+                        AED {{ number_format($property->price, 2) }}
+                    @else
+                        {{ __('properties.contact_for_price') }}
+                    @endif
+                </div>
                 <div class="mb-2"><strong>Area:</strong> {{ $property->area }} sq meter</div>
                 <div class="mb-2"><strong>Bedrooms:</strong> {{ $property->bedrooms ?? 'N/A' }}</div>
                 <div class="mb-2"><strong>Bathrooms:</strong> {{ $property->bathrooms ?? 'N/A' }}</div>

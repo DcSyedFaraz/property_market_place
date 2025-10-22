@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\VisitorSubmissionController;
 
 
 
@@ -124,6 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('communities', CommunityController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('team', TeamController::class);
+    Route::resource('visitor-submissions', VisitorSubmissionController::class)->only(['index','show','destroy']);
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 

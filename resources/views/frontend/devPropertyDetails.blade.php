@@ -1,9 +1,25 @@
 @extends('frontend.layout.app')
 @section('content')
-    <section class="propdetails-banner">
+    @php
+        $bannerImage = asset('assets/images/property-details/bg.png');
+    @endphp
+    <style>
+        .propdetails-banner {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+    <section class="propdetails-banner"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ $bannerImage }}');">
         <div class="container">
-            <h2 class="serviceh2 text-black">@lang('properties.property_detail')</h2>
-            <p class="banner-p text-black">@lang('properties.banner_description')</p>
+            <h2 class="serviceh2">@lang('properties.property_detail')</h2>
+            <p class="banner-p">@lang('properties.banner_description')</p>
         </div>
     </section>
 
@@ -84,7 +100,7 @@
                 </div>
             </div>
 
-          {{-- <div class="about-3">
+            {{-- <div class="about-3">
                 <div class="container">
                     <h3 class="about3a">Be the first to know.</h3>
                     <p class="about3b">We invite you to register below and we’ll be in touch with exclusive updates and

@@ -93,7 +93,11 @@
                                             src="{{ asset('storage/' .$property->image) }}" alt=""></a>
                                     <h4 class="mt-4">{{ $property->title }}</h4>
                                     <p>{{ $property->description }}</p>
-                                    <h4 class="pro-price1">{{ $property->price }} AED</h4>
+                                    @if (!is_null($property->price))
+                                        <h4 class="pro-price1">AED {{ number_format($property->price) }}</h4>
+                                    @else
+                                        <h4 class="pro-price1">{{ __('properties.contact_for_price') }}</h4>
+                                    @endif
                                     <p class="location-name"><i class="bi bi-pin-map"></i> {{ $property->location }}</p>
                                     <div class="dt">
                                         <i class="fa fa-bed"><span> Bed {{ $property->bedrooms }} </span></i>

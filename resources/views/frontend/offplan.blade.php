@@ -141,7 +141,11 @@
 
                         @forelse ($properties as $project)
                             <img src="{{ asset('storage/' . $project->main_image) }}" class="property-image" />
-                            <h4 class="property-price">AED {{ $project->price }}</h4>
+                            @if (!is_null($project->price))
+                                <h4 class="property-price">AED {{ number_format($project->price) }}</h4>
+                            @else
+                                <h4 class="property-price">{{ __('properties.contact_for_price') }}</h4>
+                            @endif
                             <p class="property-det" style="color: white;   ">
                             </p>
                             <div class="details">
