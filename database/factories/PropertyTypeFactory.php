@@ -19,7 +19,7 @@ class PropertyTypeFactory extends Factory
         return [
             'property_type' => $this->faker->randomElement(['Apartment', 'Villa', 'Townhouse']),
             'unit_type' => $this->faker->randomElement(['Type A', 'Type B', 'Type C']),
-            'size' => $this->faker->randomFloat(2, 500, 3000) . ' Sq Ft', // e.g., "1200 Sq Ft"
+            'size' => $this->faker->randomFloat(2, 500, 3000) . ' Sq meter', // e.g., "1200 Sq meter"
         ];
     }
 }

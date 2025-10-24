@@ -40,19 +40,19 @@
                             <ul class="property-details">
                                 @if ($property->unit_area > 0)
                                     <li>
-                                        <strong>Unit Area:</strong> {{ $property->unit_area }} Sq Ft
+                                        <strong>Unit Area:</strong> {{ $property->unit_area }} Sq meter
                                     </li>
                                 @endif
 
                                 @if ($property->balcony_area > 0)
                                     <li>
-                                        <strong>Balcony Area:</strong> {{ $property->balcony_area }} Sq Ft
+                                        <strong>Balcony Area:</strong> {{ $property->balcony_area }} Sq meter
                                     </li>
                                 @endif
 
                                 @if ($property->utility_area > 0)
                                     <li>
-                                        <strong>Utility Area:</strong> {{ $property->utility_area }} Sq Ft
+                                        <strong>Utility Area:</strong> {{ $property->utility_area }} Sq meter
                                     </li>
                                 @endif
 

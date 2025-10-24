@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('category')->nullable(); // e.g., 'Typical Floor Plan'
             $table->string('unit_type')->nullable(); // e.g., 'Layout Plan'
             $table->string('floor_details')->nullable(); // e.g., '1st, 3rd & 5th Floor to Rooftop Floor'
-            $table->string('sizes')->nullable(); // e.g., '0.00 Sq Ft to 0.00 Sq Ft'
+            $table->string('sizes')->nullable(); // e.g., '0.00 Sq meter to 0.00 Sq meter'
             $table->string('type')->nullable(); // e.g., 'Apartment'
             $table->string('image')->nullable(); // e.g., 'Apartment'
             $table->timestamps();
