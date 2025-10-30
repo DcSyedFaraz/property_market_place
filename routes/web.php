@@ -109,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/home', [AuthenticatedSessionController::class, 'home'])->name('home');
 });
 
+Route::get('property/backfill-slugs', [AgentPropertyController::class, 'backfillSlugs'])->name('property.backfill-slugs');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -117,7 +118,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('users', UserController::class);
     Route::resource('agents', AgentsController::class);
     Route::resource('property', AgentPropertyController::class);
-    Route::get('property/backfill-slugs', [AgentPropertyController::class, 'backfillSlugs'])->name('property.backfill-slugs');
     Route::resource('developers', DeveloperController::class);
     Route::resource('Amenity', AmenityController::class);
     Route::resource('master-plans', MasterPlanController::class);
