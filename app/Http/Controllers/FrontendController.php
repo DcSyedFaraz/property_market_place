@@ -237,13 +237,9 @@ class FrontendController extends Controller
         return view('frontend.index', compact('developer_properties'));
     }
 
-    public function projects($id)
+    public function projects($slug)
     {
-        $developer_property = DeveloperProperty::find($id);
-        $property = AgentProperty::with('propertygallery')->where('id', $id)->firstOrFail();
-
-        // dd($property->propertygallery);
-
+        $property = AgentProperty::with('propertygallery')->where('slug', $slug)->firstOrFail();
         return view('frontend.devPropertyDetails', compact('property'));
     }
     public function about_us()
@@ -403,39 +399,39 @@ class FrontendController extends Controller
         return view('frontend.new_articles');
     }
 
-    public function property_details($id)
+    public function property_details($slug)
     {
-        $property = AgentProperty::find($id);
+        $property = AgentProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.property_details', compact('property'));
     }
 
-    public function address_residence($id)
+    public function address_residence($slug)
     {
-        $developer_property = DeveloperProperty::findOrFail($id);
+        $developer_property = DeveloperProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.address_residence', compact('developer_property'));
     }
 
-    public function payment_plan($id)
+    public function payment_plan($slug)
     {
-        $developer_property = DeveloperProperty::findOrFail($id);
+        $developer_property = DeveloperProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.payment_plan', compact('developer_property'));
     }
 
-    public function location_map($id)
+    public function location_map($slug)
     {
-        $developer_property = DeveloperProperty::findOrFail($id);
+        $developer_property = DeveloperProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.location_map', compact('developer_property'));
     }
 
-    public function master_plan($id)
+    public function master_plan($slug)
     {
-        $developer_property = DeveloperProperty::findOrFail($id);
+        $developer_property = DeveloperProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.master_plan', compact('developer_property'));
     }
 
-    public function floor_plan($id)
+    public function floor_plan($slug)
     {
-        $developer_property = DeveloperProperty::findOrFail($id);
+        $developer_property = DeveloperProperty::where('slug', $slug)->firstOrFail();
         return view('frontend.floor_plan', compact('developer_property'));
     }
 

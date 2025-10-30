@@ -84,7 +84,7 @@
                                         <li>{{ $footerItem->community_name->name ?? '' }}</li>
                                         <li>{{ $footerItem->propertyTypes->first()->size }} Sq. Ft.</li>
                                     </ul>
-                                    <a class="btn-detail1" href="{{ route('projects', $footerItem->id) }}">View
+                                    <a class="btn-detail1" href="{{ route('projects', $footerItem->slug) }}">View
                                         Deatils</a>
                                 </div>
                             </div>

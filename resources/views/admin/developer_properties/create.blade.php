@@ -19,6 +19,15 @@
                         <label for="name">Property Name</label>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            value="{{ isset($developerProperty) ? $developerProperty->slug : '' }}"
+                            placeholder="Slug (auto-generated)">
+                        <label for="slug">Slug</label>
+                        <div class="invalid-feedback">Slug must be lowercase letters, numbers, and hyphens only.</div>
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <label for="developer_id" class="form-label">Developer</label>
@@ -534,6 +543,33 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            // Slug generation/validation
+            function slugify(str) {
+                return (str || '')
+                    .toString()
+                    .normalize('NFKD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .trim()
+                    .replace(/[\s_-]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+            }
+            const $name = $('#name');
+            const $slug = $('#slug');
+            let slugEdited = false;
+            $name.on('input', function(){ if(!slugEdited){ $slug.val(slugify($(this).val())); } });
+            $slug.on('input', function(){ slugEdited = true; });
+            function isValidSlug(v){ return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(v); }
+            $('form').on('submit', function(e){
+                const v = ($slug.val() || '').trim();
+                if(v && !isValidSlug(v)){
+                    $slug.addClass('is-invalid');
+                    e.preventDefault();
+                } else {
+                    $slug.removeClass('is-invalid');
+                }
+            });
 
             // Initialize payment plan index based on existing plans
             var paymentPlanIndex =

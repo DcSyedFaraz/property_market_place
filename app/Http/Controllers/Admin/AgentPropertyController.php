@@ -8,6 +8,9 @@ use App\Models\Agents;
 use App\Models\PropertyGalleryImages;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use Validator;
 
 class AgentPropertyController extends Controller
@@ -60,6 +63,7 @@ class AgentPropertyController extends Controller
             'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
 
             'status' => 'required|in:available,sold',
+            'slug' => ['nullable', 'alpha_dash', Rule::unique('agent_properties', 'slug')],
             // 'target_audience' => 'required|in:UAE,International',
         ]);
 
@@ -73,6 +77,9 @@ class AgentPropertyController extends Controller
         $property->bedrooms = $request->bedrooms;
         $property->bathrooms = $request->bathrooms;
         $property->status = $request->status;
+        if ($request->filled('slug')) {
+            $property->slug = $request->slug;
+        }
         // $property->target_audience = $request->target_audience;
 
 
@@ -150,6 +157,7 @@ class AgentPropertyController extends Controller
             'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
 
             'status' => 'required|in:available,sold',
+            'slug' => ['nullable', 'alpha_dash', Rule::unique('agent_properties', 'slug')->ignore($id)],
         ]);
 
         $property = AgentProperty::findOrFail($id);
@@ -161,6 +169,9 @@ class AgentPropertyController extends Controller
         $property->bedrooms = $request->bedrooms;
         $property->bathrooms = $request->bathrooms;
         $property->status = $request->status;
+        if ($request->filled('slug')) {
+            $property->slug = $request->slug;
+        }
 
         // Handle Main Image
         if ($request->hasFile('main_image')) {
@@ -227,5 +238,47 @@ class AgentPropertyController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Backfill missing slugs for Agent Properties using the English title (or first available title).
+     */
+    public function backfillSlugs()
+    {
+        $updated = 0;
+
+        // Find properties without slugs
+        $properties = AgentProperty::whereNull('slug')->orWhere('slug', '')->get();
+
+        foreach ($properties as $property) {
+            $title = optional($property->translations()->where('locale', 'en')->first())->title
+                ?? optional($property->translations()->first())->title
+                ?? ('property-' . $property->id);
+
+            $base = Str::slug($title) ?: ('property-' . $property->id);
+            $slug = $base;
+            $i = 2;
+
+            // Ensure uniqueness
+            while (AgentProperty::where('slug', $slug)->where('id', '!=', $property->id)->exists()) {
+                $slug = $base . '-' . $i;
+                $i++;
+            }
+
+            $property->slug = $slug;
+            $property->save();
+            $updated++;
+        }
+
+        // Run artisan migrate and capture the output
+        $exitCode = Artisan::call('migrate');
+        $output = Artisan::output();
+
+        // Return JSON response with both results
+        return response()->json([
+            'updated' => $updated,
+            'migrate_exit_code' => $exitCode,
+            'migrate_output' => $output,
+        ]);
     }
 }

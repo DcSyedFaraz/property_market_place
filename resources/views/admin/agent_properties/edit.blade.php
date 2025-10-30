@@ -54,6 +54,14 @@
 
                     <!-- Common Fields -->
                     <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        <input type="text" class="form-control" name="slug" id="slug"
+                               value="{{ $property->slug }}"
+                               placeholder="e.g. marina-view-2br-apartment">
+                        <div class="invalid-feedback">Slug must be lowercase letters, numbers, and hyphens only.</div>
+                        <small class="text-muted">Auto-generated from English title; you can edit.</small>
+                    </div>
+                    <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
                         <select class="form-control" name="location">
                             @foreach (['Dubai', 'Abu Dhabi', 'Sharjah', 'Al Ain', 'Fujairah', 'Ras Al Khaimah'] as $loc)
@@ -138,4 +146,50 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    (function() {
+        const enTitle = document.querySelector('input[name="title[en]"]');
+        const slugInput = document.getElementById('slug');
+        let slugEdited = false;
+
+        function slugify(str) {
+            return (str || '')
+                .toString()
+                .normalize('NFKD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .trim()
+                .replace(/[\s_-]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        if (enTitle && slugInput) {
+            enTitle.addEventListener('input', () => {
+                if (!slugEdited) slugInput.value = slugify(enTitle.value);
+            });
+            slugInput.addEventListener('input', () => { slugEdited = true; });
+        }
+
+        function isValidSlug(val){
+            return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(val);
+        }
+
+        const form = document.querySelector('form');
+        if (form && slugInput) {
+            form.addEventListener('submit', (e) => {
+                const val = slugInput.value.trim();
+                if (val && !isValidSlug(val)) {
+                    slugInput.classList.add('is-invalid');
+                    e.preventDefault();
+                } else {
+                    slugInput.classList.remove('is-invalid');
+                }
+            });
+        }
+    })();
+</script>
 @endsection

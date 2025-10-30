@@ -13,6 +13,7 @@ use App\Models\Location;
 use App\Models\MasterPlan;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DeveloperPropertyController extends Controller
 {
@@ -43,9 +44,15 @@ class DeveloperPropertyController extends Controller
     }
     private function validateRequest(Request $request, $isUpdate = false)
     {
+        $id = $request->route('developer_property') ?? $request->route('developer_properties') ?? null;
+        $slugRule = Rule::unique('developer_properties','slug');
+        if ($isUpdate && $id) {
+            $slugRule = $slugRule->ignore($id);
+        }
         return $request->validate([
             'developer_id' => 'required|exists:developers,id',
             'name' => 'required|string|max:255',
+            'slug' => ['nullable','alpha_dash', $slugRule],
             'status' => 'required|string|in:new,under_construction,ready_to_move',
             'price' => 'nullable|numeric',
             'description' => 'nullable|string',
@@ -99,6 +106,7 @@ class DeveloperPropertyController extends Controller
             $developerProperty = DeveloperProperty::create([
                 'developer_id' => $request->developer_id,
                 'name' => $request->name,
+                'slug' => $request->slug,
                 'status' => $request->status,
                 'price' => $request->filled('price') ? $request->price : null,
                 'description' => $request->description,
@@ -213,6 +221,7 @@ class DeveloperPropertyController extends Controller
             $developerProperty->update([
                 'developer_id' => $request->developer_id,
                 'name' => $request->name,
+                'slug' => $request->slug ?: $developerProperty->slug,
                 'status' => $request->status,
                 'price' => $request->filled('price') ? $request->price : null,
                 'description' => $request->description,

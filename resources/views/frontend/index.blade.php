@@ -443,7 +443,7 @@
                     </div>
                     <div class="det d-flex align-items-center mt-4">
                         <p>{{ $property->community_name->name ?? '' }} </p>
-                        <a href="{{ route('projects', $property->id) }}">Details</a>
+                        <a href="{{ route('projects', $property->slug) }}">Details</a>
                     </div>
                 </div>
             </div>
@@ -797,3 +797,4 @@
 <!-- Font Awesome for Icons -->
 
 </html>
+
