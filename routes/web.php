@@ -109,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/home', [AuthenticatedSessionController::class, 'home'])->name('home');
 });
 
-Route::get('property/backfill-slugs', [AgentPropertyController::class, 'backfillSlugs'])->name('property.backfill-slugs');
+// Route::get('property/backfill-slugs', [AgentPropertyController::class, 'backfillSlugs'])->name('property.backfill-slugs');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

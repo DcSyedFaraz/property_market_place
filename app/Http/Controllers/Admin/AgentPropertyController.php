@@ -243,44 +243,44 @@ class AgentPropertyController extends Controller
     /**
      * Backfill missing slugs for Agent Properties using the English title (or first available title).
      */
-    public function backfillSlugs()
-    {
-        // Run artisan migrate and capture the output
-        $exitCode = Artisan::call('migrate');
-        $output = Artisan::output();
+    // public function backfillSlugs()
+    // {
+    //     // Run artisan migrate and capture the output
+    //     $exitCode = Artisan::call('migrate');
+    //     $output = Artisan::output();
 
-        $updated = 0;
+    //     $updated = 0;
 
-        // Find properties without slugs
-        $properties = AgentProperty::whereNull('slug')->orWhere('slug', '')->get();
+    //     // Find properties without slugs
+    //     $properties = AgentProperty::whereNull('slug')->orWhere('slug', '')->get();
 
-        foreach ($properties as $property) {
-            $title = optional($property->translations()->where('locale', 'en')->first())->title
-                ?? optional($property->translations()->first())->title
-                ?? ('property-' . $property->id);
+    //     foreach ($properties as $property) {
+    //         $title = optional($property->translations()->where('locale', 'en')->first())->title
+    //             ?? optional($property->translations()->first())->title
+    //             ?? ('property-' . $property->id);
 
-            $base = Str::slug($title) ?: ('property-' . $property->id);
-            $slug = $base;
-            $i = 2;
+    //         $base = Str::slug($title) ?: ('property-' . $property->id);
+    //         $slug = $base;
+    //         $i = 2;
 
-            // Ensure uniqueness
-            while (AgentProperty::where('slug', $slug)->where('id', '!=', $property->id)->exists()) {
-                $slug = $base . '-' . $i;
-                $i++;
-            }
+    //         // Ensure uniqueness
+    //         while (AgentProperty::where('slug', $slug)->where('id', '!=', $property->id)->exists()) {
+    //             $slug = $base . '-' . $i;
+    //             $i++;
+    //         }
 
-            $property->slug = $slug;
-            $property->save();
-            $updated++;
-        }
+    //         $property->slug = $slug;
+    //         $property->save();
+    //         $updated++;
+    //     }
 
 
 
-        // Return JSON response with both results
-        return response()->json([
-            'updated' => $updated,
-            'migrate_exit_code' => $exitCode,
-            'migrate_output' => $output,
-        ]);
-    }
+    //     // Return JSON response with both results
+    //     return response()->json([
+    //         'updated' => $updated,
+    //         'migrate_exit_code' => $exitCode,
+    //         'migrate_output' => $output,
+    //     ]);
+    // }
 }
