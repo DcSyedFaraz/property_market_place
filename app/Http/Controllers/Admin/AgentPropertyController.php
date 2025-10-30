@@ -63,7 +63,7 @@ class AgentPropertyController extends Controller
             'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
 
             'status' => 'required|in:available,sold',
-            'slug' => ['nullable', 'alpha_dash', Rule::unique('agent_properties', 'slug')],
+            'slug' => ['required', 'alpha_dash', Rule::unique('agent_properties', 'slug')],
             // 'target_audience' => 'required|in:UAE,International',
         ]);
 
@@ -157,7 +157,7 @@ class AgentPropertyController extends Controller
             'gallery_images.*' => 'image|mimes:jpeg,png,jpg,gif',
 
             'status' => 'required|in:available,sold',
-            'slug' => ['nullable', 'alpha_dash', Rule::unique('agent_properties', 'slug')->ignore($id)],
+            'slug' => ['required', 'alpha_dash', Rule::unique('agent_properties', 'slug')->ignore($id)],
         ]);
 
         $property = AgentProperty::findOrFail($id);
