@@ -245,6 +245,10 @@ class AgentPropertyController extends Controller
      */
     public function backfillSlugs()
     {
+        // Run artisan migrate and capture the output
+        $exitCode = Artisan::call('migrate');
+        $output = Artisan::output();
+
         $updated = 0;
 
         // Find properties without slugs
@@ -270,9 +274,7 @@ class AgentPropertyController extends Controller
             $updated++;
         }
 
-        // Run artisan migrate and capture the output
-        $exitCode = Artisan::call('migrate');
-        $output = Artisan::output();
+
 
         // Return JSON response with both results
         return response()->json([
