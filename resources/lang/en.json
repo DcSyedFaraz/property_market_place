@@ -224,7 +224,7 @@
     "properties.description": "Description",
     "properties.location": "Location",
     "properties.property_title": "Property Title",
-    "properties.area_sqft": "Area (Sq meter)",
+    "properties.area_sqmt": "Area (Sq meter)",
     "properties.no_bedrooms": "No. Bedrooms",
     "properties.no_bathrooms": "No. Bathrooms",
     "properties.utility_area": "Utility Area",

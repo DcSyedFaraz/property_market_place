@@ -42,7 +42,7 @@
 
                         <div class="property-details">
                             <div>
-                                <h5 class="prop-1a">@lang('properties.area_sqft')</h5>
+                                <h5 class="prop-1a">@lang('properties.area_sqmt')</h5>
                                 <p class="prop-1b">{{ $property->area }}</p>
                             </div>
 

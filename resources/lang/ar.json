@@ -223,7 +223,7 @@
     "properties.description": "الوصف",
     "properties.location": "الموقع",
     "properties.property_title": "عنوان العقار",
-    "properties.area_sqft": "المساحة (قدم مربع)",
+    "properties.area_sqmt": "المساحة (متر مربع)",
     "properties.no_bedrooms": "عدد غرف النوم",
     "properties.no_bathrooms": "عدد الحمامات",
     "properties.utility_area": "منطقة الخدمات",

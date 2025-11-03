@@ -59,7 +59,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/properties', 'filter')->name('properties.index');
     Route::get('/properties/{location}', 'showPropertiesByLocation')->name('properties.byLocation');
-    Route::get('/offplan/{slug}', 'projects')->name('projects');
+    Route::get('/property-details/{slug}', 'projects')->name('projects');
     Route::get('/about-us', 'about_us')->name('about_us');
     Route::get('/leadership', 'leadership')->name('leadership');
     Route::get('/leadership/{slug}', 'leadership_detail')->name('leadership.detail');
@@ -78,7 +78,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/project-community', 'project_community')->name('project_community');
     Route::get('/service', 'service')->name('service');
     Route::get('/secondary-sale', 'secondary_sale')->name('secondary_sale');
-    Route::get('/property-details/{slug}', 'property_details')->name('property_details');
+    // Route::get('/property-details/{slug}', 'property_details')->name('property_details');
     Route::get('/new-articles', 'new_articles')->name('new_articles');
     Route::get('/community/{id}', 'community')->name('community');
     Route::get('/address-residence/{slug}', 'address_residence')->name('address_residence');
