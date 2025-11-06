@@ -47,6 +47,7 @@
 
     <!-- Include Summernote CSS -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    @stack('styles')
 
 </head>
 
@@ -142,5 +143,6 @@
         @endforeach
     @endif
 </script>
+@stack('scripts')
 
 </html>

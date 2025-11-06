@@ -1,5 +1,9 @@
 @extends('frontend.layout.app')
 @section('title', 'The H Real Estate | Visitor Form')
+@push('styles')
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+@endpush
 @section('content')
     <section class="sec-001 bread-crumb"
         style="background-image: url('{{ asset('assets/images/about/visitor banner.jpg') }}');">
@@ -55,7 +59,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nationality" class="form-label">{{ __('Nationality') }}</label>
-                                    <input type="text" class="form-control" id="nationality" name="nationality" required>
+                                    <select class="form-select" id="nationality" name="nationality" required>
+                                        <option value="">{{ __('Select Nationality') }}</option>
+                                        @foreach (($nationalities ?? []) as $nationality)
+                                            <option value="{{ $nationality }}"
+                                                {{ old('nationality') === $nationality ? 'selected' : '' }}>
+                                                {{ $nationality }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="property_type" class="form-label">{{ __('Property Type') }}</label>
@@ -80,7 +92,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="budget_range" class="form-label">{{ __('Budget Range') }}</label>
-                                    <input type="number" class="form-control" id="budget_range" name="budget_range">
+                                    <select class="form-select" id="budget_range" name="budget_range">
+                                        <option value="">{{ __('Select Budget Range') }}</option>
+                                        @foreach (($budgetRanges ?? []) as $value => $label)
+                                            <option value="{{ $value }}"
+                                                {{ old('budget_range') === $value ? 'selected' : '' }}>
+                                                {{ $label }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="payment_for_rent" class="form-label">{{ __('Payment for the rent is for') }}</label>
@@ -134,3 +154,17 @@
 
     </div>
 @endsection
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.jQuery && $.fn.select2) {
+                $('#nationality').select2({
+                    placeholder: "{{ __('Select Nationality') }}",
+                    allowClear: true,
+                    width: '100%'
+                });
+            }
+        });
+    </script>
+@endpush

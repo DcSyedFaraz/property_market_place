@@ -139,23 +139,29 @@ class FrontendController extends Controller
 
     public function visitForm()
     {
-        return view('frontend.visitor');
+        return view('frontend.visitor', [
+            'nationalities' => config('visitor.nationalities', []),
+            'budgetRanges' => config('visitor.budget_ranges', []),
+        ]);
     }
 
     public function submitVisit(Request $request)
     {
+        $nationalities = config('visitor.nationalities', []);
+        $budgetRanges = config('visitor.budget_ranges', []);
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             // allow country code characters: +, digits, spaces, hyphens, parentheses
             'phone_number' => ['required','string','max:20','regex:/^[+0-9\s()\-]{7,20}$/'],
-            'nationality' => 'required|string|max:255',
+            'nationality' => ['required','string','max:255', Rule::in($nationalities)],
 
             // Existing optional fields
             'property_type' => 'nullable|string',
             'specifications' => 'nullable|string',
             'preferred_location' => 'nullable|string',
-            'budget_range' => 'nullable|integer',
+            'budget_range' => ['nullable','string', Rule::in(array_keys($budgetRanges))],
 
             // Rent-specific fields
             'payment_for_rent' => 'required|in:Personal,Company',
@@ -193,7 +199,8 @@ class FrontendController extends Controller
         $submission->property_type = $validated['property_type'] ?? null;
         $submission->specifications = $validated['specifications'] ?? null;
         $submission->preferred_location = $validated['preferred_location'] ?? null;
-        $submission->budget_range = $validated['budget_range'] ?? null;
+        $selectedBudgetRange = $validated['budget_range'] ?? null;
+        $submission->budget_range = $selectedBudgetRange ? $budgetRanges[$selectedBudgetRange] : null;
         $submission->payment_for_rent = $validated['payment_for_rent'];
         $submission->number_of_family_members = $validated['number_of_family_members'] ?? null;
         $submission->passport_pdf = $passportPath;
