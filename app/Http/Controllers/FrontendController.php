@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ComplaintMail;
 use App\Mail\ContactForm;
 use App\Mail\VisitorMail;
+use App\Mail\VendorRegistrationMail;
 use App\Models\AgentProperty;
 use App\Models\Community;
 use App\Models\Developer;
@@ -21,6 +22,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Log;
 
 class FrontendController extends Controller
@@ -68,11 +70,11 @@ class FrontendController extends Controller
 
         try {
             // Simple check: Ensure mailer host is set
-            if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
-                Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
-            } else {
-                Log::warning('SMTP configuration not available. Email not sent.');
-            }
+            Mail::to('info@thehr.ae')->send(new ComplaintMail($data));
+            // if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
+            // } else {
+            //     Log::warning('SMTP configuration not available. Email not sent.');
+            // }
         } catch (\Exception $e) {
             Log::error('Failed to send email: ' . $e->getMessage());
         }
@@ -132,6 +134,30 @@ class FrontendController extends Controller
         $registration->office_address = $validated['office_address'];
         $registration->save();
 
+        $emailData = [
+            'name' => $registration->name,
+            'email' => $registration->email,
+            'phone_number' => $registration->phone_number,
+            'contact_person_name' => $registration->contact_person_name,
+            'office_address' => $registration->office_address,
+            'bank_account_no' => $registration->bank_account_no,
+            'iban_letter' => $registration->iban_letter,
+            'vat_registration_no' => $registration->vat_registration_no,
+            'trade_license_url' => $tradeLicensePath ? Storage::url($tradeLicensePath) : null,
+            'emirates_id_url' => $emiratesIdPath ? Storage::url($emiratesIdPath) : null,
+            'passport_url' => $passportPath ? Storage::url($passportPath) : null,
+        ];
+
+        try {
+            Mail::to('info@thehr.ae')->send(new VendorRegistrationMail($emailData));
+            // if (Config::get('mail.mailers.smtp.host') && Config::get('mail.mailers.smtp.username')) {
+            // } else {
+            //     Log::warning('Vendor registration email skipped because SMTP settings are incomplete.');
+            // }
+        } catch (\Exception $e) {
+            Log::error('Failed to send vendor registration email: ' . $e->getMessage());
+        }
+
         return redirect()->back()->with('success', 'Registration submitted successfully.');
     }
 
@@ -154,14 +180,14 @@ class FrontendController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             // allow country code characters: +, digits, spaces, hyphens, parentheses
-            'phone_number' => ['required','string','max:20','regex:/^[+0-9\s()\-]{7,20}$/'],
-            'nationality' => ['required','string','max:255', Rule::in($nationalities)],
+            'phone_number' => ['required', 'string', 'max:20', 'regex:/^[+0-9\s()\-]{7,20}$/'],
+            'nationality' => ['required', 'string', 'max:255', Rule::in($nationalities)],
 
             // Existing optional fields
             'property_type' => 'nullable|string',
             'specifications' => 'nullable|string',
             'preferred_location' => 'nullable|string',
-            'budget_range' => ['nullable','string', Rule::in(array_keys($budgetRanges))],
+            'budget_range' => ['nullable', 'string', Rule::in(array_keys($budgetRanges))],
 
             // Rent-specific fields
             'payment_for_rent' => 'required|in:Personal,Company',
@@ -177,8 +203,9 @@ class FrontendController extends Controller
         ]);
 
         // Store files
-        $storePdf = function($file, $dir) {
-            if (!$file) return null;
+        $storePdf = function ($file, $dir) {
+            if (!$file)
+                return null;
             $name = $dir . '_' . time() . '_' . uniqid() . '.pdf';
             return $file->storeAs('visitor_uploads/' . $dir, $name, 'public');
         };
@@ -298,7 +325,7 @@ class FrontendController extends Controller
     {
 
 
-        $data["blog"] = Blog::where("slug",$slug)->firstOrFail();
+        $data["blog"] = Blog::where("slug", $slug)->firstOrFail();
         // whereHas('translations', function ($query) use ($slug) {
         //     $query->where('slug', $slug);
         // })->firstOrFail();

@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\VisitorSubmissionController;
+use App\Http\Controllers\Admin\VendorRegistrationController;
 
 
 
@@ -127,6 +128,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('blogs', BlogController::class);
     Route::resource('team', TeamController::class);
     Route::resource('visitor-submissions', VisitorSubmissionController::class)->only(['index','show','destroy']);
+    Route::resource('vendor-registrations', VendorRegistrationController::class)->only(['index','show']);
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 
