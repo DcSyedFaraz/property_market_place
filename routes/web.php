@@ -54,6 +54,25 @@ Route::get('/lang/{lang}', function ($lang) {
     return back();
 })->name('lang.switch');
 
+Route::get('/test-email', function () {
+    try {
+        \Illuminate\Support\Facades\Mail::raw('This is a test email from Property Marketplace. If you received this, your SMTP configuration is working correctly!', function ($message) {
+            $message->to('dcsyedfaraz@gmail.com')
+                ->subject('SMTP Test Email - Property Marketplace');
+        });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Test email sent successfully! Check your inbox at test@example.com'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to send email: ' . $e->getMessage()
+        ], 500);
+    }
+})->name('test.email');
+
 require __DIR__ . '/auth.php';
 
 Route::controller(FrontendController::class)->group(function () {
@@ -127,15 +146,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('communities', CommunityController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('team', TeamController::class);
-    Route::resource('visitor-submissions', VisitorSubmissionController::class)->only(['index','show','destroy']);
-    Route::resource('vendor-registrations', VendorRegistrationController::class)->only(['index','show']);
+    Route::resource('visitor-submissions', VisitorSubmissionController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('vendor-registrations', VendorRegistrationController::class)->only(['index', 'show']);
 });
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'role:user']], function () {
 
     Route::get('user/dashboard', [UserController::class, 'user'])->name('user.dashboard');
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:user|admin']], function () {});
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:user|admin']], function () { });
 
 
 
